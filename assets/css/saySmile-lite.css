@@ -1,11 +1,11 @@
 
 :root{
-  --bg:#f7faf9;           /* very light mint */
-  --ink:#0b1220;          /* near-black */
-  --muted:#4b5563;        /* slate */
-  --line:#dde5ea;         /* soft line */
-  --brand:#22c55e;        /* chemistry green */
-  --brand-2:#229ED9;      /* Telegram blue for accents/active */
+  --bg:#f5f7ff;           /* airy lavender blue */
+  --ink:#0f172a;          /* deep navy */
+  --muted:#475569;        /* cool slate */
+  --line:#dbe4ff;         /* powder blue line */
+  --brand:#6366f1;        /* indigo primary */
+  --brand-2:#22d3ee;      /* bright aqua accent */
   --ok:#16a34a; --warn:#eab308; --danger:#ef4444;
 }
 *{box-sizing:border-box}
@@ -24,7 +24,7 @@ img{max-width:100%;display:block;height:auto}
 .brand img{height:104px}
 .menu{display:flex;gap:1rem;align-items:center;font-weight:600}
 .menu a{color:var(--ink);opacity:.92;padding:.4rem .6rem;border-radius:10px}
-.menu a.active{outline:2px solid var(--brand-2); background:#e6f6ff}
+.menu a.active{outline:2px solid var(--brand-2); background:#e0f7ff}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border-radius:999px;border:1px solid var(--line);font-weight:700}
@@ -35,7 +35,7 @@ img{max-width:100%;display:block;height:auto}
 
 /* Layout */
 .section{padding:2rem 0}
-.section.alt{background:#f2faf5}
+.section.alt{background:#eef3ff}
 .h1{font-size:clamp(28px,4vw,44px);margin:0 0 .5rem;letter-spacing:-.02em}
 .h2{font-size:clamp(22px,3vw,30px);margin:0 0 .75rem}
 .lead{font-size:clamp(16px,2vw,19px);color:var(--muted)}
@@ -71,7 +71,7 @@ img{max-width:100%;display:block;height:auto}
 .footer .meta{display:flex;flex-wrap:wrap;gap:.75rem;color:var(--muted)}
 
 /* Animated touches */
-:root{--glow:0 0 0 rgba(34,197,94,.0)}
+:root{--glow:0 0 0 rgba(99,102,241,.0)}
 .btn, .menu a{transition:all .25s ease}
 .btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(2,6,23,.08)}
 .menu a:hover{transform:translateY(-1px)}
