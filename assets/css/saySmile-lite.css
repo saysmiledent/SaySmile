@@ -21,7 +21,9 @@ img{max-width:100%;display:block;height:auto}
 /* Header */
 .header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);box-shadow:0 4px 20px rgba(2,6,23,.04)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0}
+.brand a{display:flex;align-items:center;gap:.6rem}
 .brand img{height:104px}
+.brand-tooth{font-size:2.6rem;line-height:1;color:var(--brand);filter:drop-shadow(0 2px 6px rgba(99,102,241,.35))}
 .menu{display:flex;gap:1rem;align-items:center;font-weight:600}
 .menu a{color:var(--ink);opacity:.92;padding:.4rem .6rem;border-radius:10px}
 .menu a.active{outline:2px solid var(--brand-2); background:#e0f7ff}
