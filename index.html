@@ -1,288 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SaySmile — стоматолог-терапевт в Санкт-Петербурге</title>
-  <meta name="description" content="SaySmile — стоматолог-терапевт в Санкт-Петербурге. Профгигиена, лечение кариеса, отбеливание, аккуратные клинические фото и понятные планы лечения." />
-  <link rel="icon" href="https://saysmiledent.github.io/SaySmile/assets/img/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/saySmile-lite.css" />
-</head>
-<body data-page="home">
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <p class="kicker">Санкт-Петербург, GAM Clinic, Лиговский пр., 232</p>
-      <div class="quick-links">
-        <a class="chip" href="https://t.me/saySmaile" target="_blank" rel="noopener">Telegram</a>
-        <a class="chip" href="https://wa.me/message/5NVAR6F7XXJ5L1" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </div>
-  </div>
-
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="./">
-        <span class="brand-mark">
-          <img src="https://saysmiledent.github.io/SaySmile/assets/img/logo.png" alt="SaySmile" />
-        </span>
-        <span>SaySmile</span>
-      </a>
-
-      <details class="menu-toggle">
-        <summary>Меню</summary>
-        <nav class="menu" aria-label="Основная навигация">
-          <a class="active" href="./index.html">Главная</a>
-          <a href="./services.html">Услуги</a>
-          <a href="./about.html">Обо мне</a>
-          <a href="./contacts.html">Контакты</a>
-          <a class="cta" href="https://t.me/saySmaile" target="_blank" rel="noopener">Записаться</a>
-        </nav>
-      </details>
-
-      <nav class="menu" aria-label="Основная навигация">
-        <a class="active" href="./index.html">Главная</a>
-        <a href="./services.html">Услуги</a>
-        <a href="./about.html">Обо мне</a>
-        <a href="./contacts.html">Контакты</a>
-        <a class="cta" href="https://t.me/saySmaile" target="_blank" rel="noopener">Записаться</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <canvas id="wave" class="wave" width="1600" height="900" aria-hidden="true"></canvas>
-      <div class="container hero-shell hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Стоматолог-терапевт · бережный приём · понятные планы</span>
-          <h1 class="h1">Лечение зубов с аккуратной эстетикой и спокойным объяснением каждого шага</h1>
-          <p class="lead">Профгигиена, лечение кариеса и отбеливание без лишнего шума, с вниманием к тканям зуба, фотофиксацией и аккуратной визуальной подачей случая.</p>
-          <div class="button-row" style="margin-top:1.35rem">
-            <a class="btn btn-primary" href="./contacts.html">Записаться на приём</a>
-            <a class="btn btn-secondary" href="./services.html">Смотреть услуги</a>
-          </div>
-          <div class="stats">
-            <div class="stat"><strong>Бережно</strong><span class="muted">приоритет сохранения тканей и комфорта</span></div>
-            <div class="stat"><strong>Понятно</strong><span class="muted">структурный план лечения и альтернатива</span></div>
-            <div class="stat"><strong>Эстетично</strong><span class="muted">чистые фото, аккуратная подача, естественный результат</span></div>
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <img src="https://saysmiledent.github.io/SaySmile/assets/img/doctor.jpg" alt="Сейван — стоматолог-терапевт" />
-          <div class="hero-note">
-            <strong>GAM Clinic</strong>
-            <span>Лиговский пр., 232, Санкт-Петербург</span>
-            <span class="muted">Профгигиена, кариес, отбеливание, эстетические реставрации</span>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container grid-2">
-        <div class="panel reveal">
-          <div class="section-heading">
-            <div>
-              <h2 class="h2">Что вы получаете на приёме</h2>
-              <p>Не просто список процедур, а понятный маршрут от диагностики до результата.</p>
-            </div>
-          </div>
-          <div class="service-list">
-            <div class="service-item">
-              <div>
-                <strong>Профгигиена</strong>
-                <span>Снятие налёта, камня и пигмента, аккуратная полировка.</span>
-              </div>
-              <span>от 4 500 ₽</span>
-            </div>
-            <div class="service-item">
-              <div>
-                <strong>Лечение кариеса</strong>
-                <span>Минимально инвазивно, с коффердамом и эстетикой реставрации.</span>
-              </div>
-              <span>от 7 000 ₽</span>
-            </div>
-            <div class="service-item">
-              <div>
-                <strong>Отбеливание</strong>
-                <span>Щадящий протокол и рекомендации по сохранению эффекта.</span>
-              </div>
-              <span>20 000 ₽</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="quote reveal">
-          <strong>Почему это читается легче</strong>
-          <p>Текст собран в короткие смысловые блоки, а не в длинные простыни. Так пользователь быстрее понимает, что вы делаете, где вы принимаете и чем отличаетесь.</p>
-          <div class="badge-row" style="margin-top:1rem">
-            <span class="badge">Коффердам</span>
-            <span class="badge">AIRFLOW</span>
-            <span class="badge">Фото до / после</span>
-            <span class="badge">Естественная эстетика</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="portfolio">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2 class="h2">Фото работ</h2>
-            <p>Галерея теперь построена на одинаковых карточках и фиксированном соотношении сторон, чтобы снимки не раздували макет.</p>
-          </div>
-        </div>
-        <div class="gallery-grid reveal">
-          <figure class="portfolio-card">
-            <img src="https://saysmiledent.github.io/SaySmile/assets/img/portfolio/case1-before.jpg" alt="До лечения кариеса" />
-            <figcaption class="portfolio-meta"><strong>До</strong><span class="muted">Кариес</span></figcaption>
-          </figure>
-          <figure class="portfolio-card">
-            <img src="https://saysmiledent.github.io/SaySmile/assets/img/portfolio/case1-after.jpg" alt="После лечения кариеса" />
-            <figcaption class="portfolio-meta"><strong>После</strong><span class="muted">Кариес</span></figcaption>
-          </figure>
-          <figure class="portfolio-card">
-            <img src="https://saysmiledent.github.io/SaySmile/assets/img/portfolio/case2-before.jpg" alt="До профгигиены" />
-            <figcaption class="portfolio-meta"><strong>До</strong><span class="muted">Профгигиена</span></figcaption>
-          </figure>
-          <figure class="portfolio-card">
-            <img src="https://saysmiledent.github.io/SaySmile/assets/img/portfolio/case2-after.jpg" alt="После профгигиены" />
-            <figcaption class="portfolio-meta"><strong>После</strong><span class="muted">Профгигиена</span></figcaption>
-          </figure>
-          <figure class="portfolio-card">
-            <img src="https://saysmiledent.github.io/SaySmile/assets/img/portfolio/case3-before.jpg" alt="До снятия зубного камня" />
-            <figcaption class="portfolio-meta"><strong>До</strong><span class="muted">Камень</span></figcaption>
-          </figure>
-          <figure class="portfolio-card">
-            <img src="https://saysmiledent.github.io/SaySmile/assets/img/portfolio/case3-after.jpg" alt="После снятия зубного камня" />
-            <figcaption class="portfolio-meta"><strong>После</strong><span class="muted">Камень</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="container grid-2">
-        <div class="panel">
-          <div class="section-heading">
-            <div>
-              <h2 class="h2">Как я строю приём</h2>
-              <p>Каждый шаг короткий и понятный, без перегруза терминологией.</p>
-            </div>
-          </div>
-          <ul class="list">
-            <li><strong>Диагностика</strong> — осмотр, фото и обсуждение жалоб.</li>
-            <li><strong>План</strong> — объяснение вариантов и последовательности.</li>
-            <li><strong>Лечение</strong> — коффердам, изоляция, аккуратная работа с тканями.</li>
-            <li><strong>Поддержка</strong> — рекомендации по уходу и контроль результата.</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <div class="section-heading">
-            <div>
-              <h2 class="h2">Как добраться</h2>
-              <p>Карта встроена ниже, а контактные кнопки вынесены в отдельный блок для быстрого действия.</p>
-            </div>
-          </div>
-          <iframe class="map" title="Карта GAM clinic" src="https://yandex.ru/map-widget/v1/?oid=33575540339" loading="lazy"></iframe>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <p class="h3" style="margin-bottom:0.35rem">GAM Clinic</p>
-        <p class="muted" style="margin-top:0">Лиговский пр., 232, Санкт-Петербург</p>
-        <div class="footer-meta">
-          <a href="https://yandex.ru/maps/org/gam_clinic/33575540339?si=azc2n8z4k5hn2twbe5uhg9rg8g" target="_blank" rel="noopener">Яндекс.Карты</a>
-          <span>·</span>
-          <a href="tel:+79939813183">+7 (993) 981-31-83</a>
-          <span>·</span>
-          <a href="mailto:dr.seivan@mail.ru">dr.seivan@mail.ru</a>
-        </div>
-      </div>
-      <div class="button-row" style="justify-content:flex-end">
-        <a class="btn btn-secondary" href="./privacy.html">Политика данных</a>
-        <a class="btn btn-secondary" href="./services.html">Услуги</a>
-        <a class="btn btn-primary" href="./contacts.html">Контакты</a>
-      </div>
-    </div>
-    <div class="container">
-      <p class="footer-note">Имеются противопоказания. Необходима консультация специалиста.</p>
-      <p class="footer-note">© 2025 SaySmile — стоматолог-терапевт в Санкт-Петербурге</p>
-    </div>
-  </footer>
-
-  <div class="sticker" title="SaySmile">🦷</div>
-
-  <script>
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
-
-    const canvas = document.getElementById('wave');
-    if (canvas) {
-      const context = canvas.getContext('2d');
-      let mouseX = 0;
-      let mouseY = 0;
-      let frame = 0;
-
-      const resizeCanvas = () => {
-        const width = canvas.clientWidth || window.innerWidth;
-        const height = canvas.clientHeight || 420;
-        canvas.width = width;
-        canvas.height = height;
-      };
-
-      const draw = () => {
-        const width = canvas.width;
-        const height = canvas.height;
-        context.clearRect(0, 0, width, height);
-
-        const paintWave = (offset, fill, amplitude, yBase) => {
-          context.fillStyle = fill;
-          context.beginPath();
-          context.moveTo(0, height);
-          for (let x = 0; x <= width; x += 8) {
-            const y = Math.sin((x + frame * offset) / 42) * amplitude + Math.cos((x + mouseX) / 140) * amplitude * 0.55 + yBase + (mouseY / Math.max(height, 1)) * 18;
-            context.lineTo(x, y);
-          }
-          context.lineTo(width, height);
-          context.closePath();
-          context.fill();
-        };
-
-        paintWave(0.08, 'rgba(15, 124, 130, 0.22)', 26, height * 0.24);
-        paintWave(0.12, 'rgba(217, 119, 6, 0.16)', 20, height * 0.34);
-      };
-
-      const tick = () => {
-        frame += 1;
-        draw();
-        requestAnimationFrame(tick);
-      };
-
-      resizeCanvas();
-      window.addEventListener('mousemove', (event) => {
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-      });
-      window.addEventListener('resize', resizeCanvas);
-      tick();
-    }
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SaySmile — стоматолог-терапевт в Санкт-Петербурге." />
+    <title>SaySmile — бережная стоматология</title>
+    <style>
+      :root {
+        --ink: #172638;
+        --muted: #647384;
+        --blue: #7fa9df;
+        --blue-deep: #4679b8;
+        --mist: #eff5fc;
+        --paper: #fffefd;
+        --line: #dce6f1;
+        --shadow: 0 18px 50px rgba(34, 72, 111, .12);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+      a { color: inherit; }
+      .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+      .topbar { background: var(--ink); color: #fff; font-size: .88rem; }
+      .topbar .container { min-height: 38px; display: flex; align-items: center; justify-content: flex-end; gap: 18px; }
+      .topbar a { text-decoration: none; color: #dceaff; }
+      header { position: sticky; top: 0; z-index: 5; background: rgba(255,254,253,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(220,230,241,.8); }
+      .nav { height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+      .brand img { display: block; width: auto; height: 52px; object-fit: contain; }
+      nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 30px); }
+      nav a { color: var(--muted); font-size: .95rem; font-weight: 650; text-decoration: none; }
+      nav a:hover { color: var(--blue-deep); }
+      .button { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 999px; padding: 13px 21px; background: var(--blue-deep); color: #fff; font-weight: 750; text-decoration: none; box-shadow: 0 8px 20px rgba(70,121,184,.22); transition: transform .2s, background .2s; }
+      .button:hover { background: #356ba9; transform: translateY(-2px); }
+      .button--soft { background: #fff; color: var(--blue-deep); box-shadow: none; border: 1px solid var(--line); }
+      .hero { overflow: hidden; padding: clamp(60px, 9vw, 112px) 0; background: radial-gradient(circle at 84% 18%, #dceaff 0, transparent 29%), linear-gradient(120deg, #f5f9ff, #fbfcfe 55%, #edf4fc); }
+      .hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: clamp(30px, 6vw, 72px); }
+      .eyebrow { margin: 0 0 15px; color: var(--blue-deep); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { max-width: 660px; margin-bottom: 22px; font-size: clamp(2.45rem, 5.5vw, 5rem); line-height: 1.05; letter-spacing: -.055em; }
+      .lead { max-width: 575px; margin-bottom: 30px; color: var(--muted); font-size: clamp(1.06rem, 2vw, 1.26rem); }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+      .portrait { position: relative; width: min(100%, 400px); aspect-ratio: 4 / 4.4; margin-inline: auto; overflow: hidden; border-radius: 42% 42% 28px 28px; background: #dbe9f8; box-shadow: var(--shadow); }
+      .portrait img { width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
+      .section { padding: clamp(68px, 9vw, 112px) 0; }
+      .section--tint { background: var(--mist); }
+      .section-heading { max-width: 660px; margin-bottom: 38px; }
+      h2 { margin-bottom: 12px; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.12; letter-spacing: -.04em; }
+      .section-heading p, .card p { color: var(--muted); }
+      .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .card { min-height: 210px; padding: 26px; background: #fff; border: 1px solid var(--line); border-radius: 22px; }
+      .card-icon { display: grid; place-items: center; width: 45px; height: 45px; margin-bottom: 28px; border-radius: 14px; background: #e4effd; color: var(--blue-deep); font-size: 1.35rem; }
+      .card h3 { margin-bottom: 8px; font-size: 1.18rem; }
+      .about { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: clamp(28px, 7vw, 90px); }
+      .about-copy p { max-width: 600px; color: var(--muted); font-size: 1.07rem; }
+      .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 26px; }
+      .fact { padding: 16px; background: #fff; border-left: 3px solid var(--blue); border-radius: 0 12px 12px 0; color: var(--muted); }
+      .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .work { min-width: 0; padding: 10px; background: #fff; border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 8px 24px rgba(34,72,111,.06); }
+      .work button { display: block; width: 100%; aspect-ratio: 1 / .88; padding: 0; overflow: hidden; border: 0; border-radius: 13px; background: #edf2f7; cursor: zoom-in; }
+      .work img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .25s ease; }
+      .work button:hover img { transform: scale(1.03); }
+      .work p { margin: 12px 6px 4px; color: var(--muted); font-size: .92rem; }
+      .contact { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px; padding: clamp(30px, 5vw, 58px); border-radius: 28px; color: #fff; background: linear-gradient(120deg, #1b314b, #315c8e); }
+      .contact h2 { margin-bottom: 10px; }
+      .contact p { max-width: 590px; margin-bottom: 0; color: #d9e8f9; }
+      footer { padding: 32px 0; color: var(--muted); font-size: .9rem; }
+      footer .container { display: flex; justify-content: space-between; gap: 12px; }
+      dialog { width: min(94vw, 1100px); max-height: 92vh; padding: 0; overflow: hidden; border: 0; border-radius: 18px; background: #101923; box-shadow: 0 24px 80px rgba(0,0,0,.45); }
+      dialog::backdrop { background: rgba(9,20,32,.8); backdrop-filter: blur(5px); }
+      dialog img { display: block; width: 100%; max-height: 88vh; object-fit: contain; }
+      dialog button { position: absolute; top: 13px; right: 13px; width: 42px; height: 42px; border: 0; border-radius: 50%; background: rgba(255,255,255,.92); color: var(--ink); font-size: 1.45rem; cursor: pointer; }
+      @media (max-width: 800px) { .hero-grid, .about, .contact { grid-template-columns: 1fr; } .portrait { order: -1; max-width: 310px; } .services { grid-template-columns: 1fr 1fr; } .gallery { grid-template-columns: 1fr; max-width: 500px; } .contact .button { justify-self: start; } }
+      @media (max-width: 600px) { .container { width: min(100% - 28px, 1120px); } .topbar .container { justify-content: center; } .nav { height: 66px; } .brand img { height: 42px; } nav a:not(.button) { display: none; } .services, .facts { grid-template-columns: 1fr; } footer .container { display: block; } }
+    </style>
+  </head>
+  <body>
+    <div class="topbar"><div class="container"><a href="tel:+79939813183">+7 (993) 981‑31‑83</a><a href="mailto:dr.seivan@mail.ru">dr.seivan@mail.ru</a></div></div>
+    <header><div class="container nav"><a class="brand" href="#top" aria-label="SaySmile"><img src="assets/logo.png" alt="SaySmile" /></a><nav><a href="#services">Услуги</a><a href="#about">Обо мне</a><a href="#works">Работы</a><a class="button" href="https://t.me/saySmaile" target="_blank" rel="noreferrer">Записаться</a></nav></div></header>
+    <main id="top">
+      <section class="hero"><div class="container hero-grid"><div><p class="eyebrow">Санкт‑Петербург · GAM Clinic</p><h1>Улыбка, в которой вы уверены</h1><p class="lead">Бережная стоматология с понятным планом лечения, современными материалами и вниманием к деталям.</p><div class="hero-actions"><a class="button" href="https://t.me/saySmaile" target="_blank" rel="noreferrer">Записаться в Telegram</a><a class="button button--soft" href="#services">Посмотреть услуги</a></div></div><div class="portrait"><img src="assets/saywan.jpg" alt="Стоматолог Saywan" /></div></div></section>
+      <section class="section" id="services"><div class="container"><div class="section-heading"><p class="eyebrow">Направления</p><h2>Лечение, которое подходит именно вам</h2><p>Объясняю диагноз, предлагаю варианты и вместе с вами выбираю оптимальный путь.</p></div><div class="services"><article class="card"><div class="card-icon">✦</div><h3>Профгигиена</h3><p>Деликатное удаление налёта и зубного камня для здоровья и свежести улыбки.</p></article><article class="card"><div class="card-icon">⌁</div><h3>Лечение кариеса</h3><p>Сохранение тканей зуба и эстетичные реставрации с вниманием к каждой детали.</p></article><article class="card"><div class="card-icon">☼</div><h3>Отбеливание</h3><p>Безопасный способ сделать улыбку заметно светлее по показаниям врача.</p></article></div></div></section>
+      <section class="section section--tint" id="about"><div class="container about"><div class="portrait"><img src="assets/saywan.jpg" alt="Стоматолог Saywan с инструментом" /></div><div class="about-copy"><p class="eyebrow">Обо мне</p><h2>Спокойно, честно, по современным протоколам</h2><p>Я стоматолог‑терапевт. Для меня важно, чтобы на приёме вы понимали, что происходит и зачем нужен каждый этап лечения.</p><div class="facts"><div class="fact">Бережное отношение к тканям зуба</div><div class="fact">Понятный план без лишних процедур</div><div class="fact">Современная изоляция и материалы</div><div class="fact">Естественная эстетика реставраций</div></div></div></div></section>
+      <section class="section" id="works"><div class="container"><div class="section-heading"><p class="eyebrow">Примеры работ</p><h2>Результаты, которые говорят сами за себя</h2><p>Нажмите на фотографию, чтобы рассмотреть её без обрезки и потери деталей.</p></div><div class="gallery"><figure class="work"><button type="button" data-image="assets/smile1.jpg" data-alt="Кабинет SaySmile"><img src="assets/smile1.jpg" alt="Кабинет SaySmile" loading="lazy" /></button><p>Комфортная клиническая среда</p></figure><figure class="work"><button type="button" data-image="assets/smile2.jpg" data-alt="Результат профессиональной гигиены"><img src="assets/smile2.jpg" alt="Результат профессиональной гигиены" loading="lazy" /></button><p>Профессиональная гигиена: до и после</p></figure><figure class="work"><button type="button" data-image="assets/smile3.jpg" data-alt="Клинический случай до лечения"><img src="assets/smile3.jpg" alt="Клинический случай до лечения" loading="lazy" /></button><p>Индивидуальный план лечения</p></figure></div></div></section>
+      <section class="section section--tint"><div class="container contact"><div><p class="eyebrow" style="color:#bad8fb">Контакты</p><h2>Запишитесь на консультацию</h2><p>GAM Clinic · Лиговский пр., 232, Санкт‑Петербург. Есть вопросы? Напишите в Telegram — отвечу и помогу выбрать удобное время.</p></div><a class="button button--soft" href="https://t.me/saySmaile" target="_blank" rel="noreferrer">Написать в Telegram</a></div></section>
+    </main>
+    <footer><div class="container"><span>© 2026 SaySmile</span><span>Имеются противопоказания. Необходима консультация специалиста.</span></div></footer>
+    <dialog id="viewer"><button type="button" aria-label="Закрыть">×</button><img src="" alt="" /></dialog>
+    <script>
+      const viewer = document.querySelector('#viewer');
+      const viewerImage = viewer.querySelector('img');
+      document.querySelectorAll('[data-image]').forEach((button) => button.addEventListener('click', () => {
+        viewerImage.src = button.dataset.image;
+        viewerImage.alt = button.dataset.alt;
+        viewer.showModal();
+      }));
+      viewer.querySelector('button').addEventListener('click', () => viewer.close());
+      viewer.addEventListener('click', (event) => { if (event.target === viewer) viewer.close(); });
+    </script>
+  </body>
 </html>
