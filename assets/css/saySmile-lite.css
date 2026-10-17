@@ -1,14 +1,14 @@
 :root {
-  --bg: #f6f1e7;
-  --bg-2: #fff9f0;
+  --bg: #f5f9ff;
+  --bg-2: #fbfcfe;
   --surface: rgba(255, 255, 255, 0.82);
   --surface-strong: #ffffff;
-  --ink: #17222d;
+  --ink: #172638;
   --muted: #5f6b75;
   --line: rgba(23, 34, 45, 0.12);
-  --brand: #0f7c82;
-  --brand-2: #d97706;
-  --brand-soft: rgba(15, 124, 130, 0.12);
+  --brand: #4679b8;
+  --brand-2: #7fa9df;
+  --brand-soft: rgba(70, 121, 184, 0.12);
   --shadow: 0 18px 50px rgba(23, 34, 45, 0.08);
   --radius: 24px;
 }
@@ -25,8 +25,8 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(15, 124, 130, 0.12), transparent 24%),
-    radial-gradient(circle at right 12%, rgba(217, 119, 6, 0.1), transparent 20%),
+    radial-gradient(circle at top left, rgba(70, 121, 184, 0.12), transparent 24%),
+    radial-gradient(circle at right 12%, rgba(127, 169, 223, 0.1), transparent 20%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
   font-family: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
   line-height: 1.7;
@@ -90,7 +90,7 @@ a {
   top: 0;
   z-index: 40;
   border-bottom: 1px solid var(--line);
-  background: rgba(246, 241, 231, 0.84);
+  background: rgba(245, 249, 255, 0.88);
   backdrop-filter: blur(18px);
 }
 
@@ -120,7 +120,7 @@ a {
   border-radius: 50%;
   background: linear-gradient(135deg, var(--brand), #31b7b0);
   color: #fff;
-  box-shadow: 0 12px 24px rgba(15, 124, 130, 0.25);
+  box-shadow: 0 12px 24px rgba(70, 121, 184, 0.25);
   flex: none;
 }
 
@@ -158,7 +158,7 @@ a {
 .menu a.cta {
   color: #fff;
   background: linear-gradient(135deg, var(--brand), #1fa39d);
-  box-shadow: 0 14px 28px rgba(15, 124, 130, 0.18);
+  box-shadow: 0 14px 28px rgba(70, 121, 184, 0.18);
 }
 
 .menu a.cta:hover {
@@ -308,7 +308,7 @@ main {
   border-radius: 28px;
   border: 1px solid var(--line);
   background:
-    linear-gradient(180deg, rgba(15, 124, 130, 0.12), rgba(255, 255, 255, 0.86)),
+    linear-gradient(180deg, rgba(70, 121, 184, 0.12), rgba(255, 255, 255, 0.86)),
     #fff;
   padding: 1.1rem;
   box-shadow: var(--shadow);
@@ -431,7 +431,7 @@ main {
   gap: 0.45rem;
   padding: 0.48rem 0.8rem;
   border-radius: 999px;
-  background: rgba(15, 124, 130, 0.08);
+  background: rgba(70, 121, 184, 0.08);
   color: var(--brand);
   font-weight: 800;
   font-size: 0.92rem;
@@ -660,4 +660,10 @@ main {
   .portfolio-meta {
     flex-direction: column;
   }
+}
+
+.service-item > span:last-child {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: right;
 }
