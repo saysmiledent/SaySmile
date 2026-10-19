@@ -443,6 +443,112 @@
     pending.forEach(function (p) { io.observe(p.el); });
   }
 
+  /* ================= Запись на приём ================= */
+
+  var TG_USER = 'saySmaile';
+  var WA_PHONE = '79939813183';
+
+  var SERVICES = [
+    'Консультация / осмотр',
+    'Профессиональная гигиена',
+    'Лечение кариеса',
+    'Отбеливание',
+    'Другое'
+  ];
+
+  function buildBooking() {
+    if (typeof HTMLDialogElement === 'undefined') {
+      /* старые браузеры: кнопки ведут сразу в Telegram */
+      document.querySelectorAll('[data-open-booking]').forEach(function (b) {
+        b.addEventListener('click', function () { window.open('https://t.me/' + TG_USER, '_blank', 'noopener'); });
+      });
+      return;
+    }
+
+    var dlg = document.createElement('dialog');
+    dlg.className = 'booking-dialog';
+    dlg.setAttribute('aria-labelledby', 'booking-title');
+    dlg.innerHTML =
+      '<button type="button" class="booking-close" aria-label="Закрыть">×</button>' +
+      '<h2 id="booking-title">Запись на приём</h2>' +
+      '<p class="booking-sub">Оставьте номер и выберите, куда написать, — сообщение откроется в мессенджере уже готовым.</p>' +
+      '<form class="booking-form" novalidate>' +
+        '<label>Ваш телефон<input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="+7 ___ ___-__-__" required /></label>' +
+        '<label>Что вас беспокоит<select name="service">' +
+          SERVICES.map(function (s) { return '<option>' + s + '</option>'; }).join('') +
+        '</select></label>' +
+        '<fieldset><legend>Куда написать</legend><div class="channel-row">' +
+          '<label><input type="radio" name="channel" value="telegram" checked /> Telegram</label>' +
+          '<label><input type="radio" name="channel" value="whatsapp" /> WhatsApp</label>' +
+        '</div></fieldset>' +
+        '<label class="consent"><input type="checkbox" name="consent" required /><span>Согласен(на) на обработку персональных данных согласно <a href="./privacy.html" target="_blank" rel="noopener">политике</a>.</span></label>' +
+        '<p class="booking-error" role="alert" aria-live="assertive"></p>' +
+        '<button type="submit" class="btn btn-primary">Открыть сообщение</button>' +
+        '<p class="booking-note">Данные никуда не отправляются автоматически: вы сами нажимаете «Отправить» в мессенджере.</p>' +
+      '</form>';
+    document.body.appendChild(dlg);
+
+    var form = dlg.querySelector('form');
+    var phone = form.elements.phone;
+    var err = dlg.querySelector('.booking-error');
+
+    function fail(msg, field) {
+      err.textContent = msg;
+      if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
+    }
+
+    phone.addEventListener('input', function () {
+      phone.removeAttribute('aria-invalid');
+      err.textContent = '';
+    });
+
+    function open() {
+      err.textContent = '';
+      phone.removeAttribute('aria-invalid');
+      dlg.showModal();
+      sfx.open();
+      window.setTimeout(function () { phone.focus(); }, 60);
+    }
+
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest && e.target.closest('[data-open-booking]');
+      if (t) { e.preventDefault(); open(); }
+    });
+
+    dlg.querySelector('.booking-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var digits = phone.value.replace(/\D/g, '');
+      if (digits.length < 10 || digits.length > 15) { fail('Проверьте номер телефона: нужно минимум 10 цифр.', phone); return; }
+      if (!form.elements.consent.checked) { fail('Нужно согласие на обработку персональных данных.', form.elements.consent); return; }
+
+      var service = form.elements.service.value;
+      var text = 'Здравствуйте! Хочу записаться на приём. Тема: ' + service + '. Мой телефон: ' + phone.value.trim() + '.';
+      var channel = form.elements.channel.value;
+      var url = channel === 'whatsapp'
+        ? 'https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(text)
+        : 'https://t.me/' + TG_USER + '?text=' + encodeURIComponent(text);
+
+      sfx.click();
+      window.open(url, '_blank', 'noopener');
+      dlg.close();
+      form.reset();
+    });
+  }
+
+  /* Нижняя панель быстрых действий на телефоне */
+  function buildMobileBar() {
+    var bar = document.createElement('div');
+    bar.className = 'mobile-cta';
+    bar.innerHTML =
+      '<a href="tel:+79939813183" aria-label="Позвонить">📞 Звонок</a>' +
+      '<a href="https://t.me/' + TG_USER + '" target="_blank" rel="noopener" aria-label="Написать в Telegram">✈️ Чат</a>' +
+      '<button type="button" data-open-booking>Записаться</button>';
+    document.body.appendChild(bar);
+  }
+
   function init() {
     initHeadline();
     buildFloating();
@@ -457,6 +563,8 @@
     initPointerFx();
     initButtonFx();
     initCounters();
+    buildBooking();
+    buildMobileBar();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
