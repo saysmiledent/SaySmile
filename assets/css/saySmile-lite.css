@@ -99,7 +99,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 0.55rem 0;
 }
 
 .brand {
@@ -112,22 +112,32 @@ a {
   letter-spacing: 0.01em;
 }
 
+/* Логотип: без круга и фона, только сам знак (прозрачный PNG) */
 .brand-mark {
-  width: 3rem;
-  height: 3rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--brand), #31b7b0);
-  color: #fff;
-  box-shadow: 0 12px 24px rgba(70, 121, 184, 0.25);
+  display: block;
+  height: 3.6rem;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
   flex: none;
 }
 
 .brand-mark img {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: auto;
+  height: 100%;
   object-fit: contain;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .menu-toggle {
@@ -812,8 +822,11 @@ html { scroll-padding-top: 6rem; }
 .link-button { border: 0; background: none; padding: 0; color: var(--brand); font: inherit; font-weight: 800; cursor: pointer; }
 .link-button:hover { text-decoration: underline; }
 
+/* «До / После»: ползунок вправо — показывается только «После»,
+   влево — только «До». Между ними — короткий плавный переход. */
 .compare {
-  --pos: 50%;
+  --p: 0;       /* положение ползунка 0…1 */
+  --after: 0;   /* прозрачность фото «После» 0…1 */
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
@@ -823,29 +836,31 @@ html { scroll-padding-top: 6rem; }
 }
 
 .compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.compare .after { clip-path: inset(0 0 0 var(--pos)); }
+.compare .after { opacity: var(--after); }
 
+/* дорожка ползунка внизу фото */
 .compare::after {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: var(--pos);
-  width: 3px;
-  margin-left: -1.5px;
-  background: #fff;
-  box-shadow: 0 0 0 1px rgba(23, 34, 45, 0.15), 0 0 14px rgba(23, 34, 45, 0.25);
+  left: 1.4rem;
+  right: 1.4rem;
+  bottom: 1.35rem;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #fff calc(var(--p) * 100%), rgba(255, 255, 255, 0.45) 0);
+  box-shadow: 0 0 0 1px rgba(23, 34, 45, 0.18), 0 2px 10px rgba(23, 34, 45, 0.25);
   pointer-events: none;
+  z-index: 1;
 }
 
 .compare-knob {
   position: absolute;
-  top: 50%;
-  left: var(--pos);
+  bottom: 3px;
+  left: calc(1.4rem + (100% - 2.8rem) * var(--p));
   z-index: 2;
   width: 2.6rem;
   height: 2.6rem;
-  margin: -1.3rem 0 0 -1.3rem;
+  margin: 0 0 0 -1.3rem;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -869,8 +884,13 @@ html { scroll-padding-top: 6rem; }
   pointer-events: none;
 }
 
+.compare-tag { transition: opacity 0.3s ease, background 0.3s ease, transform 0.3s ease; }
 .compare-tag.left { left: 0.6rem; }
 .compare-tag.right { right: 0.6rem; }
+.compare[data-state="before"] .compare-tag.left,
+.compare[data-state="after"] .compare-tag.right { background: var(--brand); transform: scale(1.06); }
+.compare[data-state="before"] .compare-tag.right,
+.compare[data-state="after"] .compare-tag.left { opacity: 0.4; }
 
 .compare input[type="range"] {
   position: absolute;
@@ -881,6 +901,7 @@ html { scroll-padding-top: 6rem; }
   margin: 0;
   opacity: 0;
   cursor: ew-resize;
+  touch-action: pan-y;
 }
 
 .compare:focus-within { outline: 3px solid rgba(70, 121, 184, 0.55); outline-offset: 2px; }
@@ -936,6 +957,187 @@ html { scroll-padding-top: 6rem; }
   .lightbox-grid { grid-template-columns: 1fr; }
   .sound-toggle { bottom: 4.4rem; }
 }
+
+/* ================= Анимации и движение ================= */
+
+/* --- вход на страницу и переход между страницами --- */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.js main { animation: pageIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: linear-gradient(120deg, var(--brand) 0%, #31b7b0 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.42s cubic-bezier(0.7, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.page-curtain.cover { transform: scaleX(1); }
+.leaving main { opacity: 0; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+
+/* --- шапка --- */
+.header { transition: box-shadow 0.3s ease, background 0.3s ease; }
+.header.scrolled { box-shadow: 0 10px 30px rgba(23, 34, 45, 0.08); background: rgba(245, 249, 255, 0.96); }
+
+@keyframes logoIn {
+  from { opacity: 0; scale: 0.7; rotate: -6deg; }
+  to   { opacity: 1; scale: 1; rotate: 0deg; }
+}
+
+.js .brand-mark { animation: logoIn 0.8s cubic-bezier(0.3, 1.4, 0.5, 1) 0.1s both; }
+.brand-mark img { transition: transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1), filter 0.3s ease; transform-origin: 50% 60%; }
+.brand:hover .brand-mark img { transform: scale(1.07) rotate(-2.5deg); filter: drop-shadow(0 8px 14px rgba(70, 121, 184, 0.35)); }
+
+/* --- меню: линия подчёркивания --- */
+.menu a { position: relative; }
+.menu a:not(.cta)::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.32rem;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--brand), #31b7b0);
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.menu a:not(.cta):hover::before,
+.menu a.active:not(.cta)::before { width: 56%; }
+
+/* --- главный экран: поэтапное появление --- */
+@keyframes rise {
+  from { opacity: 0; translate: 0 26px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+@keyframes popIn {
+  from { opacity: 0; translate: 40px 10px; scale: 0.92; }
+  to   { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+@keyframes wordUp {
+  from { opacity: 0; transform: translateY(0.55em) rotate(2deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+.js .hero-copy > .eyebrow,
+.js .hero-copy > .lead,
+.js .hero-copy > .button-row,
+.js .hero-copy > .stats { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+.js .hero-copy > .eyebrow { animation-delay: 0.1s; }
+.js .hero-copy > .lead { animation-delay: 0.55s; }
+.js .hero-copy > .button-row { animation-delay: 0.7s; }
+.js .hero-copy > .stats { animation-delay: 0.85s; }
+.js .hero-card { animation: popIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s both; }
+
+.split-word { display: inline-block; animation: wordUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: calc(0.18s + var(--w) * 0.07s); }
+
+/* --- блики и «живой» фон --- */
+.hero-blobs span { translate: calc(var(--px, 0) * 46px) calc(var(--py, 0) * 32px); transition: translate 0.6s ease-out; }
+.hero-blobs span:nth-child(2) { translate: calc(var(--px, 0) * -60px) calc(var(--py, 0) * -40px); }
+
+.cursor-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 34rem;
+  height: 34rem;
+  margin: -17rem 0 0 -17rem;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(70, 121, 184, 0.17), rgba(49, 183, 176, 0.08) 55%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cursor-glow.on { opacity: 1; }
+
+/* --- кнопки: пульс, ripple и «магнит» --- */
+@keyframes ring {
+  0%   { box-shadow: 0 0 0 0 rgba(49, 183, 176, 0.45); }
+  70%  { box-shadow: 0 0 0 16px rgba(49, 183, 176, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(49, 183, 176, 0); }
+}
+
+.hero .btn-primary { animation: ring 3.2s ease-out 1.6s infinite; }
+.hero .btn-primary:hover { animation: none; }
+
+.btn { translate: var(--tx, 0) var(--ty, 0); transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, translate 0.25s ease-out; }
+
+.ripple {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  transform: scale(0);
+  animation: rippleOut 0.65s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes rippleOut { to { transform: scale(26); opacity: 0; } }
+
+/* --- карточки: подсветка за курсором, иконки, заголовки --- */
+.card {
+  background-image: radial-gradient(240px circle at var(--cx, 50%) var(--cy, -40%), rgba(70, 121, 184, 0.11), transparent 70%);
+  background-repeat: no-repeat;
+}
+
+.card-icon { transition: transform 0.45s cubic-bezier(0.3, 1.6, 0.5, 1), background 0.3s ease; }
+.card:hover .card-icon { transform: rotate(-9deg) scale(1.14); background: rgba(70, 121, 184, 0.2); }
+.price-tag { transition: transform 0.3s ease, background 0.3s ease; }
+.card:hover .price-tag { transform: translateX(4px); }
+.card .text-link { transition: transform 0.25s ease; }
+.card .text-link:hover { transform: translateX(4px); }
+
+.h2::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  margin-top: 0.55rem;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--brand), #31b7b0);
+  transition: width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s;
+}
+
+.js .reveal.visible .h2::after,
+.js main > section:not(.reveal) .h2::after { width: 3.4rem; }
+html:not(.js) .h2::after { width: 3.4rem; }
+
+.js .reveal { transform: translateY(30px) scale(0.985); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.js .reveal.visible { transform: none; }
+.js [data-stagger].reveal > * { transform: translateY(26px) scale(0.97); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.25s ease; }
+.js [data-stagger].reveal.visible > * { transform: none; }
+.js [data-stagger].reveal.visible > .card:hover { transform: translateY(-4px); }
+
+.photo-panel img { transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.photo-panel:hover img { transform: scale(1.05); }
+
+.stat { transition: transform 0.3s ease; }
+.stat:hover { transform: translateY(-3px); }
+
+.footer a { transition: color 0.2s ease, opacity 0.2s ease; }
+.footer a:hover { color: var(--brand); }
+
+/* --- окно просмотра фото --- */
+@keyframes lbIn { from { opacity: 0; transform: scale(0.94) translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+.lightbox[open] { animation: lbIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.lightbox::backdrop { animation: lbFade 0.35s ease; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

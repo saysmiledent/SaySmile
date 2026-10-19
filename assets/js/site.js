@@ -174,12 +174,55 @@
       var input = box.querySelector('input[type="range"]');
       if (!input) return;
       var lastStep = -1;
+      var anim = null;
+
+      /* 0…40 % — только «До», 60…100 % — только «После»,
+         между ними короткий плавный переход (smoothstep) */
       function set(v) {
-        box.style.setProperty('--pos', v + '%');
+        v = Number(v);
+        var t = Math.min(1, Math.max(0, (v - 40) / 20));
+        var after = t * t * (3 - 2 * t);
+        box.style.setProperty('--p', (v / 100).toFixed(3));
+        box.style.setProperty('--after', after.toFixed(3));
+        box.setAttribute('data-state', v < 50 ? 'before' : 'after');
+        input.setAttribute('aria-valuetext', v < 50 ? 'До' : 'После');
         var step = Math.round(v / 10);
         if (step !== lastStep) { lastStep = step; sfx.tick(); }
       }
-      input.addEventListener('input', function () { set(input.value); });
+
+      function glideTo(target) {
+        if (anim) window.cancelAnimationFrame(anim);
+        var from = Number(input.value);
+        if (reduce || from === target) { input.value = target; set(target); return; }
+        var start = null;
+        function frame(ts) {
+          if (start === null) start = ts;
+          var k = Math.min(1, (ts - start) / 260);
+          var e = 1 - Math.pow(1 - k, 3);
+          var v = from + (target - from) * e;
+          input.value = v;
+          set(v);
+          if (k < 1) anim = window.requestAnimationFrame(frame);
+        }
+        anim = window.requestAnimationFrame(frame);
+      }
+
+      input.addEventListener('input', function () {
+        if (anim) { window.cancelAnimationFrame(anim); anim = null; }
+        set(input.value);
+      });
+      /* отпустили ползунок посередине — докатываем до ближайшего края,
+         чтобы две фотографии никогда не «висели» вместе */
+      input.addEventListener('change', function () {
+        var v = Number(input.value);
+        if (v > 5 && v < 95) glideTo(v < 50 ? 0 : 100);
+      });
+      /* с клавиатуры стрелки сразу переключают «До» ↔ «После» */
+      input.addEventListener('keydown', function (e) {
+        var k = e.key;
+        if (k === 'ArrowRight' || k === 'ArrowUp' || k === 'End') { e.preventDefault(); glideTo(100); }
+        else if (k === 'ArrowLeft' || k === 'ArrowDown' || k === 'Home') { e.preventDefault(); glideTo(0); }
+      });
       set(input.value);
       lastStep = -1;
     });
@@ -229,7 +272,179 @@
     });
   }
 
+  /* ================= Анимации ================= */
+
+  /* Заголовок первого экрана: слова появляются по очереди */
+  function initHeadline() {
+    if (reduce) return;
+    var h1 = document.querySelector('.hero .h1');
+    if (!h1 || h1.getAttribute('data-split')) return;
+    var text = h1.textContent.trim();
+    h1.setAttribute('data-split', '1');
+    h1.setAttribute('aria-label', text);
+    h1.textContent = '';
+    text.split(/\s+/).forEach(function (word, i, all) {
+      var s = document.createElement('span');
+      s.className = 'split-word';
+      s.setAttribute('aria-hidden', 'true');
+      s.style.setProperty('--w', i);
+      s.textContent = word;
+      h1.appendChild(s);
+      if (i < all.length - 1) h1.appendChild(document.createTextNode(' '));
+    });
+  }
+
+  /* Шапка получает тень при прокрутке */
+  function initHeaderShadow() {
+    var header = document.querySelector('.header');
+    if (!header) return;
+    function update() { header.classList.toggle('scrolled', window.scrollY > 8); }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
+  /* Плавный переход между страницами (шторка + появление контента) */
+  function initPageTransitions() {
+    if (reduce) return;
+    var curtain = document.createElement('div');
+    curtain.className = 'page-curtain';
+    curtain.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(curtain);
+
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) {
+        root.classList.remove('leaving');
+        curtain.classList.remove('cover');
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+      if (a.origin !== window.location.origin) return;
+      if (a.pathname === window.location.pathname && a.search === window.location.search) return;
+      var href = a.href;
+      e.preventDefault();
+      root.classList.add('leaving');
+      curtain.classList.add('cover');
+      window.setTimeout(function () { window.location.href = href; }, 380);
+    });
+  }
+
+  /* Мягкое свечение за курсором + параллакс фона первого экрана */
+  function initPointerFx() {
+    if (reduce || !finePointer) return;
+    var glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    glow.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(glow);
+
+    var tx = window.innerWidth / 2, ty = window.innerHeight / 3;
+    var gx = tx, gy = ty, running = false;
+    var hero = document.querySelector('.hero');
+
+    function loop() {
+      gx += (tx - gx) * 0.14;
+      gy += (ty - gy) * 0.14;
+      glow.style.transform = 'translate(' + gx.toFixed(1) + 'px,' + gy.toFixed(1) + 'px)';
+      if (Math.abs(tx - gx) > 0.4 || Math.abs(ty - gy) > 0.4) {
+        window.requestAnimationFrame(loop);
+      } else {
+        running = false;
+      }
+    }
+
+    document.addEventListener('pointermove', function (e) {
+      tx = e.clientX; ty = e.clientY;
+      glow.classList.add('on');
+      if (!running) { running = true; window.requestAnimationFrame(loop); }
+      if (hero) {
+        hero.style.setProperty('--px', (e.clientX / window.innerWidth - 0.5).toFixed(3));
+        hero.style.setProperty('--py', (e.clientY / window.innerHeight - 0.5).toFixed(3));
+      }
+      /* подсветка карточки под курсором */
+      var card = e.target.closest && e.target.closest('.card');
+      if (card) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--cx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--cy', (e.clientY - r.top) + 'px');
+      }
+    }, { passive: true });
+
+    document.addEventListener('pointerleave', function () { glow.classList.remove('on'); });
+  }
+
+  /* Кнопки: «магнит» к курсору и волна при нажатии */
+  function initButtonFx() {
+    if (reduce) return;
+    document.addEventListener('pointerdown', function (e) {
+      var btn = e.target.closest && e.target.closest('.btn');
+      if (!btn) return;
+      var r = btn.getBoundingClientRect();
+      var dot = document.createElement('span');
+      dot.className = 'ripple';
+      dot.style.left = (e.clientX - r.left) + 'px';
+      dot.style.top = (e.clientY - r.top) + 'px';
+      btn.appendChild(dot);
+      window.setTimeout(function () { if (dot.parentNode) dot.parentNode.removeChild(dot); }, 700);
+    });
+
+    if (!finePointer) return;
+    document.querySelectorAll('.btn').forEach(function (btn) {
+      btn.addEventListener('pointermove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - (r.left + r.width / 2)) / r.width;
+        var y = (e.clientY - (r.top + r.height / 2)) / r.height;
+        btn.style.setProperty('--tx', (x * 8).toFixed(1) + 'px');
+        btn.style.setProperty('--ty', (y * 6).toFixed(1) + 'px');
+      });
+      btn.addEventListener('pointerleave', function () {
+        btn.style.removeProperty('--tx');
+        btn.style.removeProperty('--ty');
+      });
+    });
+  }
+
+  /* Цифры в цене плавно «набираются» при появлении */
+  function initCounters() {
+    var els = document.querySelectorAll('.stat strong');
+    if (!els.length || reduce || !('IntersectionObserver' in window)) return;
+    var pending = [];
+    els.forEach(function (el) {
+      var m = el.textContent.match(/(\d[\d\s ]*\d|\d)/);
+      if (!m) return;
+      var raw = m[1];
+      var value = parseInt(raw.replace(/[\s ]/g, ''), 10);
+      if (!value) return;
+      pending.push({ el: el, raw: raw, value: value, text: el.textContent });
+    });
+    if (!pending.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        var item = pending.filter(function (p) { return p.el === entry.target; })[0];
+        if (!item) return;
+        var start = null;
+        var dur = 1400;
+        function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+        function frame(ts) {
+          if (start === null) start = ts;
+          var k = Math.min(1, (ts - start) / dur);
+          var e = 1 - Math.pow(1 - k, 4);
+          item.el.textContent = item.text.replace(item.raw, fmt(Math.round(item.value * e / 50) * 50 || (k < 1 ? 0 : item.value)));
+          if (k < 1) window.requestAnimationFrame(frame);
+          else item.el.textContent = item.text;
+        }
+        window.requestAnimationFrame(frame);
+      });
+    }, { threshold: 0.6 });
+    pending.forEach(function (p) { io.observe(p.el); });
+  }
+
   function init() {
+    initHeadline();
     buildFloating();
     buildProgress();
     initReveal();
@@ -237,6 +452,11 @@
     initCompare();
     initLightbox();
     initButtonSounds();
+    initHeaderShadow();
+    initPageTransitions();
+    initPointerFx();
+    initButtonFx();
+    initCounters();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
