@@ -1141,6 +1141,8 @@ html:not(.js) .h2::after { width: 3.4rem; }
 
 /* ================= Новые блоки: преимущества, FAQ, отзывы, форма записи ================= */
 
+button.btn { font: inherit; font-weight: 800; cursor: pointer; line-height: 1.2; }
+
 .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
 .benefit { padding: 1.3rem 1.1rem; }
 .benefit .h3 { font-size: 1.05rem; }
