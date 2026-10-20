@@ -1139,6 +1139,169 @@ html:not(.js) .h2::after { width: 3.4rem; }
 .lightbox[open] { animation: lbIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .lightbox::backdrop { animation: lbFade 0.35s ease; }
 
+/* ================= Новые блоки: заявка, FAQ, отзывы, документы ================= */
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 1.1rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.status-dot {
+  position: relative;
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: #22b573;
+}
+
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #22b573;
+  animation: dotPing 2s ease-out infinite;
+}
+
+@keyframes dotPing { from { transform: scale(1); opacity: 0.6; } to { transform: scale(3.2); opacity: 0; } }
+
+.js .hero-copy > .status-line { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.78s backwards; }
+
+.footer-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin: 0.6rem 0 0; font-weight: 700; font-size: 0.92rem; }
+.footer-links a { color: var(--brand); }
+.footer-links a:hover { text-decoration: underline; }
+
+.reviews-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.reviews-panel .muted { max-width: 38rem; margin-bottom: 0; }
+
+/* FAQ */
+.faq { display: grid; gap: 0.7rem; max-width: 52rem; }
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgba(23, 34, 45, 0.05);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.faq-item[open] { border-color: rgba(70, 121, 184, 0.4); box-shadow: 0 14px 34px rgba(70, 121, 184, 0.12); }
+
+.faq-item summary {
+  position: relative;
+  padding: 1rem 3.2rem 1rem 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.1rem;
+  top: 50%;
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-top: -0.85rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.faq-item[open] summary::after { content: "−"; transform: rotate(180deg); background: var(--brand); color: #fff; }
+.faq-item p { margin: 0; padding: 0 1.2rem 1.1rem; animation: faqIn 0.35s ease; }
+@keyframes faqIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+/* Окно заявки */
+.request-dialog {
+  width: min(94vw, 30rem);
+  max-height: 92vh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(23, 34, 45, 0.35);
+  overflow: auto;
+}
+
+.request-dialog::backdrop { background: rgba(23, 38, 56, 0.55); backdrop-filter: blur(4px); }
+.request-dialog[open] { animation: lbIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+.request-form { position: relative; display: grid; gap: 0.9rem; padding: 1.6rem; }
+.request-form .h2 { margin: 0; padding-right: 2rem; }
+.request-form > .muted { margin: 0; font-size: 0.95rem; }
+.request-form .lightbox-close { position: absolute; top: 0.9rem; right: 0.9rem; }
+
+.field { display: grid; gap: 0.35rem; margin: 0; padding: 0; border: 0; font-weight: 700; font-size: 0.92rem; }
+.field > span, .field > legend { padding: 0; }
+.field b { color: #d14b4b; }
+
+.field input[type="text"],
+.field input[type="tel"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-2);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 4px rgba(70, 121, 184, 0.18); }
+.field input[aria-invalid="true"] { border-color: #d14b4b; }
+
+.choice { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.choice legend { width: 100%; margin-bottom: 0.35rem; }
+
+.choice label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-2);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.choice label:hover { transform: translateY(-1px); }
+.choice label:has(input:checked) { background: var(--brand-soft); border-color: var(--brand); color: var(--brand); }
+.choice input { accent-color: var(--brand); }
+
+.consent { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+.consent input { flex: none; width: 1.1rem; height: 1.1rem; margin-top: 0.15rem; accent-color: var(--brand); }
+.consent a { color: var(--brand); text-decoration: underline; }
+
+.form-error { margin: 0; padding: 0.6rem 0.9rem; border-radius: 12px; background: rgba(209, 75, 75, 0.1); color: #a53030; font-weight: 700; font-size: 0.9rem; }
+.form-note { margin: 0; padding: 0.7rem 0.9rem; border-radius: 12px; background: rgba(34, 181, 115, 0.12); color: #17724a; font-weight: 700; font-size: 0.9rem; }
+.request-form .btn { width: 100%; }
+button.btn { font: inherit; font-weight: 800; cursor: pointer; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

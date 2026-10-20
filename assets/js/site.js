@@ -443,7 +443,90 @@
     pending.forEach(function (p) { io.observe(p.el); });
   }
 
+  /* ---------- Окно «Оставить заявку» ----------
+     Сервера у сайта нет, поэтому заявка открывается в мессенджере/почте
+     пациента с готовым текстом. Данные нигде на сайте не сохраняются. */
+  function initRequestForm() {
+    var dlg = document.getElementById('request-dialog');
+    var openers = document.querySelectorAll('[data-open-request]');
+    if (!dlg || !openers.length || typeof dlg.showModal !== 'function') {
+      /* старый браузер: кнопки просто ведут в Telegram */
+      openers.forEach(function (b) {
+        b.addEventListener('click', function () { window.open('https://t.me/saySmaile', '_blank', 'noopener'); });
+      });
+      return;
+    }
+
+    var form = dlg.querySelector('form');
+    var err = dlg.querySelector('.form-error');
+    var note = dlg.querySelector('.form-note');
+    var phoneInput = form.elements.phone;
+
+    function reset() {
+      err.hidden = true; note.hidden = true;
+      phoneInput.removeAttribute('aria-invalid');
+    }
+
+    openers.forEach(function (b) {
+      b.addEventListener('click', function () {
+        reset();
+        dlg.showModal();
+        sfx.open();
+        window.setTimeout(function () { form.elements.name.focus(); }, 50);
+      });
+    });
+    dlg.querySelector('[data-close-request]').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      reset();
+      var name = form.elements.name.value.trim();
+      var phone = phoneInput.value.trim();
+      var digits = phone.replace(/\D/g, '');
+      if (digits.length < 10 || digits.length > 15) {
+        phoneInput.setAttribute('aria-invalid', 'true');
+        err.textContent = 'Укажите номер телефона полностью, например +7 900 000-00-00.';
+        err.hidden = false;
+        phoneInput.focus();
+        return;
+      }
+      if (!form.elements.consent.checked) {
+        err.textContent = 'Нужно согласие на обработку персональных данных.';
+        err.hidden = false;
+        return;
+      }
+      var via = form.elements.via.value;
+      var text = 'Здравствуйте! ' + (name ? 'Меня зовут ' + name + '. ' : '') +
+        'Хочу записаться на приём. Мой телефон: ' + phone + '.';
+
+      if (via === 'whatsapp') {
+        window.open('https://wa.me/79939813183?text=' + encodeURIComponent(text), '_blank', 'noopener');
+        note.textContent = 'Открываю WhatsApp — останется нажать «Отправить».';
+      } else if (via === 'email') {
+        window.location.href = 'mailto:dr.seivan@mail.ru?subject=' + encodeURIComponent('Запись на приём') +
+          '&body=' + encodeURIComponent(text);
+        note.textContent = 'Открываю почтовое приложение с готовым письмом.';
+      } else {
+        var copied = false;
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text);
+            copied = true;
+          }
+        } catch (x) { /* буфер обмена недоступен */ }
+        window.open('https://t.me/saySmaile', '_blank', 'noopener');
+        note.textContent = copied
+          ? 'Открываю Telegram. Текст заявки скопирован — вставьте его в чат и отправьте.'
+          : 'Открываю Telegram. Напишите в чат своё имя и телефон.';
+      }
+      note.hidden = false;
+      sfx.click();
+    });
+  }
+
   function init() {
+    initRequestForm();
     initHeadline();
     buildFloating();
     buildProgress();
