@@ -501,7 +501,7 @@
         'Хочу записаться на приём. Мой телефон: ' + phone + '.';
 
       if (via === 'whatsapp') {
-        window.open('https://wa.me/79939813183?text=' + encodeURIComponent(text), '_blank', 'noopener');
+        window.open('https://wa.me/79522222459?text=' + encodeURIComponent(text), '_blank', 'noopener');
         note.textContent = 'Открываю WhatsApp — останется нажать «Отправить».';
       } else if (via === 'email') {
         window.location.href = 'mailto:dr.seivan@mail.ru?subject=' + encodeURIComponent('Запись на приём') +
@@ -525,7 +525,42 @@
     });
   }
 
+  /* ---------- Просмотр документов (страница «Образование») ---------- */
+  function initDocViewer() {
+    var dlg = document.getElementById('doc-viewer');
+    var thumbs = Array.prototype.slice.call(document.querySelectorAll('[data-doc]'));
+    if (!dlg || !thumbs.length || typeof dlg.showModal !== 'function') return;
+    var img = dlg.querySelector('img');
+    var cap = dlg.querySelector('figcaption');
+    var current = 0;
+
+    function show(i) {
+      current = (i + thumbs.length) % thumbs.length;
+      var t = thumbs[current];
+      img.src = t.getAttribute('data-doc');
+      img.alt = t.getAttribute('data-doc-title') || '';
+      cap.textContent = (t.getAttribute('data-doc-title') || '') + '  ·  ' + (current + 1) + ' / ' + thumbs.length;
+    }
+
+    thumbs.forEach(function (t, i) {
+      t.addEventListener('click', function () {
+        show(i);
+        dlg.showModal();
+        sfx.open();
+      });
+    });
+    dlg.querySelector('[data-doc-close]').addEventListener('click', function () { dlg.close(); });
+    dlg.querySelector('[data-doc-prev]').addEventListener('click', function () { show(current - 1); sfx.tick(); });
+    dlg.querySelector('[data-doc-next]').addEventListener('click', function () { show(current + 1); sfx.tick(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { show(current - 1); }
+      else if (e.key === 'ArrowRight') { show(current + 1); }
+    });
+  }
+
   function init() {
+    initDocViewer();
     initRequestForm();
     initHeadline();
     buildFloating();
