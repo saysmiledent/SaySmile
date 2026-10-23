@@ -2,6 +2,7 @@
    Звук выключен по умолчанию и включается кнопкой в правом нижнем углу. */
 (function () {
   'use strict';
+  var __t = (window.SSI18N && window.SSI18N.t) || function (x) { return x; };
   var root = document.documentElement;
   root.classList.add('js');
 
@@ -74,8 +75,8 @@
     if (sticker) {
       sticker.setAttribute('role', 'button');
       sticker.setAttribute('tabindex', '0');
-      sticker.setAttribute('aria-label', 'Наверх');
-      sticker.title = 'Наверх';
+      sticker.setAttribute('aria-label', __t('Наверх'));
+      sticker.title = __t('Наверх');
       var toTop = function () {
         window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
         sfx.click();
@@ -91,8 +92,8 @@
     btn.className = 'sound-toggle';
     function paint() {
       btn.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
-      btn.setAttribute('aria-label', soundOn ? 'Выключить звуки сайта' : 'Включить звуки сайта');
-      btn.title = soundOn ? 'Звук включён' : 'Звук выключен';
+      btn.setAttribute('aria-label', __t(soundOn ? 'Выключить звуки сайта' : 'Включить звуки сайта'));
+      btn.title = __t(soundOn ? 'Звук включён' : 'Звук выключен');
       btn.textContent = soundOn ? '🔊' : '🔇';
     }
     paint();
@@ -185,7 +186,7 @@
         box.style.setProperty('--p', (v / 100).toFixed(3));
         box.style.setProperty('--after', after.toFixed(3));
         box.setAttribute('data-state', v < 50 ? 'before' : 'after');
-        input.setAttribute('aria-valuetext', v < 50 ? 'До' : 'После');
+        input.setAttribute('aria-valuetext', __t(v < 50 ? 'До' : 'После'));
         var step = Math.round(v / 10);
         if (step !== lastStep) { lastStep = step; sfx.tick(); }
       }
@@ -234,12 +235,12 @@
     if (!triggers.length || typeof HTMLDialogElement === 'undefined') return;
     var dlg = document.createElement('dialog');
     dlg.className = 'lightbox';
-    dlg.setAttribute('aria-label', 'Просмотр фотографий');
+    dlg.setAttribute('aria-label', __t('Просмотр фотографий'));
     dlg.innerHTML =
-      '<button type="button" class="lightbox-close" aria-label="Закрыть">×</button>' +
+      '<button type="button" class="lightbox-close" aria-label="' + __t('Закрыть') + '">×</button>' +
       '<div class="lightbox-grid">' +
-      '<figure><img alt="" /><figcaption>До</figcaption></figure>' +
-      '<figure><img alt="" /><figcaption>После</figcaption></figure>' +
+      '<figure><img alt="" /><figcaption>' + __t('До') + '</figcaption></figure>' +
+      '<figure><img alt="" /><figcaption>' + __t('После') + '</figcaption></figure>' +
       '</div><p class="lightbox-title"></p>';
     document.body.appendChild(dlg);
     var imgs = dlg.querySelectorAll('img');
@@ -249,8 +250,8 @@
         imgs[0].src = t.getAttribute('data-lightbox-before');
         imgs[1].src = t.getAttribute('data-lightbox-after');
         var label = t.getAttribute('data-title') || '';
-        imgs[0].alt = 'До: ' + label;
-        imgs[1].alt = 'После: ' + label;
+        imgs[0].alt = __t('До') + ': ' + label;
+        imgs[1].alt = __t('После') + ': ' + label;
         title.textContent = label;
         dlg.showModal();
         sfx.open();
@@ -486,27 +487,27 @@
       var digits = phone.replace(/\D/g, '');
       if (digits.length < 10 || digits.length > 15) {
         phoneInput.setAttribute('aria-invalid', 'true');
-        err.textContent = 'Укажите номер телефона полностью, например +7 900 000-00-00.';
+        err.textContent = __t('Укажите номер телефона полностью, например +7 900 000-00-00.');
         err.hidden = false;
         phoneInput.focus();
         return;
       }
       if (!form.elements.consent.checked) {
-        err.textContent = 'Нужно согласие на обработку персональных данных.';
+        err.textContent = __t('Нужно согласие на обработку персональных данных.');
         err.hidden = false;
         return;
       }
       var via = form.elements.via.value;
-      var text = 'Здравствуйте! ' + (name ? 'Меня зовут ' + name + '. ' : '') +
-        'Хочу записаться на приём. Мой телефон: ' + phone + '.';
+      var text = __t('Здравствуйте!') + ' ' + (name ? __t('Меня зовут') + ' ' + name + '. ' : '') +
+        __t('Хочу записаться на приём. Мой телефон:') + ' ' + phone + '.';
 
       if (via === 'whatsapp') {
         window.open('https://wa.me/79522222459?text=' + encodeURIComponent(text), '_blank', 'noopener');
-        note.textContent = 'Открываю WhatsApp — останется нажать «Отправить».';
+        note.textContent = __t('Открываю WhatsApp — останется нажать «Отправить».');
       } else if (via === 'email') {
-        window.location.href = 'mailto:dr.seivan@mail.ru?subject=' + encodeURIComponent('Запись на приём') +
+        window.location.href = 'mailto:dr.seivan@mail.ru?subject=' + encodeURIComponent(__t('Запись на приём')) +
           '&body=' + encodeURIComponent(text);
-        note.textContent = 'Открываю почтовое приложение с готовым письмом.';
+        note.textContent = __t('Открываю почтовое приложение с готовым письмом.');
       } else {
         var copied = false;
         try {
@@ -517,8 +518,8 @@
         } catch (x) { /* буфер обмена недоступен */ }
         window.open('https://t.me/saySmaile', '_blank', 'noopener');
         note.textContent = copied
-          ? 'Открываю Telegram. Текст заявки скопирован — вставьте его в чат и отправьте.'
-          : 'Открываю Telegram. Напишите в чат своё имя и телефон.';
+          ? __t('Открываю Telegram. Текст заявки скопирован — вставьте его в чат и отправьте.')
+          : __t('Открываю Telegram. Напишите в чат своё имя и телефон.');
       }
       note.hidden = false;
       sfx.click();
