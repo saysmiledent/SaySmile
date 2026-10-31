@@ -15,6 +15,7 @@ const home = localeUrl(lang);
 
     <div class="header__end">
       <nav class="header__nav" id="site-nav" aria-label={t.ui.menu}>
+        <span class="header__ind" aria-hidden="true"></span>
         {sectionIds.map((id) => (
           <a href={sectionUrl(lang, id)} aria-current={id === current ? 'page' : undefined}><span>{t.nav[id]}</span></a>
         ))}
@@ -46,20 +47,27 @@ const home = localeUrl(lang);
   .header.is-hidden { transform: translateY(calc(-100% - 1rem)); }
   .header__bar {
     pointer-events: auto; position: relative;
-    width: min(100%, 1280px); margin-inline: auto; height: var(--header-h);
+    width: 100%; max-width: 1280px; margin-inline: auto; height: var(--header-h);
     padding-inline: 1.25rem 0.75rem; border-radius: 999px;
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    color: var(--on-bar); background: color-mix(in srgb, var(--bar) 38%, transparent);
+    color: var(--on-bar); background: color-mix(in srgb, var(--bar) calc((34 + var(--hp, 0) * 56) * 1%), transparent);
     border: 1px solid rgb(255 255 255 / 0.18);
     -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3);
-    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    transition: max-width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
   }
+  .header { animation: drop 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  @keyframes drop { from { opacity: 0; transform: translateY(-120%); } }
+  @media (prefers-reduced-motion: reduce) { .header { animation: none; } }
   :global([dir='rtl']) .header__bar { padding-inline: 1.25rem 0.75rem; }
-  .header.is-solid .header__bar { background: color-mix(in srgb, var(--bar) 88%, transparent); box-shadow: 0 14px 34px -18px rgb(30 18 10 / 0.6); }
-  .header__logo { flex: none; font-weight: 800; font-size: 1.45rem; letter-spacing: -0.04em; direction: ltr; }
+  .header.is-solid .header__bar { max-width: 1120px; height: 56px; box-shadow: 0 14px 34px -18px rgb(30 18 10 / 0.6); }
+  .header.is-solid .header__logo { font-size: 1.28rem; }
+  .header__logo { flex: none; font-weight: 800; font-size: 1.45rem; transition: font-size 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); letter-spacing: -0.04em; direction: ltr; }
   .header__logo span { color: var(--accent); }
   .header__end { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
-  .header__nav { display: flex; gap: 0.1rem; font-size: 0.92rem; }
+  .header__nav { position: relative; display: flex; gap: 0.1rem; font-size: 0.92rem; }
+  /* sliding highlight that follows the pointer / the current page */
+  .header__ind { position: absolute; top: 0; bottom: 0; inset-inline-start: 0; width: 0; border-radius: 999px; background: rgb(255 255 255 / 0.2); opacity: 0; pointer-events: none; transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s; }
+  .header__ind.is-on { opacity: 1; }
   .header__nav > a { position: relative; padding: 0.5rem 0.75rem; border-radius: 999px; white-space: nowrap; color: color-mix(in srgb, var(--on-bar) 82%, transparent); transition: color 0.25s, background-color 0.25s; }
   .header__nav > a span { position: relative; display: inline-block; }
   .header__nav > a span::after { content: ''; position: absolute; inset-inline: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -78,6 +86,7 @@ const home = localeUrl(lang);
   :global(html.menu-open) .header__burger i:nth-child(3) { top: 21px; transform: rotate(-45deg); }
 
   @media (max-width: 1180px) {
+    .header__ind { display: none; }
     .header__burger { display: block; }
     .header__tools > :global(.lang), .header__tools > :global(.theme-toggle) { display: none; }
     .header__sheet-tools { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
@@ -122,4 +131,20 @@ const home = localeUrl(lang);
     if ((e.target as HTMLElement).closest('a')) set(false);
   });
   addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+
+  // sliding highlight
+  const nav = document.getElementById('site-nav');
+  const ind = nav?.querySelector<HTMLElement>('.header__ind');
+  const links = nav ? [...nav.querySelectorAll<HTMLAnchorElement>(':scope > a')] : [];
+  const rtl = root.dir === 'rtl';
+  const move = (a: HTMLElement | null) => {
+    if (!ind || !nav) return;
+    if (!a) { ind.classList.remove('is-on'); return; }
+    const x = rtl ? a.offsetLeft - (nav.clientWidth - a.offsetWidth) * 0 : a.offsetLeft;
+    ind.style.width = `${a.offsetWidth}px`;
+    ind.style.transform = `translateX(${rtl ? x - nav.clientWidth + a.offsetWidth : x}px)`;
+    ind.classList.add('is-on');
+  };
+  links.forEach((a) => a.addEventListener('pointerenter', () => move(a)));
+  nav?.addEventListener('pointerleave', () => move(null));
 </script>

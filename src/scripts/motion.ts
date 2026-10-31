@@ -125,6 +125,7 @@ function header() {
   const onScroll = () => {
     const y = scrollY;
     h.classList.toggle('is-solid', y > 24);
+    h.style.setProperty('--hp', String(Math.min(1, y / 260)));
     const open = doc.classList.contains('menu-open');
     h.classList.toggle('is-hidden', !open && y > 360 && y > last + 4);
     if (y < last - 4 || y < 360) h.classList.remove('is-hidden');
@@ -287,8 +288,10 @@ function cursor() {
     c.classList.add('is-on');
     const t = (e.target as HTMLElement).closest<HTMLElement>('[data-cursor], a, button, summary, input[type="range"], [data-doc]');
     const on = !!t;
+    const text = t?.dataset.cursor ?? '';
     c.classList.toggle('is-link', on);
-    label.textContent = t?.dataset.cursor ?? '';
+    c.classList.toggle('is-label', on && !!text && !t!.closest('.header'));
+    label.textContent = c.classList.contains('is-label') ? text : '';
   }, { passive: true });
   document.addEventListener('pointerleave', () => c.classList.remove('is-on'));
   addEventListener('pointerdown', () => c.classList.add('is-down'));
