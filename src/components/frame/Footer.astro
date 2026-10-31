@@ -1,0 +1,49 @@
+---
+import { site, contactLinks } from '../../config/site';
+import { getDictionary, localeUrl, sectionIds, type Locale } from '../../i18n';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+const home = localeUrl(lang);
+const links = contactLinks();
+---
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <p class="footer__brand">Say<span>Smile</span></p>
+      <p class="footer__muted">{t.hero.subtitle}</p>
+    </div>
+
+    <nav class="footer__col" aria-label={t.ui.menu}>
+      {sectionIds.map((id) => (
+        <a href={`${home}#${id}`}>{t.nav[id]}</a>
+      ))}
+    </nav>
+
+    <div class="footer__col">
+      {links.map((l) => (
+        <a href={l.href} rel="noopener" target={l.id === 'phone' || l.id === 'email' ? undefined : '_blank'}>
+          {t.contactLabels[l.id]}
+        </a>
+      ))}
+      <a href={site.instagram} rel="noopener" target="_blank">Instagram</a>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <small>© {new Date().getFullYear()} <bdi>SaySmile</bdi> · {t.footer.rights}</small>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--bg-soft); border-top: 1px solid var(--line); padding-top: 3rem; }
+  .footer__grid { display: grid; gap: 2rem; grid-template-columns: 1.4fr 1fr 1fr; }
+  .footer__brand { font-weight: 800; font-size: 1.4rem; margin: 0 0 0.25rem; }
+  .footer__brand span { color: var(--primary); }
+  .footer__muted { margin: 0; color: var(--text-muted); }
+  .footer__col { display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); }
+  .footer__col a:hover { color: var(--primary); }
+  .footer__bottom { margin-top: 2.5rem; padding-block: 1.25rem; border-top: 1px solid var(--line); color: var(--text-muted); }
+  @media (max-width: 720px) { .footer__grid { grid-template-columns: 1fr; } }
+</style>

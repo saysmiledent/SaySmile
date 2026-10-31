@@ -1,0 +1,42 @@
+/* SaySmile design tokens — palette 60-30-10 */
+:root {
+  --bg: #ffffff;            /* Crisp White (60%) */
+  --bg-soft: #f2f7f0;       /* Pistachio Mist: sections, boxes */
+  --line: #e5e7eb;          /* Brushed Silver: borders */
+  --primary: #9a7b66;       /* Cappuccino: buttons */
+  --primary-hover: #846652; /* Deep Mocha */
+  --on-primary: #ffffff;
+  --accent: #b2c9ab;        /* Soft Pistachio: tags */
+  --accent-ink: #5c7a54;    /* dark green text inside tags */
+  --text: #27272a;          /* Graphite Charcoal */
+  --text-muted: #64748b;    /* Cool Slate Grey */
+
+  --radius: 14px;
+  --radius-lg: 24px;
+  --container: 1180px;
+  --header-h: 72px;
+  --shadow: 0 10px 30px -12px rgb(39 39 42 / 0.18);
+
+  --font-latin: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-cyrillic: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-fa: 'Vazirmatn', 'Tahoma', system-ui, sans-serif;
+
+  color-scheme: light;
+}
+
+/* Boutique Dark Mode */
+:root[data-theme='dark'] {
+  --bg: #141815;
+  --bg-soft: #1e2420;
+  --line: #2e3630;
+  --primary: #b5927b;
+  --primary-hover: #9a7b66;
+  --on-primary: #141815;
+  --accent: #b2c9ab;
+  --accent-ink: #141815;
+  --text: #f8fafc;
+  --text-muted: #9aa8b8;
+  --shadow: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+
+  color-scheme: dark;
+}

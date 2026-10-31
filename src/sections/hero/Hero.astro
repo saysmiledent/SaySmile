@@ -1,0 +1,27 @@
+---
+import { contactLinks } from '../../config/site';
+import { getDictionary, type Locale } from '../../i18n';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+const primary = contactLinks()[0];
+---
+
+<section class="hero">
+  <div class="container hero__inner" data-reveal-group>
+    <span class="tag" data-reveal>St. Petersburg · GAM Clinic</span>
+    <h1 data-reveal>{t.hero.title}</h1>
+    <p data-reveal>{t.hero.subtitle}</p>
+    {primary && (
+      <a class="btn" data-reveal href={primary.href} target="_blank" rel="noopener">{t.hero.cta}</a>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero { min-height: calc(100svh - var(--header-h)); display: grid; align-items: center; background: linear-gradient(180deg, var(--bg-soft), var(--bg)); }
+  .hero__inner { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; padding-block: 4rem; }
+  h1 { font-size: clamp(3rem, 10vw, 7rem); letter-spacing: -0.04em; margin: 0; }
+  p { margin: 0 0 1rem; font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--text-muted); max-width: 32ch; }
+</style>

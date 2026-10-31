@@ -1,0 +1,27 @@
+---
+import { getDictionary, locales, localeUrl, type Locale } from '../../i18n';
+
+interface Props { lang: Locale; path?: string }
+const { lang, path = '' } = Astro.props;
+---
+
+<nav class="lang" aria-label={getDictionary(lang).ui.language}>
+  {locales.map((l) => (
+    <a
+      href={localeUrl(l, path)}
+      hreflang={l}
+      lang={l}
+      aria-current={l === lang ? 'true' : undefined}
+      class:list={['lang__item', { 'is-active': l === lang }]}
+    >
+      {l.toUpperCase()}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .lang { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; }
+  .lang__item { padding: 0.25rem 0.55rem; border-radius: 7px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); direction: ltr; }
+  .lang__item:hover { color: var(--primary); }
+  .lang__item.is-active { background: var(--primary); color: var(--on-primary); }
+</style>

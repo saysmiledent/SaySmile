@@ -1,0 +1,12 @@
+---
+import SectionShell from '../../components/ui/SectionShell.astro';
+import { getDictionary, type Locale } from '../../i18n';
+const { lang } = Astro.props as { lang: Locale };
+const t = getDictionary(lang);
+---
+
+<SectionShell id="tutorials" title={t.nav.tutorials} soft>
+  <p data-reveal class="soon">{t.ui.soon}</p>
+</SectionShell>
+
+<style>.soon { color: var(--text-muted); }</style>
