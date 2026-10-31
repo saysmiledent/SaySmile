@@ -1,15 +1,14 @@
-// Single place for contact details. Priority on the site:
-// Telegram -> WhatsApp -> email -> phone call.
-// TODO: fill in the empty values (Telegram, email) before launch.
+// Single place for contact details (taken from the v1 site and project notes).
+// Priority on the site: Telegram -> WhatsApp -> email -> phone call.
 export const site = {
   name: 'SaySmile',
   clinic: 'GAM Clinic',
   city: 'St. Petersburg',
   contacts: {
-    telegram: '', // e.g. 'https://t.me/username'
+    telegram: 'https://t.me/saySmaile',
     whatsapp: '79522222459', // +7 952 222-24-59
-    email: '', // e.g. 'name@example.com'
-    phone: '+79522222459',
+    email: 'dr.seivan@mail.ru',
+    phone: '+79939813183',
   },
   instagram: 'https://www.instagram.com/saywan_h/',
 } as const;
