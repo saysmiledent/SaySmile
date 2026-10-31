@@ -1,0 +1,21 @@
+---
+// Empty state for sections that are being prepared: says what will appear.
+interface Props { text: string }
+const { text } = Astro.props;
+---
+
+<div class="soon" data-reveal>
+  <svg viewBox="0 0 48 48" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M10 22c0-8 5-12 10-12 2 0 3 1 4 1s2-1 4-1c5 0 10 4 10 12 0 6-2 8-3 14-.5 3-1.500 4-3 4s-2-3-3-8c-.5-2-1.500-3-5-3s-4.500 1-5 3c-1 5-1.500 8-3 8s-2.500-1-3-4c-1-6-3-8-3-14z" />
+  </svg>
+  <p>{text}</p>
+</div>
+
+<style>
+  .soon {
+    display: grid; justify-items: center; gap: 0.5rem; text-align: center;
+    padding: clamp(2.5rem, 8vw, 5rem) 1.5rem; border-radius: var(--radius-lg);
+    background: var(--bg-soft); border: 2px dashed var(--accent); color: var(--accent-ink);
+  }
+  p { margin: 0; font-size: 1.15rem; font-weight: 500; }
+</style>

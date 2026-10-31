@@ -1,12 +1,43 @@
 ---
-import SectionShell from '../../components/ui/SectionShell.astro';
-import { getDictionary, type Locale } from '../../i18n';
+import { getPages } from '../../content';
+import type { Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
-const t = getDictionary(lang);
+const p = getPages(lang).education;
 ---
 
-<SectionShell id="education" title={t.nav.education}>
-  <p data-reveal class="soon">{t.ui.soon}</p>
-</SectionShell>
+<ol class="timeline" data-reveal-group>
+  {p.timeline.map((step) => (
+    <li class="step" data-reveal>
+      <span class="step__when">{step.when}</span>
+      <div class="step__body">
+        <h2>{step.title}</h2>
+        <p>{step.text}</p>
+      </div>
+    </li>
+  ))}
+</ol>
+<p class="extra" data-reveal>{p.extra}</p>
 
-<style>.soon { color: var(--text-muted); }</style>
+<style>
+  .timeline { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 1rem; }
+  .timeline::before {
+    content: ''; position: absolute; inset-block: 1rem; inset-inline-start: 7.6rem; width: 3px;
+    background: var(--accent); border-radius: 3px;
+  }
+  .step { display: grid; grid-template-columns: 7rem 1fr; gap: 2rem; align-items: start; position: relative; }
+  .step::before {
+    content: ''; position: absolute; inset-inline-start: 7.1rem; top: 1.35rem; width: 1rem; height: 1rem;
+    border-radius: 50%; background: var(--primary); border: 3px solid var(--bg); z-index: 1;
+  }
+  .step__when { padding-top: 1rem; font-weight: 700; color: var(--primary); }
+  .step__body { margin-inline-start: 1.5rem; padding: 1.1rem 1.5rem; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+  h2 { font-size: 1.3rem; margin-bottom: 0.25rem; }
+  p { margin: 0; color: var(--text-muted); }
+  .extra { margin-top: 2rem; font-weight: 600; color: var(--accent-ink); }
+  @media (max-width: 640px) {
+    .timeline::before, .step::before { display: none; }
+    .step { grid-template-columns: 1fr; gap: 0.25rem; }
+    .step__body { margin-inline-start: 0; }
+    .step__when { padding-top: 0; }
+  }
+</style>

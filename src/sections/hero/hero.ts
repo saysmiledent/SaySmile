@@ -1,5 +1,5 @@
 // Hero behaviour (GSAP).
-// - Cursor x -> yaw (5 photo angles, cross-faded), cursor y -> pitch (looks up/down)
+// - Cursor x -> yaw (9 photo angles cut from the doctor's video), cursor y -> looks down
 // - Whole stage tilts in 3D toward the cursor; background shapes drift by depth
 // - Idle: gentle auto-sway. Touch: drag/touch moves the gaze.
 // - Scroll: stage shrinks and rises, title letters spread, copy fades.
@@ -19,13 +19,13 @@ export function initHero() {
   const tilt = root.querySelector<HTMLElement>('[data-hero-tilt]')!;
   const yawFrames = [...root.querySelectorAll<HTMLImageElement>('[data-yaw]')]
     .sort((a, b) => Number(a.dataset.yaw) - Number(b.dataset.yaw));
-  const up = root.querySelector<HTMLImageElement>('[data-pitch="up"]')!;
   const down = root.querySelector<HTMLImageElement>('[data-pitch="down"]')!;
   const chars = root.querySelectorAll<HTMLElement>('.hero__ch');
   const blobs = root.querySelectorAll<HTMLElement>('.blob');
   const copy = root.querySelector<HTMLElement>('[data-hero-copy]');
 
-  if (reduced) { yawFrames.forEach((f, i) => (f.style.opacity = i === 2 ? '1' : '0')); return; }
+  const mid = (yawFrames.length - 1) / 2;
+  if (reduced) { yawFrames.forEach((f, i) => (f.style.opacity = i === mid ? '1' : '0')); return; }
 
   // Gaze state, -1..1 (x: left..right, y: up..down). Smoothed with GSAP.
   const gaze = { x: 0, y: 0 };
@@ -39,20 +39,19 @@ export function initHero() {
   const maxShift = mobile ? 6 : 16;
 
   function render() {
-    // yaw position 0..4 across the five photos (centre = 2)
-    const p = (gaze.x + 1) * 2;
-    const i = Math.min(3, Math.floor(p));
-    // Snap towards the nearest photo: poses differ, so long cross-fades look ghostly
+    // yaw position 0..N-1 across the photos (centre = middle one)
+    const n = yawFrames.length;
+    const p = ((gaze.x + 1) / 2) * (n - 1);
+    const i = Math.min(n - 2, Math.floor(p));
+    // Snap towards the nearest photo: short cross-fades keep the head from ghosting
     const raw = p - i;
-    const f = Math.min(1, Math.max(0, (raw - 0.35) / 0.3));
+    const f = Math.min(1, Math.max(0, (raw - 0.42) / 0.16));
     yawFrames.forEach((img, k) => {
       img.style.opacity = k === i ? '1' : k === i + 1 ? String(f) : '0';
     });
-    // pitch frames fade in on top, strongest near the centre yaw
-    const centre = Math.max(0, 1 - Math.abs(gaze.x) * 1.6);
-    // (dead zone so a cursor near eye level shows no ghosting)
+    // look-down frame fades in on top near the centre yaw, with a dead zone so a cursor at eye level shows no ghosting
+    const centre = Math.max(0, 1 - Math.abs(gaze.x) * 2.2);
     const dz = (v: number) => { const k = Math.min(1, Math.max(0, (Math.abs(v) - 0.5) / 0.35)); return k * k * (3 - 2 * k); };
-    up.style.opacity = String(gaze.y < 0 ? dz(gaze.y) * centre : 0);
     down.style.opacity = String(gaze.y > 0 ? dz(gaze.y) * centre : 0);
 
     // The photos already turn the head; keep the 3D tilt subtle and in the same direction

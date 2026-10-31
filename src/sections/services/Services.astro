@@ -1,12 +1,66 @@
 ---
-import SectionShell from '../../components/ui/SectionShell.astro';
-import { getDictionary, type Locale } from '../../i18n';
+import { getPages } from '../../content';
+import { site, contactLinks } from '../../config/site';
+import type { Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
-const t = getDictionary(lang);
+const p = getPages(lang).services;
+const book = contactLinks()[0];
+const split = (v: string) => { const m = v.match(/^(\D*?)(\d.*)$/); return m ? [m[1], m[2]] : ['', v]; };
 ---
 
-<SectionShell id="services" title={t.nav.services} soft>
-  <p data-reveal class="soon">{t.ui.soon}</p>
-</SectionShell>
+<div class="list" data-reveal-group>
+  {p.items.map((s) => (
+    <article class="card" data-reveal>
+      <div class="card__main">
+        <h2>{s.title}</h2>
+        <p>{s.text}</p>
+        <p class="card__detail"><strong>{p.includes}:</strong> {s.detail}</p>
+      </div>
+      <div class="card__side">
+        <span class="price">{split(s.price)[0]}<bdi>{split(s.price)[1]}</bdi></span>
+        <span class="tag">{s.time}</span>
+        {book && <a class="btn" href={book.href} target="_blank" rel="noopener">{p.book}</a>}
+      </div>
+    </article>
+  ))}
+</div>
 
-<style>.soon { color: var(--text-muted); }</style>
+<h2 class="soon-title" data-reveal>{p.soonTitle}</h2>
+<div class="soon" data-reveal-group>
+  {p.soon.map((s) => (
+    <article class="soon__card" data-reveal>
+      <h3>{s.title}</h3>
+      <p>{s.text}</p>
+    </article>
+  ))}
+</div>
+
+<p class="note" data-reveal>{p.note}</p>
+
+<style>
+  .list { display: grid; gap: 1rem; }
+  .card {
+    display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center;
+    padding: clamp(1.25rem, 3vw, 2rem); border-radius: var(--radius-lg);
+    background: var(--surface); border: 1px solid var(--line);
+  }
+  .card:nth-child(2) { background: var(--accent); border-color: transparent; color: #27272a; }
+  .card:nth-child(2) .card__detail { color: #3d4a38; }
+  .card h2 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+  .card p { margin: 0 0 0.5rem; max-width: 58ch; }
+  .card__detail { color: var(--text-muted); font-size: 0.97rem; }
+  .card__side { display: grid; justify-items: start; gap: 0.6rem; min-width: 12rem; }
+  .price { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em; color: var(--primary); }
+  .card:nth-child(2) .price { color: #27272a; }
+  .card:nth-child(2) .tag { background: #fafcf9; }
+  .soon-title { margin-top: 3rem; font-size: 1.6rem; }
+  .soon { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+  .soon__card { padding: 1.5rem; border-radius: var(--radius); background: var(--bg-soft); border: 2px dashed var(--accent); }
+  .soon__card h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
+  .soon__card p { margin: 0; color: var(--text-muted); font-size: 0.97rem; }
+  .note { margin-top: 2rem; color: var(--text-muted); font-size: 0.95rem; }
+  @media (max-width: 760px) {
+    .card { grid-template-columns: 1fr; }
+    .soon { grid-template-columns: 1fr; }
+  }
+</style>

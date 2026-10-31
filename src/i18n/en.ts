@@ -18,6 +18,7 @@ export default {
   hero: {
     alt: 'Dr. Seivan, dentist',
     title: 'SaySmile',
+    doctor: 'Dr. Seivan · GAM Clinic',
     subtitle: 'Dental therapist in St. Petersburg',
     cta: 'Book a visit',
   },

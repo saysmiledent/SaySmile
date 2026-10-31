@@ -1,25 +1,25 @@
 ---
 import { site, contactLinks } from '../../config/site';
-import { getDictionary, localeUrl, sectionIds, type Locale } from '../../i18n';
+import { getDictionary, localeUrl, sectionUrl, sectionIds, type Locale } from '../../i18n';
+import { getPages } from '../../content';
 
 interface Props { lang: Locale }
 const { lang } = Astro.props;
 const t = getDictionary(lang);
-const home = localeUrl(lang);
+const p = getPages(lang);
 const links = contactLinks();
 ---
 
 <footer class="footer">
   <div class="container footer__grid">
     <div>
-      <p class="footer__brand">Say<span>Smile</span></p>
+      <a class="footer__brand" href={localeUrl(lang)}>Say<span>Smile</span></a>
       <p class="footer__muted">{t.hero.subtitle}</p>
+      <p class="footer__muted">{p.contact.address}</p>
     </div>
 
     <nav class="footer__col" aria-label={t.ui.menu}>
-      {sectionIds.map((id) => (
-        <a href={`${home}#${id}`}>{t.nav[id]}</a>
-      ))}
+      {sectionIds.map((id) => <a href={sectionUrl(lang, id)}>{t.nav[id]}</a>)}
     </nav>
 
     <div class="footer__col">
@@ -37,13 +37,13 @@ const links = contactLinks();
 </footer>
 
 <style>
-  .footer { background: var(--bg-soft); border-top: 1px solid var(--line); padding-top: 3rem; }
+  .footer { background: var(--bar); color: var(--on-bar); padding-top: 3rem; }
   .footer__grid { display: grid; gap: 2rem; grid-template-columns: 1.4fr 1fr 1fr; }
-  .footer__brand { font-weight: 800; font-size: 1.4rem; margin: 0 0 0.25rem; }
-  .footer__brand span { color: var(--primary); }
-  .footer__muted { margin: 0; color: var(--text-muted); }
-  .footer__col { display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); }
-  .footer__col a:hover { color: var(--primary); }
-  .footer__bottom { margin-top: 2.5rem; padding-block: 1.25rem; border-top: 1px solid var(--line); color: var(--text-muted); }
+  .footer__brand { display: inline-block; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; direction: ltr; }
+  .footer__brand span { color: var(--accent); }
+  .footer__muted { margin: 0.25rem 0 0; color: color-mix(in srgb, var(--on-bar) 70%, transparent); }
+  .footer__col { display: flex; flex-direction: column; gap: 0.5rem; color: color-mix(in srgb, var(--on-bar) 78%, transparent); }
+  .footer__col a:hover { color: var(--accent); }
+  .footer__bottom { margin-top: 2.5rem; padding-block: 1.25rem; border-top: 1px solid rgb(255 255 255 / 0.15); color: color-mix(in srgb, var(--on-bar) 65%, transparent); }
   @media (max-width: 720px) { .footer__grid { grid-template-columns: 1fr; } }
 </style>

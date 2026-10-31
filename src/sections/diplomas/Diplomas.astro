@@ -1,12 +1,9 @@
 ---
-import SectionShell from '../../components/ui/SectionShell.astro';
-import { getDictionary, type Locale } from '../../i18n';
+import Soon from '../../components/ui/Soon.astro';
+import { getPages } from '../../content';
+import type { Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
-const t = getDictionary(lang);
+const p = getPages(lang).diplomas;
 ---
 
-<SectionShell id="diplomas" title={t.nav.diplomas} soft>
-  <p data-reveal class="soon">{t.ui.soon}</p>
-</SectionShell>
-
-<style>.soon { color: var(--text-muted); }</style>
+<Soon text={p.soon} />

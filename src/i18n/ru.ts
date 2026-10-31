@@ -18,6 +18,7 @@ export default {
   hero: {
     alt: 'Доктор Сейван, стоматолог',
     title: 'SaySmile',
+    doctor: 'Доктор Сейван · GAM Clinic',
     subtitle: 'Стоматолог-терапевт в Санкт-Петербурге',
     cta: 'Записаться',
   },

@@ -1,0 +1,12 @@
+---
+import SectionPage from '../../../components/SectionPage.astro';
+import { sectionIds, type SectionId, type Locale } from '../../../i18n';
+
+export function getStaticPaths() {
+  const langs: Locale[] = ['fa', 'en'];
+  return langs.flatMap((lang) => sectionIds.map((section) => ({ params: { lang, section } })));
+}
+const { lang, section } = Astro.params as { lang: Locale; section: SectionId };
+---
+
+<SectionPage lang={lang} section={section} />

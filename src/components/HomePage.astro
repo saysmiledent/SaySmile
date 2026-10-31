@@ -1,26 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../sections/hero/Hero.astro';
-import About from '../sections/about/About.astro';
-import Services from '../sections/services/Services.astro';
-import Gallery from '../sections/gallery/Gallery.astro';
-import Diplomas from '../sections/diplomas/Diplomas.astro';
-import Education from '../sections/education/Education.astro';
-import Tutorials from '../sections/tutorials/Tutorials.astro';
-import Contact from '../sections/contact/Contact.astro';
 import type { Locale } from '../i18n';
 
+// The home page is only the hero: brand, first facts, 3D effect. Everything else lives in the menu pages.
 interface Props { lang: Locale }
 const { lang } = Astro.props;
 ---
 
 <Base lang={lang}>
   <Hero lang={lang} />
-  <About lang={lang} />
-  <Services lang={lang} />
-  <Gallery lang={lang} />
-  <Diplomas lang={lang} />
-  <Education lang={lang} />
-  <Tutorials lang={lang} />
-  <Contact lang={lang} />
 </Base>

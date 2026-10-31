@@ -9,6 +9,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@fontsource-variable/onest": "^5.3.1",
+    "@fontsource-variable/vazirmatn": "^5.3.0",
     "astro": "^7.4.4",
     "gsap": "^3.15.0"
   }

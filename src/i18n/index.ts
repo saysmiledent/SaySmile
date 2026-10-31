@@ -18,7 +18,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 export const localeUrl = (lang: Locale, path = ''): string =>
   `${base}/${lang === defaultLocale ? '' : `${lang}/`}${path}`;
 
-/** Section anchor ids, in menu order. Each id matches a folder in src/sections. */
+/** Section pages, in menu order. Each id is a page (/about/, /services/ ...) and a folder in src/sections. */
 export const sectionIds = [
   'about',
   'services',
@@ -29,3 +29,6 @@ export const sectionIds = [
   'contact',
 ] as const;
 export type SectionId = (typeof sectionIds)[number];
+
+/** URL of a section page in the given language. */
+export const sectionUrl = (lang: Locale, id: SectionId): string => localeUrl(lang, `${id}/`);
