@@ -97,11 +97,12 @@ const relief = JSON.stringify({
     padding-block: 2rem;
   }
   .hero__title {
-    position: absolute; inset-inline-start: 1rem; top: 6%; margin: 0; text-align: left;
+    position: absolute; left: 1rem; top: 6%; margin: 0; text-align: left;
     font-size: clamp(3.6rem, 10vw, 9.5rem); font-weight: 800; letter-spacing: -0.055em; line-height: 0.9;
     color: rgb(178 201 171 / 0.42);
     direction: ltr; user-select: none; z-index: 0;
   }
+  :global([dir='rtl']) .hero__title { left: auto; right: 1rem; text-align: right; }
   .hero__ch { display: inline-block; will-change: transform; }
 
   .hero__copy {
@@ -159,6 +160,7 @@ const relief = JSON.stringify({
     .hero__copy { order: 2; align-self: center; align-items: center; text-align: center; margin-bottom: 0; max-width: 30rem; }
     .hero__chips { justify-content: center; }
     .hero__title { position: static; order: 0; text-align: center; font-size: clamp(3.6rem, 21vw, 7rem); color: rgb(242 247 240 / 0.5); }
+    :global([dir='rtl']) .hero__title { text-align: center; }
     .hero__arch { height: min(52svh, 480px); }
     .ring--b { display: none; }
   }

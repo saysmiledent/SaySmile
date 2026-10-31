@@ -2,7 +2,7 @@ import type { PagesContent } from './types';
 
 const en: PagesContent = {
   about: {
-    lead: 'Dental therapist at GAM Clinic in St. Petersburg. Calm treatment, never rushed.',
+    lead: 'Dental therapist and prosthodontist at GAM Clinic in St. Petersburg. Calm treatment, never rushed.',
     facts: [
       { title: 'Comfort', text: 'Treatment under local anesthesia, with pauses whenever you ask.' },
       { title: 'Diagnostics', text: 'GAM Clinic has CT diagnostics.' },
