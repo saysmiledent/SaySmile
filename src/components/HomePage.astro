@@ -13,21 +13,6 @@ const pages = getPages(lang);
 
 <Base lang={lang}>
   <Hero lang={lang} />
-  <section class="sheet portal" id="portal" aria-label={t.ui.menu}>
-    <div class="container">
-      <ul class="portal__list" data-reveal-group>
-        {sectionIds.map((id) => (
-          <li data-reveal>
-            <a class="portal__row" href={sectionUrl(lang, id)} data-cursor={t.nav[id]}>
-              <span class="portal__name">{t.nav[id]}</span>
-              <span class="portal__lead">{pages[id].lead}</span>
-              <svg class="portal__arrow" viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
   <!-- Plain-text summary for search engines, AI assistants and screen readers -->
   <div class="sr-only">
     <h2>{t.hero.doctor} — {t.hero.subtitle}</h2>
@@ -39,21 +24,3 @@ const pages = getPages(lang);
   </div>
 </Base>
 
-<style>
-  .portal { padding-block-start: calc(var(--sheet-r) * 0.6 + 2rem); }
-  .portal__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-  .portal__list li { border-bottom: 1px solid var(--line); }
-  .portal__row { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) auto; align-items: center; gap: 1.5rem; padding: clamp(1.1rem, 2.8vw, 2rem) clamp(0.5rem, 2vw, 1.5rem); transition: color 0.35s, padding 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
-  .portal__row::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--primary); transform: translateY(101%); transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1); }
-  .portal__row:hover { color: var(--on-primary); padding-inline: clamp(1rem, 3vw, 2.4rem); }
-  .portal__row:hover::before { transform: translateY(0); }
-  .portal__name { font-size: clamp(1.9rem, 5.4vw, 4.2rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1.05; }
-  html[lang='fa'] .portal__name { letter-spacing: 0; line-height: 1.4; }
-  .portal__lead { color: var(--text-muted); font-size: 1rem; max-width: 40ch; transition: color 0.35s; }
-  .portal__row:hover .portal__lead { color: inherit; opacity: 0.9; }
-  .portal__arrow { transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
-  .portal__row:hover .portal__arrow { transform: rotate(45deg) scale(1.2); }
-  [dir='rtl'] .portal__arrow { transform: scaleX(-1); }
-  [dir='rtl'] .portal__row:hover .portal__arrow { transform: scaleX(-1) rotate(45deg) scale(1.2); }
-  @media (max-width: 760px) { .portal__row { grid-template-columns: 1fr auto; } .portal__lead { display: none; } }
-</style>

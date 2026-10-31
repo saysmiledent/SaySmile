@@ -69,15 +69,15 @@ const nf = (v: number) => v.toLocaleString(lang === 'fa' ? 'fa-IR' : 'en-US');
   .fact--1 { background: var(--primary); color: var(--on-primary); }
   .fact--2 { background: var(--surface); border: 1px solid var(--line); }
   .fact--3 { background: var(--deep); color: var(--on-deep); }
-  .fact__title { margin: 0; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+  .fact__title { margin: 0; font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
   html[lang='fa'] .fact__title { line-height: 1.4; letter-spacing: 0; }
   .fact p { margin: 0; font-size: 1.15rem; max-width: 32ch; opacity: 0.92; }
   .orb--a { width: 30rem; height: 30rem; inset-block-start: -10rem; inset-inline-start: -8rem; background: radial-gradient(circle, rgb(178 201 171 / 0.45), transparent 65%); }
   .statement { position: relative; z-index: 1; display: grid; gap: 1.5rem; }
-  .statement__text { margin: 0; max-width: 24ch; font-size: clamp(2rem, 5.8vw, 4.4rem); font-weight: 750; letter-spacing: -0.035em; line-height: 1.08; text-wrap: balance; }
+  .statement__text { margin: 0; max-width: 24ch; font-size: clamp(1.7rem, 3.6vw, 2.8rem); font-weight: 750; letter-spacing: -0.035em; line-height: 1.08; text-wrap: balance; }
   html[lang='fa'] .statement__text { line-height: 1.45; letter-spacing: 0; max-width: 22ch; }
   .statement__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 1rem; }
-  .hours { margin: 0; display: flex; align-items: baseline; gap: 0.6rem; font-size: clamp(2.6rem, 8vw, 6rem); font-weight: 800; letter-spacing: -0.04em; direction: ltr; font-variant-numeric: tabular-nums; line-height: 1; }
+  .hours { margin: 0; display: flex; align-items: baseline; gap: 0.6rem; font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 800; letter-spacing: -0.04em; direction: ltr; font-variant-numeric: tabular-nums; line-height: 1; }
   .hours__dash { opacity: 0.5; }
   @media (max-width: 860px) {
     .wrap { grid-template-columns: 1fr; }
