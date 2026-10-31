@@ -18,7 +18,6 @@ const words = [...p.services.items.map((s) => s.title), ...p.about.facts.map((f)
 
   <div class="container cta">
     <p class="eyebrow" data-reveal>SaySmile</p>
-    <h2 class="cta__title" data-split>{t.hero.cta}</h2>
     <p class="cta__lead" data-reveal>{p.contact.lead}</p>
     {book && (
       <a class="cta__btn" href={book.href} target="_blank" rel="noopener" data-magnetic="0.35" data-cursor={t.contactLabels[book.id]} aria-label={`${t.hero.cta}: ${t.contactLabels[book.id]}`}>
@@ -71,7 +70,8 @@ const words = [...p.services.items.map((s) => s.title), ...p.about.facts.map((f)
   .cta { position: relative; z-index: 1; display: grid; gap: 1.1rem; justify-items: start; padding-bottom: clamp(3rem, 7vw, 5rem); }
   .cta__title { margin: 0; font-size: clamp(3rem, 12vw, 9rem); font-weight: 800; letter-spacing: -0.05em; line-height: 0.95; }
   html[lang='fa'] .cta__title { letter-spacing: 0; line-height: 1.3; }
-  .cta__lead { margin: 0; max-width: 34rem; font-size: clamp(1.05rem, 2vw, 1.3rem); opacity: 0.8; }
+  .cta__lead { margin: 0; max-width: 24ch; font-size: clamp(1.8rem, 5vw, 3.4rem); font-weight: 750; letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; }
+  html[lang='fa'] .cta__lead { line-height: 1.5; letter-spacing: 0; }
   .cta__btn {
     margin-top: 0.75rem; display: inline-flex; align-items: center; gap: 0.9rem;
     padding: 1.15rem 1.4rem 1.15rem 2.2rem; border-radius: 999px; font-size: 1.25rem; font-weight: 700;
