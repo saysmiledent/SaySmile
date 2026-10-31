@@ -7,17 +7,25 @@ import Diplomas from '../sections/diplomas/Diplomas.astro';
 import Education from '../sections/education/Education.astro';
 import Tutorials from '../sections/tutorials/Tutorials.astro';
 import Contact from '../sections/contact/Contact.astro';
-import { getDictionary, type Locale, type SectionId } from '../i18n';
+import Articles from '../sections/articles/Articles.astro';
+import { getDictionary, localeUrl, sectionUrl, type Locale, type SectionId } from '../i18n';
+import { breadcrumb, faqPage } from '../lib/seo';
 import { getPages } from '../content';
 
 // One menu page: coloured title band + the section's own component.
 interface Props { lang: Locale; section: SectionId }
 const { lang, section } = Astro.props;
 const t = getDictionary(lang);
-const lead = getPages(lang)[section].lead;
+const pages = getPages(lang);
+const lead = pages[section].lead;
+const seo = pages.seo[section];
+const schema: Record<string, unknown>[] = [
+  breadcrumb([{ name: 'SaySmile', path: localeUrl(lang) }, { name: t.nav[section], path: sectionUrl(lang, section) }], Astro.site!),
+];
+if (section === 'services') schema.push(faqPage(pages.faq.items));
 ---
 
-<Base lang={lang} path={`${section}/`} current={section} title={t.nav[section]}>
+<Base lang={lang} path={`${section}/`} current={section} title={seo.title} description={seo.description} schema={schema}>
   <header class="band">
     <div class="container band__inner">
       <h1 data-reveal>{t.nav[section]}</h1>
@@ -32,6 +40,7 @@ const lead = getPages(lang)[section].lead;
       {section === 'gallery' && <Gallery lang={lang} />}
       {section === 'diplomas' && <Diplomas lang={lang} />}
       {section === 'education' && <Education lang={lang} />}
+      {section === 'articles' && <Articles lang={lang} />}
       {section === 'tutorials' && <Tutorials lang={lang} />}
       {section === 'contact' && <Contact lang={lang} />}
     </div>

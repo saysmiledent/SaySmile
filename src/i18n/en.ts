@@ -3,8 +3,8 @@ export default {
   htmlLang: 'en',
   label: 'English',
   meta: {
-    title: 'SaySmile — dentist in St. Petersburg',
-    description: 'SaySmile dentist website: about me, services, before/after work, education and booking.',
+    title: 'Dentist in St. Petersburg — Dr. Seivan | SaySmile',
+    description: 'Dr. Seivan, dental therapist and prosthodontist at GAM Clinic, St. Petersburg (Ligovsky Ave 232). Professional hygiene from 4,500 RUB, caries treatment from 7,000 RUB, whitening. Book via Telegram or WhatsApp.',
   },
   nav: {
     about: 'About me',
@@ -12,6 +12,7 @@ export default {
     gallery: 'Before & after',
     diplomas: 'Diplomas',
     education: 'Education',
+    articles: 'Articles',
     tutorials: 'Tutorials',
     contact: 'Contact',
   },
@@ -37,5 +38,6 @@ export default {
   },
   footer: {
     rights: 'All rights reserved',
+    disclaimer: 'Contraindications exist. A consultation with a specialist is required.',
   },
 };

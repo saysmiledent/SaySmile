@@ -1,9 +1,96 @@
 ---
-import Soon from '../../components/ui/Soon.astro';
+import { cases } from '../../content/cases';
 import { getPages } from '../../content';
 import type { Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
-const p = getPages(lang).gallery;
+const g = getPages(lang).gallery;
+const base = import.meta.env.BASE_URL;
+const src = (id: string, i: number) => `${base}img/gallery/${id}-${i}.webp`;
+const cats = ['hygiene', 'caries', 'restoration'] as const;
 ---
 
-<Soon text={p.soon} />
+<div class="filters" role="group" aria-label={g.all} data-reveal>
+  <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">{g.all}</button>
+  {cats.map((c) => <button type="button" class="chip" data-filter={c} aria-pressed="false">{g.filters[c]}</button>)}
+</div>
+
+<div class="grid" data-gallery>
+  {cases.map((c) => {
+    const txt = g.texts[c.text];
+    const labels = g.steps[c.text] ?? [];
+    return (
+      <figure class:list={['case', { 'case--wide': c.kind === 'steps' }]} data-cat={c.cat}>
+        {c.kind === 'pair' ? (
+          <div class="cmp" style={`--r:${c.ratio}; --pos:50%`} data-cmp>
+            <img class="cmp__img" src={src(c.id, 2)} alt={`${txt.title}: ${g.after}`} loading="lazy" decoding="async" />
+            <div class="cmp__before"><img class="cmp__img" src={src(c.id, 1)} alt={`${txt.title}: ${g.before}`} loading="lazy" decoding="async" /></div>
+            <span class="badge badge--b">{g.before}</span>
+            <span class="badge badge--a">{g.after}</span>
+            <i class="cmp__line" aria-hidden="true"></i>
+            <input class="cmp__range" type="range" min="0" max="100" value="50" aria-label={`${g.drag}: ${txt.title}`} />
+          </div>
+        ) : (
+          <div class="steps" style={`--r:${c.ratio}; --n:${c.n}`}>
+            {Array.from({ length: c.n }, (_, i) => (
+              <div class="step">
+                <img src={src(c.id, i + 1)} alt={`${txt.title}: ${labels[i] ?? i + 1}`} loading="lazy" decoding="async" />
+                <span class="badge badge--s">{labels[i] ?? i + 1}</span>
+              </div>
+            ))}
+          </div>
+        )}
+        <figcaption><strong>{txt.title}</strong><span>{txt.text}</span></figcaption>
+      </figure>
+    );
+  })}
+</div>
+<p class="note">{g.note}</p>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-cmp]').forEach((box) => {
+    const range = box.querySelector<HTMLInputElement>('.cmp__range')!;
+    const set = () => box.style.setProperty('--pos', `${range.value}%`);
+    range.addEventListener('input', set);
+    set();
+  });
+  const chips = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const figs = document.querySelectorAll<HTMLElement>('[data-gallery] .case');
+  chips.forEach((chip) => chip.addEventListener('click', () => {
+    const f = chip.dataset.filter!;
+    chips.forEach((c) => { const on = c === chip; c.classList.toggle('is-on', on); c.setAttribute('aria-pressed', String(on)); });
+    figs.forEach((fig) => { fig.hidden = !(f === 'all' || fig.dataset.cat === f); });
+  }));
+</script>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .chip { padding: 0.5rem 1.1rem; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; transition: background-color 0.2s, border-color 0.2s; }
+  .chip:hover { border-color: var(--primary); }
+  .chip.is-on { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+  .grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); }
+  .case { margin: 0; display: grid; gap: 0.75rem; align-content: start; padding: 0.75rem; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); }
+  .case[hidden] { display: none; }
+  .case--wide { grid-column: 1 / -1; }
+  figcaption { display: grid; gap: 0.15rem; padding: 0 0.4rem 0.4rem; }
+  figcaption span { color: var(--text-muted); font-size: 0.92rem; }
+
+  .cmp { position: relative; aspect-ratio: var(--r); overflow: hidden; border-radius: var(--radius); background: var(--bg-soft); direction: ltr; user-select: none; touch-action: pan-y; }
+  .cmp__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .cmp__before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+  .cmp__line { position: absolute; inset-block: 0; left: var(--pos); width: 3px; translate: -50% 0; background: var(--surface); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.25); pointer-events: none; }
+  .cmp__line::after { content: '↔'; position: absolute; top: 50%; left: 50%; translate: -50% -50%; width: 2.4rem; height: 2.4rem; display: grid; place-items: center; border-radius: 50%; background: var(--primary); color: var(--on-primary); font-size: 1.1rem; box-shadow: 0 4px 12px rgb(0 0 0 / 0.3); }
+  .cmp__range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+  .cmp__range:focus-visible + * { outline: none; }
+  .cmp:has(.cmp__range:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .badge { position: absolute; top: 0.6rem; padding: 0.2rem 0.7rem; border-radius: 999px; font-size: 0.78rem; font-weight: 700; background: rgb(39 39 42 / 0.72); color: #fff; pointer-events: none; }
+  .badge--b { left: 0.6rem; }
+  .badge--a { right: 0.6rem; }
+  .badge--s { left: 0.5rem; }
+
+  .steps { display: grid; gap: 0.6rem; grid-template-columns: repeat(var(--n), 1fr); }
+  .step { position: relative; aspect-ratio: var(--r); border-radius: var(--radius); overflow: hidden; background: var(--bg-soft); }
+  .step img { width: 100%; height: 100%; object-fit: cover; }
+  :global([dir='rtl']) .badge--s { left: auto; right: 0.5rem; }
+  @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } .step { aspect-ratio: 3 / 2; } }
+  .note { margin-top: 1.75rem; font-size: 0.9rem; color: var(--text-muted); max-width: 70ch; }
+</style>

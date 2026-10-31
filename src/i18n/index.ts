@@ -25,6 +25,7 @@ export const sectionIds = [
   'gallery',
   'diplomas',
   'education',
+  'articles',
   'tutorials',
   'contact',
 ] as const;

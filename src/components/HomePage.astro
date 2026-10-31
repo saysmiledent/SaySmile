@@ -1,13 +1,25 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../sections/hero/Hero.astro';
-import type { Locale } from '../i18n';
+import { getDictionary, sectionUrl, sectionIds, type Locale } from '../i18n';
+import { getPages } from '../content';
 
 // The home page is only the hero: brand, first facts, 3D effect. Everything else lives in the menu pages.
 interface Props { lang: Locale }
 const { lang } = Astro.props;
+const t = getDictionary(lang);
+const pages = getPages(lang);
 ---
 
 <Base lang={lang}>
   <Hero lang={lang} />
+  <!-- Plain-text summary for search engines, AI assistants and screen readers -->
+  <div class="sr-only">
+    <h2>{t.hero.doctor} — {t.hero.subtitle}</h2>
+    <p>{t.meta.description}</p>
+    <p>{pages.contact.address}. {pages.contact.hours}</p>
+    <ul>
+      {sectionIds.map((id) => <li><a href={sectionUrl(lang, id)}>{t.nav[id]}: {pages.seo[id].description}</a></li>)}
+    </ul>
+  </div>
 </Base>

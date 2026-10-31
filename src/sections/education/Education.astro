@@ -1,8 +1,10 @@
 ---
 import { getPages } from '../../content';
-import type { Locale } from '../../i18n';
+import { docs } from '../../content/docs';
+import { sectionUrl, type Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
 const p = getPages(lang).education;
+const seminars = docs.filter((d) => d.kind === 'seminar');
 ---
 
 <ol class="timeline" data-reveal-group>
@@ -16,7 +18,19 @@ const p = getPages(lang).education;
     </li>
   ))}
 </ol>
+
+<h2 class="sem-title" data-reveal>{p.seminarsTitle}</h2>
 <p class="extra" data-reveal>{p.extra}</p>
+<ul class="sem" data-reveal-group>
+  {seminars.map((d) => (
+    <li class="sem__item" data-reveal>
+      <time datetime={d.iso}>{d.text[lang].date}</time>
+      <h3>{d.text[lang].title}</h3>
+      <p>{d.text[lang].issuer} · {d.text[lang].note}</p>
+    </li>
+  ))}
+</ul>
+<p class="more" data-reveal><a class="btn" href={sectionUrl(lang, 'diplomas')}>{p.allDocs}</a></p>
 
 <style>
   .timeline { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 1rem; }
@@ -32,8 +46,15 @@ const p = getPages(lang).education;
   .step__when { padding-top: 1rem; font-weight: 700; color: var(--primary); }
   .step__body { margin-inline-start: 1.5rem; padding: 1.1rem 1.5rem; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
   h2 { font-size: 1.3rem; margin-bottom: 0.25rem; }
-  p { margin: 0; color: var(--text-muted); }
-  .extra { margin-top: 2rem; font-weight: 600; color: var(--accent-ink); }
+  .step p { margin: 0; color: var(--text-muted); }
+  .sem-title { margin-top: 3rem; font-size: 1.6rem; }
+  .extra { color: var(--accent-ink); font-weight: 600; }
+  .sem { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 0.9rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+  .sem__item { padding: 1.1rem 1.3rem; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+  .sem__item time { color: var(--primary); font-weight: 700; font-size: 0.9rem; }
+  .sem__item h3 { font-size: 1.05rem; margin: 0.2rem 0 0.35rem; line-height: 1.35; }
+  .sem__item p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+  .more { margin-top: 2rem; }
   @media (max-width: 640px) {
     .timeline::before, .step::before { display: none; }
     .step { grid-template-columns: 1fr; gap: 0.25rem; }

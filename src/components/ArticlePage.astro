@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPages } from '../content';
+import { getDictionary, localeUrl, sectionUrl, type Locale } from '../i18n';
+import { contactLinks } from '../config/site';
+import { breadcrumb } from '../lib/seo';
+import { articles, type Article } from '../content/articles';
+
+interface Props { lang: Locale; article: Article }
+const { lang, article } = Astro.props;
+const t = getDictionary(lang);
+const p = getPages(lang).articles;
+const a = article.text[lang];
+const path = `articles/${article.slug}/`;
+const origin = Astro.site!;
+const url = new URL(localeUrl(lang, path), origin).href;
+const book = contactLinks()[0];
+const others = articles.filter((x) => x.slug !== article.slug).slice(0, 3);
+const date = new Date(article.iso).toLocaleDateString(lang === 'fa' ? 'fa-IR' : lang === 'ru' ? 'ru-RU' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+const root = new URL(localeUrl('ru'), origin).href;
+
+const schema = [
+  breadcrumb([
+    { name: 'SaySmile', path: localeUrl(lang) },
+    { name: t.nav.articles, path: sectionUrl(lang, 'articles') },
+    { name: a.title, path: localeUrl(lang, path) },
+  ], origin),
+  {
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: a.title,
+    description: a.description,
+    abstract: a.lead,
+    datePublished: article.iso,
+    dateModified: article.iso,
+    mainEntityOfPage: url,
+    url,
+    keywords: a.keywords.join(', '),
+    author: { '@id': `${root}#doctor` },
+    publisher: { '@id': `${root}#clinic` },
+    image: new URL(`${import.meta.env.BASE_URL}og-image.jpg`, origin).href,
+    citation: article.refs.map((r) => ({ '@type': 'ScholarlyArticle', name: r.text, sameAs: `https://doi.org/${r.doi}` })),
+    isAccessibleForFree: true,
+  },
+];
+---
+
+<Base lang={lang} path={path} current="articles" title={a.title} description={a.description} ogType="article" published={article.iso} schema={schema}>
+  <header class="band">
+    <div class="container band__inner">
+      <a class="back" href={sectionUrl(lang, 'articles')}>← {p.back}</a>
+      <h1>{a.title}</h1>
+      <p class="meta"><time datetime={article.iso}>{date}</time> · {lang === 'fa' ? article.minutes.toLocaleString('fa-IR') : article.minutes} {p.minutes} · {p.author}: {t.hero.doctor}</p>
+    </div>
+  </header>
+
+  <article class="content">
+    <div class="container prose">
+      <p class="lead">{a.lead}</p>
+
+      <aside class="key" aria-label={p.keyTitle}>
+        <h2>{p.keyTitle}</h2>
+        <ul>{a.key.map((k) => <li>{k}</li>)}</ul>
+      </aside>
+
+      {a.sections.map((s) => (
+        <section>
+          <h2>{s.h}</h2>
+          {s.p.map((para) => <p>{para}</p>)}
+        </section>
+      ))}
+
+      <section class="refs">
+        <h2>{p.refsTitle}</h2>
+        <ol>
+          {article.refs.map((r) => (
+            <li>
+              <span class="ltr">{r.text}</span>
+              {' '}<a class="ltr" href={`https://doi.org/${r.doi}`} rel="noopener" target="_blank">doi:{r.doi}</a>
+              {' · '}<a class="ltr" href={`https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/`} rel="noopener" target="_blank">PubMed {r.pmid}</a>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <p class="disc">{p.disclaimer}</p>
+      {book && <p><a class="btn" href={book.href} target="_blank" rel="noopener">{t.hero.cta}</a></p>}
+    </div>
+
+    <div class="container more">
+      <h2>{p.back}</h2>
+      <ul>
+        {others.map((o) => <li><a href={localeUrl(lang, `articles/${o.slug}/`)}>{o.text[lang].title}</a></li>)}
+      </ul>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .band { position: relative; overflow: clip; color: var(--hero-ink); background: radial-gradient(110% 160% at 85% 0%, var(--hero-a) 0%, var(--hero-b) 80%); }
+  .band__inner { position: relative; padding-block: clamp(2.2rem, 6vw, 4rem); z-index: 1; max-width: 60rem; }
+  .back { display: inline-block; margin-bottom: 1rem; font-weight: 600; color: rgb(242 247 240 / 0.88); }
+  h1 { font-size: clamp(1.8rem, 4.6vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+  .meta { margin: 0; color: rgb(242 247 240 / 0.88); }
+  .content { padding-block: clamp(2rem, 5vw, 3.5rem); }
+  .prose { max-width: 46rem; }
+  .lead { font-size: 1.2rem; font-weight: 500; }
+  .key { margin: 1.5rem 0 2rem; padding: 1.1rem 1.4rem; border-radius: var(--radius); background: var(--accent); color: #27272a; }
+  .key h2 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .key ul { margin: 0; padding-inline-start: 1.2rem; display: grid; gap: 0.35rem; }
+  section h2 { font-size: 1.45rem; margin-top: 2rem; }
+  .refs ol { padding-inline-start: 1.3rem; display: grid; gap: 0.6rem; font-size: 0.92rem; }
+  .refs a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; word-break: break-word; }
+  .disc { margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid var(--line); }
+  .more { margin-top: 3rem; }
+  .more h2 { font-size: 1.2rem; }
+  .more ul { padding-inline-start: 1.2rem; display: grid; gap: 0.4rem; }
+  .more a { color: var(--primary); font-weight: 600; }
+</style>

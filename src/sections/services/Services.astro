@@ -4,6 +4,7 @@ import { site, contactLinks } from '../../config/site';
 import type { Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
 const p = getPages(lang).services;
+const faq = getPages(lang).faq;
 const book = contactLinks()[0];
 const split = (v: string) => { const m = v.match(/^(\D*?)(\d.*)$/); return m ? [m[1], m[2]] : ['', v]; };
 ---
@@ -37,7 +38,28 @@ const split = (v: string) => { const m = v.match(/^(\D*?)(\d.*)$/); return m ? [
 
 <p class="note" data-reveal>{p.note}</p>
 
+<section class="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title" data-reveal>{faq.title}</h2>
+  <div class="faq__list">
+    {faq.items.map((f) => (
+      <details class="faq__item" data-reveal>
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
 <style>
+  .faq { margin-top: 3rem; }
+  .faq h2 { font-size: 1.6rem; }
+  .faq__list { display: grid; gap: 0.6rem; max-width: 52rem; }
+  .faq__item { border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); padding: 0.2rem 1.2rem; }
+  .faq__item summary { cursor: pointer; font-weight: 650; padding: 0.9rem 0; list-style: none; display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+  .faq__item summary::-webkit-details-marker { display: none; }
+  .faq__item summary::after { content: '+'; font-size: 1.4rem; line-height: 1; color: var(--primary); flex: none; }
+  .faq__item[open] summary::after { content: '−'; }
+  .faq__item p { margin: 0 0 1rem; color: var(--text-muted); }
   .list { display: grid; gap: 1rem; }
   .card {
     display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center;

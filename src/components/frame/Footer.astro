@@ -32,6 +32,7 @@ const links = contactLinks();
     </div>
   </div>
   <div class="container footer__bottom">
+    <p class="footer__disc">{t.footer.disclaimer}</p>
     <small>© {new Date().getFullYear()} <bdi>SaySmile</bdi> · {t.footer.rights}</small>
   </div>
 </footer>
@@ -45,5 +46,6 @@ const links = contactLinks();
   .footer__col { display: flex; flex-direction: column; gap: 0.5rem; color: color-mix(in srgb, var(--on-bar) 78%, transparent); }
   .footer__col a:hover { color: var(--accent); }
   .footer__bottom { margin-top: 2.5rem; padding-block: 1.25rem; border-top: 1px solid rgb(255 255 255 / 0.15); color: color-mix(in srgb, var(--on-bar) 65%, transparent); }
+  .footer__disc { margin: 0 0 0.5rem; font-size: 0.9rem; }
   @media (max-width: 720px) { .footer__grid { grid-template-columns: 1fr; } }
 </style>

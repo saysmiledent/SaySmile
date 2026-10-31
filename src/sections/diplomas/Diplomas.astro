@@ -1,9 +1,95 @@
 ---
-import Soon from '../../components/ui/Soon.astro';
+import { docs } from '../../content/docs';
 import { getPages } from '../../content';
 import type { Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
 const p = getPages(lang).diplomas;
+const base = import.meta.env.BASE_URL;
+const img = (name: string, thumb = false) => `${base}img/docs/${name}${thumb ? '-thumb' : ''}.webp`;
 ---
 
-<Soon text={p.soon} />
+<ul class="docs" data-reveal-group>
+  {docs.map((d, i) => {
+    const t = d.text[lang];
+    return (
+      <li class="doc" data-reveal id={`doc-${d.id}`}>
+        <button type="button" class="doc__open" data-doc={i} aria-label={`${p.open}: ${t.title}`}>
+          <img src={img(d.img, true)} alt={`${t.title}, ${t.date}`} loading="lazy" decoding="async" width="520" height="720" />
+          <span class="doc__zoom" aria-hidden="true">+</span>
+        </button>
+        <div class="doc__body">
+          <span class="tag">{p.kinds[d.kind]}</span>
+          <time class="doc__date" datetime={d.iso}>{t.date}</time>
+          <h2>{t.title}</h2>
+          <p class="doc__issuer">{t.issuer}</p>
+          <p class="doc__note">{t.note}</p>
+        </div>
+      </li>
+    );
+  })}
+</ul>
+<p class="legal" data-reveal>{p.note}</p>
+
+<dialog class="lightbox" data-lightbox aria-label={p.open}>
+  <button type="button" class="lb__close" data-lb-close aria-label={p.close}>×</button>
+  <button type="button" class="lb__nav lb__nav--prev" data-lb-prev aria-label="‹">‹</button>
+  <figure>
+    <img data-lb-img alt="" />
+    <figcaption data-lb-cap></figcaption>
+  </figure>
+  <button type="button" class="lb__nav lb__nav--next" data-lb-next aria-label="›">›</button>
+</dialog>
+
+<script is:inline define:vars={{ items: docs.map((d) => ({ src: `${base}img/docs/${d.img}.webp`, title: d.text[lang].title, date: d.text[lang].date })) }}>
+  (function () {
+    var dlg = document.querySelector('[data-lightbox]');
+    if (!dlg) return;
+    var im = dlg.querySelector('[data-lb-img]');
+    var cap = dlg.querySelector('[data-lb-cap]');
+    var cur = 0;
+    function show(i) {
+      cur = (i + items.length) % items.length;
+      im.src = items[cur].src; im.alt = items[cur].title;
+      cap.textContent = items[cur].date + ' · ' + items[cur].title;
+    }
+    document.querySelectorAll('[data-doc]').forEach(function (b) {
+      b.addEventListener('click', function () { show(+b.getAttribute('data-doc')); dlg.showModal(); });
+    });
+    dlg.querySelector('[data-lb-close]').addEventListener('click', function () { dlg.close(); });
+    dlg.querySelector('[data-lb-prev]').addEventListener('click', function () { show(cur - 1); });
+    dlg.querySelector('[data-lb-next]').addEventListener('click', function () { show(cur + 1); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('keydown', function (e) {
+      var rtl = document.documentElement.dir === 'rtl';
+      if (e.key === 'ArrowRight') show(cur + (rtl ? -1 : 1));
+      if (e.key === 'ArrowLeft') show(cur + (rtl ? 1 : -1));
+    });
+  })();
+</script>
+
+<style>
+  .docs { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+  .doc { display: flex; flex-direction: column; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); overflow: hidden; }
+  .doc__open { position: relative; display: block; width: 100%; aspect-ratio: 4 / 3.4; padding: 0.75rem; border: 0; background: var(--bg-soft); cursor: zoom-in; }
+  .doc__open img { width: 100%; height: 100%; object-fit: contain; transition: scale 0.3s ease; }
+  .doc__open:hover img { scale: 1.03; }
+  .doc__zoom { position: absolute; inset-block-end: 0.7rem; inset-inline-end: 0.7rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: grid; place-items: center; background: var(--primary); color: var(--on-primary); font-size: 1.4rem; line-height: 1; }
+  .doc__body { padding: 1.1rem 1.25rem 1.4rem; display: grid; gap: 0.35rem; align-content: start; }
+  .doc__date { color: var(--primary); font-weight: 700; font-size: 0.9rem; }
+  .doc h2 { font-size: 1.08rem; margin: 0.15rem 0 0; line-height: 1.35; }
+  .doc__issuer { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+  .doc__note { margin: 0; font-size: 0.9rem; }
+  .tag { justify-self: start; }
+  .legal { margin-top: 1.75rem; font-size: 0.9rem; color: var(--text-muted); max-width: 70ch; }
+
+  .lightbox { width: min(96vw, 980px); max-height: 94vh; padding: 0; border: 0; border-radius: var(--radius); background: var(--surface); color: var(--text); overflow: hidden; }
+  .lightbox::backdrop { background: rgb(20 24 21 / 0.82); }
+  .lightbox[open] { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.5rem; padding: 0.75rem; }
+  .lightbox figure { margin: 0; display: grid; gap: 0.6rem; justify-items: center; min-width: 0; }
+  .lightbox img { max-height: 78vh; width: auto; max-width: 100%; object-fit: contain; background: #fff; border-radius: 8px; }
+  .lightbox figcaption { font-size: 0.9rem; text-align: center; color: var(--text-muted); }
+  .lb__close { position: absolute; inset-block-start: 0.4rem; inset-inline-end: 0.6rem; z-index: 2; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 0; background: var(--primary); color: var(--on-primary); font-size: 1.5rem; line-height: 1; cursor: pointer; }
+  .lb__nav { width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 1px solid var(--line); background: var(--bg-soft); color: var(--text); font-size: 1.6rem; line-height: 1; cursor: pointer; }
+  .lb__nav:hover { background: var(--accent); }
+  @media (max-width: 560px) { .lightbox[open] { grid-template-columns: 1fr; } .lb__nav { display: none; } }
+</style>
