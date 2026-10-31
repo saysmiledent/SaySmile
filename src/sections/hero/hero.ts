@@ -14,6 +14,17 @@ export function initHero() {
   const root = document.querySelector<HTMLElement>('[data-hero]');
   if (!root) return;
 
+  // Scroll cue: its own handler (not the generic anchor one) so it works in every environment
+  root.querySelector<HTMLAnchorElement>('.hero__cue')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const target = document.getElementById('portal');
+    if (!target) return;
+    const y = target.getBoundingClientRect().top + scrollY - 70;
+    const l = (window as unknown as { __lenis?: { scrollTo: (v: number) => void } }).__lenis;
+    if (l) l.scrollTo(y); else window.scrollTo({ top: y, behavior: 'smooth' });
+  });
+
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const mobile = matchMedia('(max-width: 768px)').matches;
   const stage = root.querySelector<HTMLElement>('[data-hero-stage]')!;

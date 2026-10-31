@@ -59,6 +59,7 @@ const fmt = (n: number) => n.toLocaleString(lang === 'fa' ? 'fa-IR' : lang === '
 function smoothScroll() {
   if (mobile) return;
   lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.95 });
+  (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis!.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
