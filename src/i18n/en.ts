@@ -16,6 +16,7 @@ export default {
     contact: 'Contact',
   },
   hero: {
+    alt: 'Dr. Seivan, dentist',
     title: 'SaySmile',
     subtitle: 'Dental therapist in St. Petersburg',
     cta: 'Book a visit',

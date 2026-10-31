@@ -16,6 +16,7 @@ export default {
     contact: 'Контакты',
   },
   hero: {
+    alt: 'Доктор Сейван, стоматолог',
     title: 'SaySmile',
     subtitle: 'Стоматолог-терапевт в Санкт-Петербурге',
     cta: 'Записаться',

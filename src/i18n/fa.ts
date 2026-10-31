@@ -16,6 +16,7 @@ export default {
     contact: 'تماس',
   },
   hero: {
+    alt: 'دکتر سیوان، دندانپزشک',
     title: 'SaySmile',
     subtitle: 'دندانپزشک عمومی در سن‌پترزبورگ',
     cta: 'رزرو نوبت',
