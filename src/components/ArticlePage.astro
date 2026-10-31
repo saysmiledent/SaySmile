@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from './PageHero.astro';
+import { getPages } from '../content';
+import { getDictionary, localeUrl, sectionUrl, type Locale } from '../i18n';
+import { contactLinks } from '../config/site';
+import { breadcrumb } from '../lib/seo';
+import { articles, type Article } from '../content/articles';
+
+interface Props { lang: Locale; article: Article }
+const { lang, article } = Astro.props;
+const t = getDictionary(lang);
+const p = getPages(lang).articles;
+const a = article.text[lang];
+const path = `articles/${article.slug}/`;
+const origin = Astro.site!;
+const url = new URL(localeUrl(lang, path), origin).href;
+const book = contactLinks()[0];
+const others = articles.filter((x) => x.slug !== article.slug).slice(0, 3);
+const date = new Date(article.iso).toLocaleDateString(lang === 'fa' ? 'fa-IR' : lang === 'ru' ? 'ru-RU' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+const root = new URL(localeUrl('ru'), origin).href;
+const nf = lang === 'fa' ? article.minutes.toLocaleString('fa-IR') : article.minutes;
+const meta = `${date} · ${nf} ${p.minutes} · ${p.author}: ${t.hero.doctor}`;
+
+const schema = [
+  breadcrumb([
+    { name: 'SaySmile', path: localeUrl(lang) },
+    { name: t.nav.articles, path: sectionUrl(lang, 'articles') },
+    { name: a.title, path: localeUrl(lang, path) },
+  ], origin),
+  {
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: a.title,
+    description: a.description,
+    abstract: a.lead,
+    datePublished: article.iso,
+    dateModified: article.iso,
+    mainEntityOfPage: url,
+    url,
+    keywords: a.keywords.join(', '),
+    author: { '@id': `${root}#doctor` },
+    publisher: { '@id': `${root}#clinic` },
+    image: new URL(`${import.meta.env.BASE_URL}og-image.jpg`, origin).href,
+    citation: article.refs.map((r) => ({ '@type': 'ScholarlyArticle', name: r.text, sameAs: `https://doi.org/${r.doi}` })),
+    isAccessibleForFree: true,
+  },
+];
+---
+
+<Base lang={lang} path={path} current="articles" title={a.title} description={a.description} ogType="article" published={article.iso} schema={schema}>
+  <PageHero lang={lang} small title={a.title} lead={meta} back={{ href: sectionUrl(lang, 'articles'), label: p.back }} />
+
+  <article class="sheet">
+    <div class="container prose">
+      <p class="lead">{a.lead}</p>
+
+      <aside class="key" aria-label={p.keyTitle}>
+        <h2>{p.keyTitle}</h2>
+        <ul>{a.key.map((k) => <li>{k}</li>)}</ul>
+      </aside>
+
+      {a.sections.map((s) => (
+        <section>
+          <h2>{s.h}</h2>
+          {s.p.map((para) => <p>{para}</p>)}
+        </section>
+      ))}
+
+      <section class="refs">
+        <h2>{p.refsTitle}</h2>
+        <ol>
+          {article.refs.map((r) => (
+            <li>
+              <span class="ltr">{r.text}</span>
+              {' '}<a class="ltr" href={`https://doi.org/${r.doi}`} rel="noopener" target="_blank">doi:{r.doi}</a>
+              {' · '}<a class="ltr" href={`https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/`} rel="noopener" target="_blank">PubMed {r.pmid}</a>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <p class="disc">{p.disclaimer}</p>
+      {book && <p><a class="btn" href={book.href} target="_blank" rel="noopener">{t.hero.cta}</a></p>}
+    </div>
+
+  </article>
+
+  <section class="sheet sheet--c grain more" aria-label={p.back}>
+    <div class="container">
+      <h2 class="sec-title" data-split>{p.back}</h2>
+      <ul>
+        {others.map((o) => <li data-reveal><a href={localeUrl(lang, `articles/${o.slug}/`)}>{o.text[lang].title}<span aria-hidden="true">→</span></a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .prose { max-width: 46rem; margin-inline: auto; }
+  .lead { font-size: clamp(1.25rem, 2.4vw, 1.6rem); font-weight: 550; line-height: 1.5; }
+  .key { margin: 1.75rem 0 2.25rem; padding: 1.3rem 1.6rem; border-radius: var(--radius-lg); background: var(--accent); color: #27272a; }
+  .key h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .key ul { margin: 0; padding-inline-start: 1.2rem; display: grid; gap: 0.4rem; }
+  section h2 { font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em; margin-top: 2.5rem; }
+  .prose p { font-size: 1.08rem; }
+  .refs ol { padding-inline-start: 1.3rem; display: grid; gap: 0.6rem; font-size: 0.92rem; }
+  .refs a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; word-break: break-word; }
+  .disc { margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid var(--line); }
+  .more h2.sec-title { margin: 0 0 1.5rem; font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+  .more ul { list-style: none; padding: 0; margin: 0; display: grid; border-top: 1px solid rgb(39 39 42 / 0.25); }
+  .more li { border-bottom: 1px solid rgb(39 39 42 / 0.25); }
+  .more a { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem 0.25rem; font-size: clamp(1.15rem, 2.4vw, 1.7rem); font-weight: 700; letter-spacing: -0.02em; transition: padding 0.3s; }
+  .more a:hover { padding-inline: 1.2rem; }
+  :global([dir='rtl']) .more a span { transform: scaleX(-1); }
+</style>

@@ -1,0 +1,200 @@
+---
+// Interactive hero. The doctor's head and shoulders follow the cursor (9 yaw frames + 1 look-down
+// frame cut from the doctor's video, blended by mouse position); the stage tilts in 3D, soft shapes
+// drift at different depths and the big brand name spreads on scroll. See hero.ts.
+import { contactLinks } from '../../config/site';
+import { getDictionary, type Locale } from '../../i18n';
+import { getPages } from '../../content';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+const pages = getPages(lang);
+const facts = pages.about.facts;
+const links = contactLinks();
+const primary = links[0];
+const chips = links.filter((l) => l.id === 'telegram' || l.id === 'whatsapp');
+
+const frames = import.meta.glob('./assets/doctor-*.webp', {
+  eager: true, query: '?url', import: 'default',
+}) as Record<string, string>;
+const url = (name: string) => frames[`./assets/doctor-${name}.webp`];
+
+// Order matters: left -> right (yaw 0..8, centre = 4), then the look-down frame.
+const yaw = Array.from({ length: 9 }, (_, i) => url(`yaw-${i}`));
+const pitchDown = url('pitch-down');
+
+// Depth maps for the live 3D relief (see hero3d.ts)
+const depthFiles = import.meta.glob('./assets/depth-*.webp', {
+  eager: true, query: '?url', import: 'default',
+}) as Record<string, string>;
+const depth = (name: string) => depthFiles[`./assets/depth-${name}.webp`];
+const relief = JSON.stringify({
+  depth: Array.from({ length: 9 }, (_, i) => depth(`yaw-${i}`)),
+  down: depth('pitch-down'),
+});
+---
+
+<section class="hero grain" data-hero>
+  <div class="hero__spot" aria-hidden="true"></div>
+  <div class="hero__bg" aria-hidden="true">
+    <span class="blob blob--a" data-depth="0.4"></span>
+    <span class="blob blob--b" data-depth="0.8"></span>
+    <span class="blob blob--c" data-depth="1.3"></span>
+    <span class="ring ring--a" data-depth="0.6"></span>
+    <span class="ring ring--b" data-depth="1.1"></span>
+  </div>
+
+  <div class="container hero__grid">
+    <h1 class="hero__title" data-hero-title aria-label={t.hero.title}>
+      {[...t.hero.title].map((ch) => <span class="hero__ch">{ch}</span>)}
+    </h1>
+
+    <div class="hero__copy" data-hero-copy>
+      <span class="tag">{t.hero.doctor}</span>
+      <p class="hero__sub">{t.hero.subtitle}</p>
+      {primary && <a class="btn btn--light btn--arrow" href={primary.href} target="_blank" rel="noopener" data-magnetic="0.3">{t.hero.cta}</a>}
+      <div class="hero__chips">
+        {chips.map((c) => (
+          <a class="chip" href={c.href} target="_blank" rel="noopener" data-magnetic="0.25">{t.contactLabels[c.id]}</a>
+        ))}
+      </div>
+    </div>
+
+    <div class="hero__card" data-hero-stage>
+      <div class="hero__arch">
+        <div class="hero__stage" data-relief={relief}>
+          <div class="hero__tilt" data-hero-tilt>
+            {yaw.map((src, i) => (
+              <img class="hero__frame" data-yaw={i} src={src} alt={i === 4 ? t.hero.alt : ''} width="600" height="720" decoding="async" fetchpriority={i === 4 ? 'high' : 'low'} />
+            ))}
+            <img class="hero__frame" data-pitch="down" src={pitchDown} alt="" width="600" height="720" decoding="async" loading="lazy" />
+          </div>
+        </div>
+        <span class="hero__floor" aria-hidden="true"></span>
+      </div>
+      {facts.slice(0, 3).map((f, i) => (
+        <div class={`glass glass--${i}`} data-mdepth={1.1 + i * 0.5}>
+          <b>{f.title}</b>
+          <span>{f.text}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative; overflow: clip; color: var(--hero-ink);
+    min-height: 100svh;
+    display: grid; align-items: end;
+    background:
+      radial-gradient(120% 90% at 70% 10%, var(--hero-a) 0%, var(--hero-b) 75%);
+  }
+  .hero__spot { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(34rem circle at var(--mx, 60%) var(--my, 40%), rgb(242 247 240 / 0.28), transparent 60%); mix-blend-mode: soft-light; }
+  .hero__bg { position: absolute; inset: 0; pointer-events: none; }
+  .blob, .ring { position: absolute; border-radius: 50%; will-change: transform; }
+  .blob--a { width: 38vmax; height: 38vmax; inset-block-start: -12%; inset-inline-start: -10%; background: radial-gradient(circle at 30% 30%, var(--accent), transparent 68%); opacity: 0.5; }
+  .blob--b { width: 30vmax; height: 30vmax; inset-block-end: -6%; inset-inline-end: -8%; background: radial-gradient(circle at 60% 40%, var(--accent), transparent 70%); opacity: 0.35; }
+  .blob--c { width: 11vmax; height: 11vmax; inset-block-start: 20%; inset-inline-end: 22%; background: radial-gradient(circle at 40% 40%, #e3ecdf, var(--accent)); opacity: 0.55; }
+  .ring { border: 2px solid rgb(178 201 171 / 0.55); }
+  .ring--a { width: 22vmax; height: 22vmax; inset-block-start: 30%; inset-inline-start: 36%; }
+  .ring--b { width: 8vmax; height: 8vmax; inset-block-end: 18%; inset-inline-end: 12%; }
+
+  .hero__grid {
+    position: relative; display: grid; align-items: center; gap: 2rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 100svh;
+    padding-block: calc(var(--header-h) + 3rem) calc(3.5rem + var(--sheet-r));
+  }
+  .hero__title {
+    position: absolute; left: 1rem; top: calc(var(--header-h) + 2.2rem); margin: 0; text-align: left;
+    font-size: clamp(3.6rem, 10vw, 9.5rem); font-weight: 800; letter-spacing: -0.055em; line-height: 0.9;
+    color: rgb(178 201 171 / 0.42);
+    direction: ltr; user-select: none; z-index: 0;
+  }
+  :global([dir='rtl']) .hero__title { left: auto; right: 1rem; text-align: right; }
+  .hero__ch { display: inline-block; will-change: transform; }
+
+  .hero__copy {
+    position: relative; z-index: 2; align-self: end; margin-bottom: 8%;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; max-width: 26rem;
+  }
+  .hero__sub { margin: 0; font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-weight: 700; line-height: 1.25; text-wrap: balance; }
+  .hero__chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .chip { padding: 0.35rem 0.95rem; border-radius: 999px; border: 1.5px solid rgb(242 247 240 / 0.55); font-size: 0.9rem; transition: background-color 0.2s; }
+  .chip:hover { background: rgb(242 247 240 / 0.18); }
+
+  /* The portrait sits in its own arched frame, standing on a floor, so he never floats */
+  .hero__card { position: relative; z-index: 1; }
+  .hero__arch {
+    position: relative; overflow: hidden;
+    height: min(74svh, 780px); aspect-ratio: 600 / 720;
+    border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
+    background:
+      radial-gradient(90% 60% at 50% 18%, rgb(242 247 240 / 0.55), transparent 70%),
+      linear-gradient(180deg, #d9e5d4 0%, var(--accent) 100%);
+    border: 1.5px solid rgb(242 247 240 / 0.7);
+    box-shadow: 0 34px 60px -30px rgb(30 18 10 / 0.55);
+  }
+  :global(:root[data-theme='dark']) .hero__arch {
+    background:
+      radial-gradient(90% 60% at 50% 18%, rgb(178 201 171 / 0.22), transparent 70%),
+      linear-gradient(180deg, #2a322c 0%, #1e2420 100%);
+    border-color: rgb(178 201 171 / 0.3);
+  }
+  .hero__stage { position: absolute; inset: 0 0 6% 0; perspective: 1100px; }
+  .hero__tilt { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+  .hero__frame {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: bottom;
+    opacity: 0; pointer-events: none; user-select: none;
+  }
+  .hero__stage :global(.hero__gl) { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  [data-hero].is-gl .hero__frame { visibility: hidden; }
+  /* pitch frames only blend the head/shoulders, so the body never ghosts */
+  .hero__frame[data-pitch] {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 28%, transparent 44%);
+    mask-image: linear-gradient(to bottom, #000 0, #000 28%, transparent 44%);
+  }
+  .hero__frame[data-yaw='4'] { opacity: 1; } /* centre frame visible before JS runs */
+  /* floor: a wooden-looking ledge across the bottom with a shadow line where he stands */
+  .hero__floor {
+    position: absolute; inset-inline: 0; bottom: 0; height: 9%;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-hover) 100%);
+    border-top: 2px solid rgb(242 247 240 / 0.6);
+    box-shadow: 0 -14px 22px -6px rgb(30 18 10 / 0.35);
+  }
+
+  /* glass fact cards orbiting the portrait; they drift with the pointer */
+  .glass { position: absolute; z-index: 4; width: 13.5rem; padding: 0.85rem 1.1rem; border-radius: 1.1rem; display: grid; gap: 0.15rem; font-size: 0.86rem; line-height: 1.35; color: #27272a; background: rgb(250 252 249 / 0.72); border: 1px solid rgb(255 255 255 / 0.7); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 18px 40px -22px rgb(30 18 10 / 0.6); animation: bob 6s ease-in-out infinite; }
+  :global(:root[data-theme='dark']) .glass { color: var(--text); background: rgb(30 36 32 / 0.7); border-color: rgb(178 201 171 / 0.3); }
+  .glass b { font-size: 0.98rem; }
+  /* they sit beside the portrait, never on top of it */
+  .glass--0 { inset-block-start: 24%; inset-inline-end: calc(100% + 1.5rem); }
+  .glass--1 { inset-block-start: 49%; inset-inline-end: calc(100% + 3.5rem); animation-delay: -2s; }
+  .glass--2 { inset-block-start: 74%; inset-inline-end: calc(100% + 1.5rem); animation-delay: -4s; }
+  @keyframes bob { 50% { translate: 0 -10px; } }
+  .hero__cue { position: absolute; z-index: 3; inset-inline-start: 50%; bottom: calc(var(--sheet-r) + 1.2rem); translate: -50% 0; width: 1.6rem; height: 2.6rem; border: 2px solid rgb(242 247 240 / 0.7); border-radius: 1rem; display: none; }
+  .hero__cue::before { content: ''; position: absolute; inset: -16px; }
+  .hero__cue span { position: absolute; left: 50%; top: 0.45rem; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: #f2f7f0; animation: cue 1.8s ease-in-out infinite; }
+  @keyframes cue { 0% { opacity: 0; translate: 0 0; } 30% { opacity: 1; } 100% { opacity: 0; translate: 0 14px; } }
+  @media (min-width: 861px) and (min-height: 700px) { .hero__cue { display: block; } }
+  @media (max-width: 1260px) { .glass { display: none; } }
+  @media (max-width: 860px) {
+    .glass { display: none; }
+    .hero__grid { grid-template-columns: 1fr; justify-items: center; gap: 1.1rem; padding-block: calc(var(--header-h) + 2.2rem) calc(2.5rem + var(--sheet-r)); }
+    .hero__card { order: 1; }
+    .hero__copy { order: 2; align-self: center; align-items: center; text-align: center; margin-bottom: 0; max-width: 30rem; }
+    .hero__chips { justify-content: center; }
+    .hero__title { position: static; order: 0; text-align: center; font-size: clamp(3.6rem, 21vw, 7rem); color: rgb(242 247 240 / 0.5); }
+    :global([dir='rtl']) .hero__title { text-align: center; }
+    .hero__arch { height: min(52svh, 480px); }
+    .ring--b { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero__ch { transform: none !important; } .glass, .hero__cue span { animation: none; } }
+</style>
+
+<script>
+  import { initHero } from './hero';
+  initHero();
+</script>

@@ -1,0 +1,40 @@
+---
+import { articles } from '../../content/articles';
+import { getPages } from '../../content';
+import { localeUrl, type Locale } from '../../i18n';
+const { lang } = Astro.props as { lang: Locale };
+const p = getPages(lang).articles;
+---
+
+<section class="sheet" aria-label={p.lead}>
+<div class="container">
+<ul class="list" data-reveal-group>
+  {articles.map((a) => {
+    const t = a.text[lang];
+    return (
+      <li class="card" data-reveal data-tilt data-tilt-max="4">
+        <a class="card__link" data-cursor={p.read} href={localeUrl(lang, `articles/${a.slug}/`)}>
+          <span class="meta"><time datetime={a.iso}>{new Date(a.iso).toLocaleDateString(lang === 'fa' ? 'fa-IR' : lang === 'ru' ? 'ru-RU' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time> · {lang === 'fa' ? a.minutes.toLocaleString('fa-IR') : a.minutes} {p.minutes}</span>
+          <h2>{t.title}</h2>
+          <p>{t.lead}</p>
+          <span class="more">{p.read} →</span>
+        </a>
+      </li>
+    );
+  })}
+</ul>
+</div>
+</section>
+
+<style>
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
+  .card { border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); transition: background-color 0.35s, color 0.35s; }
+  .card:hover { background: var(--accent); color: #27272a; }
+  .card:hover p, .card:hover .meta, .card:hover .more { color: #27272a; }
+  .card__link { display: grid; gap: 0.5rem; align-content: start; height: 100%; padding: clamp(1.25rem, 3vw, 1.75rem); }
+  .meta { font-size: 0.85rem; color: var(--primary); font-weight: 600; }
+  h2 { font-size: clamp(1.35rem, 2.6vw, 1.85rem); margin: 0; letter-spacing: -0.02em; line-height: 1.2; }
+  p { margin: 0; color: var(--text-muted); transition: color 0.35s; }
+  .more { margin-top: 0.4rem; font-weight: 700; color: var(--primary); }
+  :global([dir='rtl']) .more { direction: rtl; }
+</style>

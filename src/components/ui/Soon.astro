@@ -1,0 +1,39 @@
+---
+// "Coming soon" stage: three phone-shaped reel frames drifting with the pointer.
+interface Props { text: string }
+const { text } = Astro.props;
+---
+
+<section class="sheet" aria-label={text}>
+  <div class="container stage">
+    <div class="phones" aria-hidden="true">
+      {[0, 1, 2].map((i) => (
+        <div class={`phone phone--${i}`} data-mdepth={1 + i * 0.7} data-tilt>
+          <span class="phone__play"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z" /></svg></span>
+          <span class="phone__bar"></span>
+        </div>
+      ))}
+    </div>
+    <p class="text" data-split>{text}</p>
+  </div>
+</section>
+
+<style>
+  .stage { display: grid; gap: clamp(2rem, 5vw, 3.5rem); justify-items: center; text-align: center; padding-block: clamp(1rem, 4vw, 3rem); }
+  .phones { display: flex; gap: clamp(0.8rem, 3vw, 2rem); align-items: center; justify-content: center; perspective: 1000px; }
+  .phone { position: relative; width: clamp(7rem, 22vw, 13rem); aspect-ratio: 9 / 16; border-radius: 1.6rem; display: grid; place-items: center; border: 2px solid var(--line); box-shadow: var(--shadow); overflow: hidden; }
+  .phone--0 { background: linear-gradient(160deg, var(--accent), #d9e5d4); rotate: -6deg; }
+  .phone--1 { background: linear-gradient(160deg, var(--primary), #7a604d); color: var(--on-primary); translate: 0 -2rem; }
+  .phone--2 { background: linear-gradient(160deg, var(--deep), #2e3630); color: var(--on-deep); rotate: 6deg; }
+  .phone__play { width: 3.6rem; height: 3.6rem; display: grid; place-items: center; border-radius: 50%; background: rgb(255 255 255 / 0.9); color: #27272a; animation: pulse 2.4s ease-in-out infinite; }
+  .phone--2 .phone__play { animation-delay: -0.8s; }
+  .phone--1 .phone__play { animation-delay: -1.6s; }
+  .phone__bar { position: absolute; inset-inline: 12%; bottom: 8%; height: 4px; border-radius: 4px; background: rgb(255 255 255 / 0.4); overflow: hidden; }
+  .phone__bar::after { content: ''; position: absolute; inset: 0; width: 40%; background: #fff; border-radius: 4px; animation: load 3.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { scale: 1.14; } }
+  @keyframes load { 0% { translate: -100% 0; } 100% { translate: 260% 0; } }
+  .text { margin: 0; max-width: 28ch; font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 750; letter-spacing: -0.03em; line-height: 1.2; text-wrap: balance; color: var(--accent-ink); }
+  html[lang='fa'] .text { line-height: 1.6; letter-spacing: 0; }
+  :global([dir='rtl']) .phone__bar::after { animation-direction: reverse; }
+  @media (prefers-reduced-motion: reduce) { .phone__play, .phone__bar::after { animation: none; } }
+</style>

@@ -1,0 +1,72 @@
+/* SaySmile design tokens.
+   Brand colours lead: cappuccino + pistachio carry the page, white is only a small accent. */
+:root {
+  --bg: #f2f7f0;            /* Pistachio Mist: page background */
+  --bg-soft: #e3ecdf;       /* deeper pistachio tint: alternate bands */
+  --surface: #fafcf9;       /* cards (the only near-white) */
+  --line: #cfdbca;          /* borders on pistachio */
+  --primary: #9a7b66;       /* Cappuccino */
+  --primary-hover: #846652; /* Deep Mocha */
+  --on-primary: #ffffff;
+  --bar: #86705e;           /* header / footer bar (light taupe-brown) */
+  --on-bar: #f2f7f0;
+  --accent: #b2c9ab;        /* Soft Pistachio */
+  --accent-ink: #3f5a38;
+  --text: #27272a;
+  --text-muted: #55606f;
+
+  --hero-a: #cdb9a7;
+  --hero-b: #9a8573;
+  --hero-ink: #f2f7f0;
+
+  /* colour bands (stacked sheets) */
+  --sheet-c: #b2c9ab;       /* pistachio band */
+  --on-sheet-c: #27272a;
+  --sheet-d: #9a7b66;       /* cappuccino band */
+  --on-sheet-d: #ffffff;
+  --deep: #1f2420;          /* graphite-green band: footer, CTA */
+  --on-deep: #f2f7f0;
+  --sheet-r: clamp(28px, 5vw, 64px);
+
+  --radius: 16px;
+  --radius-lg: 28px;
+  --container: 1180px;
+  --header-h: 68px;
+  --shadow: 0 18px 40px -22px rgb(63 45 32 / 0.45);
+
+  --font-main: 'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-fa: 'Vazirmatn Variable', Tahoma, system-ui, sans-serif;
+
+  color-scheme: light;
+}
+
+/* Boutique dark mode */
+:root[data-theme='dark'] {
+  --bg: #141815;
+  --bg-soft: #1a201c;
+  --surface: #1e2420;
+  --line: #2e3630;
+  --primary: #b5927b;
+  --primary-hover: #c9a690;
+  --on-primary: #141815;
+  --bar: #1e2420;
+  --on-bar: #f8fafc;
+  --accent: #b2c9ab;
+  --accent-ink: #cfe3c8;
+  --text: #f8fafc;
+  --text-muted: #a4b0be;
+
+  --sheet-c: #243028;
+  --on-sheet-c: #f8fafc;
+  --sheet-d: #6f5848;
+  --on-sheet-d: #f8fafc;
+  --deep: #0d100e;
+  --on-deep: #f8fafc;
+
+  --hero-a: #3a3330;
+  --hero-b: #141815;
+  --hero-ink: #f8fafc;
+  --shadow: 0 18px 40px -22px rgb(0 0 0 / 0.8);
+
+  color-scheme: dark;
+}

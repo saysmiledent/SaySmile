@@ -1,0 +1,44 @@
+// llms.txt: a short machine-readable guide to the site for AI assistants and AI search.
+import type { APIRoute } from 'astro';
+import { articles } from '../content/articles';
+import { getPages } from '../content';
+import { docs } from '../content/docs';
+import { getDictionary, localeUrl, sectionIds, sectionUrl, locales } from '../i18n';
+import { site } from '../config/site';
+
+export const GET: APIRoute = ({ site: origin }) => {
+  const u = (p: string) => new URL(p, origin).href;
+  const ru = getPages('ru');
+  const t = getDictionary('ru');
+  const c = site.contacts;
+  const lines: string[] = [];
+  lines.push('# SaySmile — доктор Сейван, стоматолог в Санкт-Петербурге');
+  lines.push('');
+  lines.push('> Персональный сайт стоматолога-терапевта-ортопеда (Dr. Seivan) в GAM Clinic, Санкт-Петербург. Услуги и цены, фото до и после, дипломы и аккредитация, статьи со ссылками на Cochrane и PubMed. Сайт на русском, персидском (فارسی) и английском.');
+  lines.push('');
+  lines.push('## Ключевые факты / Key facts');
+  lines.push(`- Врач / Doctor: ${t.hero.doctor} (Хаг Дуст Сейван; Dr. Seivan), ${t.hero.subtitle}`);
+  lines.push('- Квалификация: диплом врача-стоматолога (СПбГПМУ, 30.06.2025); первичная аккредитация «Стоматология общей практики» до 17.07.2030; допуск гигиениста стоматологического (2024).');
+  lines.push(`- Клиника / Clinic: GAM Clinic, ${ru.contact.address.replace('GAM Clinic, ', '')}; ${ru.contact.hours}`);
+  lines.push('- Цены (от): профессиональная гигиена от 4 500 ₽; лечение кариеса от 7 000 ₽; отбеливание 20 000 ₽. Точная стоимость — после осмотра.');
+  lines.push('- Языки сайта / Site languages: русский (по умолчанию), فارسی, English.');
+  lines.push(`- Запись / Booking: Telegram ${c.telegram}; WhatsApp https://wa.me/${c.whatsapp}; email ${c.email}; телефон ${c.phone}`);
+  lines.push('- Имеются противопоказания. Необходима консультация специалиста. Материалы сайта носят информационный характер.');
+  lines.push('');
+  lines.push('## Страницы / Pages');
+  for (const id of sectionIds) lines.push(`- [${t.nav[id]}](${u(sectionUrl('ru', id))}): ${ru.seo[id].description}`);
+  lines.push('');
+  lines.push('## Статьи / Articles');
+  for (const a of articles) lines.push(`- [${a.text.ru.title}](${u(localeUrl('ru', `articles/${a.slug}/`))}): ${a.text.ru.description}`);
+  lines.push('');
+  lines.push('## Documents');
+  for (const d of docs) lines.push(`- ${d.text.ru.date}: ${d.text.ru.title} (${d.text.ru.issuer})`);
+  lines.push('');
+  lines.push('## Translations');
+  for (const l of locales.filter((x) => x !== 'ru')) lines.push(`- ${l}: ${u(localeUrl(l))}`);
+  lines.push('');
+  lines.push('## Optional');
+  lines.push(`- [Full text of all articles](${u(`${import.meta.env.BASE_URL}llms-full.txt`)})`);
+  lines.push(`- [Sitemap](${u(`${import.meta.env.BASE_URL}sitemap-index.xml`)})`);
+  return new Response(lines.join('\n') + '\n', { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+};

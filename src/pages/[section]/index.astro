@@ -1,0 +1,11 @@
+---
+import SectionPage from '../../components/SectionPage.astro';
+import { sectionIds, type SectionId } from '../../i18n';
+
+export function getStaticPaths() {
+  return sectionIds.map((section) => ({ params: { section } }));
+}
+const { section } = Astro.params as { section: SectionId };
+---
+
+<SectionPage lang="ru" section={section} />

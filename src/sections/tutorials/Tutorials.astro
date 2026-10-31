@@ -1,0 +1,9 @@
+---
+import Soon from '../../components/ui/Soon.astro';
+import { getPages } from '../../content';
+import type { Locale } from '../../i18n';
+const { lang } = Astro.props as { lang: Locale };
+const p = getPages(lang).tutorials;
+---
+
+<Soon text={p.soon} />
