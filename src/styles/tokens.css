@@ -8,15 +8,15 @@
   --primary: #9a7b66;       /* Cappuccino */
   --primary-hover: #846652; /* Deep Mocha */
   --on-primary: #ffffff;
-  --bar: #6f5645;           /* header / footer bar (deep cappuccino) */
+  --bar: #86705e;           /* header / footer bar (light taupe-brown) */
   --on-bar: #f2f7f0;
   --accent: #b2c9ab;        /* Soft Pistachio */
   --accent-ink: #3f5a38;
   --text: #27272a;
   --text-muted: #55606f;
 
-  --hero-a: #a98a74;
-  --hero-b: #6f5645;
+  --hero-a: #cdb9a7;
+  --hero-b: #9a8573;
   --hero-ink: #f2f7f0;
 
   --radius: 16px;

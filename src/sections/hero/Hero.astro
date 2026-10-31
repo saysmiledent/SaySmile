@@ -20,6 +20,16 @@ const url = (name: string) => frames[`./assets/doctor-${name}.webp`];
 // Order matters: left -> right (yaw 0..8, centre = 4), then the look-down frame.
 const yaw = Array.from({ length: 9 }, (_, i) => url(`yaw-${i}`));
 const pitchDown = url('pitch-down');
+
+// Depth maps for the live 3D relief (see hero3d.ts)
+const depthFiles = import.meta.glob('./assets/depth-*.webp', {
+  eager: true, query: '?url', import: 'default',
+}) as Record<string, string>;
+const depth = (name: string) => depthFiles[`./assets/depth-${name}.webp`];
+const relief = JSON.stringify({
+  depth: Array.from({ length: 9 }, (_, i) => depth(`yaw-${i}`)),
+  down: depth('pitch-down'),
+});
 ---
 
 <section class="hero" data-hero>
@@ -36,16 +46,6 @@ const pitchDown = url('pitch-down');
       {[...t.hero.title].map((ch) => <span class="hero__ch">{ch}</span>)}
     </h1>
 
-    <div class="hero__stage" data-hero-stage>
-      <div class="hero__tilt" data-hero-tilt>
-        {yaw.map((src, i) => (
-          <img class="hero__frame" data-yaw={i} src={src} alt={i === 4 ? t.hero.alt : ''} width="600" height="720" decoding="async" fetchpriority={i === 4 ? 'high' : 'low'} />
-        ))}
-        <img class="hero__frame" data-pitch="down" src={pitchDown} alt="" width="600" height="720" decoding="async" loading="lazy" />
-      </div>
-      <span class="hero__shadow" aria-hidden="true"></span>
-    </div>
-
     <div class="hero__copy" data-hero-copy>
       <span class="tag">{t.hero.doctor}</span>
       <p class="hero__sub">{t.hero.subtitle}</p>
@@ -54,6 +54,20 @@ const pitchDown = url('pitch-down');
         {chips.map((c) => (
           <a class="chip" href={c.href} target="_blank" rel="noopener">{t.contactLabels[c.id]}</a>
         ))}
+      </div>
+    </div>
+
+    <div class="hero__card" data-hero-stage>
+      <div class="hero__arch">
+        <div class="hero__stage" data-relief={relief}>
+          <div class="hero__tilt" data-hero-tilt>
+            {yaw.map((src, i) => (
+              <img class="hero__frame" data-yaw={i} src={src} alt={i === 4 ? t.hero.alt : ''} width="600" height="720" decoding="async" fetchpriority={i === 4 ? 'high' : 'low'} />
+            ))}
+            <img class="hero__frame" data-pitch="down" src={pitchDown} alt="" width="600" height="720" decoding="async" loading="lazy" />
+          </div>
+        </div>
+        <span class="hero__floor" aria-hidden="true"></span>
       </div>
     </div>
   </div>
@@ -73,63 +87,80 @@ const pitchDown = url('pitch-down');
   .blob--b { width: 30vmax; height: 30vmax; inset-block-end: -6%; inset-inline-end: -8%; background: radial-gradient(circle at 60% 40%, var(--accent), transparent 70%); opacity: 0.35; }
   .blob--c { width: 11vmax; height: 11vmax; inset-block-start: 20%; inset-inline-end: 22%; background: radial-gradient(circle at 40% 40%, #e3ecdf, var(--accent)); opacity: 0.55; }
   .ring { border: 2px solid rgb(178 201 171 / 0.55); }
-  .ring--a { width: 22vmax; height: 22vmax; inset-block-start: 14%; inset-inline-start: 6%; }
+  .ring--a { width: 22vmax; height: 22vmax; inset-block-start: 30%; inset-inline-start: 36%; }
   .ring--b { width: 8vmax; height: 8vmax; inset-block-end: 18%; inset-inline-end: 12%; }
 
   .hero__grid {
-    position: relative; display: grid; align-items: end; justify-items: center;
+    position: relative; display: grid; align-items: center; gap: 2rem;
+    grid-template-columns: minmax(0, 1fr) auto;
     min-height: calc(100svh - var(--header-h));
-    padding-block: 1.5rem 0;
+    padding-block: 2rem;
   }
   .hero__title {
-    position: absolute; inset-inline: 0; top: 9%; margin: 0; text-align: center;
-    font-size: clamp(4.2rem, 17.5vw, 16rem); font-weight: 800; letter-spacing: -0.055em; line-height: 0.9;
+    position: absolute; inset-inline-start: 1rem; top: 6%; margin: 0; text-align: left;
+    font-size: clamp(3.6rem, 10vw, 9.5rem); font-weight: 800; letter-spacing: -0.055em; line-height: 0.9;
     color: rgb(178 201 171 / 0.42);
     direction: ltr; user-select: none; z-index: 0;
   }
   .hero__ch { display: inline-block; will-change: transform; }
 
-  .hero__stage {
-    position: relative; z-index: 1;
-    height: min(80svh, 840px); aspect-ratio: 600 / 720;
-    perspective: 1100px;
+  .hero__copy {
+    position: relative; z-index: 2; align-self: end; margin-bottom: 8%;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; max-width: 26rem;
   }
+  .hero__sub { margin: 0; font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-weight: 700; line-height: 1.25; text-wrap: balance; }
+  .hero__chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .chip { padding: 0.35rem 0.95rem; border-radius: 999px; border: 1.5px solid rgb(242 247 240 / 0.55); font-size: 0.9rem; transition: background-color 0.2s; }
+  .chip:hover { background: rgb(242 247 240 / 0.18); }
+
+  /* The portrait sits in its own arched frame, standing on a floor, so he never floats */
+  .hero__card { position: relative; z-index: 1; }
+  .hero__arch {
+    position: relative; overflow: hidden;
+    height: min(74svh, 780px); aspect-ratio: 600 / 720;
+    border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
+    background:
+      radial-gradient(90% 60% at 50% 18%, rgb(242 247 240 / 0.55), transparent 70%),
+      linear-gradient(180deg, #d9e5d4 0%, var(--accent) 100%);
+    border: 1.5px solid rgb(242 247 240 / 0.7);
+    box-shadow: 0 34px 60px -30px rgb(30 18 10 / 0.55);
+  }
+  :global(:root[data-theme='dark']) .hero__arch {
+    background:
+      radial-gradient(90% 60% at 50% 18%, rgb(178 201 171 / 0.22), transparent 70%),
+      linear-gradient(180deg, #2a322c 0%, #1e2420 100%);
+    border-color: rgb(178 201 171 / 0.3);
+  }
+  .hero__stage { position: absolute; inset: 0 0 6% 0; perspective: 1100px; }
   .hero__tilt { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
   .hero__frame {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: bottom;
     opacity: 0; pointer-events: none; user-select: none;
-    filter: drop-shadow(0 26px 34px rgb(30 18 10 / 0.38));
   }
+  .hero__stage :global(.hero__gl) { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  [data-hero].is-gl .hero__frame { visibility: hidden; }
   /* pitch frames only blend the head/shoulders, so the body never ghosts */
   .hero__frame[data-pitch] {
     -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 28%, transparent 44%);
     mask-image: linear-gradient(to bottom, #000 0, #000 28%, transparent 44%);
   }
   .hero__frame[data-yaw='4'] { opacity: 1; } /* centre frame visible before JS runs */
-  .hero__shadow {
-    position: absolute; inset-inline: 8%; bottom: -2%; height: 8%;
-    background: radial-gradient(closest-side, rgb(30 18 10 / 0.4), transparent);
-    filter: blur(6px);
+  /* floor: a wooden-looking ledge across the bottom with a shadow line where he stands */
+  .hero__floor {
+    position: absolute; inset-inline: 0; bottom: 0; height: 9%;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-hover) 100%);
+    border-top: 2px solid rgb(242 247 240 / 0.6);
+    box-shadow: 0 -14px 22px -6px rgb(30 18 10 / 0.35);
   }
 
-  .hero__copy {
-    position: absolute; z-index: 2; inset-inline-start: 1rem; bottom: 14%;
-    display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; max-width: 22rem;
-  }
-  .hero__sub { margin: 0; font-size: clamp(1.2rem, 2.4vw, 1.7rem); font-weight: 600; line-height: 1.35; }
-  .hero__chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .chip { padding: 0.35rem 0.95rem; border-radius: 999px; border: 1.5px solid rgb(242 247 240 / 0.55); font-size: 0.9rem; transition: background-color 0.2s; }
-  .chip:hover { background: rgb(242 247 240 / 0.18); }
-
-  @media (max-width: 760px) {
-    .ring--b { display: none; }
-    .hero__title { top: 5%; }
-    .hero__stage { height: min(58svh, 540px); }
-    .hero__copy {
-      position: relative; inset: auto; align-items: center; text-align: center;
-      max-width: none; padding-block: 0.5rem 2.5rem; margin-top: 0;
-    }
+  @media (max-width: 860px) {
+    .hero__grid { grid-template-columns: 1fr; justify-items: center; gap: 1.25rem; padding-block: 1.5rem 2.5rem; }
+    .hero__card { order: 1; }
+    .hero__copy { order: 2; align-self: center; align-items: center; text-align: center; margin-bottom: 0; max-width: 30rem; }
     .hero__chips { justify-content: center; }
+    .hero__title { position: static; order: 0; text-align: center; font-size: clamp(3.6rem, 21vw, 7rem); color: rgb(242 247 240 / 0.5); }
+    .hero__arch { height: min(52svh, 480px); }
+    .ring--b { display: none; }
   }
   @media (prefers-reduced-motion: reduce) { .hero__ch { transform: none !important; } }
 </style>

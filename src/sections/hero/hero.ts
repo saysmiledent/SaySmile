@@ -6,6 +6,7 @@
 // - Reduced motion: static centre frame, no listeners.
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { createRelief, type Relief } from './hero3d';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,12 @@ export function initHero() {
   const chars = root.querySelectorAll<HTMLElement>('.hero__ch');
   const blobs = root.querySelectorAll<HTMLElement>('.blob');
   const copy = root.querySelector<HTMLElement>('[data-hero-copy]');
+
+  const surface = root.querySelector<HTMLElement>('[data-relief]')!;
+  const reliefCfg = JSON.parse(surface.dataset.relief || '{}') as { depth: string[]; down: string };
+  let relief: Relief | null = null;
+  let visible = true;
+  const glState = { mix: 0, down: 0, rotX: 0, rotY: 0, lightX: 0, lightY: 0, time: 0 };
 
   const mid = (yawFrames.length - 1) / 2;
   if (reduced) { yawFrames.forEach((f, i) => (f.style.opacity = i === mid ? '1' : '0')); return; }
@@ -49,15 +56,25 @@ export function initHero() {
     yawFrames.forEach((img, k) => {
       img.style.opacity = k === i ? '1' : k === i + 1 ? String(f) : '0';
     });
+    glState.mix = f * f * (3 - 2 * f);
     // look-down frame fades in on top near the centre yaw, with a dead zone so a cursor at eye level shows no ghosting
     const centre = Math.max(0, 1 - Math.abs(gaze.x) * 2.2);
     const dz = (v: number) => { const k = Math.min(1, Math.max(0, (Math.abs(v) - 0.5) / 0.35)); return k * k * (3 - 2 * k); };
-    down.style.opacity = String(gaze.y > 0 ? dz(gaze.y) * centre : 0);
+    const downAmt = gaze.y > 0 ? dz(gaze.y) * centre : 0;
+    down.style.opacity = String(downAmt);
+    glState.down = downAmt;
+    glState.rotY = gaze.x * 0.3;
+    glState.rotX = gaze.y * 0.16;
+    glState.lightX = gaze.x;
+    glState.lightY = gaze.y;
+    if (relief) relief.setFrames(i, i + 1);
 
     // The photos already turn the head; keep the 3D tilt subtle and in the same direction
-    tiltY(gaze.x * maxTilt);
-    tiltX(-gaze.y * maxTilt * 0.6);
-    shiftX(gaze.x * maxShift);
+    if (!relief) {
+      tiltY(gaze.x * maxTilt);
+      tiltX(-gaze.y * maxTilt * 0.6);
+      shiftX(gaze.x * maxShift);
+    }
     blobs.forEach((b, k) => {
       const d = Number(b.dataset.depth || 1) * (k % 2 ? -1 : 1);
       b.style.transform = `translate3d(${-gaze.x * 26 * d}px, ${-gaze.y * 18 * d}px, 0)`;
@@ -76,6 +93,25 @@ export function initHero() {
   };
   addEventListener('pointermove', (e) => aim(e.clientX, e.clientY), { passive: true });
   addEventListener('pointerdown', (e) => aim(e.clientX, e.clientY), { passive: true });
+
+  // --- live 3D relief (WebGL). Falls back to the photo stack above when unavailable ---
+  const colorUrls = yawFrames.map((f) => f.currentSrc || f.src);
+  createRelief(surface, colorUrls, reliefCfg.depth, down.currentSrc || down.src, reliefCfg.down, 600 / 720)
+    .then((r) => {
+      if (!r) return;
+      relief = r;
+      root.classList.add('is-gl');
+      tiltY(0); tiltX(0); shiftX(0);
+      render();
+      addEventListener('resize', () => r.resize());
+    })
+    .catch(() => {});
+  new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(root);
+  gsap.ticker.add((time) => {
+    if (!relief || !visible) return;
+    glState.time = time;
+    relief.render(glState);
+  });
 
   // --- idle sway when nobody is moving the pointer (also what phones see) ---
   gsap.ticker.add((time) => {

@@ -18,8 +18,8 @@ export default {
   hero: {
     alt: 'دکتر سیوان، دندانپزشک',
     title: 'SaySmile',
-    doctor: 'دکتر سیوان · GAM Clinic',
-    subtitle: 'دندانپزشک عمومی در سن‌پترزبورگ',
+    doctor: 'دکتر سیوان',
+    subtitle: 'دندانپزشک ترمیمی و ارتوپد',
     cta: 'رزرو نوبت',
   },
   contactLabels: {
