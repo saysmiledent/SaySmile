@@ -1,9 +1,9 @@
 name: Deploy to GitHub Pages
 
-# v2 is built from the `v2` branch for now; switch to `main` at launch.
+# Live site is built from the default branch (v1 is kept in v1-archive).
 on:
   push:
-    branches: [v2]
+    branches: [v2, codex/change-site-theme-color-and-push-changes-qcu5fp]
   workflow_dispatch:
 
 permissions:
