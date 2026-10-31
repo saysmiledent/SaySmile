@@ -1,64 +1,75 @@
 ---
 import { getPages } from '../../content';
 import { docs } from '../../content/docs';
-import { sectionUrl, type Locale } from '../../i18n';
+import { getDictionary, sectionUrl, type Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
+const t = getDictionary(lang);
 const p = getPages(lang).education;
 const seminars = docs.filter((d) => d.kind === 'seminar');
 ---
 
-<ol class="timeline" data-reveal-group>
-  {p.timeline.map((step) => (
-    <li class="step" data-reveal>
-      <span class="step__when">{step.when}</span>
-      <div class="step__body">
-        <h2>{step.title}</h2>
-        <p>{step.text}</p>
-      </div>
-    </li>
-  ))}
-</ol>
+<section class="sheet" aria-label={t.nav.education}>
+  <div class="container">
+    <ol class="timeline">
+      <li class="rail" aria-hidden="true"><span class="rail__line" data-draw></span></li>
+      {p.timeline.map((step) => (
+        <li class="step" data-activate>
+          <span class="step__dot" aria-hidden="true"></span>
+          <span class="step__when">{step.when}</span>
+          <div class="step__body" data-reveal data-tilt data-tilt-max="3">
+            <h2>{step.title}</h2>
+            <p>{step.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
 
-<h2 class="sem-title" data-reveal>{p.seminarsTitle}</h2>
-<p class="extra" data-reveal>{p.extra}</p>
-<ul class="sem" data-reveal-group>
-  {seminars.map((d) => (
-    <li class="sem__item" data-reveal>
-      <time datetime={d.iso}>{d.text[lang].date}</time>
-      <h3>{d.text[lang].title}</h3>
-      <p>{d.text[lang].issuer} · {d.text[lang].note}</p>
-    </li>
-  ))}
-</ul>
-<p class="more" data-reveal><a class="btn" href={sectionUrl(lang, 'diplomas')}>{p.allDocs}</a></p>
+<section class="sheet sheet--c grain" aria-labelledby="sem-title">
+  <span class="orb orb--a" aria-hidden="true" data-mdepth="1.2"></span>
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="sec-title" id="sem-title" data-split>{p.seminarsTitle}</h2>
+      <p class="sec-lead" data-reveal>{p.extra}</p>
+    </div>
+    <ul class="sem" data-reveal-group>
+      {seminars.map((d) => (
+        <li class="sem__item" data-reveal data-tilt data-tilt-max="5">
+          <time datetime={d.iso}>{d.text[lang].date}</time>
+          <h3>{d.text[lang].title}</h3>
+          <p>{d.text[lang].issuer} · {d.text[lang].note}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="more" data-reveal><a class="btn btn--arrow" href={sectionUrl(lang, 'diplomas')} data-magnetic="0.3">{p.allDocs}</a></p>
+  </div>
+</section>
 
 <style>
-  .timeline { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 1rem; }
-  .timeline::before {
-    content: ''; position: absolute; inset-block: 1rem; inset-inline-start: 7.6rem; width: 3px;
-    background: var(--accent); border-radius: 3px;
-  }
-  .step { display: grid; grid-template-columns: 7rem 1fr; gap: 2rem; align-items: start; position: relative; }
-  .step::before {
-    content: ''; position: absolute; inset-inline-start: 7.1rem; top: 1.35rem; width: 1rem; height: 1rem;
-    border-radius: 50%; background: var(--primary); border: 3px solid var(--bg); z-index: 1;
-  }
-  .step__when { padding-top: 1rem; font-weight: 700; color: var(--primary); }
-  .step__body { margin-inline-start: 1.5rem; padding: 1.1rem 1.5rem; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
-  h2 { font-size: 1.3rem; margin-bottom: 0.25rem; }
+  .timeline { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: clamp(2rem, 5vw, 3.5rem); }
+  .rail { position: absolute; inset-block: 0.5rem; inset-inline-start: 0.55rem; width: 3px; background: var(--line); border-radius: 3px; }
+  .rail__line { display: block; height: 100%; background: linear-gradient(var(--accent), var(--primary)); border-radius: 3px; transform-origin: top; }
+  .step { position: relative; display: grid; grid-template-columns: minmax(8rem, 0.45fr) 1fr; gap: clamp(1rem, 4vw, 3rem); align-items: center; padding-inline-start: 2.6rem; }
+  .step__dot { position: absolute; inset-inline-start: 0; top: 1.2rem; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--bg); border: 3px solid var(--line); transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s; }
+  .step.is-on .step__dot { background: var(--primary); border-color: var(--accent); box-shadow: 0 0 0 8px rgb(178 201 171 / 0.35); }
+  .step__when { font-size: clamp(2.4rem, 6.5vw, 5rem); font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--primary); transition: color 0.5s; font-variant-numeric: tabular-nums; }
+  html[lang='fa'] .step__when { letter-spacing: 0; }
+  .step.is-on .step__when { color: var(--primary); }
+  .step__body { padding: clamp(1.2rem, 3vw, 1.8rem) clamp(1.3rem, 3vw, 2rem); border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+  h2 { font-size: clamp(1.25rem, 2.4vw, 1.7rem); margin-bottom: 0.3rem; letter-spacing: -0.02em; }
   .step p { margin: 0; color: var(--text-muted); }
-  .sem-title { margin-top: 3rem; font-size: 1.6rem; }
-  .extra { color: var(--accent-ink); font-weight: 600; }
-  .sem { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 0.9rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
-  .sem__item { padding: 1.1rem 1.3rem; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
-  .sem__item time { color: var(--primary); font-weight: 700; font-size: 0.9rem; }
-  .sem__item h3 { font-size: 1.05rem; margin: 0.2rem 0 0.35rem; line-height: 1.35; }
-  .sem__item p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
-  .more { margin-top: 2rem; }
-  @media (max-width: 640px) {
-    .timeline::before, .step::before { display: none; }
-    .step { grid-template-columns: 1fr; gap: 0.25rem; }
-    .step__body { margin-inline-start: 0; }
-    .step__when { padding-top: 0; }
+  .orb--a { width: 28rem; height: 28rem; inset-block-start: -9rem; inset-inline-end: -7rem; background: radial-gradient(circle, rgb(255 255 255 / 0.45), transparent 65%); }
+  .sem { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); position: relative; z-index: 1; }
+  .sem__item { padding: 1.4rem 1.6rem; border-radius: var(--radius-lg); background: rgb(255 255 255 / 0.5); border: 1px solid rgb(39 39 42 / 0.12); }
+  :global(:root[data-theme='dark']) .sem__item { background: rgb(255 255 255 / 0.06); border-color: rgb(178 201 171 / 0.25); }
+  .sem__item time { font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; }
+  .sem__item h3 { font-size: 1.12rem; margin: 0.25rem 0 0.4rem; line-height: 1.35; }
+  .sem__item p { margin: 0; font-size: 0.92rem; opacity: 0.8; }
+  .more { margin: 2.5rem 0 0; position: relative; z-index: 1; }
+  .more .btn { background: #27272a; color: #fff; }
+  @media (max-width: 720px) {
+    .step { grid-template-columns: 1fr; gap: 0.6rem; }
+    .step__dot { top: 0.9rem; }
   }
 </style>

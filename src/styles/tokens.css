@@ -19,6 +19,15 @@
   --hero-b: #9a8573;
   --hero-ink: #f2f7f0;
 
+  /* colour bands (stacked sheets) */
+  --sheet-c: #b2c9ab;       /* pistachio band */
+  --on-sheet-c: #27272a;
+  --sheet-d: #9a7b66;       /* cappuccino band */
+  --on-sheet-d: #ffffff;
+  --deep: #1f2420;          /* graphite-green band: footer, CTA */
+  --on-deep: #f2f7f0;
+  --sheet-r: clamp(28px, 5vw, 64px);
+
   --radius: 16px;
   --radius-lg: 28px;
   --container: 1180px;
@@ -46,6 +55,13 @@
   --accent-ink: #cfe3c8;
   --text: #f8fafc;
   --text-muted: #a4b0be;
+
+  --sheet-c: #243028;
+  --on-sheet-c: #f8fafc;
+  --sheet-d: #6f5848;
+  --on-sheet-d: #f8fafc;
+  --deep: #0d100e;
+  --on-deep: #f8fafc;
 
   --hero-a: #3a3330;
   --hero-b: #141815;

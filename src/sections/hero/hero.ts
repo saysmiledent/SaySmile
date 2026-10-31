@@ -94,6 +94,29 @@ export function initHero() {
   addEventListener('pointermove', (e) => aim(e.clientX, e.clientY), { passive: true });
   addEventListener('pointerdown', (e) => aim(e.clientX, e.clientY), { passive: true });
 
+  // --- spotlight follows the pointer; the big brand letters bulge up toward it ---
+  const letters = [...chars].map((el) => ({
+    el,
+    y: gsap.quickTo(el, 'y', { duration: 0.45, ease: 'power3.out' }),
+    s: gsap.quickTo(el, 'scaleY', { duration: 0.45, ease: 'power3.out' }),
+  }));
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    addEventListener('pointermove', (e) => {
+      const r = root.getBoundingClientRect();
+      root.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      root.style.setProperty('--my', `${e.clientY - r.top}px`);
+      if (r.bottom < 0) return;
+      letters.forEach((l) => {
+        const b = l.el.getBoundingClientRect();
+        const dx = e.clientX - (b.left + b.width / 2);
+        const dy = e.clientY - (b.top + b.height / 2);
+        const k = Math.exp(-(dx * dx + dy * dy) / (2 * 150 * 150));
+        l.y(-k * 34);
+        l.s(1 + k * 0.16);
+      });
+    }, { passive: true });
+  }
+
   // --- live 3D relief (WebGL). Falls back to the photo stack above when unavailable ---
   const colorUrls = yawFrames.map((f) => f.currentSrc || f.src);
   createRelief(surface, colorUrls, reliefCfg.depth, down.currentSrc || down.src, reliefCfg.down, 600 / 720)
@@ -123,6 +146,7 @@ export function initHero() {
   // --- intro ---
   gsap.from(chars, { yPercent: 40, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.07 });
   gsap.from(stage, { y: 60, opacity: 0, duration: 1.1, ease: 'power3.out', delay: 0.15 });
+  gsap.from(root.querySelectorAll('.glass'), { opacity: 0, scale: 0.8, y: 24, duration: 0.9, delay: 1, stagger: 0.18, ease: 'back.out(1.6)' });
   if (copy) gsap.from(copy.children, { y: 24, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.12, delay: 0.5 });
 
   // --- scroll: the scene recedes ---

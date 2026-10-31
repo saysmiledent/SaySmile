@@ -4,10 +4,14 @@
 // drift at different depths and the big brand name spreads on scroll. See hero.ts.
 import { contactLinks } from '../../config/site';
 import { getDictionary, type Locale } from '../../i18n';
+import { getPages } from '../../content';
 
 interface Props { lang: Locale }
 const { lang } = Astro.props;
 const t = getDictionary(lang);
+const pages = getPages(lang);
+const facts = pages.about.facts;
+const words = [...pages.services.items.map((x) => x.title), ...facts.map((f) => f.title), pages.contact.address];
 const links = contactLinks();
 const primary = links[0];
 const chips = links.filter((l) => l.id === 'telegram' || l.id === 'whatsapp');
@@ -32,7 +36,8 @@ const relief = JSON.stringify({
 });
 ---
 
-<section class="hero" data-hero>
+<section class="hero grain" data-hero>
+  <div class="hero__spot" aria-hidden="true"></div>
   <div class="hero__bg" aria-hidden="true">
     <span class="blob blob--a" data-depth="0.4"></span>
     <span class="blob blob--b" data-depth="0.8"></span>
@@ -49,10 +54,10 @@ const relief = JSON.stringify({
     <div class="hero__copy" data-hero-copy>
       <span class="tag">{t.hero.doctor}</span>
       <p class="hero__sub">{t.hero.subtitle}</p>
-      {primary && <a class="btn btn--light" href={primary.href} target="_blank" rel="noopener">{t.hero.cta}</a>}
+      {primary && <a class="btn btn--light btn--arrow" href={primary.href} target="_blank" rel="noopener" data-magnetic="0.3">{t.hero.cta}</a>}
       <div class="hero__chips">
         {chips.map((c) => (
-          <a class="chip" href={c.href} target="_blank" rel="noopener">{t.contactLabels[c.id]}</a>
+          <a class="chip" href={c.href} target="_blank" rel="noopener" data-magnetic="0.25">{t.contactLabels[c.id]}</a>
         ))}
       </div>
     </div>
@@ -69,18 +74,32 @@ const relief = JSON.stringify({
         </div>
         <span class="hero__floor" aria-hidden="true"></span>
       </div>
+      {facts.slice(0, 3).map((f, i) => (
+        <div class={`glass glass--${i}`} data-mdepth={1.1 + i * 0.5}>
+          <b>{f.title}</b>
+          <span>{f.text}</span>
+        </div>
+      ))}
     </div>
   </div>
+
+  <div class="hero__ticker marquee" data-marquee="1" data-speed="36" aria-hidden="true">
+    <div class="marquee__track">
+      {words.map((w) => <span class="marquee__item">{w}</span>)}
+    </div>
+  </div>
+  <a class="hero__cue" href="#portal" aria-label="scroll"><span></span></a>
 </section>
 
 <style>
   .hero {
     position: relative; overflow: clip; color: var(--hero-ink);
-    min-height: calc(100svh - var(--header-h));
+    min-height: 100svh;
     display: grid; align-items: end;
     background:
       radial-gradient(120% 90% at 70% 10%, var(--hero-a) 0%, var(--hero-b) 75%);
   }
+  .hero__spot { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: radial-gradient(34rem circle at var(--mx, 60%) var(--my, 40%), rgb(242 247 240 / 0.28), transparent 60%); mix-blend-mode: soft-light; }
   .hero__bg { position: absolute; inset: 0; pointer-events: none; }
   .blob, .ring { position: absolute; border-radius: 50%; will-change: transform; }
   .blob--a { width: 38vmax; height: 38vmax; inset-block-start: -12%; inset-inline-start: -10%; background: radial-gradient(circle at 30% 30%, var(--accent), transparent 68%); opacity: 0.5; }
@@ -93,11 +112,11 @@ const relief = JSON.stringify({
   .hero__grid {
     position: relative; display: grid; align-items: center; gap: 2rem;
     grid-template-columns: minmax(0, 1fr) auto;
-    min-height: calc(100svh - var(--header-h));
-    padding-block: 2rem;
+    min-height: 100svh;
+    padding-block: calc(var(--header-h) + 3rem) calc(7.5rem + var(--sheet-r));
   }
   .hero__title {
-    position: absolute; left: 1rem; top: 6%; margin: 0; text-align: left;
+    position: absolute; left: 1rem; top: calc(var(--header-h) + 2.2rem); margin: 0; text-align: left;
     font-size: clamp(3.6rem, 10vw, 9.5rem); font-weight: 800; letter-spacing: -0.055em; line-height: 0.9;
     color: rgb(178 201 171 / 0.42);
     direction: ltr; user-select: none; z-index: 0;
@@ -154,8 +173,24 @@ const relief = JSON.stringify({
     box-shadow: 0 -14px 22px -6px rgb(30 18 10 / 0.35);
   }
 
+  /* glass fact cards orbiting the portrait; they drift with the pointer */
+  .glass { position: absolute; z-index: 4; max-width: 15rem; padding: 0.85rem 1.1rem; border-radius: 1.1rem; display: grid; gap: 0.15rem; font-size: 0.86rem; line-height: 1.35; color: #27272a; background: rgb(250 252 249 / 0.72); border: 1px solid rgb(255 255 255 / 0.7); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 18px 40px -22px rgb(30 18 10 / 0.6); animation: bob 6s ease-in-out infinite; }
+  :global(:root[data-theme='dark']) .glass { color: var(--text); background: rgb(30 36 32 / 0.7); border-color: rgb(178 201 171 / 0.3); }
+  .glass b { font-size: 0.98rem; }
+  .glass--0 { inset-block-start: 14%; inset-inline-start: -5.5rem; }
+  .glass--1 { inset-block-start: 46%; inset-inline-end: -1.5rem; animation-delay: -2s; }
+  .glass--2 { inset-block-end: 12%; inset-inline-start: -4rem; animation-delay: -4s; }
+  @keyframes bob { 50% { translate: 0 -10px; } }
+  .hero__ticker { position: absolute; inset-inline: 0; bottom: calc(var(--sheet-r) + 0.4rem); z-index: 3; padding-block: 0.9rem; font-size: clamp(1.4rem, 3.2vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; color: transparent; -webkit-text-stroke: 1.2px rgb(242 247 240 / 0.7); background: linear-gradient(180deg, transparent, rgb(30 18 10 / 0.22)); border-top: 1px solid rgb(242 247 240 / 0.25); }
+  .hero__ticker .marquee__item::after { background: var(--accent); opacity: 1; }
+  .hero__cue { position: absolute; z-index: 3; inset-inline-start: 50%; bottom: calc(var(--sheet-r) + 6rem); translate: -50% 0; width: 1.6rem; height: 2.6rem; border: 2px solid rgb(242 247 240 / 0.7); border-radius: 1rem; display: none; }
+  .hero__cue span { position: absolute; left: 50%; top: 0.45rem; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: #f2f7f0; animation: cue 1.8s ease-in-out infinite; }
+  @keyframes cue { 0% { opacity: 0; translate: 0 0; } 30% { opacity: 1; } 100% { opacity: 0; translate: 0 14px; } }
+  @media (min-width: 861px) and (min-height: 700px) { .hero__cue { display: block; } }
+  @media (max-width: 1100px) { .glass--0 { inset-inline-start: 0; } .glass--2 { inset-inline-start: 0; } .glass--1 { inset-inline-end: 0; } }
   @media (max-width: 860px) {
-    .hero__grid { grid-template-columns: 1fr; justify-items: center; gap: 1.25rem; padding-block: 1.5rem 2.5rem; }
+    .glass { display: none; }
+    .hero__grid { grid-template-columns: 1fr; justify-items: center; gap: 1.1rem; padding-block: calc(var(--header-h) + 2.2rem) calc(5.5rem + var(--sheet-r)); }
     .hero__card { order: 1; }
     .hero__copy { order: 2; align-self: center; align-items: center; text-align: center; margin-bottom: 0; max-width: 30rem; }
     .hero__chips { justify-content: center; }
@@ -164,7 +199,7 @@ const relief = JSON.stringify({
     .hero__arch { height: min(52svh, 480px); }
     .ring--b { display: none; }
   }
-  @media (prefers-reduced-motion: reduce) { .hero__ch { transform: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .hero__ch { transform: none !important; } .glass, .hero__cue span { animation: none; } }
 </style>
 
 <script>

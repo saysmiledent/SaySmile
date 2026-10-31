@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHero from './PageHero.astro';
 import { getPages } from '../content';
 import { getDictionary, localeUrl, sectionUrl, type Locale } from '../i18n';
 import { contactLinks } from '../config/site';
@@ -18,6 +19,8 @@ const book = contactLinks()[0];
 const others = articles.filter((x) => x.slug !== article.slug).slice(0, 3);
 const date = new Date(article.iso).toLocaleDateString(lang === 'fa' ? 'fa-IR' : lang === 'ru' ? 'ru-RU' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 const root = new URL(localeUrl('ru'), origin).href;
+const nf = lang === 'fa' ? article.minutes.toLocaleString('fa-IR') : article.minutes;
+const meta = `${date} · ${nf} ${p.minutes} · ${p.author}: ${t.hero.doctor}`;
 
 const schema = [
   breadcrumb([
@@ -46,15 +49,9 @@ const schema = [
 ---
 
 <Base lang={lang} path={path} current="articles" title={a.title} description={a.description} ogType="article" published={article.iso} schema={schema}>
-  <header class="band">
-    <div class="container band__inner">
-      <a class="back" href={sectionUrl(lang, 'articles')}>← {p.back}</a>
-      <h1>{a.title}</h1>
-      <p class="meta"><time datetime={article.iso}>{date}</time> · {lang === 'fa' ? article.minutes.toLocaleString('fa-IR') : article.minutes} {p.minutes} · {p.author}: {t.hero.doctor}</p>
-    </div>
-  </header>
+  <PageHero lang={lang} small title={a.title} lead={meta} back={{ href: sectionUrl(lang, 'articles'), label: p.back }} />
 
-  <article class="content">
+  <article class="sheet">
     <div class="container prose">
       <p class="lead">{a.lead}</p>
 
@@ -87,33 +84,33 @@ const schema = [
       {book && <p><a class="btn" href={book.href} target="_blank" rel="noopener">{t.hero.cta}</a></p>}
     </div>
 
-    <div class="container more">
-      <h2>{p.back}</h2>
+  </article>
+
+  <section class="sheet sheet--c grain more" aria-label={p.back}>
+    <div class="container">
+      <h2 class="sec-title" data-split>{p.back}</h2>
       <ul>
-        {others.map((o) => <li><a href={localeUrl(lang, `articles/${o.slug}/`)}>{o.text[lang].title}</a></li>)}
+        {others.map((o) => <li data-reveal><a href={localeUrl(lang, `articles/${o.slug}/`)}>{o.text[lang].title}<span aria-hidden="true">→</span></a></li>)}
       </ul>
     </div>
-  </article>
+  </section>
 </Base>
 
 <style>
-  .band { position: relative; overflow: clip; color: var(--hero-ink); background: radial-gradient(110% 160% at 85% 0%, var(--hero-a) 0%, var(--hero-b) 80%); }
-  .band__inner { position: relative; padding-block: clamp(2.2rem, 6vw, 4rem); z-index: 1; max-width: 60rem; }
-  .back { display: inline-block; margin-bottom: 1rem; font-weight: 600; color: rgb(242 247 240 / 0.88); }
-  h1 { font-size: clamp(1.8rem, 4.6vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
-  .meta { margin: 0; color: rgb(242 247 240 / 0.88); }
-  .content { padding-block: clamp(2rem, 5vw, 3.5rem); }
-  .prose { max-width: 46rem; }
-  .lead { font-size: 1.2rem; font-weight: 500; }
-  .key { margin: 1.5rem 0 2rem; padding: 1.1rem 1.4rem; border-radius: var(--radius); background: var(--accent); color: #27272a; }
-  .key h2 { font-size: 1.1rem; margin-bottom: 0.4rem; }
-  .key ul { margin: 0; padding-inline-start: 1.2rem; display: grid; gap: 0.35rem; }
-  section h2 { font-size: 1.45rem; margin-top: 2rem; }
+  .prose { max-width: 46rem; margin-inline: auto; }
+  .lead { font-size: clamp(1.25rem, 2.4vw, 1.6rem); font-weight: 550; line-height: 1.5; }
+  .key { margin: 1.75rem 0 2.25rem; padding: 1.3rem 1.6rem; border-radius: var(--radius-lg); background: var(--accent); color: #27272a; }
+  .key h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .key ul { margin: 0; padding-inline-start: 1.2rem; display: grid; gap: 0.4rem; }
+  section h2 { font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em; margin-top: 2.5rem; }
+  .prose p { font-size: 1.08rem; }
   .refs ol { padding-inline-start: 1.3rem; display: grid; gap: 0.6rem; font-size: 0.92rem; }
   .refs a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; word-break: break-word; }
   .disc { margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid var(--line); }
-  .more { margin-top: 3rem; }
-  .more h2 { font-size: 1.2rem; }
-  .more ul { padding-inline-start: 1.2rem; display: grid; gap: 0.4rem; }
-  .more a { color: var(--primary); font-weight: 600; }
+  .more h2.sec-title { margin: 0 0 1.5rem; font-size: clamp(2rem, 5vw, 3.4rem); }
+  .more ul { list-style: none; padding: 0; margin: 0; display: grid; border-top: 1px solid rgb(39 39 42 / 0.25); }
+  .more li { border-bottom: 1px solid rgb(39 39 42 / 0.25); }
+  .more a { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem 0.25rem; font-size: clamp(1.15rem, 2.4vw, 1.7rem); font-weight: 700; letter-spacing: -0.02em; transition: padding 0.3s; }
+  .more a:hover { padding-inline: 1.2rem; }
+  :global([dir='rtl']) .more a span { transform: scaleX(-1); }
 </style>

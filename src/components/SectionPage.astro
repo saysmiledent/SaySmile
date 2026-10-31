@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHero from './PageHero.astro';
 import About from '../sections/about/About.astro';
 import Services from '../sections/services/Services.astro';
 import Gallery from '../sections/gallery/Gallery.astro';
@@ -12,7 +13,7 @@ import { getDictionary, localeUrl, sectionUrl, type Locale, type SectionId } fro
 import { breadcrumb, faqPage } from '../lib/seo';
 import { getPages } from '../content';
 
-// One menu page: coloured title band + the section's own component.
+// One menu page: animated title + the section's own colour sheets.
 interface Props { lang: Locale; section: SectionId }
 const { lang, section } = Astro.props;
 const t = getDictionary(lang);
@@ -26,39 +27,13 @@ if (section === 'services') schema.push(faqPage(pages.faq.items));
 ---
 
 <Base lang={lang} path={`${section}/`} current={section} title={seo.title} description={seo.description} schema={schema}>
-  <header class="band">
-    <div class="container band__inner">
-      <h1 data-reveal>{t.nav[section]}</h1>
-      <p data-reveal>{lead}</p>
-    </div>
-  </header>
-
-  <div class="content">
-    <div class="container">
-      {section === 'about' && <About lang={lang} />}
-      {section === 'services' && <Services lang={lang} />}
-      {section === 'gallery' && <Gallery lang={lang} />}
-      {section === 'diplomas' && <Diplomas lang={lang} />}
-      {section === 'education' && <Education lang={lang} />}
-      {section === 'articles' && <Articles lang={lang} />}
-      {section === 'tutorials' && <Tutorials lang={lang} />}
-      {section === 'contact' && <Contact lang={lang} />}
-    </div>
-  </div>
+  <PageHero lang={lang} title={t.nav[section]} lead={lead} />
+  {section === 'about' && <About lang={lang} />}
+  {section === 'services' && <Services lang={lang} />}
+  {section === 'gallery' && <Gallery lang={lang} />}
+  {section === 'diplomas' && <Diplomas lang={lang} />}
+  {section === 'education' && <Education lang={lang} />}
+  {section === 'articles' && <Articles lang={lang} />}
+  {section === 'tutorials' && <Tutorials lang={lang} />}
+  {section === 'contact' && <Contact lang={lang} />}
 </Base>
-
-<style>
-  .band {
-    position: relative; overflow: clip; color: var(--hero-ink);
-    background: radial-gradient(110% 160% at 85% 0%, var(--hero-a) 0%, var(--hero-b) 80%);
-  }
-  .band::after {
-    content: ''; position: absolute; width: 26rem; height: 26rem; border-radius: 50%;
-    inset-block-start: -45%; inset-inline-end: -6rem;
-    background: radial-gradient(circle at 35% 35%, var(--accent), transparent 68%); opacity: 0.45;
-  }
-  .band__inner { position: relative; padding-block: clamp(2.5rem, 7vw, 5rem); z-index: 1; }
-  h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.4rem; }
-  p { font-size: clamp(1.05rem, 2vw, 1.3rem); max-width: 40rem; margin: 0; color: rgb(242 247 240 / 0.88); }
-  .content { padding-block: clamp(2.5rem, 6vw, 4.5rem); min-height: 40vh; }
-</style>

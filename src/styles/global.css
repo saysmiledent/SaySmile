@@ -1,10 +1,12 @@
 @import '@fontsource-variable/onest';
 @import '@fontsource-variable/vazirmatn';
 @import './tokens.css';
+@import './motion.css';
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; }
+html:not(.lenis) { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -51,11 +53,4 @@ bdi, .ltr { unicode-bidi: isolate; }
 .sr-only {
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
-}
-
-/* Animation system: elements start hidden only when JS + motion are on */
-html.js-motion [data-reveal] { opacity: 0; }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  html.js-motion [data-reveal] { opacity: 1; }
 }

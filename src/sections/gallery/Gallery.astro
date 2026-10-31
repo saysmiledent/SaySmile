@@ -9,9 +9,11 @@ const src = (id: string, i: number) => `${base}img/gallery/${id}-${i}.webp`;
 const cats = ['hygiene', 'caries', 'restoration'] as const;
 ---
 
+<section class="sheet" aria-label={g.all}>
+<div class="container">
 <div class="filters" role="group" aria-label={g.all} data-reveal>
-  <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">{g.all}</button>
-  {cats.map((c) => <button type="button" class="chip" data-filter={c} aria-pressed="false">{g.filters[c]}</button>)}
+  <button type="button" class="chip is-on" data-filter="all" aria-pressed="true" data-magnetic="0.2">{g.all}</button>
+  {cats.map((c) => <button type="button" class="chip" data-filter={c} aria-pressed="false" data-magnetic="0.2">{g.filters[c]}</button>)}
 </div>
 
 <div class="grid" data-gallery>
@@ -19,9 +21,9 @@ const cats = ['hygiene', 'caries', 'restoration'] as const;
     const txt = g.texts[c.text];
     const labels = g.steps[c.text] ?? [];
     return (
-      <figure class:list={['case', { 'case--wide': c.kind === 'steps' }]} data-cat={c.cat}>
+      <figure class:list={['case', { 'case--wide': c.kind === 'steps' }]} data-cat={c.cat} data-tilt="flat" data-reveal>
         {c.kind === 'pair' ? (
-          <div class="cmp" style={`--r:${c.ratio}; --pos:50%`} data-cmp>
+          <div class="cmp" style={`--r:${c.ratio}; --pos:50%`} data-cmp data-cursor={g.drag}>
             <img class="cmp__img" src={src(c.id, 2)} alt={`${txt.title}: ${g.after}`} loading="lazy" decoding="async" />
             <div class="cmp__before"><img class="cmp__img" src={src(c.id, 1)} alt={`${txt.title}: ${g.before}`} loading="lazy" decoding="async" /></div>
             <span class="badge badge--b">{g.before}</span>
@@ -44,31 +46,56 @@ const cats = ['hygiene', 'caries', 'restoration'] as const;
     );
   })}
 </div>
-<p class="note">{g.note}</p>
+</div>
+</section>
+
+<section class="sheet sheet--c grain" aria-label={g.note}>
+  <span class="orb orb--a" aria-hidden="true" data-mdepth="1.2"></span>
+  <div class="container">
+    <p class="note" data-split>{g.note}</p>
+  </div>
+</section>
 
 <script>
+  import { gsap } from 'gsap';
   document.querySelectorAll<HTMLElement>('[data-cmp]').forEach((box) => {
     const range = box.querySelector<HTMLInputElement>('.cmp__range')!;
     const set = () => box.style.setProperty('--pos', `${range.value}%`);
     range.addEventListener('input', set);
     set();
+    // first time a slider scrolls into view it sweeps once, so it is obvious it can be dragged
+    const io = new IntersectionObserver((e) => {
+      if (!e[0].isIntersecting) return;
+      io.disconnect();
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const o = { v: 50 };
+      gsap.timeline()
+        .to(o, { v: 28, duration: 0.7, ease: 'power2.inOut', onUpdate: () => { range.value = String(o.v); set(); } })
+        .to(o, { v: 72, duration: 0.9, ease: 'power2.inOut', onUpdate: () => { range.value = String(o.v); set(); } })
+        .to(o, { v: 50, duration: 0.6, ease: 'power2.out', onUpdate: () => { range.value = String(o.v); set(); } });
+    }, { threshold: 0.7 });
+    io.observe(box);
   });
   const chips = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
   const figs = document.querySelectorAll<HTMLElement>('[data-gallery] .case');
   chips.forEach((chip) => chip.addEventListener('click', () => {
     const f = chip.dataset.filter!;
     chips.forEach((c) => { const on = c === chip; c.classList.toggle('is-on', on); c.setAttribute('aria-pressed', String(on)); });
-    figs.forEach((fig) => { fig.hidden = !(f === 'all' || fig.dataset.cat === f); });
+    figs.forEach((fig) => {
+      const show = f === 'all' || fig.dataset.cat === f;
+      fig.hidden = !show;
+      if (show) gsap.fromTo(fig, { opacity: 0, y: 30, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power3.out', clearProps: 'transform' });
+    });
   }));
 </script>
 
 <style>
   .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
-  .chip { padding: 0.5rem 1.1rem; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; transition: background-color 0.2s, border-color 0.2s; }
+  .chip { padding: 0.6rem 1.3rem; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; transition: background-color 0.2s, border-color 0.2s; }
   .chip:hover { border-color: var(--primary); }
   .chip.is-on { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
   .grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); }
-  .case { margin: 0; display: grid; gap: 0.75rem; align-content: start; padding: 0.75rem; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); }
+  .case { margin: 0; box-shadow: var(--shadow); display: grid; gap: 0.75rem; align-content: start; padding: 0.75rem; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); }
   .case[hidden] { display: none; }
   .case--wide { grid-column: 1 / -1; }
   figcaption { display: grid; gap: 0.15rem; padding: 0 0.4rem 0.4rem; }
@@ -92,5 +119,7 @@ const cats = ['hygiene', 'caries', 'restoration'] as const;
   .step img { width: 100%; height: 100%; object-fit: cover; }
   :global([dir='rtl']) .badge--s { left: auto; right: 0.5rem; }
   @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } .step { aspect-ratio: 3 / 2; } }
-  .note { margin-top: 1.75rem; font-size: 0.9rem; color: var(--text-muted); max-width: 70ch; }
+  .orb--a { width: 26rem; height: 26rem; inset-block-start: -8rem; inset-inline-end: -6rem; background: radial-gradient(circle, rgb(255 255 255 / 0.4), transparent 65%); }
+  .note { margin: 0; position: relative; z-index: 1; font-size: clamp(1.4rem, 3.4vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; max-width: 40ch; text-wrap: balance; }
+  html[lang='fa'] .note { line-height: 1.6; letter-spacing: 0; }
 </style>

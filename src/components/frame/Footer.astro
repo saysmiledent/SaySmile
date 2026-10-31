@@ -8,14 +8,38 @@ const { lang } = Astro.props;
 const t = getDictionary(lang);
 const p = getPages(lang);
 const links = contactLinks();
+const book = links[0];
+const words = [...p.services.items.map((s) => s.title), ...p.about.facts.map((f) => f.title)];
 ---
 
-<footer class="footer">
+<footer class="footer sheet sheet--deep grain">
+  <span class="orb orb--a" aria-hidden="true" data-mdepth="0.8"></span>
+  <span class="orb orb--b" aria-hidden="true" data-mdepth="1.4"></span>
+
+  <div class="container cta">
+    <p class="eyebrow" data-reveal>SaySmile</p>
+    <h2 class="cta__title" data-split>{t.hero.cta}</h2>
+    <p class="cta__lead" data-reveal>{p.contact.lead}</p>
+    {book && (
+      <a class="cta__btn" href={book.href} target="_blank" rel="noopener" data-magnetic="0.35" data-cursor={t.contactLabels[book.id]} aria-label={`${t.hero.cta}: ${t.contactLabels[book.id]}`}>
+        <span>{t.contactLabels[book.id]}</span>
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+      </a>
+    )}
+  </div>
+
+  <div class="marquee big" data-marquee="1" data-speed="40" aria-hidden="true">
+    <div class="marquee__track">
+      {words.map((w) => <span class="marquee__item">{w}</span>)}
+    </div>
+  </div>
+
   <div class="container footer__grid">
     <div>
       <a class="footer__brand" href={localeUrl(lang)}>Say<span>Smile</span></a>
       <p class="footer__muted">{t.hero.subtitle}</p>
       <p class="footer__muted">{p.contact.address}</p>
+      <p class="footer__muted">{p.contact.hours}</p>
     </div>
 
     <nav class="footer__col" aria-label={t.ui.menu}>
@@ -31,21 +55,43 @@ const links = contactLinks();
       <a href={site.instagram} rel="noopener" target="_blank">Instagram</a>
     </div>
   </div>
+
   <div class="container footer__bottom">
     <p class="footer__disc">{t.footer.disclaimer}</p>
     <small>© {new Date().getFullYear()} <bdi>SaySmile</bdi> · {t.footer.rights}</small>
   </div>
+
+  <div class="mark" aria-hidden="true"><span data-parallax="0.08">SaySmile</span></div>
 </footer>
 
 <style>
-  .footer { background: var(--bar); color: var(--on-bar); padding-top: 3rem; }
-  .footer__grid { display: grid; gap: 2rem; grid-template-columns: 1.4fr 1fr 1fr; }
-  .footer__brand { display: inline-block; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; direction: ltr; }
+  .footer { --sheet-bg: var(--deep); padding-bottom: 0; }
+  .orb--a { width: 38rem; height: 38rem; inset-block-start: -14rem; inset-inline-end: -10rem; background: radial-gradient(circle, rgb(178 201 171 / 0.35), transparent 65%); }
+  .orb--b { width: 22rem; height: 22rem; inset-block-end: 6rem; inset-inline-start: -8rem; background: radial-gradient(circle, rgb(181 146 123 / 0.35), transparent 65%); }
+  .cta { position: relative; z-index: 1; display: grid; gap: 1.1rem; justify-items: start; padding-bottom: clamp(3rem, 7vw, 5rem); }
+  .cta__title { margin: 0; font-size: clamp(3rem, 12vw, 9rem); font-weight: 800; letter-spacing: -0.05em; line-height: 0.95; }
+  html[lang='fa'] .cta__title { letter-spacing: 0; line-height: 1.3; }
+  .cta__lead { margin: 0; max-width: 34rem; font-size: clamp(1.05rem, 2vw, 1.3rem); opacity: 0.8; }
+  .cta__btn {
+    margin-top: 0.75rem; display: inline-flex; align-items: center; gap: 0.9rem;
+    padding: 1.15rem 1.4rem 1.15rem 2.2rem; border-radius: 999px; font-size: 1.25rem; font-weight: 700;
+    background: var(--accent); color: #27272a; transition: background-color 0.3s, gap 0.3s;
+  }
+  :global([dir='rtl']) .cta__btn { padding: 1.15rem 2.2rem 1.15rem 1.4rem; }
+  :global([dir='rtl']) .cta__btn svg { transform: scaleX(-1); }
+  .cta__btn:hover { background: #fafcf9; gap: 1.3rem; }
+  .big { font-size: clamp(3rem, 9vw, 7rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.2; padding-block: 1.25rem; border-block: 1px solid rgb(255 255 255 / 0.12); color: transparent; -webkit-text-stroke: 1.5px rgb(242 247 240 / 0.55); position: relative; z-index: 1; }
+  .big .marquee__item::after { background: var(--accent); opacity: 1; -webkit-text-stroke: 0; }
+  .footer__grid { position: relative; z-index: 1; display: grid; gap: 2rem; grid-template-columns: 1.4fr 1fr 1fr; padding-top: clamp(2.5rem, 6vw, 4rem); }
+  .footer__brand { display: inline-block; font-weight: 800; font-size: 1.6rem; letter-spacing: -0.04em; direction: ltr; }
   .footer__brand span { color: var(--accent); }
-  .footer__muted { margin: 0.25rem 0 0; color: color-mix(in srgb, var(--on-bar) 70%, transparent); }
-  .footer__col { display: flex; flex-direction: column; gap: 0.5rem; color: color-mix(in srgb, var(--on-bar) 78%, transparent); }
-  .footer__col a:hover { color: var(--accent); }
-  .footer__bottom { margin-top: 2.5rem; padding-block: 1.25rem; border-top: 1px solid rgb(255 255 255 / 0.15); color: color-mix(in srgb, var(--on-bar) 65%, transparent); }
-  .footer__disc { margin: 0 0 0.5rem; font-size: 0.9rem; }
+  .footer__muted { margin: 0.25rem 0 0; opacity: 0.7; }
+  .footer__col { display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer__col a { opacity: 0.75; width: fit-content; position: relative; transition: opacity 0.2s, color 0.2s; }
+  .footer__col a:hover { opacity: 1; color: var(--accent); }
+  .footer__bottom { position: relative; z-index: 1; margin-top: 2.5rem; padding-block: 1.25rem; border-top: 1px solid rgb(255 255 255 / 0.14); opacity: 0.75; }
+  .footer__disc { margin: 0 0 0.5rem; font-size: 0.88rem; max-width: 70ch; }
+  .mark { position: relative; z-index: 0; height: clamp(5rem, 17vw, 14rem); overflow: hidden; direction: ltr; text-align: center; margin-top: 0.5rem; }
+  .mark span { display: block; font-size: clamp(5rem, 22vw, 18rem); font-weight: 800; letter-spacing: -0.06em; line-height: 1; transform: translateY(8%); color: transparent; background: linear-gradient(180deg, rgb(178 201 171 / 0.5), rgb(178 201 171 / 0.04) 80%); -webkit-background-clip: text; background-clip: text; }
   @media (max-width: 720px) { .footer__grid { grid-template-columns: 1fr; } }
 </style>

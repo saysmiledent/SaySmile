@@ -1,88 +1,108 @@
 ---
 import { getPages } from '../../content';
 import { site, contactLinks } from '../../config/site';
-import type { Locale } from '../../i18n';
+import { getDictionary, type Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
+const t = getDictionary(lang);
 const p = getPages(lang).services;
 const faq = getPages(lang).faq;
 const book = contactLinks()[0];
 const split = (v: string) => { const m = v.match(/^(\D*?)(\d.*)$/); return m ? [m[1], m[2]] : ['', v]; };
 ---
 
-<div class="list" data-reveal-group>
-  {p.items.map((s) => (
-    <article class="card" data-reveal>
-      <div class="card__main">
-        <h2>{s.title}</h2>
-        <p>{s.text}</p>
-        <p class="card__detail"><strong>{p.includes}:</strong> {s.detail}</p>
-      </div>
-      <div class="card__side">
-        <span class="price">{split(s.price)[0]}<bdi>{split(s.price)[1]}</bdi></span>
-        <span class="tag">{s.time}</span>
-        {book && <a class="btn" href={book.href} target="_blank" rel="noopener">{p.book}</a>}
-      </div>
-    </article>
-  ))}
-</div>
+<section class="sheet" aria-label={t.nav.services}>
+  <div class="container">
+    <div class="stack" data-stack>
+      {p.items.map((s, i) => (
+        <div class="stack__item" style={`--i:${i}`}>
+          <article class:list={['card', `card--${i % 3}`]}>
+            <div class="card__main">
+              <h2 class="card__title">{s.title}</h2>
+              <p>{s.text}</p>
+              <p class="card__detail"><strong>{p.includes}:</strong> {s.detail}</p>
+            </div>
+            <div class="card__side">
+              <span class="price" aria-label={s.price}>{split(s.price)[0]}<bdi>{split(s.price)[1]}</bdi></span>
+              <span class="tag">{s.time}</span>
+              {book && <a class="btn btn--arrow" href={book.href} target="_blank" rel="noopener" data-magnetic="0.25">{p.book}</a>}
+            </div>
+          </article>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
-<h2 class="soon-title" data-reveal>{p.soonTitle}</h2>
-<div class="soon" data-reveal-group>
-  {p.soon.map((s) => (
-    <article class="soon__card" data-reveal>
-      <h3>{s.title}</h3>
-      <p>{s.text}</p>
-    </article>
-  ))}
-</div>
+<section class="sheet sheet--c grain" aria-labelledby="soon-title">
+  <span class="orb orb--a" aria-hidden="true" data-mdepth="1.2"></span>
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="sec-title" id="soon-title" data-split>{p.soonTitle}</h2>
+    </div>
+    <div class="soon" data-reveal-group>
+      {p.soon.map((s) => (
+        <article class="soon__card" data-reveal data-tilt data-tilt-max="6">
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </article>
+      ))}
+    </div>
+    <p class="note" data-reveal>{p.note}</p>
+  </div>
+</section>
 
-<p class="note" data-reveal>{p.note}</p>
-
-<section class="faq" aria-labelledby="faq-title">
-  <h2 id="faq-title" data-reveal>{faq.title}</h2>
-  <div class="faq__list">
-    {faq.items.map((f) => (
-      <details class="faq__item" data-reveal>
-        <summary>{f.q}</summary>
-        <p>{f.a}</p>
-      </details>
-    ))}
+<section class="sheet sheet--b" aria-labelledby="faq-title">
+  <div class="container faq">
+    <div class="sec-head">
+      <h2 class="sec-title" id="faq-title" data-split>{faq.title}</h2>
+    </div>
+    <div class="faq__list" data-reveal-group>
+      {faq.items.map((f) => (
+        <details class="faq__item" data-reveal>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
-  .faq { margin-top: 3rem; }
-  .faq h2 { font-size: 1.6rem; }
-  .faq__list { display: grid; gap: 0.6rem; max-width: 52rem; }
-  .faq__item { border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); padding: 0.2rem 1.2rem; }
-  .faq__item summary { cursor: pointer; font-weight: 650; padding: 0.9rem 0; list-style: none; display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
-  .faq__item summary::-webkit-details-marker { display: none; }
-  .faq__item summary::after { content: '+'; font-size: 1.4rem; line-height: 1; color: var(--primary); flex: none; }
-  .faq__item[open] summary::after { content: '−'; }
-  .faq__item p { margin: 0 0 1rem; color: var(--text-muted); }
-  .list { display: grid; gap: 1rem; }
+  .stack__item { position: sticky; top: calc(var(--header-h) + 1.75rem + var(--i) * 1.1rem); padding-bottom: 1.5rem; }
   .card {
-    display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center;
-    padding: clamp(1.25rem, 3vw, 2rem); border-radius: var(--radius-lg);
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(1.5rem, 4vw, 3rem); align-items: end;
+    min-height: 19rem; padding: clamp(1.5rem, 4vw, 3rem); border-radius: var(--radius-lg); box-shadow: var(--shadow);
     background: var(--surface); border: 1px solid var(--line);
   }
-  .card:nth-child(2) { background: var(--accent); border-color: transparent; color: #27272a; }
-  .card:nth-child(2) .card__detail { color: #3d4a38; }
-  .card h2 { font-size: 1.5rem; margin-bottom: 0.4rem; }
-  .card p { margin: 0 0 0.5rem; max-width: 58ch; }
-  .card__detail { color: var(--text-muted); font-size: 0.97rem; }
-  .card__side { display: grid; justify-items: start; gap: 0.6rem; min-width: 12rem; }
-  .price { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em; color: var(--primary); }
-  .card:nth-child(2) .price { color: #27272a; }
-  .card:nth-child(2) .tag { background: #fafcf9; }
-  .soon-title { margin-top: 3rem; font-size: 1.6rem; }
-  .soon { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
-  .soon__card { padding: 1.5rem; border-radius: var(--radius); background: var(--bg-soft); border: 2px dashed var(--accent); }
-  .soon__card h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
-  .soon__card p { margin: 0; color: var(--text-muted); font-size: 0.97rem; }
-  .note { margin-top: 2rem; color: var(--text-muted); font-size: 0.95rem; }
-  @media (max-width: 760px) {
-    .card { grid-template-columns: 1fr; }
-    .soon { grid-template-columns: 1fr; }
-  }
+  .card--1 { background: var(--accent); border-color: transparent; color: #27272a; }
+  .card--2 { background: var(--deep); border-color: transparent; color: var(--on-deep); }
+  .card__title { margin: 0 0 0.8rem; font-size: clamp(1.8rem, 4.2vw, 3.2rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; }
+  html[lang='fa'] .card__title { line-height: 1.4; letter-spacing: 0; }
+  .card p { margin: 0 0 0.6rem; max-width: 52ch; }
+  .card__detail { opacity: 0.8; font-size: 0.98rem; }
+  .card__side { display: grid; justify-items: start; gap: 0.8rem; min-width: 13rem; }
+  .price { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--primary); }
+  .card--1 .price { color: #27272a; }
+  .card--2 .price { color: var(--accent); }
+  .card--1 .tag { background: #fafcf9; }
+  .card--2 .btn { background: var(--accent); color: #27272a; }
+  .card--1 .btn { background: #27272a; color: #fff; }
+  .orb--a { width: 28rem; height: 28rem; inset-block-end: -10rem; inset-inline-end: -6rem; background: radial-gradient(circle, rgb(255 255 255 / 0.4), transparent 65%); }
+  .soon { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); position: relative; z-index: 1; }
+  .soon__card { padding: 1.75rem; border-radius: var(--radius-lg); background: rgb(255 255 255 / 0.42); border: 2px dashed rgb(39 39 42 / 0.28); }
+  :global(:root[data-theme='dark']) .soon__card { background: rgb(255 255 255 / 0.05); border-color: rgb(178 201 171 / 0.4); }
+  .soon__card h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+  .soon__card p { margin: 0; opacity: 0.85; }
+  .note { margin: 2rem 0 0; opacity: 0.8; max-width: 60ch; position: relative; z-index: 1; }
+  .faq__list { display: grid; gap: 0.75rem; max-width: 56rem; }
+  .faq__item { border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); padding: 0.25rem 1.4rem; transition: background-color 0.3s, border-color 0.3s; }
+  .faq__item[open] { background: var(--accent); border-color: transparent; color: #27272a; }
+  :global(:root[data-theme='dark']) .faq__item[open] { background: #243028; color: var(--text); }
+  .faq__item summary { cursor: pointer; font-weight: 700; font-size: 1.1rem; padding: 1rem 0; list-style: none; display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+  .faq__item summary::-webkit-details-marker { display: none; }
+  .faq__item summary::after { content: '+'; flex: none; width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border-radius: 50%; background: var(--primary); color: var(--on-primary); font-size: 1.4rem; line-height: 1; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .faq__item[open] summary::after { transform: rotate(135deg); }
+  .faq__item p { margin: 0 0 1.1rem; opacity: 0.85; animation: drop 0.45s ease; }
+  @keyframes drop { from { opacity: 0; translate: 0 -8px; } }
+  @media (max-width: 760px) { .card { grid-template-columns: 1fr; min-height: 0; } .stack__item { position: relative; top: 0; } }
 </style>

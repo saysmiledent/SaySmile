@@ -75,10 +75,17 @@ const graph = JSON.stringify({ '@context': 'https://schema.org', '@graph': [...e
         } catch (e) {}
         root.dataset.theme = theme;
         root.classList.add('js-motion');
+        try {
+          if (sessionStorage.getItem('saysmile-pt') === '1' && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            sessionStorage.removeItem('saysmile-pt');
+            root.classList.add('pt-in');
+          }
+        } catch (e) {}
       })();
     </script>
   </head>
   <body>
+    <div class="pt" aria-hidden="true"><span>Say<b>Smile</b></span></div>
     <a class="sr-only" href="#main">{t.ui.skip}</a>
     <Header lang={lang} path={path} current={current} />
     <main id="main">
@@ -87,10 +94,10 @@ const graph = JSON.stringify({ '@context': 'https://schema.org', '@graph': [...e
     <Footer lang={lang} />
 
     <script>
-      import { initAnimations } from '../scripts/animations';
+      import { initMotion } from '../scripts/motion';
       import { initThemeToggle } from '../scripts/theme';
       initThemeToggle();
-      initAnimations();
+      initMotion();
     </script>
   </body>
 </html>
