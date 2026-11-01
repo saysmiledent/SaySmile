@@ -1,0 +1,329 @@
+---
+// Searchable library of plain-language summaries of real, published reviews (data: PubMed).
+// Every card is rendered in the HTML (so search engines see all of it); the script only hides and reorders.
+import { library } from '../../content/library-data';
+import { categories, evidenceTypes, libraryUi } from '../../content/library-ui';
+import type { Locale } from '../../i18n';
+
+const { lang } = Astro.props as { lang: Locale };
+const ui = libraryUi[lang];
+const fa = lang === 'fa';
+const num = (n: number) => (fa ? n.toLocaleString('fa-IR', { useGrouping: false }) : String(n));
+const catLabel = (id: string) => categories.find((c) => c.id === id)!.label[lang];
+const catWords = (id: string) => categories.find((c) => c.id === id)!.words;
+const typeLabel = (id: string) => evidenceTypes.find((t) => t.id === id)!.label[lang];
+const catCount = (id: string) => library.filter((e) => e.cat === id).length;
+const usedCats = categories.filter((c) => catCount(c.id) > 0);
+const shownAuthors = 3;
+---
+
+<section class="sheet sheet--b lib" id="library" aria-labelledby="lib-title" data-library>
+<div class="container">
+  <header class="lib__head">
+    <h2 id="lib-title">{ui.title}</h2>
+    <p class="muted">{ui.lead}</p>
+  </header>
+
+  <form class="lib__tools" role="search" aria-label={ui.searchLabel} onsubmit="return false">
+    <div class="lib__row">
+      <label class="lib__search">
+        <span class="lib__lab">{ui.searchLabel}</span>
+        <span class="lib__field">
+          <input type="search" name="q" data-q placeholder={ui.placeholder} autocomplete="off" enterkeyhint="search" />
+          <button type="button" class="lib__clear" data-clear aria-label={ui.reset} hidden>×</button>
+        </span>
+      </label>
+    </div>
+
+    <div class="lib__row lib__row--wrap">
+      <fieldset class="lib__group">
+        <legend>{ui.scopeLabel}</legend>
+        <div class="lib__chips">
+          {(['all', 'title', 'author', 'team', 'keyword'] as const).map((s, i) => (
+            <button type="button" class="chip" data-scope={s} aria-pressed={i === 0 ? 'true' : 'false'}>{ui.scopes[s]}</button>
+          ))}
+        </div>
+      </fieldset>
+      <label class="lib__check" title={ui.exactHint}>
+        <input type="checkbox" data-exact /> <span>{ui.exact}</span>
+      </label>
+    </div>
+
+    <fieldset class="lib__group">
+      <legend>{ui.categoryLabel}</legend>
+      <div class="lib__chips">
+        <button type="button" class="chip" data-cat="" aria-pressed="true">{ui.allCategories} <span class="chip__n">{num(library.length)}</span></button>
+        {usedCats.map((c) => (
+          <button type="button" class="chip" data-cat={c.id} aria-pressed="false">{c.label[lang]} <span class="chip__n">{num(catCount(c.id))}</span></button>
+        ))}
+      </div>
+    </fieldset>
+
+    <div class="lib__row lib__row--wrap">
+      <fieldset class="lib__group">
+        <legend>{ui.typeLabel}</legend>
+        <div class="lib__chips">
+          {evidenceTypes.map((t) => (
+            <button type="button" class="chip" data-type={t.id} aria-pressed="false" title={t.hint[lang]}>{t.label[lang]}</button>
+          ))}
+        </div>
+      </fieldset>
+      <label class="lib__check"><input type="checkbox" data-oa /> <span>{ui.oaOnly}</span></label>
+      <label class="lib__sort">
+        <span>{ui.sortLabel}</span>
+        <select data-sort>
+          <option value="new">{ui.sortNew}</option>
+          <option value="old">{ui.sortOld}</option>
+        </select>
+      </label>
+    </div>
+  </form>
+
+  <p class="lib__count" data-count data-tpl={ui.found('{n}', '{t}')} role="status" aria-live="polite">{ui.found(num(library.length), num(library.length))}</p>
+
+  <div class="lib__empty" data-empty hidden>
+    <h3>{ui.empty}</h3>
+    <p class="muted">{ui.emptyHint}</p>
+    <button type="button" class="btn" data-reset>{ui.reset}</button>
+  </div>
+
+  <ol class="lib__list" data-list>
+    {library.map((e) => {
+      const t = e[lang];
+      const names = e.authors.length ? e.authors : [];
+      const first = names.slice(0, shownAuthors);
+      const rest = names.slice(shownAuthors);
+      const hayTitle = [e.ru.title, e.fa.title, e.en.title, e.titleEn].join(' ');
+      const hayAuthors = names.join(' ');
+      const hayTeam = [e.org, e.team, e.journal].join(' ');
+      const hayKw = [e.kw.join(' '), catLabel(e.cat), catWords(e.cat), typeLabel(e.type)].join(' ');
+      const hayAll = [hayTitle, hayAuthors, hayTeam, hayKw, e.ru.sum, e.fa.sum, e.en.sum, e.year, e.id, e.doi].join(' ');
+      return (
+        <li
+          class="entry" id={`pmid-${e.id}`}
+          data-entry data-cat={e.cat} data-type={e.type} data-oa={e.oa ? '1' : '0'} data-year={e.year} data-id={e.id}
+          data-h-all={hayAll} data-h-title={hayTitle} data-h-author={hayAuthors} data-h-team={hayTeam} data-h-keyword={hayKw}
+        >
+          <div class="entry__meta">
+            <span class="tag">{catLabel(e.cat)}</span>
+            <span class="entry__type">{typeLabel(e.type)}</span>
+            {e.oa && <span class="entry__oa">{ui.openAccess}</span>}
+          </div>
+          <h3 class="entry__title">{t.title}</h3>
+          <p class="entry__sum">{t.sum}</p>
+          <dl class="entry__facts">
+            <div><dt>{ui.original}</dt><dd><bdi lang="en">{e.titleEn}</bdi></dd></div>
+            <div><dt>{ui.authors}</dt><dd>
+              <bdi lang="en">{first.join(', ')}</bdi>{rest.length > 0 && <> <details class="entry__more"><summary>{ui.etAl} <bdi dir="ltr">+{num(rest.length)}</bdi></summary><bdi lang="en">{rest.join(', ')}</bdi></details></>}
+            </dd></div>
+            {e.org && <div><dt>{ui.team}</dt><dd><bdi lang="en">{e.org}{e.team && e.team !== e.org && !e.org.includes(e.team) ? `, ${e.team}` : ''}</bdi></dd></div>}
+            <div><dt>{ui.journal}</dt><dd><bdi lang="en">{e.journal}</bdi> · <time datetime={String(e.year)}>{num(e.year)}</time></dd></div>
+          </dl>
+          <p class="entry__links">
+            <a href={`https://pubmed.ncbi.nlm.nih.gov/${e.id}/`} rel="noopener" target="_blank">{ui.pubmed}<span class="sr-only"> {e.id}</span></a>
+            <a href={`https://doi.org/${e.doi}`} rel="noopener" target="_blank">{ui.doi}</a>
+            {e.pmc && <a href={`https://pmc.ncbi.nlm.nih.gov/articles/${e.pmc}/`} rel="noopener" target="_blank">{ui.fullText}</a>}
+          </p>
+        </li>
+      );
+    })}
+  </ol>
+
+  <p class="lib__note muted">{ui.note}</p>
+  <p class="lib__note muted">{ui.attribution}</p>
+</div>
+</section>
+
+<style>
+  .lib__head { max-width: 46rem; margin-block-end: clamp(1.25rem, 3vw, 2rem); }
+  .lib__head h2 { font-size: clamp(1.7rem, 3.4vw, 2.6rem); margin: 0 0 0.5rem; letter-spacing: -0.02em; line-height: 1.15; }
+  .lib__head p { margin: 0; }
+
+  .lib__tools { display: grid; gap: 1rem; padding: clamp(1rem, 2.5vw, 1.5rem); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+  .lib__row { display: flex; gap: 1rem 1.5rem; align-items: end; }
+  .lib__row--wrap { flex-wrap: wrap; }
+  .lib__lab { display: block; font-size: 0.85rem; font-weight: 650; margin-block-end: 0.35rem; }
+  .lib__search { flex: 1 1 100%; }
+  .lib__field { position: relative; display: block; }
+  input[type='search'] {
+    inline-size: 100%; min-block-size: 3rem; padding-block: 0.6rem; padding-inline: 1rem 2.75rem;
+    font: inherit; color: var(--text); background: var(--bg); border: 1.5px solid var(--line); border-radius: 12px;
+    appearance: none;
+  }
+  input[type='search']::-webkit-search-cancel-button { display: none; }
+  input[type='search']:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-color: var(--primary); }
+  .lib__clear {
+    position: absolute; inset-block: 0; inset-inline-end: 0; inline-size: 3rem; border: 0; background: none; color: var(--text-muted);
+    font-size: 1.5rem; line-height: 1; cursor: pointer; border-radius: 12px;
+  }
+  .lib__clear:hover { color: var(--text); }
+
+  .lib__group { border: 0; margin: 0; padding: 0; min-inline-size: 0; }
+  .lib__group legend { padding: 0; font-size: 0.85rem; font-weight: 650; margin-block-end: 0.4rem; }
+  .lib__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chip {
+    min-block-size: 2.75rem; padding: 0.4rem 0.9rem; font: inherit; font-size: 0.92rem; color: var(--text);
+    background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .chip:hover { border-color: var(--primary); }
+  .chip[aria-pressed='true'] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+  .chip__n { opacity: 0.7; font-size: 0.8em; margin-inline-start: 0.2rem; }
+  .lib__check { display: inline-flex; align-items: center; gap: 0.6rem; min-block-size: 2.75rem; cursor: pointer; }
+  .lib__check input { inline-size: 1.25rem; block-size: 1.25rem; accent-color: var(--primary); }
+  .lib__sort { display: grid; gap: 0.35rem; margin-inline-start: auto; font-size: 0.85rem; font-weight: 650; }
+  .lib__sort select { min-block-size: 2.75rem; padding-inline: 0.75rem; font: inherit; font-weight: 400; color: var(--text); background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; }
+  .chip:focus-visible, .lib__check input:focus-visible, .lib__sort select:focus-visible, .lib__clear:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+  .lib__count { margin: 1.25rem 0 0.75rem; font-weight: 650; }
+  .lib__empty { padding: clamp(1.5rem, 4vw, 2.5rem); border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); text-align: center; display: grid; gap: 0.75rem; justify-items: center; }
+  .lib__empty[hidden] { display: none; }
+  .lib__empty h3 { margin: 0; font-size: 1.3rem; }
+  .lib__empty p { margin: 0; }
+
+  .lib__list[hidden] { display: none; }
+  .lib__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr)); }
+  .entry {
+    display: flex; flex-direction: column; gap: 0.65rem; min-inline-size: 0; padding: clamp(1.1rem, 2.5vw, 1.5rem);
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    content-visibility: auto; contain-intrinsic-size: auto 26rem;
+    scroll-margin-block-start: 6rem;
+  }
+  .entry[hidden] { display: none; }
+  .entry:target { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary); }
+  .entry__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem; font-size: 0.85rem; }
+  .entry__type { font-weight: 650; color: var(--primary); }
+  .entry__oa { color: var(--accent-ink); font-weight: 650; }
+  .entry__title { margin: 0; font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.25; letter-spacing: -0.01em; text-wrap: balance; }
+  .entry__sum { margin: 0; color: var(--text); max-inline-size: 65ch; }
+  .entry__facts { margin: 0; display: grid; gap: 0.4rem; font-size: 0.88rem; color: var(--text-muted); }
+  .entry__facts > div { display: grid; gap: 0.1rem; }
+  .entry__facts dt { font-weight: 650; color: var(--text); }
+  .entry__facts dd { margin: 0; overflow-wrap: anywhere; }
+  .entry__more { display: inline; }
+  .entry__more summary { display: inline; cursor: pointer; color: var(--primary); font-weight: 650; }
+  .entry__more[open] summary { display: block; }
+  .entry__links { margin: auto 0 0; padding-block-start: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-weight: 650; }
+  .entry__links a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; min-block-size: 2.75rem; display: inline-flex; align-items: center; }
+  .entry__links a:hover { color: var(--primary-hover); }
+  .sr-only { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .lib__note { margin: 1.5rem 0 0; font-size: 0.88rem; max-inline-size: 60rem; }
+  .lib__note + .lib__note { margin-block-start: 0.4rem; }
+
+  @media (max-width: 640px) {
+    .lib__sort { margin-inline-start: 0; }
+    .lib__list { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-library]');
+  if (root) {
+    const $ = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
+    const $$ = <T extends HTMLElement>(s: string) => Array.from(root.querySelectorAll<T>(s));
+    const q = $<HTMLInputElement>('[data-q]');
+    const exact = $<HTMLInputElement>('[data-exact]');
+    const oa = $<HTMLInputElement>('[data-oa]');
+    const sort = $<HTMLSelectElement>('[data-sort]');
+    const list = $<HTMLElement>('[data-list]');
+    const countEl = $<HTMLElement>('[data-count]');
+    const emptyEl = $<HTMLElement>('[data-empty]');
+    const clear = $<HTMLButtonElement>('[data-clear]');
+    const entries = $$<HTMLElement>('[data-entry]');
+    const total = entries.length;
+    const lang = document.documentElement.lang || 'ru';
+    const state = { scope: 'all', cat: '', type: '' };
+
+    // Same text on both sides: lower case, no accents, ё=е, Arabic and Persian letter forms unified, ZWNJ is a space, digits unified.
+    const norm = (s: string) =>
+      s.toLowerCase().normalize('NFKD').replace(/[̀-ًͯ-ٟـ]/g, '')
+        .replace(/ё/g, 'е').replace(/[يى]/g, 'ی').replace(/ك/g, 'ک').replace(/[‌‍]/g, ' ')
+        .replace(/[۰-۹]/g, (d) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).replace(/[٠-٩]/g, (d) => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)))
+        .replace(/\s+/g, ' ').trim();
+    const hay = new Map(entries.map((e) => [e, Object.fromEntries(['all', 'title', 'author', 'team', 'keyword'].map((k) => [k, norm(e.dataset['h' + k.charAt(0).toUpperCase() + k.slice(1)] || '')]))]));
+
+    const terms = (raw: string): string[] => {
+      if (exact.checked) { const t = norm(raw.replace(/"/g, '')); return t ? [t] : []; }
+      const out: string[] = [];
+      raw.replace(/"([^"]+)"|(\S+)/g, (_m, a, b) => { const t = norm(a || b || ''); if (t) out.push(t); return ''; });
+      return out;
+    };
+
+    const nf = (n: number) => (lang === 'fa' ? n.toLocaleString('fa-IR', { useGrouping: false }) : String(n));
+
+    const apply = () => {
+      const ts = terms(q.value);
+      let n = 0;
+      entries.forEach((e) => {
+        const h = hay.get(e)![state.scope as 'all'];
+        const ok =
+          ts.every((t) => h.includes(t)) &&
+          (!state.cat || e.dataset.cat === state.cat) &&
+          (!state.type || e.dataset.type === state.type) &&
+          (!oa.checked || e.dataset.oa === '1');
+        e.hidden = !ok;
+        if (ok) n++;
+      });
+      const asc = sort.value === 'old';
+      [...entries].sort((a, b) => (asc ? 1 : -1) * ((+a.dataset.year! - +b.dataset.year!) || a.dataset.id!.localeCompare(b.dataset.id!)))
+        .forEach((e) => list.appendChild(e));
+      countEl.textContent = (countEl.dataset.tpl || '{n}/{t}').replace('{n}', nf(n)).replace('{t}', nf(total));
+      emptyEl.hidden = n !== 0;
+      list.hidden = n === 0;
+      clear.hidden = !q.value;
+      const p = new URLSearchParams();
+      if (q.value) p.set('q', q.value);
+      if (state.scope !== 'all') p.set('in', state.scope);
+      if (exact.checked) p.set('exact', '1');
+      if (state.cat) p.set('topic', state.cat);
+      if (state.type) p.set('type', state.type);
+      if (oa.checked) p.set('free', '1');
+      const qs = p.toString();
+      try { history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash); } catch { /* file:// previews */ }
+    };
+
+    const press = (sel: string, key: 'scope' | 'cat' | 'type', attr: string) =>
+      $$<HTMLButtonElement>(sel).forEach((b) => b.addEventListener('click', () => {
+        const v = b.getAttribute(attr) || '';
+        // type chips toggle off when pressed again; scope and topic always keep one choice
+        state[key] = key === 'type' && state.type === v ? '' : v;
+        $$<HTMLButtonElement>(sel).forEach((x) => x.setAttribute('aria-pressed', String((x.getAttribute(attr) || '') === state[key])));
+        apply();
+      }));
+    press('[data-scope]', 'scope', 'data-scope');
+    press('button[data-cat]', 'cat', 'data-cat');
+    press('button[data-type]', 'type', 'data-type');
+
+    [q, exact, oa, sort].forEach((el) => el.addEventListener('input', apply));
+    clear.addEventListener('click', () => { q.value = ''; q.focus(); apply(); });
+    const reset = () => {
+      q.value = ''; exact.checked = false; oa.checked = false; sort.value = 'new';
+      state.scope = 'all'; state.cat = ''; state.type = '';
+      ['[data-scope]', 'button[data-cat]', 'button[data-type]'].forEach((sel) => {
+        const attr = sel.replace(/.*\[(.*)\]/, '$1');
+        $$<HTMLButtonElement>(sel).forEach((x) => x.setAttribute('aria-pressed', String((x.getAttribute(attr) || '') === (attr === 'data-scope' ? 'all' : ''))));
+      });
+      apply();
+    };
+    $<HTMLButtonElement>('[data-reset]').addEventListener('click', reset);
+    q.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && q.value) { q.value = ''; apply(); } });
+
+    // read a shared link such as ?q=fluoride&topic=caries
+    const p = new URLSearchParams(location.search);
+    if (p.has('q')) q.value = p.get('q')!;
+    exact.checked = p.get('exact') === '1';
+    oa.checked = p.get('free') === '1';
+    const setBtn = (sel: string, attr: string, key: 'scope' | 'cat' | 'type', v: string | null) => {
+      if (!v) return;
+      if (!$$<HTMLButtonElement>(sel).some((b) => b.getAttribute(attr) === v)) return;
+      state[key] = v;
+      $$<HTMLButtonElement>(sel).forEach((x) => x.setAttribute('aria-pressed', String(x.getAttribute(attr) === v)));
+    };
+    setBtn('[data-scope]', 'data-scope', 'scope', p.get('in'));
+    setBtn('button[data-cat]', 'data-cat', 'cat', p.get('topic'));
+    setBtn('button[data-type]', 'data-type', 'type', p.get('type'));
+    apply();
+    // a direct link to one paper (#pmid-123) must stay visible even when a filter would hide it
+    if (location.hash.startsWith('#pmid-')) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+  }
+</script>

@@ -1,6 +1,7 @@
 // llms.txt: a short machine-readable guide to the site for AI assistants and AI search.
 import type { APIRoute } from 'astro';
 import { articles } from '../content/articles';
+import { library } from '../content/library-data';
 import { getPages } from '../content';
 import { docs } from '../content/docs';
 import { getDictionary, localeUrl, sectionIds, sectionUrl, locales } from '../i18n';
@@ -30,6 +31,10 @@ export const GET: APIRoute = ({ site: origin }) => {
   lines.push('');
   lines.push('## Статьи / Articles');
   for (const a of articles) lines.push(`- [${a.text.ru.title}](${u(localeUrl('ru', `articles/${a.slug}/`))}): ${a.text.ru.description}`);
+  lines.push('');
+  lines.push(`## Research library (${library.length} reviews, plain-language summaries with PubMed and DOI links)`);
+  lines.push(`- [Library page](${u(sectionUrl('ru', 'articles'))}#library)`);
+  for (const e of library) lines.push(`- ${e.ru.title}: ${e.ru.sum} (${e.journal}, ${e.year}) https://doi.org/${e.doi}`);
   lines.push('');
   lines.push('## Documents');
   for (const d of docs) lines.push(`- ${d.text.ru.date}: ${d.text.ru.title} (${d.text.ru.issuer})`);

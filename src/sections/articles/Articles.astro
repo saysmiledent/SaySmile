@@ -1,5 +1,6 @@
 ---
 import { articles } from '../../content/articles';
+import Library from './Library.astro';
 import { getPages } from '../../content';
 import { localeUrl, type Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
@@ -25,6 +26,8 @@ const p = getPages(lang).articles;
 </ul>
 </div>
 </section>
+
+<Library lang={lang} />
 
 <style>
   .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }

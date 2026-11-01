@@ -2,6 +2,7 @@
 // Entities have stable @ids so pages can reference them: #clinic (Dentist), #doctor (Person), #website.
 import { site } from '../config/site';
 import { docs } from '../content/docs';
+import { library } from '../content/library-data';
 import { getDictionary, localeUrl, type Locale } from '../i18n';
 
 type Json = Record<string, unknown>;
@@ -109,5 +110,37 @@ export function faqPage(items: { q: string; a: string }[]): Json {
   return {
     '@type': 'FAQPage',
     mainEntity: items.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })),
+  };
+}
+
+// The research library as an ItemList of the real papers it summarises (each points at the original DOI).
+export function libraryList(lang: Locale, name: string, path: string, origin: URL): Json {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name,
+    url: abs(path, origin),
+    inLanguage: lang,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: library.length,
+      itemListElement: library.map((e, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'ScholarlyArticle',
+          '@id': `${abs(path, origin)}#pmid-${e.id}`,
+          name: e.titleEn,
+          headline: e[lang].title,
+          description: e[lang].sum,
+          url: `https://doi.org/${e.doi}`,
+          sameAs: [`https://pubmed.ncbi.nlm.nih.gov/${e.id}/`],
+          datePublished: String(e.year),
+          isPartOf: { '@type': 'Periodical', name: e.journal },
+          author: e.authors.slice(0, 6).map((a) => ({ '@type': 'Person', name: a })),
+          ...(e.pmc ? { isAccessibleForFree: true } : {}),
+        },
+      })),
+    },
   };
 }
