@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 # Live site is built from the default branch (v1 is kept in v1-archive).
 on:
   push:
-    branches: [v2, codex/change-site-theme-color-and-push-changes-qcu5fp]
+    branches: [codex/change-site-theme-color-and-push-changes-qcu5fp]
   workflow_dispatch:
 
 permissions:
