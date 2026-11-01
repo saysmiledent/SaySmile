@@ -8,6 +8,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
+      filter: (page) => !/\/SaySmile\/(en\/)?tutorials\/$/.test(page),
       i18n: { defaultLocale: 'ru', locales: { ru: 'ru-RU', fa: 'fa-IR', en: 'en-US' } },
     }),
   ],

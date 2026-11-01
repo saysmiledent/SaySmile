@@ -13,9 +13,10 @@ export default {
     diplomas: 'مدارک',
     education: 'مسیر تحصیلی',
     articles: 'مقالات',
-    tutorials: 'آموزش',
+    tutorials: 'ویدیوهای آموزشی',
     contact: 'تماس',
   },
+  navGroup: { about: 'معرفی', clinic: 'کلینیک', learn: 'آموزش', contact: '' },
   hero: {
     alt: 'دکتر سیوان، دندانپزشک',
     title: 'SaySmile',

@@ -9,7 +9,7 @@ import Education from '../sections/education/Education.astro';
 import Tutorials from '../sections/tutorials/Tutorials.astro';
 import Contact from '../sections/contact/Contact.astro';
 import Articles from '../sections/articles/Articles.astro';
-import { getDictionary, localeUrl, sectionUrl, type Locale, type SectionId } from '../i18n';
+import { getDictionary, localeUrl, sectionUrl, isHidden, type Locale, type SectionId } from '../i18n';
 import { breadcrumb, faqPage, libraryList } from '../lib/seo';
 import { getPages } from '../content';
 import { libraryUi } from '../content/library-ui';
@@ -28,7 +28,7 @@ if (section === 'services') schema.push(faqPage(pages.faq.items));
 if (section === 'articles') schema.push(libraryList(lang, libraryUi[lang].title, sectionUrl(lang, 'articles'), Astro.site!));
 ---
 
-<Base lang={lang} path={`${section}/`} current={section} title={seo.title} description={seo.description} schema={schema}>
+<Base lang={lang} path={`${section}/`} current={section} title={seo.title} description={seo.description} schema={schema} noindex={isHidden(lang, section)}>
   <PageHero lang={lang} title={t.nav[section]} lead={lead} />
   {section === 'about' && <About lang={lang} />}
   {section === 'services' && <Services lang={lang} />}

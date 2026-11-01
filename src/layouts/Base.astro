@@ -16,9 +16,14 @@ interface Props {
   /** extra schema.org nodes for this page (breadcrumbs, FAQ, article...) */
   schema?: Record<string, unknown>[];
   published?: string;
+  /** keep the page out of search engines (e.g. sections that are empty in a language) */
+  noindex?: boolean;
 }
 
-const { lang, path = '', current = '', title, description, ogType = 'website', schema = [], published } = Astro.props;
+const { lang, path = '', current = '', title, description, ogType = 'website', schema = [], published, noindex = false } = Astro.props;
+// Tutorial videos exist in Farsi only: its alternates list just Farsi
+const onlyFa = path === 'tutorials/';
+const altLocales = onlyFa ? locales.filter((l) => l === 'fa') : locales;
 const t = getDictionary(lang);
 const origin = Astro.site!;
 const canonical = new URL(localeUrl(lang, path), origin).href;
@@ -36,12 +41,12 @@ const graph = JSON.stringify({ '@context': 'https://schema.org', '@graph': [...e
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
     <link rel="canonical" href={canonical} />
-    {locales.map((l) => (
+    {(noindex ? [] : altLocales).map((l) => (
       <link rel="alternate" hreflang={l} href={new URL(localeUrl(l, path), origin).href} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={new URL(localeUrl('ru', path), origin).href} />
+    {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(localeUrl(onlyFa ? 'fa' : 'ru', path), origin).href} />}
     <link rel="alternate" type="text/plain" href={`${import.meta.env.BASE_URL}llms.txt`} title="llms.txt" />
 
     <meta property="og:site_name" content="SaySmile" />

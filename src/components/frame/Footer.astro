@@ -1,6 +1,6 @@
 ---
 import { site, contactLinks } from '../../config/site';
-import { getDictionary, localeUrl, sectionUrl, sectionIds, type Locale } from '../../i18n';
+import { getDictionary, localeUrl, sectionUrl, visibleSections, type Locale } from '../../i18n';
 import { getPages } from '../../content';
 
 interface Props { lang: Locale }
@@ -35,7 +35,7 @@ const book = links[0];
     </div>
 
     <nav class="footer__col" aria-label={t.ui.menu}>
-      {sectionIds.map((id) => <a href={sectionUrl(lang, id)}>{t.nav[id]}</a>)}
+      {visibleSections(lang).map((id) => <a href={sectionUrl(lang, id)}>{t.nav[id]}</a>)}
     </nav>
 
     <div class="footer__col">

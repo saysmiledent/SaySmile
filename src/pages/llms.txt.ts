@@ -4,7 +4,7 @@ import { articles } from '../content/articles';
 import { library } from '../content/library-data';
 import { getPages } from '../content';
 import { docs } from '../content/docs';
-import { getDictionary, localeUrl, sectionIds, sectionUrl, locales } from '../i18n';
+import { getDictionary, localeUrl, visibleSections, sectionUrl, locales } from '../i18n';
 import { site } from '../config/site';
 
 export const GET: APIRoute = ({ site: origin }) => {
@@ -27,7 +27,7 @@ export const GET: APIRoute = ({ site: origin }) => {
   lines.push('- Имеются противопоказания. Необходима консультация специалиста. Материалы сайта носят информационный характер.');
   lines.push('');
   lines.push('## Страницы / Pages');
-  for (const id of sectionIds) lines.push(`- [${t.nav[id]}](${u(sectionUrl('ru', id))}): ${ru.seo[id].description}`);
+  for (const id of visibleSections('ru')) lines.push(`- [${t.nav[id]}](${u(sectionUrl('ru', id))}): ${ru.seo[id].description}`);
   lines.push('');
   lines.push('## Статьи / Articles');
   for (const a of articles) lines.push(`- [${a.text.ru.title}](${u(localeUrl('ru', `articles/${a.slug}/`))}): ${a.text.ru.description}`);

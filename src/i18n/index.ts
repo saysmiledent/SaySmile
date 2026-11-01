@@ -31,5 +31,18 @@ export const sectionIds = [
 ] as const;
 export type SectionId = (typeof sectionIds)[number];
 
+/** Menu groups (dropdowns). Order here is the menu order. */
+export const navGroups = [
+  { id: 'about', items: ['about', 'diplomas', 'education'] },
+  { id: 'clinic', items: ['services', 'gallery'] },
+  { id: 'learn', items: ['articles', 'tutorials'] },
+  { id: 'contact', items: ['contact'] },
+] as const satisfies readonly { id: string; items: readonly SectionId[] }[];
+export type NavGroupId = (typeof navGroups)[number]['id'];
+
+/** Tutorial videos exist only in Farsi for now; ru/en keep the page but out of menu, footer, sitemap and search. */
+export const isHidden = (lang: Locale, id: SectionId): boolean => id === 'tutorials' && lang !== 'fa';
+export const visibleSections = (lang: Locale): SectionId[] => sectionIds.filter((id) => !isHidden(lang, id));
+
 /** URL of a section page in the given language. */
 export const sectionUrl = (lang: Locale, id: SectionId): string => localeUrl(lang, `${id}/`);
