@@ -1,9 +1,44 @@
 ---
 import Soon from '../../components/ui/Soon.astro';
 import { getPages } from '../../content';
+import { tutorialVideos, tutorialUi } from '../../content/tutorials';
 import type { Locale } from '../../i18n';
 const { lang } = Astro.props as { lang: Locale };
 const p = getPages(lang).tutorials;
+const videos = tutorialVideos[lang];
+const ui = tutorialUi[lang];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<Soon text={p.soon} />
+{videos.length === 0 ? <Soon text={p.soon} /> : (
+  <section class="sheet" aria-label={p.lead}>
+    <div class="container grid">
+      {videos.map((v) => (
+        <article class="vid" data-reveal>
+          <video controls preload="none" playsinline poster={`${base}/videos/${v.id}.jpg`} aria-label={v.title}>
+            <source src={`${base}/videos/${v.id}.mp4`} type="video/mp4" />
+          </video>
+          <div class="vid__body">
+            <h2>{v.title}</h2>
+            <p>{v.text}</p>
+            <p class="vid__meta">
+              {v.duration && <span>{v.duration}</span>}
+              {v.instagram && <a href={v.instagram} target="_blank" rel="noopener">{ui.watchIg}</a>}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .grid { display: grid; gap: clamp(1.25rem, 3vw, 2rem); grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
+  .vid { display: grid; gap: 0.9rem; align-content: start; background: var(--surface, #fff); border: 1px solid var(--line); border-radius: 1.4rem; overflow: hidden; box-shadow: var(--shadow); }
+  .vid video { width: 100%; aspect-ratio: 9 / 16; max-height: 32rem; object-fit: cover; background: #141815; display: block; }
+  .vid__body { display: grid; gap: 0.5rem; padding: 0 1.1rem 1.2rem; }
+  .vid h2 { font-size: 1.1rem; line-height: 1.35; margin: 0; }
+  .vid p { margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; }
+  .vid__meta { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; font-size: 0.85rem !important; }
+  .vid__meta a { text-decoration: underline; text-underline-offset: 3px; color: var(--accent-ink); min-height: 44px; display: inline-flex; align-items: center; }
+</style>

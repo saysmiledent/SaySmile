@@ -16,6 +16,7 @@ export default {
     tutorials: 'Обучающие видео',
     contact: 'Контакты',
   },
+  navGroup: { about: 'О враче', clinic: 'Клиника', learn: 'Обучение', contact: '' },
   hero: {
     alt: 'Доктор Сейван, стоматолог',
     title: 'SaySmile',

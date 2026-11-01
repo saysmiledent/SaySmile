@@ -1,12 +1,15 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 import LangSwitcher from './LangSwitcher.astro';
-import { getDictionary, localeUrl, sectionUrl, sectionIds, type Locale } from '../../i18n';
+import { getDictionary, localeUrl, sectionUrl, navGroups, isHidden, type Locale } from '../../i18n';
 
 interface Props { lang: Locale; path?: string; current?: string }
 const { lang, path = '', current = '' } = Astro.props;
 const t = getDictionary(lang);
 const home = localeUrl(lang);
+const groups = navGroups
+  .map((g) => ({ id: g.id, items: g.items.filter((id) => !isHidden(lang, id)) }))
+  .filter((g) => g.items.length > 0);
 ---
 
 <header class="header" data-header>
@@ -16,8 +19,22 @@ const home = localeUrl(lang);
     <div class="header__end">
       <nav class="header__nav" id="site-nav" aria-label={t.ui.menu}>
         <span class="header__ind" aria-hidden="true"></span>
-        {sectionIds.map((id) => (
-          <a href={sectionUrl(lang, id)} aria-current={id === current ? 'page' : undefined}><span>{t.nav[id]}</span></a>
+        {groups.map((g) => g.items.length === 1 ? (
+          <a class="header__item" href={sectionUrl(lang, g.items[0])} aria-current={g.items[0] === current ? 'page' : undefined}><span>{t.nav[g.items[0]]}</span></a>
+        ) : (
+          <div class="navg" data-navg>
+            <button class="header__item navg__btn" type="button" aria-expanded="false" aria-haspopup="true" aria-current={(g.items as readonly string[]).includes(current) ? 'true' : undefined}>
+              <span>{t.navGroup[g.id as 'about' | 'clinic' | 'learn']}</span>
+              <svg class="navg__chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </button>
+            <div class="navg__panel">
+              <div class="navg__list">
+                {g.items.map((id) => (
+                  <a href={sectionUrl(lang, id)} aria-current={id === current ? 'page' : undefined}>{t.nav[id]}</a>
+                ))}
+              </div>
+            </div>
+          </div>
         ))}
         <div class="header__sheet-tools">
           <LangSwitcher lang={lang} path={path} />
@@ -55,7 +72,7 @@ const home = localeUrl(lang);
     -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3);
     transition: max-width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
   }
-  .header { animation: drop 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .header { animation: drop 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
   @keyframes drop { from { opacity: 0; transform: translateY(-120%); } }
   @media (prefers-reduced-motion: reduce) { .header { animation: none; } }
   :global([dir='rtl']) .header__bar { padding-inline: 1.25rem 0.75rem; }
@@ -68,14 +85,24 @@ const home = localeUrl(lang);
   /* sliding highlight that follows the pointer / the current page */
   .header__ind { position: absolute; top: 0; bottom: 0; inset-inline-start: 0; width: 0; border-radius: 999px; background: rgb(255 255 255 / 0.2); opacity: 0; pointer-events: none; transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s; }
   .header__ind.is-on { opacity: 1; }
-  .header__nav > a { position: relative; padding: 0.5rem 0.75rem; border-radius: 999px; white-space: nowrap; color: color-mix(in srgb, var(--on-bar) 82%, transparent); transition: color 0.25s, background-color 0.25s; }
-  .header__nav > a span { position: relative; display: inline-block; }
-  .header__nav > a span::after { content: ''; position: absolute; inset-inline: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
-  :global([dir='rtl']) .header__nav > a span::after { transform-origin: right; }
-  .header__nav > a:hover { color: var(--on-bar); }
-  .header__nav > a:hover span::after { transform: scaleX(1); }
-  .header__nav > a[aria-current='page'] { background: var(--accent); color: #27272a; font-weight: 650; }
-  .header__nav > a[aria-current='page'] span::after { display: none; }
+  .header__nav .header__item { position: relative; padding: 0.5rem 0.75rem; border-radius: 999px; white-space: nowrap; color: color-mix(in srgb, var(--on-bar) 82%, transparent); transition: color 0.25s, background-color 0.25s; }
+  .header__nav .header__item span { position: relative; display: inline-block; }
+  .header__nav .header__item span::after { content: ''; position: absolute; inset-inline: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  :global([dir='rtl']) .header__nav .header__item span::after { transform-origin: right; }
+  .header__nav .header__item:hover, .navg:hover .navg__btn, .navg.is-open .navg__btn { color: var(--on-bar); }
+  .header__nav .header__item:hover span::after { transform: scaleX(1); }
+  .header__nav .header__item[aria-current='page'], .header__nav .navg__btn[aria-current='true'] { background: var(--accent); color: #27272a; font-weight: 650; }
+  .header__nav .header__item[aria-current='page'] span::after, .navg__btn[aria-current='true'] span::after { display: none; }
+  .navg { position: relative; }
+  .navg__btn { display: inline-flex; align-items: center; gap: 0.35rem; border: 0; background: none; font: inherit; cursor: pointer; }
+  .navg__chev { flex: none; transition: transform 0.3s ease; }
+  .navg:hover .navg__chev, .navg.is-open .navg__chev { transform: rotate(180deg); }
+  .navg__panel { position: absolute; inset-block-start: 100%; inset-inline-start: 0; padding-top: 0.7rem; min-width: 13.5rem; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s 0.25s; }
+  .navg:hover .navg__panel, .navg.is-open .navg__panel { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+  .navg__list { display: grid; gap: 0.15rem; padding: 0.45rem; border-radius: 1.3rem; color: var(--on-bar); background: color-mix(in srgb, var(--bar) 94%, transparent); border: 1px solid rgb(255 255 255 / 0.18); -webkit-backdrop-filter: blur(16px) saturate(1.3); backdrop-filter: blur(16px) saturate(1.3); box-shadow: 0 18px 40px -20px rgb(30 18 10 / 0.7); }
+  .navg__list a { padding: 0.65rem 0.9rem; border-radius: 0.9rem; white-space: nowrap; color: color-mix(in srgb, var(--on-bar) 88%, transparent); transition: background-color 0.2s, color 0.2s; }
+  .navg__list a:hover { background: rgb(255 255 255 / 0.16); color: var(--on-bar); }
+  .navg__list a[aria-current='page'] { background: var(--accent); color: #27272a; font-weight: 650; }
   .header__tools { display: flex; align-items: center; gap: 0.5rem; }
   .header__sheet-tools { display: none; }
   .header__burger { display: none; width: 44px; height: 44px; border: 1px solid rgb(255 255 255 / 0.3); border-radius: 50%; background: transparent; cursor: pointer; position: relative; }
@@ -99,19 +126,24 @@ const home = localeUrl(lang);
       overflow-y: auto;
     }
     :global([dir='rtl']) .header__nav { clip-path: circle(0% at 3rem 2.5rem); }
-    .header__nav > a { padding: 0.35rem 0; border-radius: 0; background: none !important; color: color-mix(in srgb, var(--on-deep) 88%, transparent); transform: translateY(24px); opacity: 0; transition: transform 0.6s ease, opacity 0.6s ease, color 0.2s; }
-    .header__nav > a[aria-current='page'] { color: var(--accent); }
+    .header__nav > .header__item, .header__nav > .navg { transform: translateY(24px); opacity: 0; transition: transform 0.6s ease, opacity 0.6s ease, color 0.2s; }
+    .header__nav > .header__item { padding: 0.35rem 0; border-radius: 0; background: none !important; color: color-mix(in srgb, var(--on-deep) 88%, transparent); }
+    .header__nav > .header__item[aria-current='page'], .navg__list a[aria-current='page'] { color: var(--accent); background: none; }
+    .navg { margin-block-start: 0.9rem; }
+    .navg__btn { display: block; padding: 0; color: var(--accent) !important; background: none !important; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; pointer-events: none; }
+    :global([dir='rtl']) .navg__btn { letter-spacing: 0; text-transform: none; font-size: 0.95rem; }
+    .navg__chev { display: none; }
+    .navg__panel { position: static; padding-top: 0.15rem; min-width: 0; opacity: 1; visibility: visible; transform: none; }
+    .navg__list { padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; color: inherit; gap: 0; font-size: clamp(1.45rem, 6vw, 2.2rem); }
+    .navg__list a { padding: 0.25rem 0; border-radius: 0; color: color-mix(in srgb, var(--on-deep) 88%, transparent); }
+    .navg__list a:hover { background: none; }
     :global(html.menu-open) .header__nav { pointer-events: auto; opacity: 1; clip-path: circle(150% at calc(100% - 3rem) 2.5rem); transition: clip-path 0.8s cubic-bezier(0.7, 0, 0.2, 1), opacity 0s; }
     :global(html.menu-open[dir='rtl']) .header__nav { clip-path: circle(150% at 3rem 2.5rem); }
-    :global(html.menu-open) .header__nav > a { transform: none; opacity: 1; }
-    :global(html.menu-open) .header__nav > a:nth-child(1) { transition-delay: 0.25s; }
-    :global(html.menu-open) .header__nav > a:nth-child(2) { transition-delay: 0.3s; }
-    :global(html.menu-open) .header__nav > a:nth-child(3) { transition-delay: 0.35s; }
-    :global(html.menu-open) .header__nav > a:nth-child(4) { transition-delay: 0.4s; }
-    :global(html.menu-open) .header__nav > a:nth-child(5) { transition-delay: 0.45s; }
-    :global(html.menu-open) .header__nav > a:nth-child(6) { transition-delay: 0.5s; }
-    :global(html.menu-open) .header__nav > a:nth-child(7) { transition-delay: 0.55s; }
-    :global(html.menu-open) .header__nav > a:nth-child(8) { transition-delay: 0.6s; }
+    :global(html.menu-open) .header__nav > .header__item, :global(html.menu-open) .header__nav > .navg { transform: none; opacity: 1; }
+    :global(html.menu-open) .header__nav > :nth-child(2) { transition-delay: 0.25s; }
+    :global(html.menu-open) .header__nav > :nth-child(3) { transition-delay: 0.32s; }
+    :global(html.menu-open) .header__nav > :nth-child(4) { transition-delay: 0.39s; }
+    :global(html.menu-open) .header__nav > :nth-child(5) { transition-delay: 0.46s; }
     :global(html.menu-open) { overflow: hidden; }
     .header__burger { position: relative; z-index: 2; }
     .header__logo { position: relative; z-index: 2; }
@@ -135,16 +167,37 @@ const home = localeUrl(lang);
   // sliding highlight
   const nav = document.getElementById('site-nav');
   const ind = nav?.querySelector<HTMLElement>('.header__ind');
-  const links = nav ? [...nav.querySelectorAll<HTMLAnchorElement>(':scope > a')] : [];
+  const links = nav ? [...nav.querySelectorAll<HTMLElement>(':scope > a, :scope > .navg > button')] : [];
   const rtl = root.dir === 'rtl';
   const move = (a: HTMLElement | null) => {
     if (!ind || !nav) return;
     if (!a) { ind.classList.remove('is-on'); return; }
-    const x = rtl ? a.offsetLeft - (nav.clientWidth - a.offsetWidth) * 0 : a.offsetLeft;
-    ind.style.width = `${a.offsetWidth}px`;
-    ind.style.transform = `translateX(${rtl ? x - nav.clientWidth + a.offsetWidth : x}px)`;
+    const r = a.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    ind.style.width = `${r.width}px`;
+    ind.style.transform = `translateX(${rtl ? r.right - n.right : r.left - n.left}px)`;
     ind.classList.add('is-on');
   };
   links.forEach((a) => a.addEventListener('pointerenter', () => move(a)));
   nav?.addEventListener('pointerleave', () => move(null));
+</script>
+
+<script>
+  // dropdown groups: click toggles (touch + keyboard), hover is handled in CSS
+  const groups = [...document.querySelectorAll<HTMLElement>('[data-navg]')];
+  const closeAll = (except?: HTMLElement) => groups.forEach((g) => {
+    if (g === except) return;
+    g.classList.remove('is-open');
+    g.querySelector('button')?.setAttribute('aria-expanded', 'false');
+  });
+  groups.forEach((g) => {
+    const b = g.querySelector('button')!;
+    b.addEventListener('click', () => {
+      const open = !g.classList.contains('is-open');
+      closeAll(g);
+      g.classList.toggle('is-open', open);
+      b.setAttribute('aria-expanded', String(open));
+    });
+  });
+  document.addEventListener('click', (e) => { if (!(e.target as HTMLElement).closest('[data-navg]')) closeAll(); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
 </script>

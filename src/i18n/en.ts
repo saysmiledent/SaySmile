@@ -13,9 +13,10 @@ export default {
     diplomas: 'Diplomas',
     education: 'Education',
     articles: 'Articles',
-    tutorials: 'Tutorials',
+    tutorials: 'Tutorial videos',
     contact: 'Contact',
   },
+  navGroup: { about: 'About', clinic: 'Clinic', learn: 'Learn', contact: '' },
   hero: {
     alt: 'Dr. Seivan, dentist',
     title: 'SaySmile',
