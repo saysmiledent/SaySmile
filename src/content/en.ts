@@ -5,7 +5,6 @@ const en: PagesContent = {
     lead: 'Dental therapist and prosthodontist at GAM Clinic in St. Petersburg. Calm treatment, never rushed.',
     facts: [
       { title: 'Comfort', text: 'Treatment under local anesthesia, with pauses whenever you ask.' },
-      { title: 'Diagnostics', text: 'GAM Clinic has CT diagnostics.' },
       { title: 'Atmosphere', text: 'Drinks are offered to patients at the clinic.' },
       { title: 'Opening hours', text: 'The clinic is open every day, 9:00 to 21:00.' },
     ],
@@ -174,7 +173,7 @@ const en: PagesContent = {
   },
   seo: {
     "about": {
-      "title": "Dr. Seivan — dentist in St. Petersburg",
+      "title": "Dr. Seivan, dentist in St. Petersburg",
       "description": "About the doctor: education, treatment approach and accreditation in general practice dentistry. Appointments at GAM Clinic, Ligovsky Ave. 232."
     },
     "services": {

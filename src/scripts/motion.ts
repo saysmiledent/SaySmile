@@ -23,6 +23,9 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 const mobile = matchMedia('(max-width: 768px)').matches;
 const rtl = doc.dir === 'rtl';
+// Motion energy (DESIGN.md): home page high, inner pages medium, mobile light.
+const home = !!document.querySelector('[data-hero]');
+const energy = mobile ? 1 : home ? 3 : 2;
 const lang = doc.lang;
 
 export let lenis: Lenis | null = null;
@@ -143,7 +146,7 @@ function splitText() {
     if (!text) { el.classList.add('is-split'); return; }
     el.setAttribute('aria-label', text);
     el.textContent = '';
-    const letters = mode === 'chars' && lang !== 'fa';
+    const letters = mode === 'chars' && lang !== 'fa' && energy > 1;
     text.split(/\s+/).forEach((word, i, all) => {
       const w = document.createElement('span');
       w.className = 'w';
@@ -162,8 +165,8 @@ function splitText() {
     gsap.set(parts, { yPercent: 118 });
     el.classList.add('is-split');
     gsap.to(parts, {
-      yPercent: 0, duration: letters ? 0.9 : 1.05, ease: 'power4.out',
-      stagger: letters ? 0.03 : 0.06, delay: Number(el.dataset.delay || 0),
+      yPercent: 0, duration: letters ? 0.9 : energy === 1 ? 0.6 : 1.05, ease: 'power4.out',
+      stagger: letters ? (energy === 3 ? 0.03 : 0.022) : energy === 1 ? 0.035 : 0.06, delay: Number(el.dataset.delay || 0),
       scrollTrigger: { trigger: el, start: 'top 94%', once: true },
     });
   });
@@ -171,8 +174,8 @@ function splitText() {
 
 /* ------------------------------------------------------------------ reveals */
 function reveals() {
-  const dist = mobile ? 18 : 46;
-  const dur = mobile ? 0.6 : 1;
+  const dist = energy === 1 ? 14 : energy === 2 ? 32 : 46;
+  const dur = energy === 1 ? 0.5 : energy === 2 ? 0.85 : 1;
   const from = (kind: string | null): gsap.TweenVars => {
     const s = rtl ? -1 : 1;
     if (kind === 'left') return { x: -dist * 1.6 * s };
@@ -191,7 +194,7 @@ function reveals() {
     gsap.set(items, { opacity: 0, ...from(null) });
     items.forEach(mark);
     gsap.to(items, {
-      opacity: 1, ...to(null), duration: dur, ease: 'power3.out', stagger: mobile ? 0.07 : 0.11,
+      opacity: 1, ...to(null), duration: dur, ease: 'power3.out', stagger: energy === 1 ? 0.05 : energy === 2 ? 0.09 : 0.11,
       scrollTrigger: { trigger: group, start: 'top 86%', once: true },
     });
   });
@@ -211,7 +214,7 @@ function reveals() {
 function parallax() {
   if (mobile) return;
   $$('[data-parallax]').forEach((el) => {
-    const speed = parseFloat(el.dataset.parallax || '0.2');
+    const speed = parseFloat(el.dataset.parallax || '0.2') * (home ? 1 : 0.55);
     gsap.fromTo(el, { yPercent: speed * 60 }, {
       yPercent: -speed * 60, ease: 'none',
       scrollTrigger: { trigger: el.parentElement || el, start: 'top bottom', end: 'bottom top', scrub: true },
@@ -230,7 +233,7 @@ function mouseDepth() {
   addEventListener('pointermove', (e) => {
     const nx = e.clientX / innerWidth - 0.5;
     const ny = e.clientY / innerHeight - 0.5;
-    items.forEach((i) => { i.x(-nx * 44 * i.d); i.y(-ny * 32 * i.d); });
+    items.forEach((i) => { const k = home ? 1 : 0.5; i.x(-nx * 44 * i.d * k); i.y(-ny * 32 * i.d * k); });
   }, { passive: true });
 }
 

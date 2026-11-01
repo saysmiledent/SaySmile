@@ -41,7 +41,7 @@ export function entityGraph(lang: Locale, origin: URL): Json[] {
   const clinic: Json = {
     '@type': ['Dentist', 'LocalBusiness'],
     '@id': `${abs(localeUrl('ru'), origin)}#clinic`,
-    name: lang === 'ru' ? 'SaySmile — стоматолог Сейван (GAM Clinic)' : lang === 'fa' ? 'SaySmile — دندانپزشک دکتر سیوان (کلینیک GAM)' : 'SaySmile — Dr. Seivan, dentist (GAM Clinic)',
+    name: lang === 'ru' ? 'SaySmile: стоматолог Сейван (GAM Clinic)' : lang === 'fa' ? 'SaySmile: دندانپزشک دکتر سیوان (کلینیک GAM)' : 'SaySmile: Dr. Seivan, dentist (GAM Clinic)',
     url: home,
     image,
     telephone: c.phone,

@@ -66,9 +66,9 @@ export const docs: DocDef[] = [
   {
     id: 'accreditation-2025', img: 'accreditation-2025', iso: '2025-07-17', kind: 'accreditation',
     text: {
-      ru: { date: '17 июля 2025', title: 'Первичная аккредитация специалиста — «Стоматология общей практики»', issuer: 'Выписка из ЕГИСЗ от 25.07.2025', note: 'Действительна до 17.07.2030.' },
-      fa: { date: '۱۷ ژوئیه ۲۰۲۵', title: 'اکردیتاسیون اولیه‌ی متخصص — «دندانپزشکی عمومی»', issuer: 'گزارش از سامانه‌ی یکپارچه‌ی اطلاعات سلامت روسیه، ۲۵ ژوئیه ۲۰۲۵', note: 'معتبر تا ۱۷ ژوئیه ۲۰۳۰.' },
-      en: { date: '17 July 2025', title: 'Primary specialist accreditation — "General practice dentistry"', issuer: 'Extract from the national health information system (EGISZ), 25 July 2025', note: 'Valid until 17 July 2030.' },
+      ru: { date: '17 июля 2025', title: 'Первичная аккредитация специалиста: «Стоматология общей практики»', issuer: 'Выписка из ЕГИСЗ от 25.07.2025', note: 'Действительна до 17.07.2030.' },
+      fa: { date: '۱۷ ژوئیه ۲۰۲۵', title: 'اکردیتاسیون اولیه‌ی متخصص: «دندانپزشکی عمومی»', issuer: 'گزارش از سامانه‌ی یکپارچه‌ی اطلاعات سلامت روسیه، ۲۵ ژوئیه ۲۰۲۵', note: 'معتبر تا ۱۷ ژوئیه ۲۰۳۰.' },
+      en: { date: '17 July 2025', title: 'Primary specialist accreditation: "General practice dentistry"', issuer: 'Extract from the national health information system (EGISZ), 25 July 2025', note: 'Valid until 17 July 2030.' },
     },
   },
   {

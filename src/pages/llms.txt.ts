@@ -12,7 +12,7 @@ export const GET: APIRoute = ({ site: origin }) => {
   const t = getDictionary('ru');
   const c = site.contacts;
   const lines: string[] = [];
-  lines.push('# SaySmile — доктор Сейван, стоматолог в Санкт-Петербурге');
+  lines.push('# SaySmile: доктор Сейван, стоматолог в Санкт-Петербурге');
   lines.push('');
   lines.push('> Персональный сайт стоматолога-терапевта-ортопеда (Dr. Seivan) в GAM Clinic, Санкт-Петербург. Услуги и цены, фото до и после, дипломы и аккредитация, статьи со ссылками на Cochrane и PubMed. Сайт на русском, персидском (فارسی) и английском.');
   lines.push('');
@@ -20,7 +20,7 @@ export const GET: APIRoute = ({ site: origin }) => {
   lines.push(`- Врач / Doctor: ${t.hero.doctor} (Хаг Дуст Сейван; Dr. Seivan), ${t.hero.subtitle}`);
   lines.push('- Квалификация: диплом врача-стоматолога (СПбГПМУ, 30.06.2025); первичная аккредитация «Стоматология общей практики» до 17.07.2030; допуск гигиениста стоматологического (2024).');
   lines.push(`- Клиника / Clinic: GAM Clinic, ${ru.contact.address.replace('GAM Clinic, ', '')}; ${ru.contact.hours}`);
-  lines.push('- Цены (от): профессиональная гигиена от 4 500 ₽; лечение кариеса от 7 000 ₽; отбеливание 20 000 ₽. Точная стоимость — после осмотра.');
+  lines.push('- Цены (от): профессиональная гигиена от 4 500 ₽; лечение кариеса от 7 000 ₽; отбеливание 20 000 ₽. Точная стоимость: после осмотра.');
   lines.push('- Языки сайта / Site languages: русский (по умолчанию), فارسی, English.');
   lines.push(`- Запись / Booking: Telegram ${c.telegram}; WhatsApp https://wa.me/${c.whatsapp}; email ${c.email}; телефон ${c.phone}`);
   lines.push('- Имеются противопоказания. Необходима консультация специалиста. Материалы сайта носят информационный характер.');
