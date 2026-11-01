@@ -3,9 +3,9 @@ import type { Locale } from '../i18n';
 export type CatId = 'caries' | 'gums' | 'hygiene' | 'whitening' | 'restorations' | 'comfort' | 'children' | 'prosthetics' | 'health' | 'sensitivity' | 'surgery';
 export type EvidenceType = 'cochrane' | 'systematic' | 'review';
 
-export interface LibText { title: string; sum: string }
+export interface LibText { title: string; sum: string; key: string[]; p: string[] }
 export interface LibEntry {
-  id: string; cat: CatId; year: number; journal: string; type: EvidenceType;
+  id: string; slug: string; minutes: number; cat: CatId; year: number; journal: string; type: EvidenceType;
   oa: boolean; pmc: string; doi: string; authors: string[]; org: string; team: string;
   titleEn: string; kw: string[];
   ru: LibText; fa: LibText; en: LibText;
@@ -85,5 +85,46 @@ export const libraryUi: Record<Locale, LibraryUi> = {
     authors: 'Authors', etAl: 'et al.', journal: 'Journal', original: 'Original title',
     note: "Summaries are written in plain words from each paper's abstract and do not replace a dental exam. Treatment decisions are made at the appointment.",
     attribution: 'Publication data: PubMed (US National Library of Medicine). Rights to the papers belong to their authors and journals.',
+  },
+};
+
+// Strings for the plain-language article page written about each paper.
+export interface LibraryArticleUi {
+  read: string; minutes: string; retelling: (who: string, journal: string, year: string) => string;
+  headings: [string, string, string]; sourceTitle: string; originalNote: string; basedOn: string;
+  authors: string; team: string; journal: string; year: string; pubmed: string; doi: string; fullText: string;
+  moreTitle: string; allLibrary: string; kind: string;
+}
+
+export const libraryArticleUi: Record<Locale, LibraryArticleUi> = {
+  ru: {
+    read: 'Читать', minutes: 'мин чтения',
+    retelling: (who, j, y) => `Пересказ обзора: ${who}, ${j}, ${y}`,
+    headings: ['Что изучали', 'Что нашли', 'Что это значит для вас'],
+    sourceTitle: 'Первоисточник и авторы',
+    originalNote: 'Это пересказ простыми словами по аннотации научной статьи. Оригинал написан на английском и доступен по ссылкам ниже. Пересказ не заменяет осмотр врача.',
+    basedOn: 'Статья написана на основе обзора',
+    authors: 'Авторы', team: 'Команда', journal: 'Журнал', year: 'Год', pubmed: 'Открыть в PubMed', doi: 'Открыть по DOI', fullText: 'Полный текст бесплатно',
+    moreTitle: 'Ещё по теме', allLibrary: 'Вся библиотека', kind: 'Вид обзора',
+  },
+  fa: {
+    read: 'خواندن', minutes: 'دقیقه مطالعه',
+    retelling: (who, j, y) => `بازگویی مرور: ${who}، ${j}، ${y}`,
+    headings: ['چه چیزی بررسی شد', 'چه یافتند', 'این برای شما چه معنایی دارد'],
+    sourceTitle: 'منبع اصلی و نویسندگان',
+    originalNote: 'این بازگویی ساده‌ای از چکیدهٔ یک مقالهٔ علمی است. متن اصلی به انگلیسی است و از پیوندهای زیر در دسترس است. این بازگویی جای معاینهٔ دندانپزشک را نمی‌گیرد.',
+    basedOn: 'این مطلب بر پایهٔ مرور زیر نوشته شده است',
+    authors: 'نویسندگان', team: 'تیم', journal: 'مجله', year: 'سال', pubmed: 'باز کردن در پاب‌مد', doi: 'باز کردن با DOI', fullText: 'متن کامل رایگان',
+    moreTitle: 'مطالب مرتبط', allLibrary: 'همهٔ کتابخانه', kind: 'نوع مقاله',
+  },
+  en: {
+    read: 'Read', minutes: 'min read',
+    retelling: (who, j, y) => `Plain-language retelling of a review by ${who}, ${j}, ${y}`,
+    headings: ['What was studied', 'What was found', 'What it means for you'],
+    sourceTitle: 'Original paper and authors',
+    originalNote: 'This is a plain-language retelling of a scientific paper, based on its abstract. The original is in English and available through the links below. It does not replace a dental exam.',
+    basedOn: 'Written from the review',
+    authors: 'Authors', team: 'Team', journal: 'Journal', year: 'Year', pubmed: 'Open in PubMed', doi: 'Open via DOI', fullText: 'Free full text',
+    moreTitle: 'More on this topic', allLibrary: 'Whole library', kind: 'Type of review',
   },
 };

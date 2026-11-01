@@ -1,13 +1,15 @@
 // Evidence-based articles (ru / fa / en). Shared parts (slug, date, references) live once;
 // each language has its own title, text and keywords. References were checked in PubMed.
 import type { Locale } from '../i18n';
+import type { LibEntry } from './library-ui';
 
 export interface ArticleRef { text: string; doi: string; pmid: string }
 export interface ArticleText {
   title: string; description: string; lead: string; key: string[];
   sections: { h: string; p: string[] }[]; keywords: string[];
 }
-export interface Article { slug: string; iso: string; minutes: number; refs: ArticleRef[]; text: Record<Locale, ArticleText> }
+// `lib` is set for plain-language retellings of published papers (the research library), not for the doctor's own articles.
+export interface Article { slug: string; iso: string; minutes: number; refs: ArticleRef[]; text: Record<Locale, ArticleText>; lib?: LibEntry }
 
 const lamont: ArticleRef = {
   text: 'Lamont T, Worthington HV, Clarkson JE, Beirne PV. Routine scale and polish for periodontal health in adults. Cochrane Database Syst Rev. 2018;12:CD004625.',

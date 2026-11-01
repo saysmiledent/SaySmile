@@ -4,6 +4,8 @@ import type { LibEntry } from './library-ui';
 export const library: LibEntry[] = [
  {
   "id": "41585617",
+  "slug": "bioactive-filling-materials",
+  "minutes": 2,
   "cat": "restorations",
   "year": 2026,
   "journal": "Cureus",
@@ -34,19 +36,51 @@ export const library: LibEntry[] = [
   "kw": [],
   "ru": {
    "title": "Биоактивные пломбировочные материалы",
-   "sum": "Материалы, выделяющие фтор и другие ионы, лучше защищают от вторичного кариеса, особенно у людей с высоким риском."
+   "sum": "Материалы, выделяющие фтор и другие ионы, лучше защищают от вторичного кариеса, особенно у людей с высоким риском.",
+   "key": [
+    "Биоактивные материалы, выделяющие фтор и другие ионы, снижали риск вторичного кариеса на 45% по сравнению с обычными.",
+    "Сильнее всего защищал стеклоиономерный цемент; гиомеры пользы не показали.",
+    "Авторы называют эти материалы первым выбором для людей с высоким риском кариеса."
+   ],
+   "p": [
+    "Вторичный кариес возникает под старой пломбой и чаще всего заставляет её менять. Для борьбы с ним создали биоактивные материалы: они выделяют ионы фтора, кальция и фосфата, помогают эмали восстанавливаться и сдерживают бактерии. Авторы сравнили их с обычными материалами в 40 рандомизированных исследованиях, всего 5506 пломб у взрослых и детей с постоянными зубами; наблюдение не меньше 12 месяцев.",
+    "Биоактивные материалы снижали риск вторичного кариеса на 45%. Лучший результат дал стеклоиономерный цемент, а гиомеры значимой пользы не показали. Достоверность доказательств умеренная, но авторы считают вывод надёжным.",
+    "Для людей с высоким риском кариеса, по мнению авторов, особенно подходят стеклоиономерные цементы и биоактивные смолы. Выбор материала всё равно остаётся за врачом; важно и то, как долго пломба прослужит механически, и это ещё предстоит изучить."
+   ]
   },
   "fa": {
    "title": "مواد ترمیمی زیست‌فعال",
-   "sum": "موادی که فلوراید و یون‌های دیگر آزاد می‌کنند، به‌ویژه برای افراد پرخطر، بهتر از پوسیدگی ثانویه جلوگیری می‌کنند."
+   "sum": "موادی که فلوراید و یون‌های دیگر آزاد می‌کنند، به‌ویژه برای افراد پرخطر، بهتر از پوسیدگی ثانویه جلوگیری می‌کنند.",
+   "key": [
+    "مواد زیست‌فعال که فلوراید و یون‌های دیگر آزاد می‌کنند، خطر پوسیدگی ثانویه را ۴۵٪ کمتر از مواد معمول کردند.",
+    "گلاس‌آینومر بیشترین محافظت را داشت؛ جیومرها فایده‌ای نشان ندادند.",
+    "نویسندگان این مواد را انتخاب اول برای افراد پرخطر از نظر پوسیدگی می‌دانند."
+   ],
+   "p": [
+    "پوسیدگی ثانویه زیر ترمیم قدیمی ایجاد می‌شود و بیشتر از همه باعث تعویض ترمیم می‌شود. برای مقابله با آن مواد زیست‌فعال ساخته شده‌اند که یون‌های فلوراید، کلسیم و فسفات آزاد می‌کنند، به بازسازی مینا کمک می‌کنند و رشد باکتری‌ها را مهار می‌کنند. نویسندگان آنها را در ۴۰ کارآزمایی تصادفی با مواد معمول مقایسه کردند، روی ۵۵۰۶ ترمیم در دندان‌های دائمی و با دست‌کم ۱۲ ماه پیگیری.",
+    "مواد زیست‌فعال خطر پوسیدگی ثانویه را ۴۵٪ کم کردند. بهترین نتیجه را سیمان گلاس‌آینومر داشت و جیومرها فایدهٔ معناداری نشان ندادند. اطمینان به شواهد متوسط است، ولی نویسندگان نتیجه را قابل اتکا می‌دانند.",
+    "به نظر نویسندگان برای افراد پرخطر از نظر پوسیدگی، گلاس‌آینومرها و رزین‌های زیست‌فعال انتخاب مناسبی هستند. انتخاب ماده باز هم با دندانپزشک است؛ دوام مکانیکی ترمیم هم مهم است و هنوز باید بررسی شود."
+   ]
   },
   "en": {
    "title": "Bioactive filling materials",
-   "sum": "Materials that release fluoride and other ions better prevent secondary decay, especially in people at high risk."
+   "sum": "Materials that release fluoride and other ions better prevent secondary decay, especially in people at high risk.",
+   "key": [
+    "Bioactive materials that release fluoride and other ions cut secondary decay risk by 45% compared with conventional ones.",
+    "Glass ionomer cement protected most; giomers showed no benefit.",
+    "The authors call these materials a first choice for people at high risk of decay."
+   ],
+   "p": [
+    "Secondary decay forms under an older filling and is the main reason fillings get replaced. Bioactive materials were developed to fight it: they release fluoride, calcium and phosphate ions, help enamel recover and hold back bacteria. The authors compared them with conventional materials in 40 randomised trials, 5,506 fillings in permanent teeth, followed for at least 12 months.",
+    "Bioactive materials reduced the risk of secondary decay by 45%. Glass ionomer cement gave the best result, while giomers showed no significant benefit. Certainty was moderate, but the authors consider the finding robust.",
+    "For people at high risk of decay, the authors see glass ionomers and bioactive resins as a good first choice. The material is still chosen by your dentist, and how long the filling lasts mechanically is something still to be studied."
+   ]
   }
  },
  {
   "id": "42179047",
+  "slug": "rinses-and-toothpastes-during-pregnancy",
+  "minutes": 2,
   "cat": "children",
   "year": 2026,
   "journal": "Glob Health Epidemiol Genom",
@@ -81,19 +115,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Полоскания и пасты при беременности",
-   "sum": "Бесспиртовые ополаскиватели с фтором, солевые растворы и пасты улучшали состояние дёсен у беременных и сопоставимы с хлоргексидином."
+   "sum": "Бесспиртовые ополаскиватели с фтором, солевые растворы и пасты улучшали состояние дёсен у беременных и сопоставимы с хлоргексидином.",
+   "key": [
+    "При беременности дёсны чаще воспаляются из-за гормональных изменений.",
+    "Безалкогольные ополаскиватели с фтором, солевые растворы и пасты улучшали состояние дёсен.",
+    "Некоторые средства работали так же, как хлоргексидин."
+   ],
+   "p": [
+    "Во время беременности меняется гормональный фон, и дёсны становятся более уязвимыми. Поэтому важна гигиена, но средства должны быть и эффективными, и безопасными. Авторы систематически оценили ополаскиватели, солёные растворы и зубные пасты для беременных.",
+    "Они искали работы за последние 6 лет и отобрали три исследования среднего и высокого качества. Безалкогольные ополаскиватели с фтором, антибактериальные пасты и полоскание солёной водой улучшали состояние дёсен, уменьшали налёт и воспаление. Некоторые дополнительные средства были так же эффективны, как хлоргексидин.",
+    "Авторы делают вывод, что полоскание солёной водой, ополаскиватели с фтором и зубные пасты улучшают здоровье рта у беременных и легко доступны. Исследований было всего три, поэтому подбор средств лучше обсудить с врачом."
+   ]
   },
   "fa": {
    "title": "دهان‌شویه و خمیردندان در بارداری",
-   "sum": "دهان‌شویه‌های بدون الکل حاوی فلوراید، آب‌نمک و خمیردندان‌ها سلامت لثه زنان باردار را بهتر کردند و با کلرهگزیدین قابل مقایسه بودند."
+   "sum": "دهان‌شویه‌های بدون الکل حاوی فلوراید، آب‌نمک و خمیردندان‌ها سلامت لثه زنان باردار را بهتر کردند و با کلرهگزیدین قابل مقایسه بودند.",
+   "key": [
+    "در بارداری به‌خاطر تغییرات هورمونی لثه بیشتر ملتهب می‌شود.",
+    "دهان‌شویه‌های بدون الکل حاوی فلوراید، آب‌نمک و خمیردندان سلامت لثه را بهتر کردند.",
+    "برخی محصولات به اندازهٔ کلرهگزیدین مؤثر بودند."
+   ],
+   "p": [
+    "در بارداری هورمون‌ها تغییر می‌کنند و لثه آسیب‌پذیرتر می‌شود. برای همین بهداشت مهم است، اما محصولات باید هم مؤثر باشند و هم ایمن. نویسندگان دهان‌شویه‌ها، آب‌نمک و خمیردندان‌ها را برای زنان باردار به‌طور سیستماتیک ارزیابی کردند.",
+    "آنها مطالعه‌های ۶ سال اخیر را جست‌وجو کردند و سه مطالعهٔ با کیفیت متوسط تا بالا را انتخاب کردند. دهان‌شویه‌های بدون الکل حاوی فلوراید، خمیردندان‌های ضدباکتری و غرغره با آب‌نمک سلامت لثه را بهتر و پلاک و التهاب را کمتر کردند. برخی مواد دیگر به اندازهٔ کلرهگزیدین مؤثر بودند.",
+    "نویسندگان نتیجه می‌گیرند غرغرهٔ آب‌نمک، دهان‌شویهٔ فلوراید دار و خمیردندان سلامت دهان زنان باردار را بهتر می‌کنند و در دسترس‌اند. فقط سه مطالعه بود، پس انتخاب محصول را بهتر است با دندانپزشک در میان بگذارید."
+   ]
   },
   "en": {
    "title": "Rinses and toothpastes during pregnancy",
-   "sum": "Alcohol-free fluoride mouthwashes, salt-water rinses and toothpastes improved gum health in pregnant women and worked about as well as chlorhexidine."
+   "sum": "Alcohol-free fluoride mouthwashes, salt-water rinses and toothpastes improved gum health in pregnant women and worked about as well as chlorhexidine.",
+   "key": [
+    "In pregnancy, gums become inflamed more easily because of hormonal changes.",
+    "Alcohol-free fluoride mouthwashes, salt-water rinses and toothpastes improved gum health.",
+    "Some products worked about as well as chlorhexidine."
+   ],
+   "p": [
+    "Hormones change during pregnancy and the gums become more vulnerable. So hygiene matters, but the products need to be both effective and safe. The authors systematically assessed mouthwashes, salt-water rinses and toothpastes for pregnant women.",
+    "They searched the last 6 years and selected three studies of moderate to high quality. Alcohol-free fluoride mouthwashes, antibacterial toothpastes and salt-water rinses improved gum health and reduced plaque and inflammation. Some additional agents were as effective as chlorhexidine.",
+    "The authors conclude that salt-water rinses, fluoride mouthwashes and toothpastes improve oral health in pregnant women and are easy to get. With only three studies, it is best to discuss the choice with your dentist."
+   ]
   }
  },
  {
   "id": "42276584",
+  "slug": "electric-toothbrush-with-braces",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2026,
   "journal": "Eur J Orthod",
@@ -119,19 +185,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Электрическая щётка при брекетах",
-   "sum": "У людей с брекетами электрические щётки, возможно, умеренно улучшают чистку и состояние дёсен; доказательства низкого качества."
+   "sum": "У людей с брекетами электрические щётки, возможно, умеренно улучшают чистку и состояние дёсен; доказательства низкого качества.",
+   "key": [
+    "Электрические щётки при брекетах, возможно, умеренно лучше убирают налёт и снижают воспаление дёсен.",
+    "Качество доказательств низкое, и результаты разных исследований сильно различаются.",
+    "Лучше всего показали щётки с вращением в противоположные стороны, но данные очень слабые."
+   ],
+   "p": [
+    "Брекеты затрудняют чистку, и врачи спорят, помогают ли здесь электрические щётки. Авторы собрали 23 исследования, 39 сравнений электрических и обычных щёток у людей с несъёмными брекетами.",
+    "В большинстве сравнений общей разницы не было. Но при объединении данных электрические щётки показали умеренный эффект по налёту и крупный по воспалению дёсен. Результаты сильно различались между исследованиями, а качество доказательств было низким. Лучше других выглядели щётки с вращением в противоположные стороны, но на очень слабых данных.",
+    "Это значит, что электрическая щётка может помочь, но уверенности нет. Авторы просят осторожно относиться к выводам. С брекетами важнее обучение чистке и дополнительные средства; их подберёт ортодонт или гигиенист."
+   ]
   },
   "fa": {
    "title": "مسواک برقی برای افراد با بریس",
-   "sum": "برای افراد دارای بریس ثابت، مسواک برقی احتمالاً پلاک و التهاب لثه را به‌طور متوسط بهتر کنترل می‌کند؛ کیفیت شواهد پایین است."
+   "sum": "برای افراد دارای بریس ثابت، مسواک برقی احتمالاً پلاک و التهاب لثه را به‌طور متوسط بهتر کنترل می‌کند؛ کیفیت شواهد پایین است.",
+   "key": [
+    "مسواک برقی برای افراد با بریس احتمالاً پلاک و التهاب لثه را به‌طور متوسط بهتر کنترل می‌کند.",
+    "کیفیت شواهد پایین است و نتایج مطالعه‌ها تفاوت زیادی دارند.",
+    "مسواک‌های با چرخش متقابل بهتر بودند، اما شواهد بسیار ضعیف است."
+   ],
+   "p": [
+    "بریس تمیز کردن را سخت می‌کند و دندانپزشکان دربارهٔ اثر مسواک برقی بحث دارند. نویسندگان ۲۳ مطالعه و ۳۹ مقایسه از مسواک برقی و معمولی در افراد با بریس ثابت را جمع کردند.",
+    "در بیشتر مقایسه‌ها تفاوت کلی دیده نشد. اما با ترکیب داده‌ها، مسواک برقی اثر متوسطی روی پلاک و اثر بزرگی روی التهاب لثه نشان داد. نتایج مطالعه‌ها بسیار متفاوت بود و کیفیت شواهد پایین. مسواک‌های با چرخش در دو جهت مخالف بهتر به‌نظر رسیدند، ولی با شواهد بسیار ضعیف.",
+    "یعنی مسواک برقی ممکن است کمک کند اما اطمینان نداریم. نویسندگان توصیه می‌کنند نتایج با احتیاط تفسیر شود. با بریس، آموزش مسواک زدن و وسایل کمکی مهم‌تر است و ارتودنتیست یا بهداشت‌کار آنها را پیشنهاد می‌کند."
+   ]
   },
   "en": {
    "title": "Electric toothbrush with braces",
-   "sum": "For people with fixed braces, powered brushes may moderately improve plaque and gum scores. The evidence is low in quality."
+   "sum": "For people with fixed braces, powered brushes may moderately improve plaque and gum scores. The evidence is low in quality.",
+   "key": [
+    "For people with braces, powered brushes may moderately improve plaque and gum scores.",
+    "Evidence quality is low and results differ a lot between studies.",
+    "Counter-rotational brushes did best, but on very weak evidence."
+   ],
+   "p": [
+    "Braces make cleaning harder, and dentists debate whether powered brushes help. The authors gathered 23 papers with 39 comparisons of powered and manual brushes in people with fixed braces.",
+    "In most comparisons there was no overall difference. When the data were pooled, powered brushes showed a medium effect on plaque and a large one on gum inflammation. Results differed greatly between studies and evidence quality was low. Counter-rotational brushes looked best, but on very low-quality evidence.",
+    "So a powered brush may help, but we cannot be sure, and the authors urge caution. With braces, brushing instruction and extra tools matter too; your orthodontist or hygienist can suggest them."
+   ]
   }
  },
  {
   "id": "42808713",
+  "slug": "topical-fluoride-in-children-and-teens",
+  "minutes": 2,
   "cat": "caries",
   "year": 2026,
   "journal": "Oral Health Prev Dent",
@@ -156,19 +254,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Местный фторид у детей и подростков",
-   "sum": "Мета-анализ 10 исследований: местные формы фторида заметно снижали развитие кариеса; серьёзных побочных эффектов в отчётах не нашли."
+   "sum": "Мета-анализ 10 исследований: местные формы фторида заметно снижали развитие кариеса; серьёзных побочных эффектов в отчётах не нашли.",
+   "key": [
+    "Мета-анализ 10 исследований у детей и подростков: местный фторид заметно снижает кариес.",
+    "Лучшие результаты показали раствор 0,2%, более частое применение и более длительный курс.",
+    "Серьёзных побочных эффектов, связанных с фторидом, в отчётах не нашли."
+   ],
+   "p": [
+    "Авторы изучили, насколько местные формы фторида (ополаскиватели, пасты, гели, пенки, лак) защищают детей и подростков от кариеса. Они искали клинические исследования в нескольких базах за 2000-2025 годы и объединили результаты 10 исследований.",
+    "Фторид значительно снижал частоту появления кариеса. Лучше всего показали себя раствор 0,2%, более частое применение и более долгий курс. Отдельно разобрали исследование с 5% фторидным лаком, потому что там сравнивали с отсроченным лаком.",
+    "Данных о безопасности было мало, но серьёзных нежелательных событий в отчётах не нашли. Авторы советуют применять фторид регулярно и под контролем взрослых и просят единых протоколов и долгосрочных данных о безопасности."
+   ]
   },
   "fa": {
    "title": "فلوراید موضعی در کودکان و نوجوانان",
-   "sum": "فراتحلیل ۱۰ مطالعه: فلوراید موضعی بروز پوسیدگی را به‌طور معناداری کاهش داد و عارضه‌ی جدی مرتبط با فلوراید گزارش نشد."
+   "sum": "فراتحلیل ۱۰ مطالعه: فلوراید موضعی بروز پوسیدگی را به‌طور معناداری کاهش داد و عارضه‌ی جدی مرتبط با فلوراید گزارش نشد.",
+   "key": [
+    "فراتحلیل ۱۰ مطالعه در کودکان و نوجوانان: فلوراید موضعی پوسیدگی را به‌طور قابل‌توجه کم می‌کند.",
+    "غلظت ۰٫۲٪، دفعات بیشتر و دورهٔ طولانی‌تر نتایج بهتری داشت.",
+    "عارضهٔ جدی مرتبط با فلوراید در گزارش‌ها دیده نشد."
+   ],
+   "p": [
+    "نویسندگان بررسی کردند فلوراید موضعی (دهان‌شویه، خمیردندان، ژل، فوم و وارنیش) تا چه حد کودکان و نوجوانان را از پوسیدگی محافظت می‌کند. آنها مطالعه‌های بالینی سال‌های ۲۰۰۰ تا ۲۰۲۵ را در چند پایگاه جستجو کردند و نتیجهٔ ۱۰ مطالعه را ترکیب کردند.",
+    "فلوراید بروز پوسیدگی را به‌طور معناداری کاهش داد. غلظت ۰٫۲٪، دفعات بیشتر و دورهٔ طولانی‌تر بهترین نتایج را داشتند. مطالعه‌ای که وارنیش سدیم فلوراید ۵٪ داشت جداگانه بررسی شد، چون با وارنیش تأخیری مقایسه شده بود.",
+    "اطلاعات ایمنی کم بود، اما عارضهٔ جدی مرتبط با فلوراید در گزارش‌ها دیده نشد. نویسندگان استفادهٔ منظم و زیر نظر بزرگسال را توصیه می‌کنند و پروتکل‌های یکسان و داده‌های ایمنی بلندمدت می‌خواهند."
+   ]
   },
   "en": {
    "title": "Topical fluoride in children and teens",
-   "sum": "A meta-analysis of 10 studies found topical fluoride clearly reduced new decay. No serious fluoride-related side effects were reported."
+   "sum": "A meta-analysis of 10 studies found topical fluoride clearly reduced new decay. No serious fluoride-related side effects were reported.",
+   "key": [
+    "A meta-analysis of 10 studies in children and teens: topical fluoride clearly reduces decay.",
+    "A 0.2% solution, more frequent use and a longer course gave the best results.",
+    "No serious fluoride-related side effects were found in the reports."
+   ],
+   "p": [
+    "The authors looked at how well topical fluorides (rinses, toothpaste, gels, foams and varnish) protect children and teenagers from decay. They searched several databases for clinical studies from 2000 to 2025 and pooled the results of 10 studies.",
+    "Fluoride significantly reduced new decay. A 0.2% solution, more frequent use and a longer course gave the best results. One study of a 5% fluoride varnish was analysed separately because it used a delayed-varnish comparison.",
+    "Safety data were limited, but no serious fluoride-related events were found in the available reports. The authors support regular, supervised use and call for standard protocols and better long-term safety reporting."
+   ]
   }
  },
  {
   "id": "42930418",
+  "slug": "e-cigarettes-and-oral-health",
+  "minutes": 2,
   "cat": "health",
   "year": 2026,
   "journal": "Dent J (Basel)",
@@ -185,19 +315,51 @@ export const library: LibEntry[] = [
   "kw": [],
   "ru": {
    "title": "Электронные сигареты и рот",
-   "sum": "Обзор вредных эффектов электронных сигарет на полость рта; стоматологам рекомендуют информировать пациентов."
+   "sum": "Обзор вредных эффектов электронных сигарет на полость рта; стоматологам рекомендуют информировать пациентов.",
+   "key": [
+    "Обзор вредных эффектов электронных сигарет на рот.",
+    "Химические вещества аэрозоля могут повреждать дёсны, язык, слюнные железы, зубы и микрофлору рта.",
+    "Нужны долгосрочные исследования."
+   ],
+   "p": [
+    "Электронные сигареты позволяют получать никотин без горения табака. Сначала их считали альтернативой обычным сигаретам, но теперь они стали массовым продуктом, и врачей беспокоит их использование некурящими, особенно молодёжью. Авторы обобщили, какие вещества выделяют такие устройства и как они влияют на рот.",
+    "Они просмотрели англоязычные работы за 2008-2026 годы в нескольких базах. Обзор описывает нарушения в мягких тканях (язык, дёсны, слюнные железы), твёрдых тканях (зубы, реставрационные материалы) и микрофлоре рта. Вещества аэрозоля повреждают клетки, вызывают окислительный стресс и повреждение ДНК, что может приводить к раку полости рта. Они же могут замедлять заживление ран и усиливать воспаление.",
+    "Авторы отмечают, что нужны долгосрочные исследования, но лабораторные и клинические работы уже показывают потенциальный вред вейпинга для рта. Обзор рассчитан на пользователей, стоматологов и учёных и напоминает, что электронные сигареты не безвредны для зубов и дёсен."
+   ]
   },
   "fa": {
    "title": "سیگار الکترونیکی و سلامت دهان",
-   "sum": "مروری بر اثرات زیان‌بار سیگار الکترونیکی بر دهان؛ توصیه می‌شود دندان‌پزشکان به بیماران آگاهی بدهند."
+   "sum": "مروری بر اثرات زیان‌بار سیگار الکترونیکی بر دهان؛ توصیه می‌شود دندان‌پزشکان به بیماران آگاهی بدهند.",
+   "key": [
+    "مروری بر اثرات زیان‌بار سیگار الکترونیکی بر دهان.",
+    "مواد شیمیایی بخار می‌توانند به لثه، زبان، غدد بزاقی، دندان و میکروبیوم دهان آسیب بزنند.",
+    "پژوهش‌های بلندمدت لازم است."
+   ],
+   "p": [
+    "سیگار الکترونیکی نیکوتین را بدون سوزاندن تنباکو می‌رساند. در ابتدا جایگزین سیگار معمولی تصور می‌شد، اما حالا محصولی عمومی شده و استفادهٔ غیرسیگاری‌ها، به‌ویژه جوانان، متخصصان را نگران کرده است. نویسندگان بررسی کردند این دستگاه‌ها چه مواد شیمیایی تولید می‌کنند و بر دهان چه اثری دارند.",
+    "آنها مقاله‌های انگلیسی ۲۰۰۸ تا ۲۰۲۶ را در چند پایگاه جست‌وجو کردند. مرور، اختلال در بافت نرم (زبان، لثه، غدد بزاقی)، بافت سخت (دندان و مواد ترمیمی) و میکروبیوم دهان را شرح می‌دهد. مواد بخار به سلول‌ها آسیب می‌زنند، استرس اکسیداتیو و آسیب DNA ایجاد می‌کنند که می‌تواند به سرطان دهان برسد. همچنین ممکن است ترمیم زخم را کند و التهاب را زیاد کنند.",
+    "نویسندگان می‌گویند به پژوهش‌های بلندمدت نیاز است، اما مطالعه‌های آزمایشگاهی و درون‌تنی از همین حالا آسیب احتمالی ویپ برای دهان را نشان می‌دهند. این مرور برای کاربران، دندانپزشکان و پژوهشگران است و یادآوری می‌کند سیگار الکترونیکی برای دندان و لثه بی‌خطر نیست."
+   ]
   },
   "en": {
    "title": "E-cigarettes and oral health",
-   "sum": "A review of the harmful effects of e-cigarettes on the mouth. Dental professionals are urged to inform their patients."
+   "sum": "A review of the harmful effects of e-cigarettes on the mouth. Dental professionals are urged to inform their patients.",
+   "key": [
+    "A review of the harmful effects of e-cigarettes on the mouth.",
+    "Chemicals in the vapour may damage the gums, tongue, salivary glands, teeth and the mouth's microbiota.",
+    "Long-term studies are still needed."
+   ],
+   "p": [
+    "E-cigarettes let smokers take in nicotine without burning tobacco. They were first meant as an alternative to cigarettes, but have become a mass product, and health professionals worry about use by non-smokers, especially young people. The authors summarised which chemicals these devices produce and what they do to oral health.",
+    "They reviewed English-language literature from 2008 to 2026 across several databases. The review describes disruption of soft tissues (tongue, gums, salivary glands), hard tissues (teeth, restorative materials) and the oral microbiota. The chemicals damage cells, causing oxidative stress and DNA damage that may lead to oral cancer, and may slow wound healing and increase inflammation.",
+    "The authors note that long-term follow-up studies are needed, but laboratory and animal studies already show the potential harm of vaping to the mouth. The review is meant for users, dental professionals and scientists, and it is a reminder that e-cigarettes are not harmless to teeth and gums."
+   ]
   }
  },
  {
   "id": "42944993",
+  "slug": "gum-disease-and-the-heart",
+  "minutes": 2,
   "cat": "health",
   "year": 2026,
   "journal": "Clin Oral Investig",
@@ -223,19 +385,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Пародонтит и сердце",
-   "sum": "Связь пародонтита с ишемической болезнью сердца наблюдается чаще всего, но причинность не доказана; нужны крупные исследования."
+   "sum": "Связь пародонтита с ишемической болезнью сердца наблюдается чаще всего, но причинность не доказана; нужны крупные исследования.",
+   "key": [
+    "Обзор о связи болезни дёсен с сердечно-сосудистыми заболеваниями.",
+    "Наиболее изучена связь пародонтита с ишемической болезнью сердца; есть и данные по инсульту.",
+    "Пародонтит рассматривают как возможный модификатор риска, а не доказанную причину."
+   ],
+   "p": [
+    "Пародонтит это хроническое воспалительное заболевание, которое может иметь значение не только для рта. Авторы обобщили, как оно связано с болезнями сердца и сосудов, и шире, чем только атеросклероз.",
+    "Лучше всего изучена связь с атеросклеротической болезнью коронарных артерий: у неё много наблюдательных исследований и мета-анализов. Для ишемического инсульта данные тоже есть, но они более разнородны. Среди новых направлений наиболее развиты фибрилляция предсердий и сердечная недостаточность, а по аневризме брюшной аорты и венозной тромбоэмболии данные пока предварительные.",
+    "Авторы подчёркивают: пародонтит лучше считать возможным модификатором сердечно-сосудистой уязвимости, а не доказанной причиной. Нужны хорошо спланированные исследования с достаточным числом участников, прежде чем данные о дёснах можно будет использовать для профилактики болезней сердца. Лечить дёсны полезно в любом случае."
+   ]
   },
   "fa": {
    "title": "پریودنتیت و قلب",
-   "sum": "ارتباط پریودنتیت با بیماری عروق کرونر بیشتر از همه مشاهده شده است اما علیت اثبات نشده؛ کارآزمایی‌های بزرگ لازم است."
+   "sum": "ارتباط پریودنتیت با بیماری عروق کرونر بیشتر از همه مشاهده شده است اما علیت اثبات نشده؛ کارآزمایی‌های بزرگ لازم است.",
+   "key": [
+    "مروری دربارهٔ ارتباط بیماری لثه با بیماری‌های قلب و عروق.",
+    "ارتباط پریودنتیت با بیماری عروق کرونر بیشتر از همه بررسی شده؛ برای سکتهٔ ایسکمیک هم شواهد هست.",
+    "پریودنتیت عامل احتمالی تعدیل‌کنندهٔ خطر است، نه علت اثبات‌شده."
+   ],
+   "p": [
+    "پریودنتیت بیماری التهابی مزمنی است که ممکن است فراتر از دهان اهمیت داشته باشد. نویسندگان ارتباط آن را با بیماری‌های قلب و عروق، فراتر از آترواسکلروز، مرور کردند.",
+    "بهتر از همه ارتباط با بیماری آترواسکلروتیک عروق کرونر بررسی شده و مطالعه‌های مشاهده‌ای و فراتحلیل‌های زیادی دارد. برای سکتهٔ ایسکمیک هم شواهد هست، ولی ناهمگن‌تر است. در میان زمینه‌های تازه، فیبریلاسیون دهلیزی و نارسایی قلبی پیشرفته‌ترین‌اند و برای آنوریسم آئورت شکمی و ترومبوآمبولی وریدی شواهد هنوز اولیه است.",
+    "نویسندگان تأکید می‌کنند پریودنتیت را بهتر است عاملی احتمالی برای تعدیل آسیب‌پذیری قلبی-عروقی دانست، نه علت اثبات‌شده. پیش از اینکه اطلاعات لثه برای پیشگیری از بیماری قلبی کاربرد بالینی پیدا کند، کارآزمایی‌های خوب طراحی‌شده با شرکت‌کنندهٔ کافی لازم است. درمان لثه در هر حال مفید است."
+   ]
   },
   "en": {
    "title": "Gum disease and the heart",
-   "sum": "Periodontitis is most consistently linked to coronary disease, but cause and effect is not established. Large trials are needed."
+   "sum": "Periodontitis is most consistently linked to coronary disease, but cause and effect is not established. Large trials are needed.",
+   "key": [
+    "A review of how gum disease relates to heart and vascular disease.",
+    "The link with coronary artery disease is the best studied; stroke also has supporting evidence.",
+    "Periodontitis is seen as a possible modifier of risk, not an established cause."
+   ],
+   "p": [
+    "Periodontitis is a chronic inflammatory disease that may matter beyond the mouth. The authors reviewed how it relates to cardiovascular disease, going beyond atherosclerosis alone.",
+    "The link with coronary atherosclerotic disease is the most mature, with substantial observational and meta-analytic support. Ischaemic stroke also has consistent but more mixed evidence. Among emerging areas, atrial fibrillation and heart failure are the most developed, while evidence on abdominal aortic aneurysm and venous thromboembolism is still preliminary.",
+    "The authors stress that periodontitis is best seen as a potential modifier of cardiovascular vulnerability rather than an established cause. Adequately powered cardiovascular-outcome trials are needed before gum information can guide heart disease prevention. Treating gum disease is worthwhile in any case."
+   ]
   }
  },
  {
   "id": "40003240",
+  "slug": "aligners-and-braces-effect-on-gums",
+  "minutes": 2,
   "cat": "prosthetics",
   "year": 2025,
   "journal": "Children (Basel)",
@@ -261,19 +455,51 @@ export const library: LibEntry[] = [
   "kw": [],
   "ru": {
    "title": "Элайнеры и брекеты: влияние на дёсны",
-   "sum": "По обзору, элайнеры облегчают гигиену и снижают воспаление, а брекеты могут усиливать налёт; выбор нужно делать индивидуально."
+   "sum": "По обзору, элайнеры облегчают гигиену и снижают воспаление, а брекеты могут усиливать налёт; выбор нужно делать индивидуально.",
+   "key": [
+    "Систематический обзор 8 исследований из 1664 найденных записей.",
+    "Элайнеры лучше брекетов улучшали гигиену и снижали воспаление.",
+    "В исследованиях есть смещения; выбор лечения нужно делать индивидуально."
+   ],
+   "p": [
+    "Ортодонтическое лечение двигает зубы, а в этом участвует связка вокруг корня и перестройка кости. У людей с заболеваниями дёсен важно, как аппарат влияет на гигиену. Авторы по правилам PRISMA сравнили прозрачные каппы (элайнеры) и брекеты в отношении здоровья пародонта.",
+    "Из 1664 записей в обзор вошли 8 исследований. Авторы отмечают, что в литературе есть разные смещения. Элайнеры, в отличие от несъёмных аппаратов, улучшали гигиену и уменьшали воспаление, давая лучшие результаты для дёсен. Брекеты же могли усиливать накопление налёта и воспаление и ухудшать состояние пародонта.",
+    "Авторы считают, что элайнеры имеют преимущества: лучше здоровье дёсен, лучше соблюдение режима и пользу при тяжёлом пародонтите в долгой перспективе. При этом решение должно основываться на особенностях каждого пациента. Если у вас болезнь дёсен, обсудите вариант лечения с ортодонтом и пародонтологом."
+   ]
   },
   "fa": {
    "title": "الاینر و بریس: اثر بر لثه",
-   "sum": "طبق این مرور الاینر بهداشت را بهتر و التهاب را کمتر می‌کند و بریس ثابت ممکن است تجمع پلاک را زیاد کند؛ انتخاب باید فردی باشد."
+   "sum": "طبق این مرور الاینر بهداشت را بهتر و التهاب را کمتر می‌کند و بریس ثابت ممکن است تجمع پلاک را زیاد کند؛ انتخاب باید فردی باشد.",
+   "key": [
+    "مرور سیستماتیک ۸ مطالعه از ۱۶۶۴ مورد یافت‌شده.",
+    "الاینر نسبت به دستگاه ثابت بهداشت را بهتر و التهاب را کمتر کرد.",
+    "مطالعه‌ها سوگیری دارند؛ انتخاب درمان باید فردی باشد."
+   ],
+   "p": [
+    "ارتودنسی دندان‌ها را جابه‌جا می‌کند و رباط اطراف ریشه و بازسازی استخوان در آن نقش دارند. برای افراد دارای بیماری لثه مهم است که دستگاه چه اثری بر بهداشت دارد. نویسندگان طبق راهنمای PRISMA الاینر شفاف و بریس ثابت را از نظر سلامت لثه و بافت اطراف دندان مقایسه کردند.",
+    "از ۱۶۶۴ مورد، ۸ مطالعه وارد مرور شد. نویسندگان می‌گویند در منابع سوگیری‌های مختلف وجود دارد. الاینر برخلاف دستگاه ثابت بهداشت را بهتر و التهاب را کمتر کرد و نتایج بهتری برای لثه داشت. دستگاه ثابت ممکن است تجمع پلاک و التهاب را زیاد و وضعیت لثه را بدتر کند.",
+    "نویسندگان معتقدند الاینر مزایایی دارد: سلامت لثهٔ بهتر، همکاری بهتر بیمار و فایدهٔ بلندمدت در بیماری شدید لثه. با این حال تصمیم باید بر اساس ویژگی‌های هر بیمار باشد. اگر بیماری لثه دارید، انتخاب درمان را با ارتودنتیست و متخصص لثه در میان بگذارید."
+   ]
   },
   "en": {
    "title": "Aligners and braces: effect on gums",
-   "sum": "According to this review aligners ease hygiene and lower inflammation, while fixed braces may increase plaque. The choice should be individual."
+   "sum": "According to this review aligners ease hygiene and lower inflammation, while fixed braces may increase plaque. The choice should be individual.",
+   "key": [
+    "A systematic review of 8 studies from 1,664 records.",
+    "Aligners improved hygiene and reduced inflammation compared with fixed braces.",
+    "The studies carry biases; the treatment choice should be individual."
+   ],
+   "p": [
+    "Orthodontic treatment moves teeth, and the ligament around the root and bone remodelling take part in it. For people with gum disease it matters how the appliance affects hygiene. Following PRISMA guidelines, the authors compared clear aligners and traditional braces for periodontal health.",
+    "From 1,664 records, 8 studies were included. The authors point out various biases in the literature. Aligners, in contrast to fixed appliances, improved oral hygiene and reduced inflammation, leading to better periodontal outcomes. Fixed appliances, on the other hand, may increase plaque accumulation and inflammation and make gum health worse.",
+    "The authors conclude that aligners offer advantages: better gum health, better compliance and long-term benefits, particularly in severe periodontitis. At the same time, decisions should rest on each patient's own criteria. If you have gum disease, discuss the option with your orthodontist and a periodontist."
+   ]
   }
  },
  {
   "id": "41012309",
+  "slug": "whitening-agents-and-carrier-gels",
+  "minutes": 2,
   "cat": "whitening",
   "year": 2025,
   "journal": "Polymers (Basel)",
@@ -302,19 +528,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Средства для отбеливания и гели-носители",
-   "sum": "Перекиси остаются самыми эффективными, но могут повреждать поверхность эмали и вызывать чувствительность; фториды помогают снизить чувствительность."
+   "sum": "Перекиси остаются самыми эффективными, но могут повреждать поверхность эмали и вызывать чувствительность; фториды помогают снизить чувствительность.",
+   "key": [
+    "Перекиси водорода и карбамида остаются самыми эффективными отбеливающими средствами.",
+    "Но могут менять поверхность эмали, снижать её твёрдость и вызывать чувствительность.",
+    "Фториды помогают снизить чувствительность и беречь эмаль."
+   ],
+   "p": [
+    "Отбеливание всё популярнее и в кабинете, и дома, поэтому возникают вопросы об эффективности и безопасности. Авторы сравнили активные вещества (перекиси, уголь, пищевую соду, фториды, блю-коварин) и гели-носители, которые удерживают состав на зубах и регулируют его действие.",
+    "Перекиси лучше всего меняют цвет внутри зуба, но при высоких концентрациях могут изменять поверхность эмали, снижать её твёрдость и повреждать клетки. Сода убирает налёт и пятна снаружи, фториды поддерживают эмаль и снижают чувствительность. Уголь рискует истирать эмаль, а блю-коварин даёт мгновенный оптический эффект без реального отбеливания.",
+    "Полимерные носители могут уменьшать попадание состава вглубь зуба и чувствительность, но таких исследований мало. Выбор состава и способа лучше сделать вместе с врачом, чтобы получить красивый результат и не навредить эмали."
+   ]
   },
   "fa": {
    "title": "مواد سفیدکننده و ژل‌های حامل",
-   "sum": "پراکسیدها مؤثرترین مواد هستند ولی ممکن است سطح مینا را تغییر دهند و حساسیت ایجاد کنند؛ فلوراید به کاهش حساسیت کمک می‌کند."
+   "sum": "پراکسیدها مؤثرترین مواد هستند ولی ممکن است سطح مینا را تغییر دهند و حساسیت ایجاد کنند؛ فلوراید به کاهش حساسیت کمک می‌کند.",
+   "key": [
+    "پراکسید هیدروژن و کارباماید مؤثرترین مواد سفیدکننده باقی می‌مانند.",
+    "اما ممکن است سطح مینا را تغییر دهند، سختی‌اش را کم کنند و حساسیت ایجاد کنند.",
+    "فلوراید به کاهش حساسیت و حفظ مینا کمک می‌کند."
+   ],
+   "p": [
+    "سفید کردن دندان هم در مطب و هم در خانه رایج‌تر شده و دربارهٔ اثربخشی و ایمنی آن پرسش‌هایی هست. نویسندگان مواد فعال (پراکسیدها، زغال، جوش‌شیرین، فلوریدها و بلو کوواسین) و ژل‌های حامل را مقایسه کردند؛ ژل‌هایی که ماده را روی دندان نگه می‌دارند و آزادسازی را تنظیم می‌کنند.",
+    "پراکسیدها بهترین تغییر رنگ درونی را می‌دهند، اما در غلظت بالا ممکن است سطح مینا را تغییر دهند، سختی آن را کم کنند و به سلول‌ها آسیب برسانند. جوش‌شیرین لکه‌های بیرونی را برمی‌دارد و فلوراید مینا را پشتیبانی و حساسیت را کم می‌کند. زغال خطر ساییدن مینا دارد و بلو کوواسین اثر نوری فوری بدون سفید کردن واقعی می‌دهد.",
+    "حامل‌های پلیمری ممکن است نفوذ ماده به عمق دندان و حساسیت را کم کنند، اما مطالعه‌های اختصاصی کم است. انتخاب ماده و روش را بهتر است با دندانپزشک انجام دهید تا هم نتیجهٔ زیبا بگیرید و هم به مینا آسیب نرسد."
+   ]
   },
   "en": {
    "title": "Whitening agents and carrier gels",
-   "sum": "Peroxides remain the most effective agents but can change the enamel surface and cause sensitivity. Fluoride helps reduce sensitivity."
+   "sum": "Peroxides remain the most effective agents but can change the enamel surface and cause sensitivity. Fluoride helps reduce sensitivity.",
+   "key": [
+    "Hydrogen peroxide and carbamide peroxide remain the most effective whitening agents.",
+    "But they can change the enamel surface, lower its hardness and cause sensitivity.",
+    "Fluoride helps reduce sensitivity and protect enamel."
+   ],
+   "p": [
+    "Whitening is increasingly popular in the clinic and at home, which raises questions about effectiveness and safety. The authors compared the active ingredients (peroxides, charcoal, baking soda, fluoride compounds and blue covarine) and the carrier gels that hold the product on the teeth and control its release.",
+    "Peroxides give the best change in internal colour, but at higher strengths they can alter the enamel surface, reduce its hardness and harm cells. Baking soda removes surface stains, and fluoride supports enamel and reduces sensitivity. Charcoal risks wearing enamel, and blue covarine gives an instant optical effect without real whitening.",
+    "Polymer carriers might limit how deep the product reaches and reduce sensitivity, but dedicated studies are few. Choosing the product and method together with your dentist gives a nice result without harming enamel."
+   ]
   }
  },
  {
   "id": "38236001",
+  "slug": "fluoride-and-decay-prevention-what-countries-do",
+  "minutes": 2,
   "cat": "caries",
   "year": 2024,
   "journal": "Ann Ig",
@@ -343,19 +601,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Фтор и профилактика кариеса: что делают страны",
-   "sum": "Обзор рекомендаций и государственных программ по фториду; для профилактики чаще всего предпочитают местные формы фторида из-за хорошего соотношения пользы и риска."
+   "sum": "Обзор рекомендаций и государственных программ по фториду; для профилактики чаще всего предпочитают местные формы фторида из-за хорошего соотношения пользы и риска.",
+   "key": [
+    "Фторид можно получать по-разному: паста, лак, гели, а также добавки и меры для всего населения.",
+    "Местные формы (паста, ополаскиватель, лак) дают заметно больше защиты, чем фтор «внутрь».",
+    "В статье собраны рекомендации ведущих организаций по каждому способу."
+   ],
+   "p": [
+    "Авторы изучили официальные рекомендации и документы о фториде: позиции научных обществ, руководства и правовые акты. Они хотели понять, какие способы профилактики кариеса с фторидом советуют сегодня и какие вопросы остаются спорными для здравоохранения.",
+    "Способов несколько. Для дома это паста и ополаскиватель. В кабинете врач использует гели, лаки, серебра диамин фторид, а также пломбировочные материалы и герметики с фтором. Есть таблетки и капли, а на уровне города или страны фторируют воду, соль и молоко. Эффект местного фторида признан заметно более сильным, чем системного.",
+    "Для обычного человека вывод простой: самый доказанный путь это фторид на поверхности зубов. Подходит ли вам дополнительная защита, например лак у врача, зависит от возраста и риска кариеса. Это лучше обсудить на приёме."
+   ]
   },
   "fa": {
    "title": "فلوراید و پیشگیری از پوسیدگی در سیاست‌های سلامت",
-   "sum": "مروری بر راهنماها و سیاست‌های کشورها درباره فلوراید؛ معمولاً فلوراید موضعی به‌خاطر نسبت مناسب فایده و خطر ترجیح داده می‌شود."
+   "sum": "مروری بر راهنماها و سیاست‌های کشورها درباره فلوراید؛ معمولاً فلوراید موضعی به‌خاطر نسبت مناسب فایده و خطر ترجیح داده می‌شود.",
+   "key": [
+    "فلوراید از راه‌های مختلفی به دندان می‌رسد: خمیردندان، وارنیش، ژل، مکمل‌ها و اقدامات عمومی.",
+    "شکل‌های موضعی (خمیردندان، دهان‌شویه، وارنیش) محافظت بیشتری از فلوراید خوراکی دارند.",
+    "این مقاله توصیه‌های سازمان‌های مهم را دربارهٔ هر روش جمع کرده است."
+   ],
+   "p": [
+    "نویسندگان راهنماها و اسناد رسمی دربارهٔ فلوراید را بررسی کردند: موضع‌گیری انجمن‌های علمی، دستورالعمل‌ها و مقررات. هدف این بود که ببینند امروز چه روش‌هایی برای پیشگیری از پوسیدگی با فلوراید توصیه می‌شود و کدام پرسش‌ها در سیاست‌گذاری سلامت هنوز مطرح است.",
+    "روش‌ها چند تاست. در خانه خمیردندان و دهان‌شویه. در مطب ژل، وارنیش، سیلور دی‌آمین فلوراید و همچنین مواد ترمیمی و سیلانت‌های حاوی فلوراید. قرص و قطره هم وجود دارد و در سطح شهر یا کشور آب، نمک و شیر فلورایده می‌شود. اثر فلوراید موضعی به‌طور واضح قوی‌تر از اثر سیستمیک دانسته شده است.",
+    "نتیجه برای مردم ساده است: ثابت‌شده‌ترین راه، فلوراید روی سطح دندان است. اینکه محافظت بیشتر، مثلاً وارنیش در مطب، برای شما مناسب است یا نه، به سن و خطر پوسیدگی شما بستگی دارد و بهتر است در ویزیت دربارهٔ آن صحبت کنید."
+   ]
   },
   "en": {
    "title": "Fluoride and decay prevention: what countries do",
-   "sum": "A review of fluoride guidelines and public health policies. Topical fluoride is generally preferred for its benefit-to-risk balance."
+   "sum": "A review of fluoride guidelines and public health policies. Topical fluoride is generally preferred for its benefit-to-risk balance.",
+   "key": [
+    "Fluoride can reach teeth in several ways: toothpaste, varnish, gels, supplements and community measures.",
+    "Topical forms (toothpaste, rinse, varnish) give clearly more protection than fluoride swallowed.",
+    "The paper gathers what major organisations recommend for each route."
+   ],
+   "p": [
+    "The authors reviewed official recommendations and documents on fluoride: position papers from scientific bodies, guidelines and public health law. They wanted to see which fluoride-based ways of preventing decay are advised today and which questions are still open for health policy.",
+    "There are several routes. At home: toothpaste and mouthrinse. In the clinic: gels, varnishes, silver diamine fluoride, and fillings and sealants that release fluoride. There are also tablets and drops, and at city or country level, fluoridated water, salt and milk. The effect of topical fluoride is described as clearly stronger than the systemic effect.",
+    "For most readers the message is simple: the best-established route is fluoride on the surface of the tooth. Whether you need extra protection, such as a varnish at the clinic, depends on your age and decay risk, and is worth discussing at a visit."
+   ]
   }
  },
  {
   "id": "38257948",
+  "slug": "mouth-bacteria-and-decay",
+  "minutes": 2,
   "cat": "caries",
   "year": 2024,
   "journal": "Microorganisms",
@@ -376,19 +666,51 @@ export const library: LibEntry[] = [
   "kw": [],
   "ru": {
    "title": "Микробы и кариес",
-   "sum": "Кариес связан с изменением бактерий во рту при частом потреблении сахара; ищут способы влиять именно на кариозные бактерии."
+   "sum": "Кариес связан с изменением бактерий во рту при частом потреблении сахара; ищут способы влиять именно на кариозные бактерии.",
+   "key": [
+    "При частом сахаре бактерии во рту меняются, и среда становится кислой.",
+    "Видов микробов, связанных с кариесом, много, и состав зависит от зуба и стадии болезни.",
+    "Новые подходы ищут способы действовать именно на кислотообразующие бактерии."
+   ],
+   "p": [
+    "Авторы описывают микробов, которые живут на зубах, и как они меняются при кариесе. Современные методы позволяют не только перечислить бактерии, но и увидеть, какие из них сейчас активны в очаге.",
+    "Когда человек часто ест сахар, кислотность на зубах растёт. Спокойное разнообразное сообщество бактерий сменяется кислотолюбивыми видами, и эмаль теряет минералы. Состав микробов зависит от места на зубе, размера кариеса и скорости его развития.",
+    "Кариес трудно предотвратить, потому что он имеет много причин. Фторид помогает, но его действие хуже закрепляется у детей с высоким риском, и он дорог. Учёные ищут способы воздействовать именно на кислотообразующие бактерии, например с помощью наночастиц. Пока это направление исследований, а не готовое лечение."
+   ]
   },
   "fa": {
    "title": "میکروب‌ها و پوسیدگی",
-   "sum": "پوسیدگی با تغییر باکتری‌های دهان در اثر مصرف مکرر قند مرتبط است؛ پژوهش‌ها دنبال راه‌هایی برای اثرگذاری مستقیم بر باکتری‌های پوسیدگی‌زا هستند."
+   "sum": "پوسیدگی با تغییر باکتری‌های دهان در اثر مصرف مکرر قند مرتبط است؛ پژوهش‌ها دنبال راه‌هایی برای اثرگذاری مستقیم بر باکتری‌های پوسیدگی‌زا هستند.",
+   "key": [
+    "با مصرف مکرر قند، باکتری‌های دهان تغییر می‌کنند و محیط اسیدی می‌شود.",
+    "میکروب‌های مرتبط با پوسیدگی متنوع‌اند و ترکیبشان به محل دندان و مرحلهٔ بیماری بستگی دارد.",
+    "پژوهش‌های تازه دنبال راهی برای اثر مستقیم روی باکتری‌های اسیدساز هستند."
+   ],
+   "p": [
+    "نویسندگان میکروب‌هایی را توضیح می‌دهند که روی دندان زندگی می‌کنند و اینکه با پوسیدگی چگونه تغییر می‌کنند. روش‌های امروزی فقط فهرست باکتری‌ها را نمی‌دهند، بلکه نشان می‌دهند کدام‌ها همین حالا در محل ضایعه فعال‌اند.",
+    "وقتی فرد مکرر قند مصرف می‌کند، اسیدیته روی دندان بالا می‌رود. جمعیت آرام و متنوع باکتری‌ها جایش را به گونه‌های اسیدپسند می‌دهد و مینا مواد معدنی از دست می‌دهد. ترکیب میکروب‌ها به محل روی دندان، اندازهٔ پوسیدگی و سرعت پیشرفت آن بستگی دارد.",
+    "پیشگیری از پوسیدگی دشوار است چون علت‌های متعددی دارد. فلوراید کمک می‌کند، اما اثرش در کودکان پرخطر پایدارتر نیست و هزینه دارد. پژوهشگران دنبال راه‌هایی هستند که مستقیماً روی باکتری‌های اسیدساز اثر کند، مثلاً با نانوذرات. فعلاً این یک مسیر پژوهشی است و درمان آماده نیست."
+   ]
   },
   "en": {
    "title": "Mouth bacteria and decay",
-   "sum": "Decay is linked to a shift in mouth bacteria after frequent sugar intake. Researchers are looking for ways to target the decay-causing bacteria."
+   "sum": "Decay is linked to a shift in mouth bacteria after frequent sugar intake. Researchers are looking for ways to target the decay-causing bacteria.",
+   "key": [
+    "With frequent sugar, mouth bacteria shift and the surface of the teeth turns acidic.",
+    "Many microbes are linked to decay, and the mix depends on the tooth site and the stage of the disease.",
+    "New research looks for ways to target the acid-making bacteria directly."
+   ],
+   "p": [
+    "The authors describe the microbes that live on teeth and how they change with decay. Modern methods can do more than list the bacteria; they also show which ones are actually active in the lesion.",
+    "When a person eats sugar often, acidity on the teeth rises. A calm, diverse community of bacteria gives way to acid-loving species and enamel loses minerals. The mix of microbes depends on where on the tooth you look, how large the lesion is and how fast it is growing.",
+    "Decay is hard to prevent because it has many causes. Fluoride helps, but it costs money and works less lastingly in high-risk children. Researchers are looking at ways to target the acid-making bacteria, for example with nanoparticles. For now this is a research direction, not a ready treatment."
+   ]
   }
  },
  {
   "id": "38399605",
+  "slug": "sports-diet-and-oral-health",
+  "minutes": 2,
   "cat": "health",
   "year": 2024,
   "journal": "Medicina (Kaunas)",
@@ -412,19 +734,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Спортивное питание и зубы",
-   "sum": "Спортсмены часто страдают кариесом, эрозией и гингивитом из-за сахаров и частого питания; нужна согласованность диеты и гигиены."
+   "sum": "Спортсмены часто страдают кариесом, эрозией и гингивитом из-за сахаров и частого питания; нужна согласованность диеты и гигиены.",
+   "key": [
+    "У спортсменов высокой квалификации часто встречаются кариес, эрозия и болезни дёсен.",
+    "Причины: окислительный стресс, спортивная диета и гигиена рта.",
+    "Нужно согласовать питание для результатов и уход за зубами."
+   ],
+   "p": [
+    "Питание и жидкость важны для спортивных результатов, но могут быть и фактором риска кариеса, эрозии эмали и болезней дёсен, а они, в свою очередь, ухудшают результаты. Авторы собрали данные о здоровье рта у спортсменов и о том, как на него влияет спортивная диета.",
+    "В исследованиях у элитных спортсменов находили кариес в 20-84% случаев, эрозию в 42-59%, гингивит в 58-77% и пародонтит в 15-41%. Связывают это с частым употреблением сахаров и углеводов, полиненасыщенных жиров или нехваткой белка. Авторы разбирают три возможные причины: окислительный стресс, спортивную диету и гигиену рта.",
+    "Вывод: спортивную диету нужно подбирать так, чтобы она давала пользу для результатов и учитывала требования к гигиене рта. Обзор поможет спортсменам, стоматологам и диетологам вместе снижать риск болезней зубов из-за питания."
+   ]
   },
   "fa": {
    "title": "تغذیه ورزشی و سلامت دهان",
-   "sum": "ورزشکاران به‌دلیل مصرف مکرر قند و کربوهیدرات اغلب پوسیدگی، سایش اسیدی و التهاب لثه دارند؛ رژیم و بهداشت باید هماهنگ شود."
+   "sum": "ورزشکاران به‌دلیل مصرف مکرر قند و کربوهیدرات اغلب پوسیدگی، سایش اسیدی و التهاب لثه دارند؛ رژیم و بهداشت باید هماهنگ شود.",
+   "key": [
+    "ورزشکاران حرفه‌ای اغلب پوسیدگی، سایش اسیدی و بیماری لثه دارند.",
+    "دلایل: استرس اکسیداتیو، رژیم ورزشی و بهداشت دهان.",
+    "تغذیه برای عملکرد و مراقبت دندان باید هماهنگ شود."
+   ],
+   "p": [
+    "غذا و مایعات برای عملکرد ورزشی اساسی‌اند، اما می‌توانند عامل خطر پوسیدگی، سایش اسیدی دندان و بیماری لثه هم باشند که خود عملکرد را بدتر می‌کنند. نویسندگان اطلاعات سلامت دهان ورزشکاران و اثر رژیم ورزشی بر آن را جمع‌بندی کردند.",
+    "در مطالعه‌ها در ورزشکاران حرفه‌ای پوسیدگی ۲۰ تا ۸۴٪، سایش اسیدی ۴۲ تا ۵۹٪، التهاب لثه ۵۸ تا ۷۷٪ و بیماری لثه ۱۵ تا ۴۱٪ گزارش شده است. دلیل را مصرف مکرر قند و کربوهیدرات، چربی‌های چندغیراشباع یا کمبود پروتئین می‌دانند. نویسندگان سه دلیل احتمالی را بررسی می‌کنند: استرس اکسیداتیو، رژیم ورزشی و بهداشت دهان.",
+    "نتیجه: رژیم ورزشی باید طوری تنظیم شود که هم برای عملکرد مفید باشد و هم نیازهای بهداشت دهان را در نظر بگیرد. این مرور به ورزشکاران، دندانپزشکان و متخصصان تغذیه کمک می‌کند با هم خطر بیماری دندان ناشی از تغذیه را کم کنند."
+   ]
   },
   "en": {
    "title": "Sports diet and oral health",
-   "sum": "Athletes often have decay, erosion and gum inflammation linked to frequent sugars. Diet and hygiene need to work together."
+   "sum": "Athletes often have decay, erosion and gum inflammation linked to frequent sugars. Diet and hygiene need to work together.",
+   "key": [
+    "Elite athletes often have decay, erosion and gum disease.",
+    "Causes: oxidative stress, sports diet and oral hygiene.",
+    "Diet for performance and dental care need to work together."
+   ],
+   "p": [
+    "Food and fluids are fundamental for athletic performance but can also be a risk factor for caries, dental erosion and gum disease, which in turn can impair performance. The authors gathered what is known about athletes' oral health and how a sports diet affects it.",
+    "Studies in elite athletes report caries in 20-84%, erosion in 42-59%, gingivitis in 58-77% and periodontal disease in 15-41%. These are linked to frequent sugars and carbohydrates, polyunsaturated fats, or deficient protein intake. The authors address three possible reasons: oxidative stress, sports diet and oral hygiene.",
+    "The conclusion: a sports diet should be applied so that it delivers performance benefits while meeting oral hygiene requirements. The review helps athletes, dentists and nutritionists work together to reduce the risk of dental disease from nutrition."
+   ]
   }
  },
  {
   "id": "38712714",
+  "slug": "antibiotics-for-a-tooth-abscess",
+  "minutes": 2,
   "cat": "surgery",
   "year": 2024,
   "journal": "Cochrane Database Syst Rev",
@@ -456,19 +810,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Антибиотики при абсцессе зуба",
-   "sum": "Cochrane: найдено лишь три небольших исследования (134 человека), поэтому данных о пользе антибиотиков при корневой инфекции очень мало."
+   "sum": "Cochrane: найдено лишь три небольших исследования (134 человека), поэтому данных о пользе антибиотиков при корневой инфекции очень мало.",
+   "key": [
+    "Cochrane: 3 исследования, 134 взрослых с воспалением у корня или острым абсцессом.",
+    "Один приём клиндамицина до лечения почти не менял боль и отёк.",
+    "Данные о пенициллине после лечения очень неопределённы."
+   ],
+   "p": [
+    "Воспаление у верхушки корня и острый абсцесс частые причины зубной боли. Рекомендации говорят, что основа лечения это вмешательство на самом зубе, а системные антибиотики нужны не всегда. Cochrane проверил, дают ли антибиотики пользу, если их добавить к лечению и обезболиванию. После обновления в обзоре три исследования и 134 участника.",
+    "В одном исследовании (72 человека, низкий риск ошибок) одну дозу клиндамицина дали до обработки канала и пломбирования. Разницы в боли и отёке в любой момент наблюдения не было. В двух других (62 человека) семидневный курс пенициллина добавляли к лечению при абсцессе или омертвевшем зубе; разницы в боли и отёке тоже не нашли, но достоверность этих данных очень низкая. Исследований, сравнивающих антибиотики без вмешательства на зубе, не нашли.",
+    "Вывод: клиндамицин перед процедурой, вероятно, почти не влияет на боль и отёк, если зуб лечат под местной анестезией. Если у вас болит зуб, главное вовремя прийти к врачу; антибиотик назначает он, а не вы сами."
+   ]
   },
   "fa": {
    "title": "آنتی‌بیوتیک در آبسه‌ی دندانی",
-   "sum": "کاکرین: فقط سه مطالعه‌ی کوچک (۱۳۴ نفر) یافت شد؛ شواهد درباره‌ی سودمندی آنتی‌بیوتیک در عفونت ریشه‌ی دندان بسیار محدود است."
+   "sum": "کاکرین: فقط سه مطالعه‌ی کوچک (۱۳۴ نفر) یافت شد؛ شواهد درباره‌ی سودمندی آنتی‌بیوتیک در عفونت ریشه‌ی دندان بسیار محدود است.",
+   "key": [
+    "کاکرین: ۳ مطالعه، ۱۳۴ بزرگسال با التهاب نوک ریشه یا آبسه حاد.",
+    "یک دوز کلیندامایسین پیش از درمان تقریباً بر درد و تورم اثر نداشت.",
+    "شواهد دربارهٔ پنی‌سیلین پس از درمان بسیار نامطمئن است."
+   ],
+   "p": [
+    "التهاب نوک ریشه و آبسه حاد از علت‌های شایع دندان‌درد هستند. راهنماها می‌گویند اساس درمان اقدام روی خود دندان است و آنتی‌بیوتیک سیستمیک همیشه لازم نیست. کاکرین بررسی کرد اگر آنتی‌بیوتیک به درمان و مسکن اضافه شود فایده دارد یا نه. پس از به‌روزرسانی، مرور سه مطالعه و ۱۳۴ شرکت‌کننده دارد.",
+    "در یک مطالعه (۷۲ نفر، خطر خطای پایین) یک دوز کلیندامایسین پیش از پاک‌سازی و پر کردن کانال داده شد. در هیچ زمانی تفاوتی در درد و تورم نبود. در دو مطالعهٔ دیگر (۶۲ نفر) دوره هفت‌روزهٔ پنی‌سیلین به درمان آبسه یا دندان مردهٔ دردناک اضافه شد؛ در درد و تورم تفاوتی دیده نشد، ولی اطمینان این شواهد بسیار پایین است. مطالعه‌ای که آنتی‌بیوتیک را بدون اقدام روی دندان مقایسه کند پیدا نشد.",
+    "نتیجه: کلیندامایسین پیش از اقدام، وقتی دندان با بی‌حسی موضعی درمان می‌شود، احتمالاً تفاوتی در درد و تورم ایجاد نمی‌کند. اگر دندان‌تان درد دارد مهم این است که به‌موقع نزد دندانپزشک بروید؛ آنتی‌بیوتیک را او تجویز می‌کند، نه خودتان."
+   ]
   },
   "en": {
    "title": "Antibiotics for a tooth abscess",
-   "sum": "Cochrane found only three small trials (134 people), so evidence on antibiotics for root infections is very limited."
+   "sum": "Cochrane found only three small trials (134 people), so evidence on antibiotics for root infections is very limited.",
+   "key": [
+    "Cochrane: 3 trials, 134 adults with apical periodontitis or acute abscess.",
+    "A single dose of clindamycin before treatment made little to no difference to pain or swelling.",
+    "Evidence on postoperative penicillin is very uncertain."
+   ],
+   "p": [
+    "Inflammation at the root tip and acute abscess are common causes of toothache. Guidelines say the first-line treatment is working on the tooth itself, and systemic antibiotics are not always needed. Cochrane checked whether adding antibiotics to treatment and painkillers helps. After the update, the review has three trials and 134 participants.",
+    "In one trial (72 people, low risk of bias) a single dose of clindamycin was given before cleaning and filling the canal. There were no differences in pain or swelling at any time point. In two other trials (62 people) a seven-day course of penicillin was added to treatment for an abscess or a necrotic tooth; pain and swelling again did not differ, but the certainty of this evidence is very low. No studies compared antibiotics without treating the tooth.",
+    "The conclusion: preoperative clindamycin probably makes little to no difference to pain or swelling when the tooth is treated under local anaesthesia. If a tooth hurts, the key is to see a dentist in time; the dentist, not you, decides on an antibiotic."
+   ]
   }
  },
  {
   "id": "38753314",
+  "slug": "helping-pregnant-women-and-carers-prevent-decay-in-toddlers",
+  "minutes": 2,
   "cat": "children",
   "year": 2024,
   "journal": "Cochrane Database Syst Rev",
@@ -502,19 +888,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Помощь беременным и мамам против детского кариеса",
-   "sum": "Cochrane (обновление 2024): 23 исследования с участием около 26 тысяч опекунов; оценивались обучение, диета и клинические меры для профилактики кариеса у малышей."
+   "sum": "Cochrane (2024, 23 исследования): советы по питанию и кормлению для беременных, мам и опекунов детей до года, вероятно, немного снижают риск раннего кариеса; по другим мерам данных недостаточно.",
+   "key": [
+    "Cochrane 2024: 23 исследования, около 26 тысяч опекунов (в основном мам) и их детей.",
+    "Советы по питанию и кормлению для мам и опекунов детей до года, вероятно, немного снижают риск раннего кариеса.",
+    "Для остальных мер данных недостаточно."
+   ],
+   "p": [
+    "Ранний детский кариес поражает зубы малышей. Cochrane проверил, помогают ли беременным, новым мамам и другим опекунам разные меры. Это обучение гигиене и питанию, а также лечение зубов самой матери. В обзор вошли 23 исследования, 25 953 опекуна (в основном матери) и их дети.",
+    "Пятнадцать исследований проверяли обучение и поддержку по сравнению с обычной помощью, шесть клинические меры для зубов матери, два оба подхода вместе. Умеренные данные есть только в одном: советы по питанию и кормлению для беременных, мам и опекунов детей до года, вероятно, немного снижают риск раннего детского кариеса.",
+    "Остальные данные низкой или очень низкой достоверности, и по ним нельзя сказать, какие меры работают. Авторы просят крупные качественные исследования. Для семьи вывод простой: разговор с врачом о питании и кормлении малыша до года имеет смысл."
+   ]
   },
   "fa": {
    "title": "مداخله برای مادران باردار و مراقبان برای پیشگیری از پوسیدگی کودکان",
-   "sum": "کاکرین ۲۰۲۴: ۲۳ کارآزمایی با حدود ۲۶ هزار مراقب؛ آموزش، رژیم غذایی و اقدامات بالینی برای پیشگیری از پوسیدگی زودرس کودکی بررسی شد."
+   "sum": "کاکرین (۲۰۲۴، ۲۳ کارآزمایی): توصیه‌های تغذیه و شیردهی به زنان باردار، مادران و مراقبان کودکان زیر یک سال احتمالاً خطر پوسیدگی زودرس کودکی را کمی کم می‌کند؛ برای سایر اقدامات شواهد کافی نیست.",
+   "key": [
+    "کاکرین ۲۰۲۴: ۲۳ کارآزمایی، حدود ۲۶ هزار مراقب (بیشتر مادر) و فرزندانشان.",
+    "توصیه‌های تغذیه و شیردهی به مادران و مراقبان کودکان زیر یک سال احتمالاً خطر پوسیدگی زودرس را کمی کم می‌کند.",
+    "برای سایر اقدامات شواهد کافی نیست."
+   ],
+   "p": [
+    "پوسیدگی زودرس دوران کودکی دندان‌های نوزادان و نوپایان را درگیر می‌کند. کاکرین بررسی کرد آیا اقدامات مختلف برای زنان باردار، مادران تازه و مراقبان دیگر مؤثرند: آموزش بهداشت و تغذیه و همچنین درمان دندان خود مادر. ۲۳ کارآزمایی با ۲۵٬۹۵۳ مراقب (بیشتر مادر) و فرزندانشان وارد مرور شد.",
+    "پانزده مطالعه آموزش و ترویج را با مراقبت معمول مقایسه کردند، شش مطالعه اقدام بالینی روی دندان مادر و دو مطالعه هر دو را با هم. فقط در یک مورد شواهد متوسط وجود دارد: توصیهٔ تغذیه و شیردهی به زنان باردار، مادران و مراقبان کودکان زیر یک سال احتمالاً خطر پوسیدگی زودرس را کمی کم می‌کند.",
+    "بقیهٔ شواهد اطمینان پایین یا بسیار پایین دارد و نمی‌توان گفت کدام اقدام‌ها مؤثرند. نویسندگان کارآزمایی‌های بزرگ و باکیفیت می‌خواهند. نتیجه برای خانواده ساده است: گفت‌وگو با دندانپزشک دربارهٔ تغذیه و شیردهی نوزاد تا یک سالگی ارزش دارد."
+   ]
   },
   "en": {
    "title": "Helping pregnant women and carers prevent decay in toddlers",
-   "sum": "Cochrane (2024 update): 23 trials with about 26,000 caregivers, testing education, diet advice and clinical care to prevent early childhood decay."
+   "sum": "Cochrane (2024 update, 23 trials): diet and feeding advice for pregnant women, mothers and carers of children up to one year probably slightly lowers the risk of early childhood decay. Evidence for other measures is insufficient.",
+   "key": [
+    "Cochrane 2024: 23 trials, about 26,000 caregivers (mostly mothers) and their children.",
+    "Diet and feeding advice for mothers and carers of children up to one year probably slightly lowers the risk of early decay.",
+    "For other measures, evidence is insufficient."
+   ],
+   "p": [
+    "Early childhood decay affects the teeth of babies and toddlers. Cochrane checked whether different measures for pregnant women, new mothers and other carers help: oral health and diet education, and dental treatment for the mother. It included 23 trials with 25,953 caregivers (mostly mothers) and their children.",
+    "Fifteen trials tested education or promotion against standard care, six tested clinical care for the mother's teeth, and two tested both together. Only one finding has moderate certainty: diet and feeding advice for pregnant women, mothers or carers of children up to one year probably slightly reduces the risk of early childhood decay.",
+    "The rest of the evidence is low or very low certainty and cannot show which other measures work. The authors call for large, high-quality trials. For a family the takeaway is simple: a talk with the dentist about a baby's diet and feeding in the first year is worthwhile."
+   ]
   }
  },
  {
   "id": "38800189",
+  "slug": "clear-aligners-for-children",
+  "minutes": 2,
   "cat": "prosthetics",
   "year": 2024,
   "journal": "Cureus",
@@ -533,19 +951,51 @@ export const library: LibEntry[] = [
   "kw": [],
   "ru": {
    "title": "Элайнеры у детей",
-   "sum": "Обзор оценивает прозрачные каппы у детей: гигиена, предсказуемость лечения, удовлетворённость и соблюдение режима."
+   "sum": "Обзор оценивает прозрачные каппы у детей: гигиена, предсказуемость лечения, удовлетворённость и соблюдение режима.",
+   "key": [
+    "Обзор рассматривает прозрачные каппы (элайнеры) у детей.",
+    "Оцениваются внешний вид, комфорт, гигиена, предсказуемость и практичность.",
+    "Лечение требует мотивации ребёнка: есть риск, что он не будет носить каппы."
+   ],
+   "p": [
+    "Сегодня внешность беспокоит не только взрослых, но и детей. Внешний вид лица и зубов влияет на то, как ребёнок ведёт себя среди других, а неэстетичный вид может влиять на его психологическое состояние. Классические брекеты заметны, и многие дети и взрослые неохотно их носят.",
+    "Прозрачные элайнеры это тонкие пластиковые каппы, которые изготавливают с помощью компьютерного проектирования. Они закрывают коронки зубов и край дёсен. Лечение требует хорошей мотивации, потому что пациент может плохо соблюдать режим ношения. Зато оно может давать лучшую гигиену, комфорт и отличный внешний вид во время лечения.",
+    "Авторы описали историю элайнеров и сравнили достоинства и недостатки для маленьких пациентов и врачей, в том числе с обычными аппаратами: внешний вид, комфорт, гигиена, предсказуемость результата, удобство работы. Это обзор рассматривающий тему, а не доказательство, поэтому подойдёт ли ребёнку такой способ, решает ортодонт."
+   ]
   },
   "fa": {
    "title": "الاینر شفاف در کودکان",
-   "sum": "مروری بر الاینرهای شفاف در کودکان از نظر بهداشت، قابل‌پیش‌بینی بودن درمان، رضایت و همکاری."
+   "sum": "مروری بر الاینرهای شفاف در کودکان از نظر بهداشت، قابل‌پیش‌بینی بودن درمان، رضایت و همکاری.",
+   "key": [
+    "این مرور الاینر شفاف را در کودکان بررسی می‌کند.",
+    "ظاهر، راحتی، بهداشت، قابل‌پیش‌بینی بودن و کارایی بررسی می‌شود.",
+    "درمان به انگیزهٔ کودک نیاز دارد؛ ممکن است دستگاه را نپوشد."
+   ],
+   "p": [
+    "امروز ظاهر فقط برای بزرگسالان مهم نیست، کودکان هم به آن حساس‌اند. ظاهر صورت و دندان‌ها بر رفتار کودک در جمع اثر دارد و ظاهر نامناسب می‌تواند روی وضعیت روانی او اثر بگذارد. بریس‌های معمولی دیده می‌شوند و بسیاری از کودکان و بزرگسالان دوست ندارند از آنها استفاده کنند.",
+    "الاینر شفاف قالب‌های پلاستیکی نازکی است که با طراحی کامپیوتری ساخته می‌شود. این قالب‌ها تاج دندان و لبهٔ لثه را می‌پوشانند. درمان به انگیزهٔ خوب نیاز دارد، چون ممکن است بیمار دستگاه را درست نپوشد. در عوض می‌تواند بهداشت و راحتی بهتری بدهد و ظاهر عالی در طول درمان داشته باشد.",
+    "نویسندگان تاریخچهٔ الاینر را شرح دادند و مزایا و معایب آن را برای بیماران کوچک و دندانپزشکان، از جمله در مقایسه با دستگاه‌های معمولی، بررسی کردند: ظاهر، راحتی، بهداشت، قابل‌پیش‌بینی بودن نتیجه و سهولت کار. این یک مرور موضوعی است و مدرک قطعی نیست، پس مناسب بودن این روش برای کودک را ارتودنتیست تعیین می‌کند."
+   ]
   },
   "en": {
    "title": "Clear aligners for children",
-   "sum": "A scoping review of clear aligners in children: hygiene, predictability, satisfaction and compliance."
+   "sum": "A scoping review of clear aligners in children: hygiene, predictability, satisfaction and compliance.",
+   "key": [
+    "A review of clear aligners in children.",
+    "It weighs looks, comfort, hygiene, predictability and practicality.",
+    "Treatment needs the child's motivation; poor compliance is a risk."
+   ],
+   "p": [
+    "Today looks matter not only to adults but to children too. How the face and teeth look shapes how a child presents to the world, and a poor appearance can affect their psychological state. Traditional braces are visible, and many children and adults are reluctant to wear them.",
+    "Clear aligners are thin transparent plastic trays made with computer-aided design and manufacturing. They cover the crowns of the teeth and the edge of the gums. Treatment needs good motivation, because patients may not wear them as asked. In return it can offer better hygiene, comfort and an excellent appearance during treatment.",
+    "The authors outline the history of aligners and weigh their advantages and disadvantages for young patients and for dentists, including against conventional treatment: looks, comfort, hygiene, predictability and ease of practice. This is a scoping review, not a final proof, so whether it suits a child is for the orthodontist to decide."
+   ]
   }
  },
  {
   "id": "38899538",
+  "slug": "topical-fluoride-and-fluorosis-in-children",
+  "minutes": 2,
   "cat": "caries",
   "year": 2024,
   "journal": "Cochrane Database Syst Rev",
@@ -580,19 +1030,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Фтор и флюороз у детей",
-   "sum": "Обзор искал связь местного фторида с флюорозом; хороших контролируемых исследований мало, и вывод опирается в основном на наблюдательные работы."
+   "sum": "Cochrane (43 исследования): ранний местный фторид чаще связан с лёгким флюорозом постоянных зубов; по многим вопросам данных мало, а паста с 1000 ppm и выше с 1-2 лет, вероятно, повышает риск.",
+   "key": [
+    "Ранний местный фторид чаще связан с лёгким флюорозом, то есть белёсыми пятнами на постоянных зубах.",
+    "Умеренная достоверность: паста с 1000 ppm и выше с 1-2 лет до 5-6 лет, вероятно, повышает риск.",
+    "По многим другим вопросам (лак, количество пасты, частота чистки) данных мало."
+   ],
+   "p": [
+    "Флюороз это изменение эмали, которое может появиться, если ребёнок получает слишком много фторида, пока формируются постоянные зубы. Cochrane обновил обзор 2010 года: 43 исследования, в том числе 3 рандомизированных, наблюдательные работы и опросы.",
+    "Чаще всего флюороз описывали как лёгкий. По возрасту начала чистки, количеству пасты, частоте чистки и фторидному лаку доверие к результатам низкое или очень низкое. Только в одном вопросе доказательства умеренные: дети, которые чистили зубы пастой с 1000 ppm фторида и выше с 1-2 лет до 5-6 лет, вероятно, чаще получали флюороз.",
+    "Это не причина отказываться от фторида: он защищает от кариеса. Просто малышам нужно подбирать пасту и её количество по возрасту. Точные рекомендации даст педиатр или стоматолог."
+   ]
   },
   "fa": {
    "title": "فلوراید موضعی و فلوروزیس کودکان",
-   "sum": "این مرور رابطه فلوراید موضعی و فلوروزیس را بررسی کرده است؛ کارآزمایی‌های خوب کم است و نتیجه بیشتر به مطالعات مشاهده‌ای تکیه دارد."
+   "sum": "کاکرین (۴۳ مطالعه): فلوراید موضعی در سنین پایین بیشتر با فلوروزیس خفیف دندان‌های دائمی همراه بود؛ در بسیاری از پرسش‌ها شواهد کم است و خمیردندان ۱۰۰۰ ppm یا بیشتر از ۱ تا ۲ سالگی احتمالاً خطر را بالا می‌برد.",
+   "key": [
+    "فلوراید موضعی در سنین پایین بیشتر با فلوروزیس خفیف، یعنی لکه‌های سفید روی دندان دائمی همراه بود.",
+    "اطمینان متوسط: خمیردندان ۱۰۰۰ ppm یا بیشتر از ۱ تا ۲ سالگی تا ۵ تا ۶ سالگی احتمالاً خطر را بالا می‌برد.",
+    "دربارهٔ موارد دیگر (وارنیش، مقدار خمیردندان، دفعات مسواک) شواهد کم است."
+   ],
+   "p": [
+    "فلوروزیس تغییری در مینا است که ممکن است وقتی کودک در دوران شکل‌گیری دندان‌های دائمی فلوراید زیاد دریافت کند ایجاد شود. کاکرین مرور سال ۲۰۱۰ را به‌روز کرد: ۴۳ مطالعه، از جمله ۳ کارآزمایی تصادفی، مطالعه‌های مشاهده‌ای و پیمایش‌ها.",
+    "فلوروزیس بیشتر به شکل خفیف گزارش شد. دربارهٔ سن شروع مسواک، مقدار خمیردندان، دفعات مسواک و وارنیش فلوراید اطمینان به نتایج پایین یا بسیار پایین است. فقط در یک مورد شواهد متوسط است: کودکانی که از ۱ تا ۲ سالگی تا ۵ تا ۶ سالگی با خمیردندان ۱۰۰۰ ppm فلوراید یا بیشتر مسواک زدند، احتمالاً بیشتر فلوروزیس گرفتند.",
+    "این دلیلی برای کنار گذاشتن فلوراید نیست، چون از پوسیدگی محافظت می‌کند. فقط برای کودکان کم‌سن باید خمیردندان و مقدارش متناسب با سن انتخاب شود. توصیهٔ دقیق را پزشک کودکان یا دندانپزشک می‌دهد."
+   ]
   },
   "en": {
    "title": "Topical fluoride and fluorosis in children",
-   "sum": "This review looked for a link between topical fluoride and fluorosis. Few well-controlled studies exist, so findings rest mostly on observational work."
+   "sum": "Cochrane (43 studies): early topical fluoride was mostly linked to mild fluorosis of permanent teeth. Evidence is thin on many questions, and toothpaste of 1000 ppm or more from age 1 to 2 probably raises the risk.",
+   "key": [
+    "Early topical fluoride was mostly linked to mild fluorosis: whitish marks on permanent teeth.",
+    "Moderate certainty: toothpaste of 1000 ppm or more from age 1 to 2 until age 5 to 6 probably raises the risk.",
+    "For many other questions (varnish, amount of paste, how often to brush) evidence is thin."
+   ],
+   "p": [
+    "Fluorosis is a change in enamel that can appear if a child gets too much fluoride while permanent teeth are forming. Cochrane updated its 2010 review: 43 studies, including 3 randomised trials, observational studies and surveys.",
+    "Fluorosis was mostly described as mild. For the age at which brushing starts, the amount of paste, how often children brush and fluoride varnish, confidence in the results is low or very low. Only one finding has moderate evidence: children who brushed with toothpaste of 1000 ppm fluoride or more from age 1 to 2 until 5 to 6 probably had more fluorosis.",
+    "This is not a reason to skip fluoride, which protects against decay. It simply means that for young children the paste and the amount should match their age. Your paediatrician or dentist can give exact advice."
+   ]
   }
  },
  {
   "id": "38988297",
+  "slug": "sedation-in-children-s-dentistry",
+  "minutes": 2,
   "cat": "comfort",
   "year": 2024,
   "journal": "Eur J Paediatr Dent",
@@ -620,19 +1102,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Седация у детей в стоматологии",
-   "sum": "Обзор способов седации у детей, чтобы безопасно снижать страх и добиваться спокойного лечения."
+   "sum": "Обзор способов седации у детей, чтобы безопасно снижать страх и добиваться спокойного лечения.",
+   "key": [
+    "Тревога у детей мешает лечению, поэтому им нередко нужна седация.",
+    "Обзор рассмотрел 16 клинических работ за последние десять лет.",
+    "Цель: безопасно снизить страх и добиться сотрудничества."
+   ],
+   "p": [
+    "Многие дети боятся стоматолога настолько, что лечение становится трудным. Авторы изучили способы седации, которые применяют в детской стоматологии, чтобы безопасно снизить тревогу и улучшить сотрудничество ребёнка.",
+    "Они искали работы в базах Scopus, Web of Science и PubMed за последние десять лет на английском языке. Из 544 статей после отбора остались 16 клинических работ.",
+    "Авторы подчёркивают, что медикаментозное сопровождение важно в детской стоматологии и помогает выбрать и применять седацию так, чтобы снизить тревогу и улучшить результаты лечения. Решение о седации всегда принимает врач вместе с родителями, с учётом здоровья ребёнка."
+   ]
   },
   "fa": {
    "title": "آرام‌بخشی دارویی در دندان‌پزشکی کودکان",
-   "sum": "مروری بر روش‌های آرام‌بخشی برای کاهش ترس و همکاری بهتر کودک در درمان، با تأکید بر ایمنی."
+   "sum": "مروری بر روش‌های آرام‌بخشی برای کاهش ترس و همکاری بهتر کودک در درمان، با تأکید بر ایمنی.",
+   "key": [
+    "اضطراب کودکان درمان را دشوار می‌کند و گاهی آرام‌بخشی لازم می‌شود.",
+    "این مرور ۱۶ مطالعهٔ بالینی ده سال اخیر را بررسی کرد.",
+    "هدف: کاهش ایمن ترس و همکاری بهتر کودک."
+   ],
+   "p": [
+    "بسیاری از کودکان آن‌قدر از دندانپزشکی می‌ترسند که درمان دشوار می‌شود. نویسندگان روش‌های آرام‌بخشی در دندانپزشکی کودکان را بررسی کردند تا اضطراب کودک به‌طور ایمن کم شود و همکاری او بهتر شود.",
+    "آنها مقاله‌های انگلیسی ده سال اخیر را در Scopus، Web of Science و PubMed جست‌وجو کردند. از ۵۴۴ مقاله پس از پالایش ۱۶ مطالعهٔ بالینی باقی ماند.",
+    "نویسندگان تأکید می‌کنند مدیریت دارویی در دندانپزشکی کودکان اهمیت دارد و به انتخاب و اجرای آرام‌بخشی برای کاهش اضطراب و بهبود نتایج کمک می‌کند. تصمیم دربارهٔ آرام‌بخشی را همیشه دندانپزشک همراه با والدین و با توجه به سلامت کودک می‌گیرد."
+   ]
   },
   "en": {
    "title": "Sedation in children's dentistry",
-   "sum": "A review of sedation options that safely reduce fear and help children cooperate during treatment."
+   "sum": "A review of sedation options that safely reduce fear and help children cooperate during treatment.",
+   "key": [
+    "Anxiety in children makes treatment hard, so sedation is sometimes needed.",
+    "The review covered 16 clinical papers from the last ten years.",
+    "The aim is to lower fear safely and help the child cooperate."
+   ],
+   "p": [
+    "Many children fear the dentist so much that treatment becomes difficult. The authors examined the sedation strategies used in paediatric dentistry to address anxiety safely and improve cooperation.",
+    "They searched Scopus, Web of Science and PubMed for English papers from the last ten years. Of 544 articles, 16 clinical papers remained after screening.",
+    "The authors stress that pharmacological management matters in children's dental care and helps in choosing and using sedation to reduce anxiety and improve outcomes. The decision on sedation is always made by the dentist together with the parents, taking the child's health into account."
+   ]
   }
  },
  {
   "id": "39038528",
+  "slug": "manual-toothbrushes-and-when-to-replace-them",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2024,
   "journal": "J Dent",
@@ -662,19 +1176,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Ручные щётки и как часто их менять",
-   "sum": "Мягкая щетина и щётки с индикатором лучше убирали налёт и снижали воспаление; по срокам замены нужны отдельные исследования."
+   "sum": "Мягкая щетина и щётки с индикатором лучше убирали налёт и снижали воспаление; по срокам замены нужны отдельные исследования.",
+   "key": [
+    "Щётки с мягкой щетиной и скруглёнными кончиками, как правило, лучше убирали налёт.",
+    "Перекрёстная щетина и индикаторная щетина значимо улучшали состояние дёсен.",
+    "Чистка дважды в день не менее двух минут по методу Басса показала хороший эффект."
+   ],
+   "p": [
+    "Авторы собрали исследования о ручных щётках, о способах чистки и о том, как часто менять щётку. Задача была выяснить, что лучше всего убирает налёт, снижает воспаление дёсен и поддерживает их здоровье.",
+    "Среди ручных щёток перекрёстная щетина и щетина-индикатор значимо улучшали индекс налёта и состояние дёсен. У большинства щёток с мягкой щетиной была тенденция к лучшему удалению налёта и гингивита, как и у щёток со скруглёнными концами. В исследованиях положительно влиял метод Басса: два раза в день не менее двух минут.",
+    "Подтвердить идеальный срок замены щётки пока нечем: авторы говорят, что для этого нужны отдельные хорошо спланированные испытания. А общие выводы можно использовать как подсказку для ежедневной чистки. Технику чистки лучше показать врач или гигиенист."
+   ]
   },
   "fa": {
    "title": "مسواک دستی و زمان تعویض آن",
-   "sum": "مسواک‌هایی با موهای نرم و نشانگر بهتر پلاک را برداشتند و التهاب لثه را کم کردند؛ برای زمان مناسب تعویض مسواک مطالعات بیشتری لازم است."
+   "sum": "مسواک‌هایی با موهای نرم و نشانگر بهتر پلاک را برداشتند و التهاب لثه را کم کردند؛ برای زمان مناسب تعویض مسواک مطالعات بیشتری لازم است.",
+   "key": [
+    "مسواک با موی نرم و نوک گرد معمولاً پلاک را بهتر برمی‌داشت.",
+    "موی متقاطع و موی نشانگر وضعیت لثه و پلاک را به‌طور معنادار بهتر کرد.",
+    "مسواک زدن دو بار در روز، حداقل دو دقیقه، به روش باس اثر مثبت داشت."
+   ],
+   "p": [
+    "نویسندگان پژوهش‌هایی را جمع کردند دربارهٔ مسواک‌های دستی، روش‌های مسواک زدن و اینکه هر چند وقت باید مسواک را عوض کرد. هدف این بود که ببینند چه چیزی پلاک را بهتر برمی‌دارد، التهاب لثه را کم می‌کند و سلامت لثه را حفظ می‌کند.",
+    "در بین مسواک‌های دستی، موی متقاطع و موی نشانگر شاخص پلاک و وضعیت لثه را به‌طور معنادار بهتر کردند. بیشتر مسواک‌های با موی نرم گرایش به برداشتن بهتر پلاک و کاهش التهاب لثه داشتند و همین‌طور مسواک‌های با نوک گرد. در مطالعه‌ها روش باس اثر مثبتی داشت: دو بار در روز و دست‌کم دو دقیقه.",
+    "دربارهٔ زمان ایدئال تعویض مسواک هنوز شواهد کافی نیست: نویسندگان می‌گویند برای آن باید کارآزمایی‌های جداگانهٔ خوب طراحی شود. نتیجه‌های کلی را می‌توان به‌عنوان راهنمای مسواک زدن روزانه به کار برد. روش درست مسواک زدن را دندانپزشک یا بهداشت‌کار نشان می‌دهد."
+   ]
   },
   "en": {
    "title": "Manual toothbrushes and when to replace them",
-   "sum": "Soft bristles and indicator bristles removed plaque and eased gum inflammation better. The ideal replacement time still needs proper trials."
+   "sum": "Soft bristles and indicator bristles removed plaque and eased gum inflammation better. The ideal replacement time still needs proper trials.",
+   "key": [
+    "Brushes with soft, end-rounded bristles tended to remove plaque better.",
+    "Cross-angle and indicator bristles significantly improved plaque and gum condition.",
+    "Brushing twice a day for at least two minutes with the Bass method showed a positive effect."
+   ],
+   "p": [
+    "The authors gathered studies on manual toothbrushes, brushing methods, and how often to replace a brush. The aim was to find what best removes plaque, reduces gum inflammation and supports gum health.",
+    "Among manual brushes, cross-angle bristles and indicator bristles significantly improved the plaque index and gum condition. Most soft-bristle brushes, and brushes with end-rounded tips, tended to remove plaque and ease gingivitis better. In the studies, the Bass method had a positive effect when used twice a day for at least two minutes.",
+    "The ideal time to replace a brush cannot be confirmed yet: the authors say well-designed trials are needed. The overall findings can still guide daily brushing. Your dentist or hygienist can show you the technique."
+   ]
   }
  },
  {
   "id": "39136874",
+  "slug": "sensitive-teeth-in-children-with-mih",
+  "minutes": 2,
   "cat": "children",
   "year": 2024,
   "journal": "Eur Arch Paediatr Dent",
@@ -700,19 +1246,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Чувствительные зубы при МИГ",
-   "sum": "У детей с гипоминерализацией моляров и резцов герметизация помогает при лёгкой форме, коронки: при тяжёлой; выборка исследований мала."
+   "sum": "У детей с гипоминерализацией моляров и резцов герметизация помогает при лёгкой форме, коронки: при тяжёлой; выборка исследований мала.",
+   "key": [
+    "МИГ (гипоминерализация моляров и резцов) делает зубы ребёнка очень чувствительными.",
+    "Герметизация смолой или стеклоиономером лучше всего помогала при лёгкой форме, коронки при тяжёлой.",
+    "Выводы ограничены: мало участников и короткое наблюдение."
+   ],
+   "p": [
+    "МИГ это нарушение эмали первых постоянных моляров и резцов, из-за которого зубы бывают очень чувствительными к холоду, теплу и чистке. Авторы изучили, какие методы лечения снижают такую чувствительность у детей 6-18 лет.",
+    "В обзор вошли 8 статей, 6 из них объединили в мета-анализ. Помогали разные методы: десенситайзерный мусс, герметизация, лазер и коронки; каждый значимо снижал чувствительность.",
+    "Лучшее снижение дали герметизация композитом или стеклоиономером при лёгком МИГ и коронки при тяжёлом. Но участников было мало, а наблюдение короткое, поэтому выводы ограничены. Если у ребёнка зубы болезненно реагируют на холод, покажите его детскому стоматологу."
+   ]
   },
   "fa": {
    "title": "حساسیت دندان در کودکان با MIH",
-   "sum": "در کودکان مبتلا به هیپومینرالیزاسیون مولر-ثنایا، پوشاندن سطح برای موارد خفیف و روکش برای موارد شدید مؤثرتر بود؛ تعداد مطالعات کم است."
+   "sum": "در کودکان مبتلا به هیپومینرالیزاسیون مولر-ثنایا، پوشاندن سطح برای موارد خفیف و روکش برای موارد شدید مؤثرتر بود؛ تعداد مطالعات کم است.",
+   "key": [
+    "MIH (هیپومینرالیزاسیون مولر-ثنایا) دندان‌های کودک را بسیار حساس می‌کند.",
+    "پوشاندن سطح با رزین یا گلاس‌آینومر در موارد خفیف و روکش در موارد شدید بهتر عمل کرد.",
+    "نتایج محدود است: شرکت‌کننده کم و پیگیری کوتاه."
+   ],
+   "p": [
+    "MIH اختلال مینا در دندان‌های آسیای اول دائمی و ثنایاها است که باعث می‌شود دندان‌ها نسبت به سرما، گرما و مسواک بسیار حساس باشند. نویسندگان بررسی کردند چه درمان‌هایی این حساسیت را در کودکان ۶ تا ۱۸ ساله کم می‌کند.",
+    "۸ مقاله وارد مرور شد و ۶ تای آنها در فراتحلیل ترکیب شد. روش‌های مختلف مؤثر بودند: موس کاهندهٔ حساسیت، پوشاندن سطح، لیزر و روکش؛ هر کدام حساسیت را به‌طور معنادار کم کردند.",
+    "بهترین کاهش با پوشاندن سطح با رزین کامپوزیت یا گلاس‌آینومر در موارد خفیف MIH و با روکش در موارد شدید به دست آمد. اما شرکت‌کنندگان کم و پیگیری کوتاه بود، برای همین نتیجه‌ها محدود است. اگر دندان‌های کودک نسبت به سرما دردناک است، او را نزد دندانپزشک کودکان ببرید."
+   ]
   },
   "en": {
    "title": "Sensitive teeth in children with MIH",
-   "sum": "In children with molar-incisor hypomineralisation, sealing helped mild cases and crowns helped severe ones. The studies were small."
+   "sum": "In children with molar-incisor hypomineralisation, sealing helped mild cases and crowns helped severe ones. The studies were small.",
+   "key": [
+    "MIH (molar-incisor hypomineralisation) can make a child's teeth very sensitive.",
+    "Sealing with resin or glass ionomer helped most in mild cases, crowns in severe ones.",
+    "Conclusions are limited: few participants and short follow-up."
+   ],
+   "p": [
+    "MIH is a defect in the enamel of the first permanent molars and incisors that can make teeth very sensitive to cold, heat and brushing. The authors examined which treatments reduce this sensitivity in children aged 6 to 18.",
+    "Eight papers were included, six of them pooled in a meta-analysis. Different methods helped: desensitising mousse, sealing, laser therapy and crowns, each significantly reducing sensitivity.",
+    "The best reduction came from sealing with composite or glass ionomer for mild MIH and from crowns for severe MIH. But the number of participants was small and follow-up short, which limits the conclusions. If a child's teeth react painfully to cold, show them to a children's dentist."
+   ]
   }
  },
  {
   "id": "39282765",
+  "slug": "bite-changes-and-jaw-pain-tmd",
+  "minutes": 2,
   "cat": "surgery",
   "year": 2024,
   "journal": "Cochrane Database Syst Rev",
@@ -743,19 +1321,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Прикус и боль в челюсти (ВНЧС)",
-   "sum": "Cochrane: по 57 исследованиям уверенность в пользе окклюзионных каппы и коррекций остаётся низкой; нужны более крупные качественные испытания."
+   "sum": "Cochrane: по 57 исследованиям уверенность в пользе окклюзионных каппы и коррекций остаётся низкой; нужны более крупные качественные испытания.",
+   "key": [
+    "Cochrane: 57 исследований, 2846 участников с височно-нижнечелюстными расстройствами (ВНЧС).",
+    "Окклюзионные шины сравнивали с отсутствием лечения, плацебо и другими методами.",
+    "Результаты не дают определённого ответа; достоверность очень низкая."
+   ],
+   "p": [
+    "Расстройства височно-нижнечелюстного сустава дают боль в мышцах или суставе и другие проблемы. Для лечения часто применяют окклюзионные шины (капы для зубов). Cochrane оценил 57 исследований с 2846 участниками: шины сравнивали с отсутствием лечения, плацебо или другим лечением. Чаще всего это была жёсткая стабилизационная шина на всю дугу. Только одно исследование имело низкий риск ошибок.",
+    "Такая шина, возможно, уменьшает боль в мышцах при жевании по сравнению с отсутствием лечения, а миофункциональная терапия, возможно, уменьшает шум в суставе сильнее, чем шина, но и то и другое данные очень неопределённые. По остальным сравнениям и исходам разницы, возможно, мало или нет, и уверенность тоже очень низкая.",
+    "Авторы заключают, что результаты неубедительны, и вопросы остаются без ответа. Если у вас болит сустав или щёлкает челюсть, не выбирайте лечение сами: диагноз и тактику определяет врач."
+   ]
   },
   "fa": {
    "title": "اکلوژن و درد فک (TMD)",
-   "sum": "کاکرین: در ۵۷ مطالعه، اطمینان به سودمندی اسپلینت و اصلاح اکلوژن پایین است؛ کارآزمایی‌های بزرگ‌تر و دقیق‌تر لازم است."
+   "sum": "کاکرین: در ۵۷ مطالعه، اطمینان به سودمندی اسپلینت و اصلاح اکلوژن پایین است؛ کارآزمایی‌های بزرگ‌تر و دقیق‌تر لازم است.",
+   "key": [
+    "کاکرین: ۵۷ مطالعه، ۲۸۴۶ شرکت‌کننده با اختلالات مفصل فکی (TMD).",
+    "اسپلینت‌های اکلوزالی با بی‌درمانی، دارونما و درمان‌های دیگر مقایسه شدند.",
+    "نتیجه قطعی نیست؛ اطمینان بسیار پایین است."
+   ],
+   "p": [
+    "اختلالات مفصل فک و گیجگاه باعث درد در عضله یا مفصل و مشکلات دیگر می‌شوند. برای درمان اغلب از اسپلینت اکلوزالی (قالب دندانی) استفاده می‌شود. کاکرین ۵۷ مطالعه با ۲۸۴۶ شرکت‌کننده را بررسی کرد: اسپلینت با بی‌درمانی، دارونما یا درمان دیگر مقایسه شده بود. بیشتر موارد اسپلینت سخت تثبیت‌کنندهٔ کامل بود. فقط یک مطالعه خطر خطای پایین داشت.",
+    "این اسپلینت احتمالاً درد عضله هنگام جویدن را نسبت به بی‌درمانی کم می‌کند و درمان عملکردی عضلات دهان احتمالاً صدای مفصل را بیشتر از اسپلینت کم می‌کند، اما در هر دو مورد شواهد بسیار نامطمئن است. در سایر مقایسه‌ها و پیامدها احتمالاً تفاوت کم یا هیچ است و اطمینان هم بسیار پایین است.",
+    "نویسندگان نتیجه می‌گیرند نتایج قطعی نیست و پرسش‌ها بی‌پاسخ مانده‌اند. اگر مفصل فک‌تان درد می‌کند یا صدا می‌دهد، درمان را خودتان انتخاب نکنید؛ تشخیص و برنامه را دندانپزشک تعیین می‌کند."
+   ]
   },
   "en": {
    "title": "Bite changes and jaw pain (TMD)",
-   "sum": "Cochrane: across 57 studies our confidence in the benefit of splints and bite adjustments is low. Larger, better trials are needed."
+   "sum": "Cochrane: across 57 studies our confidence in the benefit of splints and bite adjustments is low. Larger, better trials are needed.",
+   "key": [
+    "Cochrane: 57 studies, 2,846 participants with temporomandibular disorders (TMD).",
+    "Occlusal splints were compared with no treatment, placebo and other treatments.",
+    "Results are inconclusive; certainty is very low."
+   ],
+   "p": [
+    "Temporomandibular disorders cause pain in the jaw muscles or joint and other problems. Occlusal splints (dental guards) are often used. Cochrane assessed 57 studies with 2,846 participants comparing splints with no treatment, placebo or another treatment. Most evaluated the full hard stabilisation splint. Only one study was at low risk of bias.",
+    "This splint may reduce muscle pain when chewing compared with no treatment, and orofacial myofunctional therapy may reduce joint noise more than the splint, but in both cases the evidence is very uncertain. For all other comparisons and outcomes there may be little or no difference, and again the evidence is very uncertain.",
+    "The authors conclude the results are inconclusive and the research questions remain unanswered. If your jaw hurts or clicks, do not pick a treatment yourself: diagnosis and the plan are for your dentist."
+   ]
   }
  },
  {
   "id": "39371200",
+  "slug": "gum-treatment-in-pregnancy",
+  "minutes": 2,
   "cat": "health",
   "year": 2024,
   "journal": "Front Public Health",
@@ -795,19 +1405,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Лечение дёсен при беременности",
-   "sum": "Некоторые виды лечения дёсен могут снижать риск преждевременных родов и низкого веса новорождённого."
+   "sum": "Некоторые виды лечения дёсен могут снижать риск преждевременных родов и низкого веса новорождённого.",
+   "key": [
+    "Сетевой мета-анализ 20 рандомизированных исследований у беременных.",
+    "Три схемы лечения дёсен снижали риск преждевременных родов.",
+    "Две схемы снижали риск преждевременных родов и/или низкого веса новорождённого."
+   ],
+   "p": [
+    "Болезни дёсен у беременных распространены, и есть предположение, что улучшение состояния рта может улучшить исходы беременности. Авторы с помощью сетевого мета-анализа сравнили разные схемы лечения дёсен. В обзор вошли 20 рандомизированных исследований и 5 исходов беременности: преждевременные роды, низкий вес при рождении, их сочетание, малый вес для срока и преэклампсия.",
+    "Три схемы снижали риск преждевременных родов: удаление налёта и камня выше и под дёснами с полосканием хлоргексидином; то же плюс полировка зубов и контроль налёта; и такое же удаление налёта плюс звуковая щётка, полировка и контроль налёта. Две из них также снижали риск преждевременных родов и/или низкого веса ребёнка.",
+    "Авторы делают вывод, что некоторые схемы лечения дёсен могут снизить эти риски, а будущие исследования должны уточнить схемы и лучшее время для лечения в разные периоды беременности. Если вы беременны, покажитесь стоматологу: лечение дёсен лучше согласовать с вашим акушером."
+   ]
   },
   "fa": {
    "title": "درمان لثه در بارداری",
-   "sum": "برخی روش‌های درمان لثه ممکن است خطر زایمان زودرس و وزن کم هنگام تولد را کاهش دهند."
+   "sum": "برخی روش‌های درمان لثه ممکن است خطر زایمان زودرس و وزن کم هنگام تولد را کاهش دهند.",
+   "key": [
+    "فراتحلیل شبکه‌ای ۲۰ کارآزمایی تصادفی روی زنان باردار.",
+    "سه برنامهٔ درمان لثه خطر زایمان زودرس را کم کرد.",
+    "دو برنامه خطر زایمان زودرس و/یا وزن کم هنگام تولد را کم کرد."
+   ],
+   "p": [
+    "بیماری لثه در زنان باردار شایع است و فرض می‌شود بهبود وضعیت دهان می‌تواند پیامد بارداری را بهتر کند. نویسندگان با فراتحلیل شبکه‌ای برنامه‌های مختلف درمان لثه را مقایسه کردند. ۲۰ کارآزمایی تصادفی و ۵ پیامد بارداری بررسی شد: زایمان زودرس، وزن کم هنگام تولد، ترکیب این دو، کوچک‌تر بودن نسبت به سن بارداری و پره‌اکلامپسی.",
+    "سه برنامه خطر زایمان زودرس را کم کردند: جرمگیری و تمیز کردن بالا و زیر لثه همراه با دهان‌شویهٔ کلرهگزیدین؛ همان به‌علاوهٔ پولیش دندان و کنترل پلاک؛ و جرمگیری همراه با مسواک صوتی، پولیش و کنترل پلاک. دو برنامهٔ اول خطر زایمان زودرس و/یا وزن کم نوزاد را هم کم کردند.",
+    "نویسندگان نتیجه می‌گیرند برخی برنامه‌های درمان لثه می‌توانند این خطرها را کم کنند و پژوهش‌های بعدی باید برنامه‌ها و بهترین زمان درمان در دوره‌های مختلف بارداری را مشخص کنند. اگر باردارید نزد دندانپزشک بروید؛ درمان لثه را بهتر است با متخصص زنان خود هماهنگ کنید."
+   ]
   },
   "en": {
    "title": "Gum treatment in pregnancy",
-   "sum": "Certain periodontal treatments may lower the risk of preterm birth and low birth weight."
+   "sum": "Certain periodontal treatments may lower the risk of preterm birth and low birth weight.",
+   "key": [
+    "A network meta-analysis of 20 randomised trials in pregnant women.",
+    "Three gum treatment strategies reduced the risk of preterm birth.",
+    "Two reduced the risk of preterm birth and/or low birth weight."
+   ],
+   "p": [
+    "Gum disease is widespread among pregnant women, and improving oral health may improve pregnancy outcomes. Using a network meta-analysis, the authors compared different periodontal treatment strategies. It covered 20 randomised trials and 5 outcomes: preterm birth, low birth weight, the two combined, small for gestational age and pre-eclampsia.",
+    "Three strategies reduced the risk of preterm birth: scaling and root planing with chlorhexidine rinsing; that plus tooth polishing and plaque control; and scaling and root planing with a sonic toothbrush, polishing and plaque control. The first two also reduced the risk of preterm birth and/or low birth weight.",
+    "The authors conclude that certain gum treatments can lower these risks, and future studies should refine the strategies and the best timing in different periods of pregnancy. If you are pregnant, see a dentist; it is best to plan gum treatment together with your obstetrician."
+   ]
   }
  },
  {
   "id": "39508296",
+  "slug": "silver-diamine-fluoride-sdf-for-decay",
+  "minutes": 2,
   "cat": "caries",
   "year": 2024,
   "journal": "Cochrane Database Syst Rev",
@@ -846,19 +1488,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Серебра диамин фторид (SDF) при кариесе",
-   "sum": "SDF применяют, чтобы остановить кариес у детей и пожилых; доказательства слабые, а окрашивание зубов описано недостаточно."
+   "sum": "SDF применяют, чтобы остановить кариес у детей и пожилых; доказательства слабые, а окрашивание зубов описано недостаточно.",
+   "key": [
+    "SDF (серебра диамин фторид) жидкость, которую наносят на кариозные места, чтобы остановить кариес.",
+    "У детей он, возможно, помогает остановить кариес; на корнях у пожилых, вероятно, защищает от нового.",
+    "Окрашивание зубов описано плохо, а достоверность данных по многим вопросам низкая."
+   ],
+   "p": [
+    "SDF это раствор, который наносят на кариозное пятно, чтобы остановить процесс без бора. Cochrane собрал 29 исследований: 13 036 участников, из них 12 020 детей и 1016 пожилых людей. Сравнивали SDF с плацебо, отсутствием лечения и фторидным лаком.",
+    "У детей на молочных зубах данные о предотвращении нового кариеса остаются неопределёнными, но SDF может быть полезен, чтобы остановить уже начавшийся кариес. На корнях зубов у взрослых он, вероятно, помогает предотвратить новый кариес. По сравнению с фторидным лаком SDF мало что добавляет в профилактике на молочных зубах, но достоверность данных низкая.",
+    "Окрашивание зубов (серебро темнит кариозное место) в исследованиях описано плохо, а побочные эффекты изучены недостаточно. Подходит ли SDF в вашем случае, решает врач; авторы просят новые, лучше организованные исследования."
+   ]
   },
   "fa": {
    "title": "سیلور دی‌آمین فلوراید (SDF) برای پوسیدگی",
-   "sum": "SDF برای مهار پوسیدگی در کودکان و سالمندان به‌کار می‌رود؛ شواهد کم‌اطمینان است و اثر لکه‌گذاری روی دندان به‌خوبی گزارش نشده است."
+   "sum": "SDF برای مهار پوسیدگی در کودکان و سالمندان به‌کار می‌رود؛ شواهد کم‌اطمینان است و اثر لکه‌گذاری روی دندان به‌خوبی گزارش نشده است.",
+   "key": [
+    "SDF (سیلور دی‌آمین فلوراید) مایعی است که روی نقاط پوسیده می‌زنند تا پوسیدگی متوقف شود.",
+    "در کودکان احتمالاً به متوقف کردن پوسیدگی کمک می‌کند و روی ریشهٔ دندان بزرگسالان احتمالاً از پوسیدگی تازه جلوگیری می‌کند.",
+    "اثر لکه‌گذاری روی دندان به‌خوبی گزارش نشده و اطمینان به شواهد در بسیاری از موارد پایین است."
+   ],
+   "p": [
+    "SDF محلولی است که روی نقطهٔ پوسیده می‌زنند تا بدون تراش پیشرفت پوسیدگی متوقف شود. کاکرین ۲۹ مطالعه را جمع کرد: ۱۳٬۰۳۶ شرکت‌کننده که ۱۲٬۰۲۰ نفرشان کودک و ۱۰۱۶ نفر سالمند بودند. SDF با دارونما، بدون درمان و با وارنیش فلوراید مقایسه شد.",
+    "در دندان‌های شیری، دربارهٔ پیشگیری از پوسیدگی تازه شواهد نامطمئن است، اما SDF ممکن است برای متوقف کردن پوسیدگیِ شروع‌شده مفید باشد. روی ریشهٔ دندان بزرگسالان احتمالاً از پوسیدگی تازه جلوگیری می‌کند. در مقایسه با وارنیش فلوراید در دندان‌های شیری فایدهٔ اضافی کمی دارد، ولی اطمینان به شواهد پایین است.",
+    "لکه‌گذاری دندان (نقره محل پوسیده را تیره می‌کند) در مطالعه‌ها خوب گزارش نشده و عوارض به‌اندازهٔ کافی بررسی نشده است. اینکه SDF برای شما مناسب است یا نه را دندانپزشک تعیین می‌کند؛ نویسندگان پژوهش‌های تازهٔ دقیق‌تر می‌خواهند."
+   ]
   },
   "en": {
    "title": "Silver diamine fluoride (SDF) for decay",
-   "sum": "SDF is used to stop decay in children and older adults. The evidence is low in certainty, and tooth staining was poorly reported."
+   "sum": "SDF is used to stop decay in children and older adults. The evidence is low in certainty, and tooth staining was poorly reported.",
+   "key": [
+    "SDF (silver diamine fluoride) is a liquid painted onto decayed spots to stop decay.",
+    "In children it may help stop decay that has started; on roots of older adults it probably prevents new decay.",
+    "Staining of teeth was poorly reported, and certainty is low for many outcomes."
+   ],
+   "p": [
+    "SDF is a liquid applied to a decayed spot to halt the process without drilling. Cochrane pooled 29 trials with 13,036 participants, of whom 12,020 were children and 1,016 older adults. SDF was compared with placebo, no treatment and fluoride varnish.",
+    "In baby teeth, evidence on preventing new decay is uncertain, but SDF may help arrest decay that has already started. On tooth roots in adults it probably helps prevent new decay. Compared with fluoride varnish in baby teeth it adds little, though certainty is low.",
+    "Staining (silver darkens the treated spot) was poorly reported, and evidence on side effects is very uncertain. Whether SDF fits your case is for your dentist to decide; the authors ask for new, better-run studies."
+   ]
   }
  },
  {
   "id": "36762002",
+  "slug": "building-better-brushing-habits",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2023,
   "journal": "Front Oral Health",
@@ -878,19 +1552,51 @@ export const library: LibEntry[] = [
   "kw": [],
   "ru": {
    "title": "Как привить привычку чистить зубы",
-   "sum": "Обзор психологических подходов, которые помогают людям лучше следить за гигиеной и здоровьем дёсен; нужны новые исследования клинического эффекта."
+   "sum": "Обзор психологических подходов, которые помогают людям лучше следить за гигиеной и здоровьем дёсен; нужны новые исследования клинического эффекта.",
+   "key": [
+    "Пародонтальные болезни затрагивают половину населения мира; контроль налёта нужен постоянно.",
+    "Вмешательства, которые работают с убеждениями, мотивацией и самоконтролем, могут улучшать здоровье дёсен.",
+    "Прямо сравнить подходы нельзя, нужны новые клинические исследования."
+   ],
+   "p": [
+    "Здоровье дёсен зависит от того, как человек чистит зубы каждый день. Поэтому врачи всё чаще используют психологические модели: они помогают понять пациента и поддержать самопомощь. Авторы обзора описали такие модели и результаты программ, которые на них основаны.",
+    "Модели описывают, как человек осознаёт проблему, решает измениться, планирует это и следит за собой. Есть и более новая система COM-B, которую всё чаще применяют в стоматологии. Если подход работает с убеждениями, мотивацией, намерением и самоконтролем, он может улучшать здоровье дёсен, но только в рамках имеющихся данных.",
+    "Сравнить подходы между собой пока нельзя: протоколы, группы и сроки наблюдения слишком разные. Для читателя вывод практичный: «знать, что надо чистить» мало, помогает конкретный план и поддержка. Если вам тяжело держать привычку, расскажите об этом врачу, он подскажет способы."
+   ]
   },
   "fa": {
    "title": "چگونه عادت مسواک زدن را تقویت کنیم",
-   "sum": "مروری بر روش‌های روان‌شناختی که به رعایت بهتر بهداشت دهان و سلامت لثه کمک می‌کنند؛ اثر بالینی آن‌ها هنوز به پژوهش بیشتر نیاز دارد."
+   "sum": "مروری بر روش‌های روان‌شناختی که به رعایت بهتر بهداشت دهان و سلامت لثه کمک می‌کنند؛ اثر بالینی آن‌ها هنوز به پژوهش بیشتر نیاز دارد.",
+   "key": [
+    "بیماری‌های لثه نیمی از مردم جهان را درگیر می‌کنند و کنترل پلاک باید همیشگی باشد.",
+    "مداخله‌هایی که روی باورها، انگیزه و خودکنترلی کار می‌کنند ممکن است سلامت لثه را بهتر کنند.",
+    "مقایسهٔ مستقیم روش‌ها ممکن نیست و پژوهش بالینی بیشتری لازم است."
+   ],
+   "p": [
+    "سلامت لثه به این بستگی دارد که فرد هر روز چگونه دندان‌هایش را تمیز می‌کند. برای همین دندانپزشکان بیشتر از مدل‌های روان‌شناختی استفاده می‌کنند تا بیمار را بهتر بفهمند و خودمراقبتی را تقویت کنند. نویسندگان این مدل‌ها و نتیجهٔ برنامه‌های مبتنی بر آنها را توضیح دادند.",
+    "این مدل‌ها نشان می‌دهند فرد چگونه مشکل را درک می‌کند، تصمیم به تغییر می‌گیرد، برنامه می‌ریزد و خودش را زیر نظر می‌گیرد. مدل جدیدتری هم به نام COM-B هست که در دندانپزشکی بیشتر استفاده می‌شود. اگر مداخله‌ای روی باورها، انگیزه، قصد و خودکنترلی کار کند، ممکن است سلامت لثه را بهتر کند، البته در حد شواهد موجود.",
+    "فعلاً نمی‌توان روش‌ها را با هم مقایسه کرد، چون پروتکل‌ها، گروه‌ها و مدت پیگیری خیلی متفاوت‌اند. نتیجهٔ عملی برای خواننده این است که «دانستن لزوم مسواک زدن» کافی نیست و برنامهٔ مشخص و حمایت کمک می‌کند. اگر حفظ این عادت برایتان سخت است، به دندانپزشک بگویید تا راه‌هایی پیشنهاد کند."
+   ]
   },
   "en": {
    "title": "Building better brushing habits",
-   "sum": "A review of behaviour-change approaches that help people keep up oral hygiene and gum health. Their clinical effect still needs more research."
+   "sum": "A review of behaviour-change approaches that help people keep up oral hygiene and gum health. Their clinical effect still needs more research.",
+   "key": [
+    "Gum disease affects half of the world's population, and plaque control has to be steady.",
+    "Approaches that work on beliefs, motivation and self-control may improve gum health.",
+    "The approaches cannot be compared directly, and more clinical studies are needed."
+   ],
+   "p": [
+    "Gum health depends on how a person cleans their teeth every day. So dentists increasingly use psychological models to understand the patient and support self-care. The authors described these models and the results of programmes built on them.",
+    "The models describe how a person becomes aware of a problem, decides to change, plans it and keeps track. A newer system, COM-B, is used more and more in dental settings. Within the limits of the evidence, approaches that address beliefs, motivation, intention and self-regulation may improve gum health.",
+    "The approaches cannot be compared head to head because protocols, groups and follow-up times differ too much. The practical takeaway: knowing you should brush is not enough, and a clear plan with support helps. If a habit is hard to keep, tell your dentist, who can suggest ways."
+   ]
   }
  },
  {
   "id": "36968114",
+  "slug": "probiotics-for-oral-health",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2023,
   "journal": "Front Cell Infect Microbiol",
@@ -916,19 +1622,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Пробиотики для полости рта",
-   "sum": "Обзор о том, как пробиотики и постбиотики могут влиять на кариес, молочницу, болезни дёсен и запах изо рта."
+   "sum": "Обзор о том, как пробиотики и постбиотики могут влиять на кариес, молочницу, болезни дёсен и запах изо рта.",
+   "key": [
+    "Пробиотики и постбиотики изучают при кариесе, молочнице, болезнях дёсен и неприятном запахе.",
+    "Идея: полезные бактерии уменьшают число вредных, как это происходит в кишечнике.",
+    "Это обзор исследований, а не готовый совет, что покупать."
+   ],
+   "p": [
+    "Болезни рта встречаются у большинства людей хотя бы раз в жизни. Кариес зависит от состава микробов во рту, и один из них считается главным виновником. Поэтому учёные проверяют, могут ли пробиотики, которые помогают кишечнику, помогать и во рту.",
+    "Авторы рассмотрели, как разные штаммы пробиотиков влияют на кариес, грибковые инфекции, болезни дёсен и запах изо рта. Отдельно описаны постбиотики: неживые вещества, получаемые из пробиотиков.",
+    "Это направление активно изучается, но обзор не даёт готовых рекомендаций. Продукты с пробиотиками не заменяют чистку зубов и лечение. Если хотите попробовать, спросите врача, какие штаммы вообще изучены."
+   ]
   },
   "fa": {
    "title": "پروبیوتیک‌ها برای سلامت دهان",
-   "sum": "مروری بر اثر پروبیوتیک‌ها و پست‌بیوتیک‌ها بر پوسیدگی، عفونت قارچی، بیماری لثه و بوی بد دهان."
+   "sum": "مروری بر اثر پروبیوتیک‌ها و پست‌بیوتیک‌ها بر پوسیدگی، عفونت قارچی، بیماری لثه و بوی بد دهان.",
+   "key": [
+    "پروبیوتیک‌ها و پست‌بیوتیک‌ها برای پوسیدگی، عفونت قارچی، بیماری لثه و بوی بد دهان بررسی می‌شوند.",
+    "ایده این است که باکتری‌های مفید تعداد باکتری‌های مضر را کم کنند، مثل آنچه در روده رخ می‌دهد.",
+    "این یک مرور پژوهش‌هاست، نه توصیه برای خرید محصول."
+   ],
+   "p": [
+    "بیماری‌های دهان در بیشتر مردم دست‌کم یک بار در عمر ایجاد می‌شود. پوسیدگی به ترکیب میکروب‌های دهان بستگی دارد و یکی از آنها مهم‌ترین عامل شناخته می‌شود. به همین دلیل پژوهشگران بررسی می‌کنند آیا پروبیوتیک‌هایی که به روده کمک می‌کنند در دهان هم مفیدند.",
+    "نویسندگان بررسی کردند سویه‌های مختلف پروبیوتیک بر پوسیدگی، عفونت‌های قارچی، بیماری لثه و بوی بد دهان چه اثری دارند. پست‌بیوتیک‌ها هم جداگانه شرح داده شده‌اند: مواد غیرزنده‌ای که از پروبیوتیک‌ها به دست می‌آیند.",
+    "این حوزه فعالانه بررسی می‌شود ولی مرور توصیهٔ آماده نمی‌دهد. محصولات پروبیوتیک جای مسواک زدن و درمان را نمی‌گیرند. اگر می‌خواهید امتحان کنید، از دندانپزشک بپرسید کدام سویه‌ها اصلاً بررسی شده‌اند."
+   ]
   },
   "en": {
    "title": "Probiotics for oral health",
-   "sum": "A review of how probiotics and postbiotics may affect decay, thrush, gum disease and bad breath."
+   "sum": "A review of how probiotics and postbiotics may affect decay, thrush, gum disease and bad breath.",
+   "key": [
+    "Probiotics and postbiotics are being studied for decay, thrush, gum disease and bad breath.",
+    "The idea: helpful bacteria reduce harmful ones, as happens in the gut.",
+    "This is a review of research, not advice on what to buy."
+   ],
+   "p": [
+    "Oral diseases affect most people at some point in life. Decay depends on the mix of microbes in the mouth, and one of them is seen as the main culprit. So researchers test whether probiotics, which help the gut, might help in the mouth too.",
+    "The authors looked at how different probiotic strains affect decay, yeast infections, gum disease and bad breath. They also discuss postbiotics: non-living compounds derived from probiotics.",
+    "This is an active area, but the review gives no ready recommendations. Probiotic products do not replace brushing and treatment. If you want to try one, ask your dentist which strains have actually been studied."
+   ]
   }
  },
  {
   "id": "37311007",
+  "slug": "second-hand-smoke-and-children-s-teeth",
+  "minutes": 2,
   "cat": "children",
   "year": 2023,
   "journal": "Nicotine Tob Res",
@@ -962,19 +1700,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Пассивное курение и зубы детей",
-   "sum": "Обзор нашёл заметную связь между пассивным курением и кариесом молочных зубов; родителям важно знать об этом."
+   "sum": "Обзор нашёл заметную связь между пассивным курением и кариесом молочных зубов; родителям важно знать об этом.",
+   "key": [
+    "Обзор 25 исследований: пассивное курение связано с большей частотой кариеса молочных зубов.",
+    "В 94% исследований найдена связь; в трёх есть зависимость «доза-эффект».",
+    "Воздействие дыма во время беременности связано с кариесом сильнее, чем после рождения."
+   ],
+   "p": [
+    "Пассивное курение это вдыхание табачного дыма окружающих. Авторы проверили, как оно сказывается на зубах малышей, дошкольников и детей. После отбора из 1221 найденной записи остались 25 исследований.",
+    "В 94,4% исследований нашли связь между пассивным курением и ростом распространённости кариеса, а в трёх увидели зависимость от «дозы». В 81,8% исследований воздействие дыма до рождения ребёнка было связано с более высоким кариесом, чем воздействие после. На воздействие дыма влияли низкое образование родителей, достаток, питание, гигиена и пол.",
+    "Авторы считают, что пассивное курение это фактор риска для здоровья рта как до, так и после рождения. Врачам стоит спрашивать о нём при сборе анамнеза у ребёнка, а родителям понять, как дым влияет на зубы и общее здоровье малыша."
+   ]
   },
   "fa": {
    "title": "دود سیگار دست‌دوم و دندان کودکان",
-   "sum": "مرور سیستماتیک ارتباط معناداری میان دود دست‌دوم و پوسیدگی دندان‌های شیری یافت؛ آگاهی والدین مهم است."
+   "sum": "مرور سیستماتیک ارتباط معناداری میان دود دست‌دوم و پوسیدگی دندان‌های شیری یافت؛ آگاهی والدین مهم است.",
+   "key": [
+    "مرور ۲۵ مطالعه: دود دست‌دوم با شیوع بیشتر پوسیدگی دندان شیری ارتباط دارد.",
+    "در ۹۴٪ مطالعه‌ها ارتباط دیده شد و در سه مطالعه رابطهٔ دوز و اثر هم دیده شد.",
+    "مواجهه با دود در دوران بارداری قوی‌تر از مواجهه پس از تولد با پوسیدگی ارتباط داشت."
+   ],
+   "p": [
+    "دود دست‌دوم یعنی استنشاق دود سیگار دیگران. نویسندگان بررسی کردند این دود بر دندان نوزادان، کودکان پیش‌دبستانی و کودکان چه اثری دارد. از ۱۲۲۱ مورد یافت‌شده پس از پالایش ۲۵ مطالعه ماند.",
+    "در ۹۴٫۴٪ مطالعه‌ها بین دود دست‌دوم و افزایش شیوع پوسیدگی ارتباط دیده شد و در سه مطالعه رابطهٔ «دوز-پاسخ» هم دیده شد. در ۸۱٫۸٪ مطالعه‌ها مواجهه پیش از تولد با پوسیدگی بیشتر از مواجهه پس از تولد همراه بود. سطح تحصیلات پایین والدین، وضعیت اقتصادی، تغذیه، بهداشت و جنسیت روی میزان مواجهه با دود اثر داشت.",
+    "نویسندگان دود دست‌دوم را عامل خطر سلامت دهان، هم پیش از تولد و هم پس از آن، می‌دانند. دندانپزشکان باید هنگام گرفتن شرح حال کودک دربارهٔ آن بپرسند و والدین باید بدانند دود چه اثری بر دندان و سلامت عمومی کودک دارد."
+   ]
   },
   "en": {
    "title": "Second-hand smoke and children's teeth",
-   "sum": "The review found a significant link between passive smoking and decay in baby teeth. Parents should know about it."
+   "sum": "The review found a significant link between passive smoking and decay in baby teeth. Parents should know about it.",
+   "key": [
+    "A review of 25 studies: second-hand smoke is linked to more decay in baby teeth.",
+    "In 94% of studies a link was found; three showed a dose-response pattern.",
+    "Smoke exposure during pregnancy was linked to decay more strongly than exposure after birth."
+   ],
+   "p": [
+    "Passive smoking means breathing other people's tobacco smoke. The authors checked how it affects the teeth of infants, preschoolers and children. From 1,221 records, 25 studies remained after screening.",
+    "In 94.4% of studies a link was found between passive smoking and higher decay prevalence, and three suggested a dose-response relationship. In 81.8% of studies exposure before birth was linked to more decay than exposure after birth. Low parental education, socioeconomic status, diet, hygiene and gender affected how much smoke children were exposed to.",
+    "The authors see passive smoking as a risk factor for oral health, both before and after birth. Clinicians should ask about it when taking a child's history, and parents should know how smoke affects a child's teeth and general health."
+   ]
   }
  },
  {
   "id": "37371625",
+  "slug": "wear-notches-at-the-tooth-neck",
+  "minutes": 2,
   "cat": "restorations",
   "year": 2023,
   "journal": "Biomedicines",
@@ -1005,19 +1775,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Клиновидные дефекты шеек зубов",
-   "sum": "Композит с адгезивом оказался эффективным для восстановления дефектов у шейки зуба; диодный лазер может снижать чувствительность."
+   "sum": "Композит с адгезивом оказался эффективным для восстановления дефектов у шейки зуба; диодный лазер может снижать чувствительность.",
+   "key": [
+    "Композит с адгезивом хорошо восстанавливает клиновидные дефекты у шейки зуба.",
+    "Диодный лазер перед пломбированием не снижает удержание пломбы и может уменьшать чувствительность.",
+    "Обзор основан на 11 клинических исследованиях."
+   ],
+   "p": [
+    "Некариозные дефекты шейки зуба это потеря эмали и дентина у десны от стирания, не связанная с кариесом. Эмаль там тонкая, и сцепление с дентином слабее. Авторы проверили, как лучше восстанавливать такие дефекты без лишнего вмешательства и помогает ли диодный лазер снизить чувствительность.",
+    "Они искали работы за 2018-2023 годы в трёх базах и отобрали 11 клинических и рандомизированных исследований. Композитные смолы хорошо показали себя при восстановлении таких дефектов.",
+    "Композит с предшествующим адгезивом оказался эффективным материалом. Лазер перед пломбированием не снижал удержание пломб, возможно, уменьшал гиперчувствительность и мог влиять на успех лечения. Если у вас у шейки появились чувствительные клиновидные участки, покажитесь врачу: он определит причину и подберёт способ."
+   ]
   },
   "fa": {
    "title": "ترمیم ضایعات غیرپوسیدگی گردن دندان",
-   "sum": "کامپوزیت همراه با چسب برای ترمیم ضایعات ناحیه‌ی گردن دندان مؤثر بود؛ لیزر دیود ممکن است حساسیت را کم کند."
+   "sum": "کامپوزیت همراه با چسب برای ترمیم ضایعات ناحیه‌ی گردن دندان مؤثر بود؛ لیزر دیود ممکن است حساسیت را کم کند.",
+   "key": [
+    "کامپوزیت همراه با چسب ضایعه‌های گردن دندان را به‌خوبی ترمیم می‌کند.",
+    "لیزر دیود پیش از ترمیم ماندگاری را کم نمی‌کند و ممکن است حساسیت را کاهش دهد.",
+    "این مرور بر پایهٔ ۱۱ مطالعهٔ بالینی است."
+   ],
+   "p": [
+    "ضایعه‌های غیرپوسیدگی ناحیهٔ گردن دندان از دست رفتن مینا و عاج کنار لثه بر اثر سایش است و ربطی به پوسیدگی ندارد. مینا آنجا نازک است و چسبندگی به عاج ضعیف‌تر. نویسندگان بررسی کردند چنین ضایعه‌هایی را با کمترین دخالت چگونه می‌شود ترمیم کرد و آیا لیزر دیود حساسیت را کم می‌کند.",
+    "آنها مقاله‌های سال‌های ۲۰۱۸ تا ۲۰۲۳ را در سه پایگاه جست‌وجو کردند و ۱۱ مطالعهٔ بالینی و تصادفی را انتخاب کردند. رزین‌های کامپوزیت در ترمیم این ضایعه‌ها عملکرد خوبی داشتند.",
+    "کامپوزیت با چسب پیش از آن ماده‌ای مؤثر بود. لیزر پیش از ترمیم ماندگاری ترمیم را کم نکرد، شاید حساسیت را کم کند و ممکن است بر موفقیت درمان اثر بگذارد. اگر ناحیهٔ گردن دندانتان حساس شده یا فرورفتگی دارد، به دندانپزشک نشان دهید تا علت را پیدا کند و روش مناسب را انتخاب کند."
+   ]
   },
   "en": {
    "title": "Wear notches at the tooth neck",
-   "sum": "Composite with adhesive worked well for restoring wear lesions at the tooth neck. A diode laser may reduce sensitivity."
+   "sum": "Composite with adhesive worked well for restoring wear lesions at the tooth neck. A diode laser may reduce sensitivity.",
+   "key": [
+    "Composite with an adhesive restores wear notches at the tooth neck well.",
+    "A diode laser before filling does not reduce how well the filling stays and may lessen sensitivity.",
+    "The review rests on 11 clinical studies."
+   ],
+   "p": [
+    "Non-carious cervical lesions are areas of enamel and dentine lost near the gum line through wear, not decay. The enamel there is thin and bonding to dentine is weaker. The authors asked how best to restore such lesions with little intervention and whether a diode laser can reduce sensitivity.",
+    "They searched three databases for work from 2018 to 2023 and selected 11 clinical and randomised trials. Composite resins performed well in restoring these lesions.",
+    "Composite placed after an adhesive proved efficient and effective. Using a diode laser before filling did not reduce how long fillings stayed in place, may lessen hypersensitivity and may affect treatment success. If you notice sensitive notches near the gum line, show your dentist: they will find the cause and choose a method."
+   ]
   }
  },
  {
   "id": "37727189",
+  "slug": "bad-breath-causes-and-care",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2023,
   "journal": "Cureus",
@@ -1037,19 +1839,51 @@ export const library: LibEntry[] = [
   "kw": [],
   "ru": {
    "title": "Неприятный запах изо рта: причины",
-   "sum": "Обзор причин неприятного запаха изо рта и подходов к его диагностике и лечению; запах может быть признаком других болезней."
+   "sum": "Обзор причин неприятного запаха изо рта и подходов к его диагностике и лечению; запах может быть признаком других болезней.",
+   "key": [
+    "Неприятный запах изо рта мешает общению и повседневной жизни.",
+    "Иногда он бывает признаком другой болезни.",
+    "Чтобы лечить правильно, нужно сначала установить причину."
+   ],
+   "p": [
+    "Галитоз это неприятный запах в выдыхаемом воздухе, независимо от причины. Большинство людей с ним испытывают неловкость, и это мешает общению. Авторы описали причины и способы ведения такого пациента: врачам общей практики и стоматологам важно знать их.",
+    "Знание причин помогает поставить точный диагноз и выбрать профилактику и лечение. Авторы также подчёркивают, что запах иногда сигнализирует о скрытом заболевании, поэтому проблему не стоит отодвигать.",
+    "Если вас беспокоит запах, не стесняйтесь обратиться: врач найдёт причину и подберёт профилактику. Это справка для специалистов, а не готовый рецепт, поэтому домашние средства без причины лучше не угадывать."
+   ]
   },
   "fa": {
    "title": "بوی بد دهان: علل و درمان",
-   "sum": "مروری بر علل بوی بد دهان و روش‌های تشخیص و درمان؛ این مشکل گاهی نشانه‌ی بیماری زمینه‌ای است."
+   "sum": "مروری بر علل بوی بد دهان و روش‌های تشخیص و درمان؛ این مشکل گاهی نشانه‌ی بیماری زمینه‌ای است.",
+   "key": [
+    "بوی بد دهان ارتباط با دیگران و زندگی روزمره را مختل می‌کند.",
+    "گاهی نشانهٔ بیماری دیگری است.",
+    "برای درمان درست باید ابتدا علت مشخص شود."
+   ],
+   "p": [
+    "هالیتوزیس به وجود بوی ناخوشایند در هوای بازدم گفته می‌شود، فارغ از علتش. بیشتر مبتلایان احساس خجالت می‌کنند و این روی ارتباط با دیگران اثر می‌گذارد. نویسندگان علل و روش‌های بررسی بیمار را شرح دادند، چون پزشکان عمومی و دندانپزشکان باید آنها را بدانند.",
+    "شناخت علت‌ها به تشخیص دقیق و انتخاب پیشگیری و درمان کمک می‌کند. نویسندگان تأکید می‌کنند که بو گاهی نشانهٔ بیماری پنهانی است، پس نباید مشکل را به تعویق انداخت.",
+    "اگر بوی دهان نگرانتان کرده، برای مراجعه معطل نشوید: پزشک علت را پیدا می‌کند و راه پیشگیری را پیشنهاد می‌دهد. این مقاله راهنمای متخصصان است و نسخهٔ آماده نیست، پس بدون دانستن علت، حدس زدن درمان خانگی توصیه نمی‌شود."
+   ]
   },
   "en": {
    "title": "Bad breath: causes and care",
-   "sum": "A review of what causes bad breath and how it is diagnosed and managed. It can sometimes signal an underlying illness."
+   "sum": "A review of what causes bad breath and how it is diagnosed and managed. It can sometimes signal an underlying illness.",
+   "key": [
+    "Bad breath gets in the way of social life and daily routine.",
+    "It can sometimes be a sign of another illness.",
+    "To treat it properly, the cause has to be found first."
+   ],
+   "p": [
+    "Halitosis is an unpleasant odour in exhaled air, whatever its cause. Most people who have it feel embarrassed, and it affects how they get on with others. The authors described the causes and how patients are managed, because GPs and dentists need to know them.",
+    "Knowing the causes helps in making an accurate diagnosis and choosing prevention and treatment. The authors also stress that bad breath can be a sign of an underlying disease, so the problem should not be pushed aside.",
+    "If breath odour worries you, do not be shy about asking: a clinician can find the cause and suggest prevention. This is a reference for professionals rather than a ready-made recipe, so it is best not to guess at home remedies without knowing the cause."
+   ]
   }
  },
  {
   "id": "35146744",
+  "slug": "sealants-for-baby-teeth",
+  "minutes": 2,
   "cat": "children",
   "year": 2022,
   "journal": "Cochrane Database Syst Rev",
@@ -1082,19 +1916,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Герметики на молочных зубах",
-   "sum": "Cochrane: данных о герметиках для молочных зубов мало (9 исследований, 1120 детей), о побочных эффектах почти не сообщали."
+   "sum": "Cochrane: данных о герметиках для молочных зубов мало (9 исследований, 1120 детей), о побочных эффектах почти не сообщали.",
+   "key": [
+    "Cochrane нашёл всего 9 исследований герметиков для молочных зубов, 1120 детей.",
+    "Достоверность доказательств низкая или очень низкая.",
+    "О побочных эффектах почти не сообщали."
+   ],
+   "p": [
+    "Герметик закрывает бороздки на жевательных поверхностях, чтобы предотвратить кариес. Для постоянных зубов он хорошо изучен, а для молочных данных мало. Cochrane проверил, предотвращают ли герметики кариес на молочных молярах. В обзор вошли 9 исследований, в которых участвовали 1120 детей в возрасте от 18 месяцев до 8 лет.",
+    "Сравнивали разные герметики: смоляные, с фтором, стеклоиономерные, композитные друг с другом и с отсутствием герметика. Обычно это были небольшие исследования с малым числом случаев кариеса, а у многих были недочёты в анализе и описании результатов.",
+    "Достоверность доказательств оказалась низкой или очень низкой. Важный пробел: исследования почти не сообщали о нежелательных явлениях. Нужны более крупные и аккуратные работы. Герметизировать ли молочные зубы вашего ребёнка, решает врач по риску кариеса."
+   ]
   },
   "fa": {
    "title": "سیلانت برای دندان‌های شیری",
-   "sum": "کاکرین: شواهد درباره سیلانت دندان شیری اندک است (۹ مطالعه، ۱۱۲۰ کودک) و عوارض به‌ندرت گزارش شده است."
+   "sum": "کاکرین: شواهد درباره سیلانت دندان شیری اندک است (۹ مطالعه، ۱۱۲۰ کودک) و عوارض به‌ندرت گزارش شده است.",
+   "key": [
+    "کاکرین فقط ۹ مطالعه دربارهٔ سیلانت دندان شیری با ۱۱۲۰ کودک پیدا کرد.",
+    "اطمینان به شواهد پایین یا بسیار پایین است.",
+    "عوارض به‌ندرت گزارش شد."
+   ],
+   "p": [
+    "سیلانت شیارهای سطح جونده را می‌پوشاند تا از پوسیدگی جلوگیری کند. برای دندان دائمی خوب بررسی شده ولی برای دندان شیری شواهد کم است. کاکرین بررسی کرد آیا سیلانت‌ها در دندان آسیای شیری از پوسیدگی پیشگیری می‌کنند. ۹ مطالعه با ۱۱۲۰ کودک ۱۸ ماهه تا ۸ ساله وارد مرور شد.",
+    "انواع سیلانت‌ها مقایسه شد: رزینی، حاوی فلوراید، گلاس‌آینومر و کامپوزیت، با هم و با نبودن سیلانت. معمولاً مطالعه‌های کوچک با تعداد کم پوسیدگی بودند و در بسیاری از آنها تحلیل و گزارش نتایج ایراد داشت.",
+    "اطمینان به شواهد پایین یا بسیار پایین بود. یک کمبود مهم: مطالعه‌ها تقریباً عارضه را گزارش نکرده بودند. به پژوهش‌های بزرگ‌تر و دقیق‌تر نیاز است. اینکه دندان‌های شیری فرزند شما سیلانت بشود یا نه را دندانپزشک بر اساس خطر پوسیدگی تعیین می‌کند."
+   ]
   },
   "en": {
    "title": "Sealants for baby teeth",
-   "sum": "Cochrane found little evidence on sealants for baby teeth (9 studies, 1,120 children), and side effects were rarely reported."
+   "sum": "Cochrane found little evidence on sealants for baby teeth (9 studies, 1,120 children), and side effects were rarely reported.",
+   "key": [
+    "Cochrane found only 9 studies of sealants for baby teeth, 1,120 children.",
+    "Certainty of evidence is low or very low.",
+    "Side effects were rarely reported."
+   ],
+   "p": [
+    "A sealant covers the grooves on chewing surfaces to prevent decay. It is well studied in permanent teeth, but evidence for baby teeth is thin. Cochrane checked whether sealants prevent decay on baby molars. It included 9 studies with 1,120 children aged 18 months to eight years.",
+    "Different sealants were compared: resin-based, fluoride-releasing, glass ionomer and composite, with each other and with no sealant. The studies were usually small with few cases of decay, and many had shortcomings in analysis and reporting.",
+    "Certainty was low or very low. An important gap: adverse events were hardly reported. Larger, more careful trials are needed. Whether your child's baby teeth should be sealed is for the dentist to decide from decay risk."
+   ]
   }
  },
  {
   "id": "35420698",
+  "slug": "gum-treatment-and-diabetes",
+  "minutes": 2,
   "cat": "health",
   "year": 2022,
   "journal": "Cochrane Database Syst Rev",
@@ -1130,19 +1996,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Лечение дёсен и диабет",
-   "sum": "Cochrane: лечение пародонтита заметно улучшает контроль сахара крови у людей с диабетом по сравнению с отсутствием лечения."
+   "sum": "Cochrane: лечение пародонтита заметно улучшает контроль сахара крови у людей с диабетом по сравнению с отсутствием лечения.",
+   "key": [
+    "Cochrane 2022: 35 исследований, 3249 участников, в основном с диабетом 2 типа.",
+    "Лечение дёсен (чистка под дёснами) улучшает контроль сахара в крови заметным образом.",
+    "Данные умеренной достоверности; наблюдали от 3 до 12 месяцев."
+   ],
+   "p": [
+    "Диабет и болезни дёсен связаны в обе стороны: воспаление дёсен может мешать контролю сахара, а сам диабет повышает риск проблем с дёснами. Cochrane проверил, помогает ли лечение пародонтита людям с диабетом контролировать сахар в крови.",
+    "В обновлённый обзор 2022 года вошли 35 исследований и 3249 участников. Почти все изучали диабет 2 типа, наблюдение шло от 3 до 12 месяцев. Только два исследования имели низкий риск ошибок, но обновление удвоило число работ и изменило вывод.",
+    "Теперь есть умеренные данные, что лечение дёсен с чисткой под дёснами улучшает контроль сахара у людей с пародонтитом и диабетом клинически значимо, по сравнению с отсутствием лечения или обычной помощью. Авторы считают, что новые исследования вряд ли изменят этот общий вывод. Если у вас диабет, не откладывайте проверку дёсен."
+   ]
   },
   "fa": {
    "title": "درمان لثه و دیابت",
-   "sum": "کاکرین: درمان پریودنتیت کنترل قند خون را در افراد دیابتی نسبت به عدم درمان به‌طور قابل‌توجهی بهتر می‌کند."
+   "sum": "کاکرین: درمان پریودنتیت کنترل قند خون را در افراد دیابتی نسبت به عدم درمان به‌طور قابل‌توجهی بهتر می‌کند.",
+   "key": [
+    "کاکرین ۲۰۲۲: ۳۵ مطالعه، ۳۲۴۹ شرکت‌کننده، بیشتر دیابت نوع ۲.",
+    "درمان لثه (جرمگیری زیر لثه) کنترل قند خون را به‌طور محسوسی بهتر می‌کند.",
+    "شواهد با اطمینان متوسط؛ پیگیری ۳ تا ۱۲ ماه."
+   ],
+   "p": [
+    "دیابت و بیماری لثه دو طرفه به هم مرتبط‌اند: التهاب لثه می‌تواند کنترل قند را سخت کند و خود دیابت خطر مشکلات لثه را بالا می‌برد. کاکرین بررسی کرد آیا درمان بیماری لثه به افراد دیابتی در کنترل قند خون کمک می‌کند.",
+    "در مرور به‌روزشدهٔ ۲۰۲۲، ۳۵ مطالعه با ۳۲۴۹ شرکت‌کننده بود. تقریباً همه دیابت نوع ۲ را بررسی کرده بودند و پیگیری ۳ تا ۱۲ ماه بود. فقط دو مطالعه خطر خطای پایین داشتند، ولی به‌روزرسانی تعداد مطالعه‌ها را دو برابر و نتیجه را عوض کرد.",
+    "اکنون شواهد متوسطی هست که درمان لثه با جرمگیری زیر لثه در افراد دارای بیماری لثه و دیابت کنترل قند را به‌طور بالینی معنادار بهتر می‌کند، در مقایسه با بی‌درمانی یا مراقبت معمول. نویسندگان فکر نمی‌کنند پژوهش‌های بعدی این نتیجهٔ کلی را عوض کنند. اگر دیابت دارید، بررسی لثه را عقب نیندازید."
+   ]
   },
   "en": {
    "title": "Gum treatment and diabetes",
-   "sum": "Cochrane: treating periodontitis improves blood sugar control in people with diabetes by a clinically meaningful amount compared with no treatment."
+   "sum": "Cochrane: treating periodontitis improves blood sugar control in people with diabetes by a clinically meaningful amount compared with no treatment.",
+   "key": [
+    "Cochrane 2022: 35 studies, 3,249 participants, mostly type 2 diabetes.",
+    "Treating gum disease (cleaning below the gum line) improves blood sugar control by a clinically meaningful amount.",
+    "Moderate-certainty evidence; follow-up was 3 to 12 months."
+   ],
+   "p": [
+    "Diabetes and gum disease are linked both ways: gum inflammation can make blood sugar harder to control, and diabetes raises the risk of gum problems. Cochrane checked whether treating periodontitis helps people with diabetes control their blood sugar.",
+    "The 2022 update included 35 studies and 3,249 participants. Nearly all studied type 2 diabetes, with follow-up from 3 to 12 months. Only two studies were at low risk of bias, but the update doubled the number of studies and changed the conclusion.",
+    "There is now moderate-certainty evidence that periodontal treatment with subgingival instrumentation improves blood sugar control in people with periodontitis and diabetes by a clinically significant amount compared with no treatment or usual care. The authors think further trials are unlikely to change this overall conclusion. If you have diabetes, do not put off a gum check."
+   ]
   }
  },
  {
   "id": "35735746",
+  "slug": "dental-anxiety-in-adults",
+  "minutes": 2,
   "cat": "comfort",
   "year": 2022,
   "journal": "Aust Dent J",
@@ -1170,19 +2068,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Страх перед стоматологом у взрослых",
-   "sum": "Тревогу снижают методы расслабления, отвлечение и гипноз; есть и лекарственные варианты (закись азота, седация), но у них есть риски."
+   "sum": "Тревогу снижают методы расслабления, отвлечение и гипноз; есть и лекарственные варианты (закись азота, седация), но у них есть риски.",
+   "key": [
+    "Тревога перед стоматологом частая и приводит к тому, что люди избегают лечения.",
+    "Помогают расслабление, образы, отвлечение, гипноз, акупунктура и десенсибилизация.",
+    "Есть и лекарственные варианты (закись азота, седация), но у них бывают риски и противопоказания."
+   ],
+   "p": [
+    "Тревога перед приёмом может появиться до, во время или после лечения: растёт пульс, давление и дыхание. Из-за сильного волнения люди пропускают приёмы и откладывают лечение, а это вредит и зубам, и общему здоровью. Авторы систематически разобрали способы справляться с тревогой у взрослых в кабинете врача.",
+    "Психологические методы почти не имеют побочных эффектов. Это мышечное расслабление, управляемые образы, биологическая обратная связь, гипноз, акупунктура, отвлечение и десенсибилизация. Лекарственные методы включают закись азота, внутривенную или пероральную седацию. Они могут иметь нежелательные эффекты, риски и противопоказания, а также повышают стоимость и снижают доступность лечения.",
+    "Если вы боитесь, скажите об этом врачу заранее: выбор метода зависит от вашего уровня тревоги и ситуации. Не стоит откладывать лечение из-за страха, это только усложняет его потом."
+   ]
   },
   "fa": {
    "title": "اضطراب دندان‌پزشکی در بزرگسالان",
-   "sum": "روش‌های آرام‌سازی، حواس‌پرتی و هیپنوز اضطراب را کم می‌کنند؛ گزینه‌های دارویی مانند گاز نیتروس و آرام‌بخشی هم هست اما عوارض و خطراتی دارد."
+   "sum": "روش‌های آرام‌سازی، حواس‌پرتی و هیپنوز اضطراب را کم می‌کنند؛ گزینه‌های دارویی مانند گاز نیتروس و آرام‌بخشی هم هست اما عوارض و خطراتی دارد.",
+   "key": [
+    "اضطراب دندانپزشکی شایع است و باعث می‌شود افراد از درمان دوری کنند.",
+    "آرام‌سازی، تصویرسازی، حواس‌پرتی، هیپنوز، طب سوزنی و حساسیت‌زدایی کمک می‌کنند.",
+    "روش‌های دارویی (گاز نیتروس، آرام‌بخشی) هم هست اما عوارض و خطراتی دارد."
+   ],
+   "p": [
+    "اضطراب ممکن است پیش از درمان، در حین آن یا بعد از آن ایجاد شود: ضربان قلب، فشار خون و تنفس بالا می‌رود. در اضطراب شدید افراد وقت‌ها را از دست می‌دهند و درمان را به تعویق می‌اندازند و این به دندان‌ها و سلامت عمومی آسیب می‌زند. نویسندگان روش‌های مدیریت اضطراب بزرگسالان را در مطب به‌طور سیستماتیک بررسی کردند.",
+    "روش‌های روان‌شناختی تقریباً عارضه‌ای ندارند: آرام‌سازی عضلات، تصویرسازی هدایت‌شده، بازخورد زیستی، هیپنوز، طب سوزنی، حواس‌پرتی و حساسیت‌زدایی. روش‌های دارویی شامل گاز نیتروس و آرام‌بخشی وریدی یا خوراکی است. اینها ممکن است عوارض، خطر و موارد منع داشته باشند و هزینه را بالا و دسترسی به درمان را کمتر کنند.",
+    "اگر می‌ترسید، از قبل به دندانپزشک بگویید: انتخاب روش به میزان اضطراب و شرایط شما بستگی دارد. درمان را به‌خاطر ترس عقب نیندازید، چون بعداً سخت‌تر می‌شود."
+   ]
   },
   "en": {
    "title": "Dental anxiety in adults",
-   "sum": "Relaxation, distraction and hypnosis can ease anxiety. Drug options such as nitrous oxide or sedation exist but carry risks."
+   "sum": "Relaxation, distraction and hypnosis can ease anxiety. Drug options such as nitrous oxide or sedation exist but carry risks.",
+   "key": [
+    "Dental anxiety is common and leads people to avoid care.",
+    "Relaxation, guided imagery, distraction, hypnosis, acupuncture and desensitisation all help.",
+    "Drug options (nitrous oxide, sedation) exist, but carry risks and contraindications."
+   ],
+   "p": [
+    "Anxiety can appear before, during or after treatment, with a faster heartbeat, higher blood pressure and quicker breathing. Strong distress leads people to miss appointments and put off treatment, which harms both teeth and general health. The authors systematically reviewed ways to manage anxiety in adult patients in the dental clinic.",
+    "Psychological methods have nil or negligible side effects: muscle relaxation, guided imagery, biofeedback, hypnosis, acupuncture, distraction and desensitisation. Drug options include nitrous oxide and intravenous or oral sedation. These can have side effects, risks and contraindications, and they raise the cost and lower the availability of care.",
+    "If you are afraid, tell your dentist ahead of time: the method depends on your level of anxiety and the situation. Do not postpone treatment because of fear; it only makes it harder later."
+   ]
   }
  },
  {
   "id": "36156769",
+  "slug": "dry-socket-after-extraction",
+  "minutes": 2,
   "cat": "surgery",
   "year": 2022,
   "journal": "Cochrane Database Syst Rev",
@@ -1214,19 +2144,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Сухая лунка после удаления",
-   "sum": "Cochrane: некоторые меры снижают риск сухой лунки, но для 21 другого вмешательства данных недостаточно."
+   "sum": "Cochrane: полоскание хлоргексидином и гель в лунке, вероятно, снижают риск сухой лунки; по 21 другой мере данных недостаточно.",
+   "key": [
+    "Cochrane: 49 исследований, 6771 участник, про сухую лунку после удаления зуба.",
+    "Полоскание хлоргексидином (0,12% или 0,2%) и гель 0,2% в лунке, вероятно, снижают риск (умеренная достоверность).",
+    "По остальным 21 мерам профилактики и по лечению данных недостаточно."
+   ],
+   "p": [
+    "Сухая лунка это осложнение после удаления зуба, чаще нижних моляров. Через 2-3 дня появляется сильная боль, иногда запах изо рта, а в лунке нет части или всего сгустка крови. Cochrane собрал 49 исследований с 6771 участником: 39 про профилактику и 10 про лечение. Только три исследования имели низкий риск ошибок.",
+    "Полоскание хлоргексидином до удаления и через 24 часа после него существенно снижало риск сухой лунки по сравнению с плацебо (умеренная достоверность). Гель хлоргексидина 0,2% в лунке тоже снижал риск; он был не лучше полоскания. Сухая лунка встречается у 1-5% при обычных удалениях и до 30% при хирургическом удалении зубов мудрости. Из побочных эффектов хлоргексидина отмечали изменение вкуса, окрашивание зубов и стоматит.",
+    "Для остальных 21 меры профилактики данных недостаточно, а о лечении сухой лунки их мало. После удаления зуба следуйте рекомендациям врача и сразу сообщите, если боль нарастает на 2-3 день."
+   ]
   },
   "fa": {
    "title": "خشک‌شدن حفره پس از کشیدن دندان (درای ساکت)",
-   "sum": "کاکرین: برخی اقدامات خطر درای ساکت را کم می‌کنند، اما برای ۲۱ مداخله‌ی دیگر شواهد کافی نیست."
+   "sum": "کاکرین: غرغرهٔ کلرهگزیدین و ژل داخل حفره احتمالاً خطر درای ساکت را کم می‌کنند؛ برای ۲۱ اقدام دیگر شواهد کافی نیست.",
+   "key": [
+    "کاکرین: ۴۹ مطالعه، ۶۷۷۱ شرکت‌کننده، دربارهٔ خشکی حفره (دَرای ساکت) پس از کشیدن دندان.",
+    "دهان‌شویهٔ کلرهگزیدین (۰٫۱۲٪ یا ۰٫۲٪) و ژل ۰٫۲٪ داخل حفره احتمالاً خطر را کم می‌کند (اطمینان متوسط).",
+    "برای ۲۱ روش پیشگیری دیگر و برای درمان شواهد کافی نیست."
+   ],
+   "p": [
+    "خشکی حفره (دَرای ساکت) عارضه‌ای پس از کشیدن دندان است که بیشتر در دندان‌های آسیای پایین رخ می‌دهد. ۲ تا ۳ روز بعد درد شدید ایجاد می‌شود، گاهی بوی بد دهان هم هست و بخشی از لختهٔ خون یا همهٔ آن در حفره نیست. کاکرین ۴۹ مطالعه با ۶۷۷۱ شرکت‌کننده را جمع کرد: ۳۹ مورد دربارهٔ پیشگیری و ۱۰ مورد دربارهٔ درمان. فقط سه مطالعه خطر خطای پایین داشتند.",
+    "غرغرهٔ کلرهگزیدین پیش از کشیدن و ۲۴ ساعت بعد از آن در مقایسه با دارونما خطر خشکی حفره را به‌طور محسوسی کم کرد (اطمینان متوسط). ژل کلرهگزیدین ۰٫۲٪ داخل حفره هم خطر را کم کرد و از غرغره بهتر نبود. خشکی حفره در کشیدن‌های معمول ۱ تا ۵٪ و در کشیدن جراحی دندان عقل تا ۳۰٪ رخ می‌دهد. از عوارض کلرهگزیدین تغییر طعم، لکه روی دندان و استوماتیت گزارش شد.",
+    "برای ۲۱ روش پیشگیری دیگر شواهد کافی نیست و دربارهٔ درمان خشکی حفره هم شواهد کم است. بعد از کشیدن دندان توصیه‌های دندانپزشک را اجرا کنید و اگر روز دوم یا سوم درد بیشتر شد فوراً خبر بدهید."
+   ]
   },
   "en": {
    "title": "Dry socket after extraction",
-   "sum": "Cochrane: some measures reduce the risk of dry socket, but evidence for 21 other interventions was insufficient."
+   "sum": "Cochrane: chlorhexidine rinse or gel in the socket probably reduces the risk of dry socket; evidence for 21 other measures is insufficient.",
+   "key": [
+    "Cochrane: 49 trials, 6,771 participants, on dry socket after a tooth extraction.",
+    "Chlorhexidine rinse (0.12% or 0.2%) and 0.2% gel in the socket probably reduce the risk (moderate-certainty evidence).",
+    "For 21 other preventive measures and for treatment, evidence is insufficient."
+   ],
+   "p": [
+    "Dry socket is a complication of extraction, more often involving lower molars. Severe pain develops 2 to 3 days later, sometimes with bad breath, and the socket may be partly or totally without a blood clot. Cochrane gathered 49 trials with 6,771 participants: 39 on prevention and 10 on treatment. Only three trials were at low risk of bias.",
+    "Rinsing with chlorhexidine before extraction and 24 hours after substantially reduced the risk of dry socket compared with placebo (moderate-certainty evidence). Placing 0.2% chlorhexidine gel in the socket also reduced the risk and was not better than the rinse. Dry socket occurs in 1% to 5% of routine extractions and up to 30% of surgically extracted third molars. Side effects of chlorhexidine included altered taste, tooth staining and stomatitis.",
+    "For the other 21 preventive measures evidence is insufficient, and there is little evidence on treatment. After an extraction follow your dentist's advice, and tell them right away if pain gets worse on day two or three."
+   ]
   }
  },
  {
   "id": "36183933",
+  "slug": "charcoal-toothpaste-for-whitening",
+  "minutes": 2,
   "cat": "whitening",
   "year": 2022,
   "journal": "Ann Anat",
@@ -1250,19 +2212,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Угольная паста для отбеливания",
-   "sum": "Пасты с активированным углём отбеливают слабее других вариантов и сильнее истирают зубы, поэтому считаются менее безопасными."
+   "sum": "Пасты с активированным углём отбеливают слабее других вариантов и сильнее истирают зубы, поэтому считаются менее безопасными.",
+   "key": [
+    "Угольные зубные пасты отбеливают слабее других вариантов.",
+    "Большинство исследований показывают у них повышенную абразивность.",
+    "Из-за абразивности такие пасты считают менее безопасными."
+   ],
+   "p": [
+    "Активированный уголь модно добавлять в зубные пасты как «природное» отбеливание. Авторы собрали и проанализировали исследования: из 208 найденных статей подошли 11, риск ошибок у них средний или высокий.",
+    "Результаты по отбеливанию разные: в одних работах существенной разницы между средствами нет, в других уголь не самый сильный отбеливатель. А по абразивности большинство исследований сходятся: у угольных паст она выше.",
+    "Вывод авторов: угольные пасты отбеливают слабее других вариантов и из-за высокой абразивности могут быть менее безопасными. Если хотите отбелить зубы, обсудите с врачом, какие средства не повредят эмаль."
+   ]
   },
   "fa": {
    "title": "خمیردندان زغالی برای سفید کردن",
-   "sum": "خمیردندان‌های حاوی زغال فعال کمتر از گزینه‌های دیگر سفید می‌کنند و سایندگی بالاتری دارند، پس ایمنی کمتری دارند."
+   "sum": "خمیردندان‌های حاوی زغال فعال کمتر از گزینه‌های دیگر سفید می‌کنند و سایندگی بالاتری دارند، پس ایمنی کمتری دارند.",
+   "key": [
+    "خمیردندان‌های زغالی کمتر از گزینه‌های دیگر سفید می‌کنند.",
+    "بیشتر مطالعه‌ها نشان می‌دهند سایندگی آنها بالاتر است.",
+    "به‌خاطر سایندگی، ایمنی کمتری دارند."
+   ],
+   "p": [
+    "افزودن زغال فعال به خمیردندان به‌عنوان سفیدکنندهٔ «طبیعی» مد شده است. نویسندگان مطالعه‌ها را جمع و تحلیل کردند: از ۲۰۸ مقاله‌ای که پیدا شد، ۱۱ مورد شرایط را داشت و خطر خطای آنها متوسط تا بالا بود.",
+    "نتایج سفید کردن متفاوت بود: در بعضی مطالعه‌ها تفاوت معناداری میان محصول‌ها نبود و در بعضی زغال قوی‌ترین سفیدکننده نبود. دربارهٔ سایندگی بیشتر مطالعه‌ها هم‌نظرند که در خمیردندان‌های زغالی بالاتر است.",
+    "نتیجهٔ نویسندگان: خمیردندان‌های زغالی کمتر از گزینه‌های دیگر سفید می‌کنند و به‌دلیل سایندگی بالا ممکن است ایمنی کمتری داشته باشند. اگر می‌خواهید دندان‌هایتان را سفید کنید، با دندانپزشک صحبت کنید که کدام محصول به مینا آسیب نمی‌زند."
+   ]
   },
   "en": {
    "title": "Charcoal toothpaste for whitening",
-   "sum": "Activated charcoal toothpastes whiten less than other options and are more abrasive, so they are seen as less safe."
+   "sum": "Activated charcoal toothpastes whiten less than other options and are more abrasive, so they are seen as less safe.",
+   "key": [
+    "Charcoal toothpastes whiten less than other options.",
+    "Most studies agree they are more abrasive.",
+    "Because of the abrasion, they are seen as less safe."
+   ],
+   "p": [
+    "Adding activated charcoal to toothpaste is a fashionable \"natural\" way to whiten. The authors collected and analysed the studies: of 208 articles found, 11 qualified, with medium to high risk of bias.",
+    "Whitening results varied: in some studies the products did not differ significantly, in others charcoal was not the strongest whitener. On abrasion most studies agree that charcoal toothpaste is more abrasive.",
+    "The authors conclude that charcoal toothpastes whiten less than other options and, because of high abrasion, can be considered less safe. If you want whiter teeth, ask your dentist which products will not harm the enamel."
+   ]
   }
  },
  {
   "id": "36263239",
+  "slug": "sealant-or-fluoride-varnish-for-school-children",
+  "minutes": 2,
   "cat": "caries",
   "year": 2022,
   "journal": "Int J Clin Pract",
@@ -1289,19 +2283,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Фиссурный герметик или фторлак у школьников",
-   "sum": "За два года герметик и фторидный лак предотвращали кариес у детей примерно одинаково; авторы отмечают, что лак дешевле и проще в нанесении."
+   "sum": "За два года герметик и фторидный лак предотвращали кариес у детей примерно одинаково; авторы отмечают, что лак дешевле и проще в нанесении.",
+   "key": [
+    "Герметик и фторидный лак предотвращали кариес на первых постоянных молярах примерно одинаково.",
+    "Сравнение шло по данным 4 исследований, 1249 детей, два года наблюдения.",
+    "Авторы отмечают, что лак дешевле и проще в нанесении."
+   ],
+   "p": [
+    "Герметик закрывает бороздки на жевательной поверхности, лак наносится на зубы тонким слоем. Оба способа защищают от кариеса, но неясно, какой лучше. Авторы собрали случайные контролируемые исследования у школьников и сравнили их на первых постоянных молярах.",
+    "В анализ вошли 4 исследования с 1249 детьми. Через 24 месяца статистически значимой разницы по числу новых кариозных зубов и поверхностей не нашли. Результаты разных исследований заметно отличались друг от друга.",
+    "Для родителей это значит, что обе меры работают, и выбор может зависеть от зуба, возраста и возможностей. Авторы подчёркивают практический плюс лака: он доступнее и проще в нанесении. Что подойдёт вашему ребёнку, решает врач на осмотре."
+   ]
   },
   "fa": {
    "title": "سیلانت یا وارنیش فلوراید در دانش‌آموزان",
-   "sum": "در پیگیری دو ساله، سیلانت و وارنیش فلوراید تفاوت معناداری در پیشگیری از پوسیدگی نداشتند؛ وارنیش ارزان‌تر و ساده‌تر اعمال می‌شود."
+   "sum": "در پیگیری دو ساله، سیلانت و وارنیش فلوراید تفاوت معناداری در پیشگیری از پوسیدگی نداشتند؛ وارنیش ارزان‌تر و ساده‌تر اعمال می‌شود.",
+   "key": [
+    "سیلانت و وارنیش فلوراید در پیشگیری از پوسیدگی دندان آسیای اول دائمی تقریباً یکسان عمل کردند.",
+    "مقایسه بر پایهٔ ۴ مطالعه، ۱۲۴۹ کودک و دو سال پیگیری بود.",
+    "نویسندگان یادآوری می‌کنند وارنیش ارزان‌تر و ساده‌تر اعمال می‌شود."
+   ],
+   "p": [
+    "سیلانت شیارهای سطح جونده را می‌پوشاند و وارنیش به‌صورت لایهٔ نازک روی دندان زده می‌شود. هر دو از پوسیدگی محافظت می‌کنند، اما معلوم نبود کدام بهتر است. نویسندگان کارآزمایی‌های تصادفی روی دانش‌آموزان را جمع کردند و آنها را روی دندان‌های آسیای اول دائمی مقایسه کردند.",
+    "۴ مطالعه با ۱۲۴۹ کودک وارد تحلیل شد. پس از ۲۴ ماه از نظر تعداد دندان‌ها و سطوح تازه پوسیده تفاوت معناداری دیده نشد. نتایج مطالعه‌ها با هم تفاوت قابل‌توجهی داشتند.",
+    "برای والدین یعنی هر دو روش مؤثرند و انتخاب می‌تواند به دندان، سن و امکانات بستگی داشته باشد. نویسندگان بر مزیت عملی وارنیش تأکید می‌کنند: در دسترس‌تر و ساده‌تر اعمال می‌شود. اینکه چه چیزی برای فرزند شما مناسب‌تر است را دندانپزشک در معاینه تعیین می‌کند."
+   ]
   },
   "en": {
    "title": "Sealant or fluoride varnish for school children",
-   "sum": "After two years, sealants and fluoride varnish prevented decay about equally. The authors point out that varnish is cheaper and easier to apply."
+   "sum": "After two years, sealants and fluoride varnish prevented decay about equally. The authors point out that varnish is cheaper and easier to apply.",
+   "key": [
+    "Sealants and fluoride varnish prevented decay on first permanent molars about equally.",
+    "The comparison pooled 4 studies, 1,249 children and two years of follow-up.",
+    "The authors point out that varnish is cheaper and easier to apply."
+   ],
+   "p": [
+    "A sealant covers the grooves on a chewing surface, while varnish is painted on as a thin layer. Both protect against decay, but it was unclear which is better. The authors gathered randomised trials in school children and compared the two on first permanent molars.",
+    "Four studies with 1,249 children were included. After 24 months there was no statistically significant difference in new decayed teeth or surfaces. Results varied quite a lot between the studies.",
+    "For parents this means both measures work, and the choice may depend on the tooth, age and what is available. The authors stress a practical plus for varnish: it is more affordable and easier to apply. What suits your child is for your dentist to decide at a check-up."
+   ]
   }
  },
  {
   "id": "36285987",
+  "slug": "braces-or-aligners-and-gum-health",
+  "minutes": 2,
   "cat": "prosthetics",
   "year": 2022,
   "journal": "Dent J (Basel)",
@@ -1323,19 +2349,51 @@ export const library: LibEntry[] = [
   "kw": [],
   "ru": {
    "title": "Брекеты или каппы и состояние дёсен",
-   "sum": "Данные не доказывают, что каппы всегда лучше для дёсен; решающее значение имеют инструкции по гигиене и мотивация."
+   "sum": "Данные не доказывают, что каппы всегда лучше для дёсен; решающее значение имеют инструкции по гигиене и мотивация.",
+   "key": [
+    "Сравнили дёсны у людей с брекетами и с элайнерами по 8 исследованиям.",
+    "Лучше у элайнеров оказался только индекс налёта.",
+    "Гигиена, мотивация и контроль врача могут значить больше, чем вид аппарата."
+   ],
+   "p": [
+    "Авторы искали, влияет ли вид аппарата на гигиену рта и здоровье дёсен. Они просмотрели PubMed, PMC и Cochrane Library за 2005-2020 годы и в итоге отобрали 8 исследований: 204 пациента с элайнерами и 294 с брекетами.",
+    "Сравнивали индекс налёта, глубину карманов, индекс воспаления дёсен и кровоточивость. Значимая разница нашлась только по индексу налёта, и в целом здоровье дёсен было лучше с элайнерами. Но исследования различались по возрасту, тяжести прикуса, срокам, а инструкции по гигиене и наблюдение у врача были разными.",
+    "Авторы осторожны: нужны ещё исследования, чтобы утверждать, что элайнеры всегда лучше для дёсен. Гигиена, мотивация пациента и профессиональная поддержка могут влиять больше, чем сам тип аппарата."
+   ]
   },
   "fa": {
    "title": "بریس ثابت یا الاینر و سلامت لثه",
-   "sum": "شواهد نشان نمی‌دهد الاینرها همیشه برای لثه بهتر باشند؛ آموزش بهداشت و انگیزه فرد نقش مهم‌تری دارد."
+   "sum": "شواهد نشان نمی‌دهد الاینرها همیشه برای لثه بهتر باشند؛ آموزش بهداشت و انگیزه فرد نقش مهم‌تری دارد.",
+   "key": [
+    "لثهٔ افراد با بریس و الاینر در ۸ مطالعه مقایسه شد.",
+    "فقط شاخص پلاک در الاینر بهتر بود.",
+    "بهداشت، انگیزه و پیگیری دندانپزشک ممکن است از نوع دستگاه مهم‌تر باشد."
+   ],
+   "p": [
+    "نویسندگان بررسی کردند آیا نوع دستگاه بر بهداشت دهان و سلامت لثه اثر دارد. آنها PubMed، PMC و کتابخانهٔ کاکرین را برای سال‌های ۲۰۰۵ تا ۲۰۲۰ جست‌وجو کردند و ۸ مطالعه انتخاب شد: ۲۰۴ بیمار با الاینر و ۲۹۴ بیمار با بریس.",
+    "شاخص پلاک، عمق پاکت، شاخص التهاب لثه و خونریزی هنگام پروب مقایسه شد. فقط در شاخص پلاک تفاوت معنادار بود و در مجموع سلامت لثه با الاینر بهتر بود. اما مطالعه‌ها از نظر سن، شدت ناهنجاری، زمان‌سنجی و همچنین آموزش بهداشت و پیگیری متفاوت بودند.",
+    "نویسندگان محتاط‌اند: برای اینکه بگوییم الاینر همیشه برای لثه بهتر است مطالعهٔ بیشتری لازم است. بهداشت، انگیزهٔ بیمار و حمایت حرفه‌ای ممکن است از نوع دستگاه اثر بیشتری داشته باشد."
+   ]
   },
   "en": {
    "title": "Braces or aligners and gum health",
-   "sum": "The evidence does not prove aligners are always better for gums. Hygiene instruction and motivation matter more than the type of appliance."
+   "sum": "The evidence does not prove aligners are always better for gums. Hygiene instruction and motivation matter more than the type of appliance.",
+   "key": [
+    "Gum health with braces and with aligners was compared across 8 studies.",
+    "Only the plaque index was better with aligners.",
+    "Hygiene, motivation and professional follow-up may matter more than the type of appliance."
+   ],
+   "p": [
+    "The authors asked whether the type of appliance changes oral hygiene and gum health. They searched PubMed, PMC and the Cochrane Library for 2005 to 2020 and ended up with 8 studies: 204 patients with aligners and 294 with multibracket appliances.",
+    "They compared plaque index, pocket depth, gingival index and bleeding on probing. Only the plaque index showed a significant difference, and overall gum health was better with aligners. But the studies differed in age, severity of malocclusion and timing, and hygiene instruction and professional follow-up were not the same.",
+    "The authors are cautious: more studies are needed before saying aligners are always better for the gums. Hygiene, patient motivation and professional support may count for more than the type of appliance."
+   ]
   }
  },
  {
   "id": "36512807",
+  "slug": "root-canal-in-one-visit-or-several",
+  "minutes": 2,
   "cat": "surgery",
   "year": 2022,
   "journal": "Cochrane Database Syst Rev",
@@ -1365,19 +2423,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Лечение каналов: за один визит или за несколько",
-   "sum": "Cochrane: разницы в исходах не выявлено; за неделю после лечения боль чаще отмечали при одном визите (умеренная достоверность)."
+   "sum": "Cochrane: разницы в исходах не выявлено; за неделю после лечения боль чаще отмечали при одном визите (умеренная достоверность).",
+   "key": [
+    "Cochrane: 47 исследований, 5805 участников, лечение каналов за один визит или за несколько.",
+    "Разницы в исходах нет, но за неделю после лечения боль чаще отмечали при одном визите.",
+    "В 12 месяцев ни один вариант не предотвращал боль и осложнения."
+   ],
+   "p": [
+    "Лечение корневых каналов (эндодонтия) проводят при воспалении или омертвении пульпы из-за кариеса, трещины или травмы. Его можно завершить за один визит или растянуть на несколько. Cochrane сравнил эти варианты по 47 исследованиям: 5805 участников и 5693 зубов. Только 10 исследований имели низкий риск ошибок.",
+    "По рентгенологической неудаче, то есть признакам, что лечение не получилось, разницы не нашли (умеренная достоверность). Боль в течение 72 часов, отёк и приступы воспаления, приём обезболивающих тоже не различались. Но в течение первой недели боль отмечали чаще в группах одного визита (умеренная достоверность). В отличие от прошлой версии обзора, различия в приёме обезболивающих не нашли.",
+    "Как и раньше, нет доказательств, что один вариант эффективнее другого. Ни один не предотвращает боль и осложнения в течение 12 месяцев после лечения. Сколько визитов нужно, решает врач по состоянию зуба."
+   ]
   },
   "fa": {
    "title": "عصب‌کشی در یک جلسه یا چند جلسه",
-   "sum": "کاکرین: تفاوتی در نتیجه‌ی درمان دیده نشد؛ در هفته‌ی اول درد در درمان تک‌جلسه‌ای بیشتر گزارش شد (اطمینان متوسط)."
+   "sum": "کاکرین: تفاوتی در نتیجه‌ی درمان دیده نشد؛ در هفته‌ی اول درد در درمان تک‌جلسه‌ای بیشتر گزارش شد (اطمینان متوسط).",
+   "key": [
+    "کاکرین: ۴۷ مطالعه، ۵۸۰۵ شرکت‌کننده، عصب‌کشی در یک جلسه یا چند جلسه.",
+    "تفاوتی در نتایج نیست، ولی درد در هفتهٔ اول در گروه یک‌جلسه‌ای بیشتر گزارش شد.",
+    "هیچ‌کدام درد و عوارض ۱۲ ماه بعد را پیشگیری نمی‌کند."
+   ],
+   "p": [
+    "درمان ریشه (عصب‌کشی) وقتی انجام می‌شود که پالپ به‌خاطر پوسیدگی، ترک یا ضربه ملتهب یا مرده است. می‌توان آن را در یک جلسه تمام کرد یا در چند جلسه. کاکرین این دو را در ۴۷ مطالعه مقایسه کرد: ۵۸۰۵ شرکت‌کننده و ۵۶۹۳ دندان. فقط ۱۰ مطالعه خطر خطای پایین داشتند.",
+    "در شکست رادیولوژیک، یعنی نشانه‌هایی که درمان نگرفته، تفاوتی پیدا نشد (اطمینان متوسط). درد تا ۷۲ ساعت، تورم و عود التهاب و مصرف مسکن هم تفاوتی نداشت. اما در هفتهٔ اول درد در گروه یک‌جلسه‌ای بیشتر گزارش شد (اطمینان متوسط). برخلاف نسخهٔ قبلی مرور، تفاوتی در مصرف مسکن پیدا نشد.",
+    "مثل قبل، شواهدی نیست که یک روش مؤثرتر از دیگری باشد. هیچ‌کدام درد و عوارض را در ۱۲ ماه پس از درمان پیشگیری نمی‌کند. اینکه چند جلسه لازم است را دندانپزشک بر اساس وضعیت دندان تعیین می‌کند."
+   ]
   },
   "en": {
    "title": "Root canal in one visit or several",
-   "sum": "Cochrane found no difference in outcomes. Pain within the first week was reported more often after single-visit treatment (moderate certainty)."
+   "sum": "Cochrane found no difference in outcomes. Pain within the first week was reported more often after single-visit treatment (moderate certainty).",
+   "key": [
+    "Cochrane: 47 studies, 5,805 participants, root canal in one visit or several.",
+    "No difference in outcomes, but more people reported pain within a week after a single visit.",
+    "Neither approach prevents pain and complications over 12 months."
+   ],
+   "p": [
+    "Root canal treatment is done when the pulp is inflamed or dead because of decay, a crack or an injury. It can be finished in one visit or spread over several. Cochrane compared the two in 47 studies with 5,805 participants and 5,693 teeth. Only 10 studies were at low risk of bias.",
+    "No difference was found in radiological failure, the signs that the treatment has not worked (moderate-certainty evidence). Pain up to 72 hours, swelling or flare-ups and use of painkillers also did not differ. But pain within one week was reported more often after single-visit treatment (moderate-certainty evidence). Unlike the last version of the review, no difference in painkiller use was found.",
+    "As before, there is no evidence that one approach is more effective than the other. Neither prevents pain and other complications in the 12 months after treatment. How many visits you need is for your dentist to decide from the condition of the tooth."
+   ]
   }
  },
  {
   "id": "33624847",
+  "slug": "antibiotics-before-a-tooth-extraction",
+  "minutes": 2,
   "cat": "surgery",
   "year": 2021,
   "journal": "Cochrane Database Syst Rev",
@@ -1414,19 +2504,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Антибиотики перед удалением зуба",
-   "sum": "Cochrane: назначать ли антибиотики перед удалением, решают индивидуально, по здоровью и риску; людям с ослабленным иммунитетом нужен врачебный подход."
+   "sum": "Cochrane: назначать ли антибиотики перед удалением, решают индивидуально, по здоровью и риску; людям с ослабленным иммунитетом нужен врачебный подход.",
+   "key": [
+    "Cochrane: 23 исследования (около 3200 участников), антибиотики против плацебо при удалении зубов.",
+    "После удаления зубов мудрости антибиотики, возможно, снижают риск инфекции и сухой лунки (низкая достоверность).",
+    "Решение нужно принимать индивидуально; людям с ослабленным иммунитетом нужен врачебный подход."
+   ],
+   "p": [
+    "Зубы удаляют чаще всего из-за кариеса и воспаления дёсен. Иногда для профилактики осложнений назначают системные антибиотики. Cochrane собрал 23 исследования, где антибиотики сравнивали с плацебо: около 3206 участников. Почти все (21 из 23) касались здоровых людей, которым удаляли ретинированные зубы мудрости, и ни одно не касалось людей с ослабленным иммунитетом.",
+    "По низкодостоверным данным, антибиотики, возможно, снижают риск инфекционных осложнений после удаления зубов мудрости примерно на 66%: нужно лечить около 19 здоровых людей, чтобы предотвратить одну инфекцию. Риск сухой лунки они, возможно, снижают на 34%. Нежелательные эффекты были лёгкими и временными, но по ним данные очень неопределённы. Явного значения времени приёма (до, после или оба) не нашли.",
+    "Из-за растущей устойчивости бактерий к антибиотикам авторы советуют врачам решать, нужны ли антибиотики, для каждого пациента отдельно, по его здоровью и риску. Не принимайте их «на всякий случай» без назначения врача."
+   ]
   },
   "fa": {
    "title": "آنتی‌بیوتیک پیش از کشیدن دندان",
-   "sum": "کاکرین: تجویز آنتی‌بیوتیک پیش از کشیدن دندان باید با توجه به وضعیت و خطر عفونت هر بیمار تصمیم‌گیری شود؛ افراد با ایمنی ضعیف رویکرد فردی با پزشک لازم دارند."
+   "sum": "کاکرین: تجویز آنتی‌بیوتیک پیش از کشیدن دندان باید با توجه به وضعیت و خطر عفونت هر بیمار تصمیم‌گیری شود؛ افراد با ایمنی ضعیف رویکرد فردی با پزشک لازم دارند.",
+   "key": [
+    "کاکرین: ۲۳ مطالعه (حدود ۳۲۰۰ شرکت‌کننده)، آنتی‌بیوتیک در برابر دارونما هنگام کشیدن دندان.",
+    "پس از کشیدن دندان عقل آنتی‌بیوتیک احتمالاً خطر عفونت و خشکی حفره را کم می‌کند (اطمینان پایین).",
+    "تصمیم باید فردی باشد؛ افراد با ایمنی ضعیف رویکرد پزشکی لازم دارند."
+   ],
+   "p": [
+    "دندان‌ها بیشتر به‌خاطر پوسیدگی و التهاب لثه کشیده می‌شوند. گاهی برای پیشگیری از عوارض، آنتی‌بیوتیک سیستمیک تجویز می‌شود. کاکرین ۲۳ مطالعه را که آنتی‌بیوتیک را با دارونما مقایسه می‌کردند جمع کرد: حدود ۳۲۰۶ شرکت‌کننده. تقریباً همه (۲۱ از ۲۳) افراد سالمی بودند که دندان عقل نیمه‌نهفته‌شان کشیده شده بود و هیچ‌کدام افراد با ایمنی ضعیف را بررسی نکرده بود.",
+    "طبق شواهد با اطمینان پایین، آنتی‌بیوتیک احتمالاً خطر عوارض عفونی پس از کشیدن دندان عقل را حدود ۶۶٪ کم می‌کند: باید حدود ۱۹ فرد سالم درمان شوند تا یک عفونت جلوگیری شود. خطر خشکی حفره را احتمالاً ۳۴٪ کم می‌کند. عوارض دارو خفیف و گذرا بود، ولی شواهد دربارهٔ آن بسیار نامطمئن است. اهمیت روشنی برای زمان مصرف (قبل، بعد یا هر دو) پیدا نشد.",
+    "به‌دلیل افزایش مقاومت باکتری‌ها، نویسندگان توصیه می‌کنند دندانپزشک برای هر بیمار جداگانه و بر اساس وضعیت سلامت و خطر عفونت تصمیم بگیرد که آنتی‌بیوتیک لازم است یا نه. بدون تجویز پزشک «محض احتیاط» آنتی‌بیوتیک نخورید."
+   ]
   },
   "en": {
    "title": "Antibiotics before a tooth extraction",
-   "sum": "Cochrane: whether to give antibiotics before an extraction should be decided per patient, by condition and infection risk. People with weak immunity need an individual plan with their doctor."
+   "sum": "Cochrane: whether to give antibiotics before an extraction should be decided per patient, by condition and infection risk. People with weak immunity need an individual plan with their doctor.",
+   "key": [
+    "Cochrane: 23 trials (about 3,200 participants) of antibiotics versus placebo around tooth extraction.",
+    "After wisdom tooth removal, antibiotics may lower the risk of infection and dry socket (low-certainty evidence).",
+    "The decision should be individual; immunocompromised patients need a tailored approach."
+   ],
+   "p": [
+    "Teeth are most often extracted because of decay and gum infection. Systemic antibiotics are sometimes prescribed to prevent complications. Cochrane gathered 23 trials comparing antibiotics with placebo, with about 3,206 participants. Nearly all (21 of 23) involved healthy people having impacted wisdom teeth removed, and none looked at immunocompromised patients.",
+    "Low-certainty evidence suggests antibiotics may cut the risk of infection after wisdom tooth removal by about 66%: about 19 healthy people need treatment to prevent one infection. They may reduce the risk of dry socket by 34%. Side effects were mild and transient, but the evidence on them is very uncertain. No clear evidence showed that timing (before, after or both) mattered.",
+    "Because bacterial resistance to antibiotics is rising, the authors advise dentists to decide for each patient whether antibiotics are needed, based on their health and infection risk. Do not take them \"just in case\" without a prescription."
+   ]
   }
  },
  {
   "id": "33998662",
+  "slug": "rubber-dam-for-fillings",
+  "minutes": 2,
   "cat": "restorations",
   "year": 2021,
   "journal": "Cochrane Database Syst Rev",
@@ -1456,19 +2578,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Коффердам при пломбировании",
-   "sum": "Коффердам может снижать долю неудачных пломб через шесть месяцев по сравнению с ватными валиками; на других сроках данные неопределённые."
+   "sum": "Коффердам может снижать долю неудачных пломб через шесть месяцев по сравнению с ватными валиками; на других сроках данные неопределённые.",
+   "key": [
+    "Коффердам (резиновая завеса) может снижать долю неудачных пломб через 6 месяцев по сравнению с ватными валиками.",
+    "На других сроках данные очень неопределённые.",
+    "Все 6 исследований имели высокий риск ошибок; нужны более качественные работы."
+   ],
+   "p": [
+    "Коффердам это тонкий резиновый лист, который изолирует зуб от слюны на время лечения. Cochrane сравнил его с обычными ватными валиками при пломбировании. Нашли 6 исследований с 1342 участниками, проведённых в 2010-2015 годах; в анализ вошли четыре.",
+    "По двум исследованиям с 192 участниками коффердам может повышать выживаемость композитных пломб у шейки зуба. Через 6 месяцев пломб под коффердамом, возможно, отваливалось меньше, чем при ватных валиках (низкая достоверность). На других сроках данные очень неопределённые.",
+    "Все исследования имели высокий риск ошибок, поэтому авторы просят провести новые качественные работы по разным видам пломбирования. Коффердам также помогает врачу работать на сухом зубе, поэтому многие стоматологи используют его, если это возможно."
+   ]
   },
   "fa": {
    "title": "رابردم در ترمیم دندان",
-   "sum": "رابردم ممکن است میزان شکست ترمیم‌ها را پس از شش ماه نسبت به غلتک پنبه‌ای کمتر کند؛ در زمان‌های دیگر شواهد نامطمئن است."
+   "sum": "رابردم ممکن است میزان شکست ترمیم‌ها را پس از شش ماه نسبت به غلتک پنبه‌ای کمتر کند؛ در زمان‌های دیگر شواهد نامطمئن است.",
+   "key": [
+    "رابردم ممکن است پس از ۶ ماه میزان شکست ترمیم‌ها را نسبت به غلتک پنبه‌ای کمتر کند.",
+    "در زمان‌های دیگر شواهد بسیار نامطمئن است.",
+    "هر ۶ مطالعه خطر خطای بالا داشتند؛ پژوهش‌های باکیفیت‌تر لازم است."
+   ],
+   "p": [
+    "رابردم ورقهٔ نازک لاستیکی است که در طول درمان دندان را از بزاق جدا می‌کند. کاکرین آن را با غلتک‌های پنبه‌ای معمول در ترمیم دندان مقایسه کرد. ۶ مطالعه با ۱۳۴۲ شرکت‌کننده، از سال‌های ۲۰۱۰ تا ۲۰۱۵، پیدا شد و چهار مطالعه وارد تحلیل شد.",
+    "بر پایهٔ دو مطالعه با ۱۹۲ شرکت‌کننده، رابردم ممکن است ماندگاری ترمیم‌های کامپوزیتی ناحیهٔ گردن دندان را بیشتر کند. پس از ۶ ماه شکست ترمیم‌ها با رابردم احتمالاً کمتر از غلتک پنبه‌ای بود (اطمینان پایین). در زمان‌های دیگر شواهد بسیار نامطمئن است.",
+    "همهٔ مطالعه‌ها خطر خطای بالا داشتند، برای همین نویسندگان پژوهش‌های باکیفیت تازه دربارهٔ انواع ترمیم می‌خواهند. رابردم کار روی دندان خشک را هم برای دندانپزشک راحت‌تر می‌کند و به همین دلیل بسیاری از دندانپزشکان در صورت امکان از آن استفاده می‌کنند."
+   ]
   },
   "en": {
    "title": "Rubber dam for fillings",
-   "sum": "A rubber dam may lower the failure rate of fillings after six months compared with cotton rolls. At other time points the evidence is uncertain."
+   "sum": "A rubber dam may lower the failure rate of fillings after six months compared with cotton rolls. At other time points the evidence is uncertain.",
+   "key": [
+    "A rubber dam may lower the failure rate of fillings after six months compared with cotton rolls.",
+    "At other time points the evidence is very uncertain.",
+    "All six studies had a high risk of bias; better research is needed."
+   ],
+   "p": [
+    "A rubber dam is a thin rubber sheet that keeps a tooth isolated from saliva during treatment. Cochrane compared it with ordinary cotton rolls for fillings. It found six studies from 2010 to 2015 with 1,342 participants, four of which entered the analysis.",
+    "In two studies with 192 participants, the rubber dam may increase the survival of composite fillings at the neck of the tooth. After six months fewer fillings failed with a rubber dam than with cotton rolls (low certainty). At other time points the evidence is very uncertain.",
+    "All studies had a high risk of bias, so the authors ask for new high-quality work on different types of fillings. A rubber dam also helps the dentist work on a dry tooth, which is why many dentists use it when they can."
+   ]
   }
  },
  {
   "id": "34280957",
+  "slug": "treating-cavities-which-approach",
+  "minutes": 2,
   "cat": "restorations",
   "year": 2021,
   "journal": "Cochrane Database Syst Rev",
@@ -1512,19 +2666,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Лечение кариозных полостей: что выбрать",
-   "sum": "Cochrane сравнил методы лечения кариозных полостей по данным 27 исследований; для большинства сравнений уверенность в выводах низкая."
+   "sum": "Cochrane сравнил методы лечения кариозных полостей по данным 27 исследований; для большинства сравнений уверенность в выводах низкая.",
+   "key": [
+    "Cochrane сравнил способы лечения кариозных полостей по 27 исследованиям.",
+    "По сравнению с обычным лечением реже подводили метод Холла и избирательное удаление у молочных зубов, а также избирательное и ступенчатое у постоянных.",
+    "Для большинства сравнений достоверность доказательств низкая или очень низкая."
+   ],
+   "p": [
+    "Когда в зубе уже есть полость, врач может удалить весь кариес или оставить часть поражённой ткани. Cochrane собрал 27 исследований с 3350 участниками и 4195 зубами из 11 стран. В основном это были дети и подростки, молочные и постоянные зубы.",
+    "Обычное лечение сравнивали с менее инвазивными: избирательным удалением (SE), ступенчатым удалением (SW) и методом Холла (HT) и другими. По сравнению с обычным лечением неудач было меньше при HT и SE у молочных зубов, а при SE и SW у постоянных.",
+    "Большинство исследований имело высокий риск ошибок и небольшую выборку, поэтому авторы оценили уверенность для большинства сравнений как низкую или очень низкую. Практический вывод: щадящие подходы выглядят перспективно, но выбор делает врач вместе с вами."
+   ]
   },
   "fa": {
    "title": "درمان حفره‌های پوسیدگی",
-   "sum": "کاکرین ۲۷ مطالعه را برای مقایسه‌ی روش‌های درمان حفره‌های پوسیدگی بررسی کرد؛ در بیشتر مقایسه‌ها اطمینان به نتایج پایین است."
+   "sum": "کاکرین ۲۷ مطالعه را برای مقایسه‌ی روش‌های درمان حفره‌های پوسیدگی بررسی کرد؛ در بیشتر مقایسه‌ها اطمینان به نتایج پایین است.",
+   "key": [
+    "کاکرین روش‌های درمان حفره‌های پوسیدگی را در ۲۷ مطالعه مقایسه کرد.",
+    "نسبت به درمان معمول، تکنیک هال و برداشت انتخابی در دندان شیری و برداشت انتخابی و مرحله‌ای در دندان دائمی شکست کمتری داشتند.",
+    "در بیشتر مقایسه‌ها اطمینان به شواهد پایین یا بسیار پایین است."
+   ],
+   "p": [
+    "وقتی در دندان حفره ایجاد شده، دندانپزشک می‌تواند همهٔ بافت پوسیده را بردارد یا بخشی از آن را باقی بگذارد. کاکرین ۲۷ مطالعه با ۳۳۵۰ شرکت‌کننده و ۴۱۹۵ دندان از ۱۱ کشور را جمع کرد. بیشتر کودکان و نوجوانان بودند و دندان شیری و دائمی هر دو بررسی شد.",
+    "درمان معمول با روش‌های کم‌تهاجمی‌تر مقایسه شد: برداشت انتخابی (SE)، برداشت مرحله‌ای (SW)، تکنیک هال (HT) و دیگر روش‌ها. نسبت به درمان معمول، شکست در دندان شیری با HT و SE و در دندان دائمی با SE و SW کمتر بود.",
+    "بیشتر مطالعه‌ها خطر خطای بالا و نمونهٔ کوچک داشتند، پس نویسندگان اطمینان را در بیشتر مقایسه‌ها پایین یا بسیار پایین ارزیابی کردند. نتیجهٔ عملی: روش‌های ملایم امیدوارکننده‌اند ولی انتخاب با دندانپزشک و همراه با شماست."
+   ]
   },
   "en": {
    "title": "Treating cavities: which approach",
-   "sum": "Cochrane compared ways of treating cavitated decay across 27 studies. For most comparisons our confidence in the results is low."
+   "sum": "Cochrane compared ways of treating cavitated decay across 27 studies. For most comparisons our confidence in the results is low.",
+   "key": [
+    "Cochrane compared ways of treating cavitated decay across 27 studies.",
+    "Compared with conventional care, the Hall Technique and selective removal failed less in baby teeth, and selective and stepwise removal in permanent teeth.",
+    "For most comparisons certainty is low or very low."
+   ],
+   "p": [
+    "When a tooth already has a cavity, a dentist can remove all the decay or leave part of the affected tissue. Cochrane gathered 27 studies with 3,350 participants and 4,195 teeth from 11 countries. Most involved children and teenagers, and baby and permanent teeth were both studied.",
+    "Conventional treatment was compared with less invasive ones: selective removal (SE), stepwise removal (SW), the Hall Technique (HT) and others. Compared with conventional treatment there were fewer failures with HT and SE in baby teeth, and with SE and SW in permanent teeth.",
+    "Most studies had a high risk of bias and small samples, so the authors rated confidence in most comparisons as low or very low. The practical message: gentle approaches look promising, but the choice is made by your dentist together with you."
+   ]
   }
  },
  {
   "id": "34784027",
+  "slug": "gentle-treatment-of-decay-in-baby-teeth",
+  "minutes": 2,
   "cat": "restorations",
   "year": 2021,
   "journal": "Eur Arch Paediatr Dent",
@@ -1555,19 +2741,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Щадящее лечение кариеса молочных зубов",
-   "sum": "Обзор обзоров: щадящие методы (SDF, метод Холла, избирательное удаление) для молочных зубов не хуже обычных пломб или лучше отсутствия лечения."
+   "sum": "Обзор обзоров: щадящие методы (SDF, метод Холла, избирательное удаление) для молочных зубов не хуже обычных пломб или лучше отсутствия лечения.",
+   "key": [
+    "Щадящие методы лечения кариеса молочных зубов эффективно останавливают процесс.",
+    "К ним относят SDF 38%, метод Холла, избирательное удаление кариеса и ART.",
+    "Авторы призывают считать их полноценным вариантом, а не компромиссом."
+   ],
+   "p": [
+    "Не все дети спокойно переносят бор, и не всем нужна полная «расчистка» зуба. Эта работа «обзор обзоров»: авторы собрали 18 систематических обзоров 2006-2020 годов о щадящих методах лечения кариеса дентина в молочных зубах.",
+    "Восемь обзоров касались 38% серебра диамин фторида, один метода Холла, один избирательного удаления кариозной ткани и восемь атравматичного восстановительного лечения (ART). Эти методы при кариесе на одной поверхности, судя по обзорам, эффективно останавливают его прогресс по сравнению с отсутствием лечения или обычными пломбами.",
+    "Авторы призывают относиться к таким методам как к основному варианту лечения, а не как к вынужденному компромиссу, когда обычное лечение невозможно из-за сотрудничества ребёнка или стоимости. Подходящий метод для вашего ребёнка выберет врач."
+   ]
   },
   "fa": {
    "title": "درمان کم‌تهاجمی پوسیدگی دندان شیری",
-   "sum": "مرور مرورها: روش‌های ملایم مثل SDF، تکنیک هال و برداشت انتخابی پوسیدگی از ندادن درمان بهترند و می‌توانند جایگزین درمان‌های معمول شوند."
+   "sum": "مرور مرورها: روش‌های ملایم مثل SDF، تکنیک هال و برداشت انتخابی پوسیدگی از ندادن درمان بهترند و می‌توانند جایگزین درمان‌های معمول شوند.",
+   "key": [
+    "روش‌های کم‌تهاجمی درمان پوسیدگی دندان شیری پیشرفت آن را مؤثر متوقف می‌کنند.",
+    "این روش‌ها شامل SDF ۳۸٪، تکنیک هال، برداشت انتخابی پوسیدگی و ART هستند.",
+    "نویسندگان می‌خواهند این روش‌ها گزینهٔ اصلی دیده شوند نه یک سازش."
+   ],
+   "p": [
+    "همهٔ کودکان تراش را راحت تحمل نمی‌کنند و همهٔ دندان‌ها هم به برداشت کامل نیاز ندارند. این مقاله «مرور مرورها» است: نویسندگان ۱۸ مرور سیستماتیک از سال‌های ۲۰۰۶ تا ۲۰۲۰ را دربارهٔ روش‌های کم‌تهاجمی درمان پوسیدگی عاج دندان شیری جمع کردند.",
+    "هشت مرور دربارهٔ سیلور دی‌آمین فلوراید ۳۸٪ بود، یکی دربارهٔ تکنیک هال، یکی دربارهٔ برداشت انتخابی بافت پوسیده و هشت مورد دربارهٔ درمان ترمیمی غیرتروماتیک (ART). این روش‌ها برای پوسیدگی تک‌سطحی، بر اساس مرورها، پیشرفت پوسیدگی را نسبت به عدم درمان یا ترمیم‌های معمول به‌طور مؤثر متوقف می‌کنند.",
+    "نویسندگان می‌خواهند این روش‌ها گزینهٔ اصلی درمان دیده شوند، نه یک سازش وقتی درمان معمول به‌خاطر همکاری کودک یا هزینه ممکن نیست. روش مناسب برای فرزند شما را دندانپزشک انتخاب می‌کند."
+   ]
   },
   "en": {
    "title": "Gentle treatment of decay in baby teeth",
-   "sum": "An umbrella review of minimal intervention methods (SDF, Hall Technique, selective removal) in baby teeth. They did better than no treatment and compared well with conventional fillings."
+   "sum": "An umbrella review of minimal intervention methods (SDF, Hall Technique, selective removal) in baby teeth. They did better than no treatment and compared well with conventional fillings.",
+   "key": [
+    "Gentle treatments for decay in baby teeth effectively halt its progress.",
+    "They include 38% SDF, the Hall Technique, selective removal of decay and ART.",
+    "The authors urge treating them as a mainstream option, not a compromise."
+   ],
+   "p": [
+    "Not every child tolerates the drill well, and not every tooth needs full cleaning-out. This is an \"umbrella review\": the authors gathered 18 systematic reviews from 2006 to 2020 on minimally invasive treatment of dentine decay in baby teeth.",
+    "Eight reviews covered 38% silver diamine fluoride, one the Hall Technique, one selective removal of decayed tissue and eight atraumatic restorative treatment (ART). For single-surface cavities these methods appear effective at arresting decay compared with no treatment or conventional fillings.",
+    "The authors urge that such methods be seen as mainstream options, not as a compromise when conventional care is not possible because of cooperation or cost. The right method for your child is for the dentist to choose."
+   ]
   }
  },
  {
   "id": "34951927",
+  "slug": "posterior-crossbite",
+  "minutes": 2,
   "cat": "prosthetics",
   "year": 2021,
   "journal": "Cochrane Database Syst Rev",
@@ -1597,19 +2815,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Перекрёстный прикус",
-   "sum": "Cochrane: у детей с боковым перекрёстным прикусом квад-хеликс эффективнее расширяющих пластинок; для остальных случаев данных недостаточно."
+   "sum": "Cochrane: у детей с боковым перекрёстным прикусом квад-хеликс эффективнее расширяющих пластинок; для остальных случаев данных недостаточно.",
+   "key": [
+    "Cochrane нашёл 31 исследование перекрёстного прикуса у детей и подростков (около 1410 участников).",
+    "В 7-11 лет квад-хеликс и расширяющие пластинки лучше, чем наблюдение; квад-хеликс эффективнее пластинок.",
+    "В 12-16 лет Hyrax и Haas сходны по результату."
+   ],
+   "p": [
+    "При боковом перекрёстном прикусе верхние задние зубы смыкаются внутри нижних. Он встречается у примерно 4% детей и подростков в Европе и 17% в Америке. Cochrane сопоставил способы лечения: в обзор вошли 31 исследование, около 1410 участников.",
+    "Для детей 7-11 лет квад-хеликс помогал исправить прикус намного лучше, чем просто наблюдение (данные высокой достоверности) и увеличивал расстояние между молярами. Расширяющие пластинки тоже были полезны, но квад-хеликс исправлял прикус эффективнее и быстрее. У подростков 12-16 лет между аппаратами Hyrax и Haas разницы по исправлению прикуса не нашли (умеренная достоверность).",
+    "По остальным сравнениям данных для надёжных выводов недостаточно. Какой аппарат нужен ребёнку и когда лучше начинать, решает ортодонт после осмотра."
+   ]
   },
   "fa": {
    "title": "کراس‌بایت خلفی",
-   "sum": "کاکرین: در کودکان مبتلا به کراس‌بایت خلفی، کواد-هلیکس از پلاک گسترش‌دهنده مؤثرتر بود؛ برای سایر مقایسه‌ها شواهد کافی نیست."
+   "sum": "کاکرین: در کودکان مبتلا به کراس‌بایت خلفی، کواد-هلیکس از پلاک گسترش‌دهنده مؤثرتر بود؛ برای سایر مقایسه‌ها شواهد کافی نیست.",
+   "key": [
+    "کاکرین ۳۱ مطالعه دربارهٔ کراس‌بایت خلفی کودکان و نوجوانان پیدا کرد (حدود ۱۴۱۰ شرکت‌کننده).",
+    "در ۷ تا ۱۱ سالگی کواد-هلیکس و پلاک گسترش‌دهنده از پیگیری بدون درمان بهتر است؛ کواد-هلیکس از پلاک مؤثرتر است.",
+    "در ۱۲ تا ۱۶ سالگی Hyrax و Haas نتیجه‌ای مشابه دارند."
+   ],
+   "p": [
+    "در کراس‌بایت خلفی دندان‌های عقبی بالا داخل دندان‌های پایین قرار می‌گیرند. این مشکل در حدود ۴٪ کودکان و نوجوانان اروپا و ۱۷٪ آمریکا دیده می‌شود. کاکرین روش‌های درمان را مقایسه کرد: ۳۱ مطالعه با حدود ۱۴۱۰ شرکت‌کننده وارد مرور شد.",
+    "برای کودکان ۷ تا ۱۱ ساله کواد-هلیکس نسبت به فقط پیگیری، اصلاح کراس‌بایت را بسیار بهتر کرد (شواهد با اطمینان بالا) و فاصلهٔ بین دندان‌های آسیا را بیشتر کرد. پلاک گسترش‌دهنده هم مفید بود، ولی کواد-هلیکس کراس‌بایت را مؤثرتر و سریع‌تر اصلاح کرد. در نوجوانان ۱۲ تا ۱۶ ساله بین Hyrax و Haas از نظر اصلاح کراس‌بایت تفاوتی نبود (اطمینان متوسط).",
+    "برای مقایسه‌های دیگر شواهد کافی برای نتیجه‌گیری قطعی نیست. اینکه کودک شما چه دستگاهی لازم دارد و چه زمانی شروع شود را ارتودنتیست پس از معاینه تعیین می‌کند."
+   ]
   },
   "en": {
    "title": "Posterior crossbite",
-   "sum": "Cochrane: in children with a posterior crossbite the quad-helix worked better than expansion plates. For other comparisons the evidence was insufficient."
+   "sum": "Cochrane: in children with a posterior crossbite the quad-helix worked better than expansion plates. For other comparisons the evidence was insufficient.",
+   "key": [
+    "Cochrane found 31 studies on posterior crossbite in children and teenagers (about 1,410 participants).",
+    "At ages 7 to 11, quad-helix and expansion plates beat observation; quad-helix works better than plates.",
+    "At ages 12 to 16, Hyrax and Haas performed alike."
+   ],
+   "p": [
+    "In a posterior crossbite the top back teeth bite inside the bottom ones. It affects about 4% of children and adolescents in Europe and 17% in America. Cochrane compared treatments: 31 studies with about 1,410 participants were included.",
+    "For children aged 7 to 11, quad-helix corrected the bite far better than observation alone (high-certainty evidence) and widened the distance between the molars. Expansion plates also helped, but quad-helix corrected the crossbite more effectively and in less time. For teenagers aged 12 to 16, Hyrax and Haas did not differ in correcting the crossbite (moderate-certainty evidence).",
+    "For the remaining comparisons the evidence is insufficient for firm conclusions. Which appliance a child needs and when to start is for the orthodontist to decide after an examination."
+   ]
   }
  },
  {
   "id": "32762733",
+  "slug": "dentin-sensitivity-causes-and-care",
+  "minutes": 2,
   "cat": "sensitivity",
   "year": 2020,
   "journal": "BMC Oral Health",
@@ -1635,19 +2885,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Чувствительность дентина: причины и лечение",
-   "sum": "Обзор причин и диагностики гиперчувствительности и способов лечения; десенситайзеры закрывают канальцы, но долгосрочный эффект неясен."
+   "sum": "Обзор причин и диагностики гиперчувствительности и способов лечения; десенситайзеры закрывают канальцы, но долгосрочный эффект неясен.",
+   "key": [
+    "Чувствительность дентина одна из самых частых жалоб на приёме.",
+    "Единых руководств по диагностике и выбору лечения нет.",
+    "Десенситайзеры закрывают канальцы, но долгосрочный результат неясен."
+   ],
+   "p": [
+    "Чувствительность зубов одна из самых частых жалоб у стоматолога, а единых общепринятых рекомендаций по диагностике и выбору надёжного лечения нет. Механизмы боли до конца не ясны. Самое распространённое объяснение гидродинамическая теория: боль вызывает движение жидкости в открытых канальцах дентина.",
+    "Многие заболевания зубов дают похожие симптомы на разных стадиях, поэтому диагностика и лечение часто вызывают затруднения, особенно у неопытных врачей. Авторы собрали сведения о факторах риска, развитии и хронизации чувствительности и о принципах диагностики и лечения.",
+    "Десенсибилизация остаётся первым выбором, и большинство средств уменьшают симптомы, закрывая открытые канальцы. Но долгосрочный результат такого лечения неясен. Авторы ожидают, что с лучшим пониманием механизмов боли появятся более эффективные способы. Если зубы болят от холодного и сладкого, обратитесь к врачу, чтобы исключить другие причины."
+   ]
   },
   "fa": {
    "title": "حساسیت عاجی: علل و درمان",
-   "sum": "مروری بر علت‌ها، تشخیص و درمان حساسیت دندان؛ مواد کاهنده‌ی حساسیت توبول‌ها را می‌بندند اما نتیجه‌ی بلندمدت نامشخص است."
+   "sum": "مروری بر علت‌ها، تشخیص و درمان حساسیت دندان؛ مواد کاهنده‌ی حساسیت توبول‌ها را می‌بندند اما نتیجه‌ی بلندمدت نامشخص است.",
+   "key": [
+    "حساسیت عاج یکی از شایع‌ترین شکایت‌ها در مطب است.",
+    "راهنمای واحدی برای تشخیص و انتخاب درمان وجود ندارد.",
+    "مواد کاهندهٔ حساسیت توبول‌ها را می‌بندند، ولی نتیجهٔ بلندمدت نامشخص است."
+   ],
+   "p": [
+    "حساسیت دندان یکی از شایع‌ترین شکایت‌ها در مطب است و راهنمای مورد قبول همگان برای تشخیص افتراقی و انتخاب درمان قابل‌اعتماد وجود ندارد. سازوکار درد کاملاً روشن نیست. پذیرفته‌ترین توضیح نظریهٔ هیدرودینامیک است: حرکت مایع در توبول‌های باز عاج درد را ایجاد می‌کند.",
+    "بسیاری از بیماری‌های دندان در مراحل مختلف علائم مشابهی دارند، برای همین تشخیص و درمان اغلب گیج‌کننده است، به‌ویژه برای دندانپزشکان کم‌تجربه. نویسندگان عوامل خطر، سازوکار و مزمن شدن حساسیت و اصول تشخیص و درمان را جمع‌بندی کردند.",
+    "کاهش حساسیت هنوز انتخاب اول است و بیشتر مواد با بستن توبول‌های باز علائم را کم می‌کنند. اما نتیجهٔ بلندمدت این درمان نامشخص است. نویسندگان انتظار دارند با شناخت بهتر سازوکار درد، درمان‌های مؤثرتری بیایند. اگر دندان‌تان با سرد و شیرین درد می‌گیرد، نزد دندانپزشک بروید تا علت‌های دیگر کنار گذاشته شود."
+   ]
   },
   "en": {
    "title": "Dentin sensitivity: causes and care",
-   "sum": "An overview of causes, diagnosis and treatment of tooth sensitivity. Desensitising agents close the tubules, but the long-term outcome is uncertain."
+   "sum": "An overview of causes, diagnosis and treatment of tooth sensitivity. Desensitising agents close the tubules, but the long-term outcome is uncertain.",
+   "key": [
+    "Dentin hypersensitivity is one of the most common complaints in dental clinics.",
+    "There are no universally accepted guidelines for diagnosis or choosing treatment.",
+    "Desensitising agents close the tubules, but the long-term outcome is uncertain."
+   ],
+   "p": [
+    "Tooth sensitivity is one of the most common complaints in dental clinics, yet there are no universally accepted guidelines for differential diagnosis or for choosing reliable treatment. The mechanisms behind the pain are unclear. The most widely accepted explanation is the hydrodynamic theory: fluid movement within exposed dentinal tubules causes the pain.",
+    "Several dental conditions have symptoms that mimic sensitivity at different stages, so diagnosis and treatment are often confusing, especially for inexperienced practitioners. The authors review risk factors for the development and chronicity of sensitivity and summarise principles of diagnosis and management.",
+    "Desensitisation remains the first choice, and most agents reduce symptoms by occluding open dentinal tubules. But the long-term outcome of such treatment is uncertain. The authors expect that better understanding of the pain mechanisms will bring more effective therapies. If your teeth hurt with cold or sweet things, see a dentist to rule out other causes."
+   ]
   }
  },
  {
   "id": "32854105",
+  "slug": "dentin-decay-in-baby-teeth-how-to-intervene",
+  "minutes": 2,
   "cat": "restorations",
   "year": 2020,
   "journal": "Caries Res",
@@ -1677,19 +2959,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Кариес дентина молочных зубов: как вмешиваться",
-   "sum": "Менее инвазивные подходы (избирательное или отсутствие удаления кариеса) выглядят выгоднее полного удаления; для сложных молярах рекомендуют стальные коронки."
+   "sum": "Менее инвазивные подходы (избирательное или отсутствие удаления кариеса) выглядят выгоднее полного удаления; для сложных молярах рекомендуют стальные коронки.",
+   "key": [
+    "Менее инвазивные подходы (избирательное удаление кариеса или без удаления) выглядят выгоднее полного удаления.",
+    "Стальные коронки лучше всего подходят для многоповерхностных поражений молочных зубов.",
+    "SDF был значительно эффективнее других методов в остановке кариеса."
+   ],
+   "p": [
+    "Эта работа подготовлена для консенсуса экспертов (ORCA/EFCD). Авторы собрали данные о том, как лучше вмешиваться при кариесе дентина молочных зубов и какие материалы применять. Взяли 2 систематических обзора и 5 рандомизированных исследований об успехе лечения и ещё 10 обзоров и 1 исследование о методах с наблюдением не меньше 12 месяцев.",
+    "При глубоком кариесе избирательное удаление снижало частоту вскрытия пульпы, но преимущества над полным удалением для симптомов и успеха пломбы не подтвердились. Для пломб на нескольких поверхностях заводские стальные коронки показали лучшие результаты, чем амальгама, композит и стеклоиономер. Из нереставрационных вариантов серебра диамин фторид был значительно эффективнее других для остановки кариеса.",
+    "Авторы отмечают разнородность данных, но тенденции сходятся: у детей с живым зубом без боли менее инвазивные подходы выгоднее полного удаления кариеса. Что подходит ребёнку, решает врач."
+   ]
   },
   "fa": {
    "title": "پوسیدگی عاج دندان شیری: چه باید کرد",
-   "sum": "روش‌های کم‌تهاجمی (برداشت انتخابی یا عدم برداشت پوسیدگی) نسبت به برداشت کامل برتر به‌نظر می‌رسند؛ برای مولرهای چندسطحی از روکش پیش‌ساخته حمایت می‌شود."
+   "sum": "روش‌های کم‌تهاجمی (برداشت انتخابی یا عدم برداشت پوسیدگی) نسبت به برداشت کامل برتر به‌نظر می‌رسند؛ برای مولرهای چندسطحی از روکش پیش‌ساخته حمایت می‌شود.",
+   "key": [
+    "روش‌های کم‌تهاجمی (برداشت انتخابی یا بدون برداشت پوسیدگی) نسبت به برداشت کامل برتر به‌نظر می‌رسند.",
+    "روکش فلزی پیش‌ساخته برای ضایعه‌های چندسطحی دندان شیری بهترین نتیجه را داشت.",
+    "SDF در متوقف کردن پوسیدگی به‌طور معناداری مؤثرتر از روش‌های دیگر بود."
+   ],
+   "p": [
+    "این مقاله برای یک اجماع متخصصان (ORCA/EFCD) تهیه شده است. نویسندگان شواهد را دربارهٔ اینکه در پوسیدگی عاج دندان شیری چگونه باید مداخله کرد و از چه موادی استفاده کرد جمع کردند. آنها ۲ مرور سیستماتیک و ۵ کارآزمایی تصادفی دربارهٔ موفقیت درمان و ۱۰ مرور و ۱ کارآزمایی دربارهٔ روش‌هایی با دست‌کم ۱۲ ماه پیگیری را بررسی کردند.",
+    "در پوسیدگی عمیق، برداشت انتخابی میزان باز شدن پالپ را کم کرد، ولی برتری آن بر برداشت کامل از نظر علائم و موفقیت ترمیم تأیید نشد. برای ترمیم چندسطحی، روکش‌های فلزی پیش‌ساخته نتایج بهتری از آمالگام، کامپوزیت و گلاس‌آینومر داشتند. از روش‌های غیرترمیمی، سیلور دی‌آمین فلوراید به‌طور معناداری بیشتر از روش‌های دیگر پوسیدگی را متوقف کرد.",
+    "نویسندگان ناهمگونی داده‌ها را یادآوری می‌کنند ولی روندها یکسان است: در کودکی که دندانش زنده و بدون درد است، روش‌های کم‌تهاجمی نسبت به برداشت کامل پوسیدگی سودمندتر به‌نظر می‌رسند. اینکه چه چیزی برای کودک مناسب است را دندانپزشک تعیین می‌کند."
+   ]
   },
   "en": {
    "title": "Dentin decay in baby teeth: how to intervene",
-   "sum": "Less invasive approaches (selective or no decay removal) look better than complete removal. Preformed crowns are supported for multi-surface molars."
+   "sum": "Less invasive approaches (selective or no decay removal) look better than complete removal. Preformed crowns are supported for multi-surface molars.",
+   "key": [
+    "Less invasive approaches (selective or no removal of decay) look better than removing it completely.",
+    "Preformed metal crowns did best for multi-surface lesions in baby teeth.",
+    "SDF arrested decay significantly better than other methods."
+   ],
+   "p": [
+    "This paper was prepared for an expert consensus (ORCA/EFCD). The authors gathered evidence on how best to intervene in dentine decay of baby teeth and which materials to use. They looked at 2 systematic reviews and 5 randomised trials on treatment success, and 10 reviews and 1 trial on non-restorative options, all with at least 12 months of follow-up.",
+    "In deep lesions, selective removal reduced pulp exposure, but its benefit over complete removal for symptoms or filling success was not confirmed. For multi-surface lesions, preformed metal crowns had higher success rates than amalgam, composite and glass ionomer. Among non-restorative options, silver diamine fluoride arrested decay significantly better than other treatments.",
+    "The authors note much variation between studies, but the trends agreed: in a child whose tooth is vital and painless, less invasive approaches look better than complete decay removal. What suits a child is for the dentist to decide."
+   ]
   }
  },
  {
   "id": "30829399",
+  "slug": "fluoride-toothpaste-which-strength",
+  "minutes": 2,
   "cat": "caries",
   "year": 2019,
   "journal": "Cochrane Database Syst Rev",
@@ -1723,19 +3037,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Фторсодержащие пасты разной концентрации",
-   "sum": "Паста с фторидом предотвращает кариес у детей; по многим сравнениям концентраций данные остаются неопределёнными, а для малышей выбор нужно взвешивать с риском флюороза."
+   "sum": "Паста с фторидом предотвращает кариес у детей; по многим сравнениям концентраций данные остаются неопределёнными, а для малышей выбор нужно взвешивать с риском флюороза.",
+   "key": [
+    "Паста с фторидом предотвращает кариес у детей по сравнению с пастой без фтора.",
+    "Чем больше фтора, тем чаще лучше защита, но по многим сравнениям данных пока недостаточно.",
+    "Для малышей выбор нужно взвешивать с риском флюороза (пятен на эмали)."
+   ],
+   "p": [
+    "Это обзор Cochrane, который собрал 96 исследований с 1955 по 2014 год. В них детям и подросткам давали пасту с разным содержанием фторида и смотрели, сколько у них появилось новых кариозных зубов и поверхностей.",
+    "Паста с фторидом защищает от кариеса лучше пасты без фтора. Для разных концентраций картина менее ясна: у детей и подростков заметна зависимость «больше фтора, больше защиты», но во многих сравнениях концентраций результат неопределён, и новые исследования могут его изменить.",
+    "Для малышей важна осторожность: авторы напоминают, что выбор концентрации нужно сопоставлять с риском флюороза. Какую пасту и в каком количестве давать ребёнку, лучше уточнить у стоматолога."
+   ]
   },
   "fa": {
    "title": "خمیردندان فلوراید با غلظت‌های مختلف",
-   "sum": "خمیردندان فلوراید دار از پوسیدگی کودکان پیشگیری می‌کند؛ در بسیاری از مقایسه‌های غلظت‌ها شواهد قطعی نیست و برای کودکان کم‌سن باید با خطر فلوروزیس سنجیده شود."
+   "sum": "خمیردندان فلوراید دار از پوسیدگی کودکان پیشگیری می‌کند؛ در بسیاری از مقایسه‌های غلظت‌ها شواهد قطعی نیست و برای کودکان کم‌سن باید با خطر فلوروزیس سنجیده شود.",
+   "key": [
+    "خمیردندان فلوراید دار پوسیدگی کودکان را نسبت به خمیردندان بدون فلوراید کمتر می‌کند.",
+    "با افزایش غلظت فلوراید معمولاً محافظت بیشتر است، اما در بسیاری از مقایسه‌ها شواهد هنوز کافی نیست.",
+    "برای کودکان کم‌سن انتخاب باید با خطر فلوروزیس (لکه‌های مینا) سنجیده شود."
+   ],
+   "p": [
+    "این مرور کاکرین است که ۹۶ مطالعه از سال ۱۹۵۵ تا ۲۰۱۴ را جمع کرده. در آنها به کودکان و نوجوانان خمیردندان با مقدار مختلف فلوراید داده شد و شمار دندان‌ها و سطوح تازه پوسیده مقایسه شد.",
+    "خمیردندان فلوراید دار بهتر از خمیردندان بدون فلوراید از پوسیدگی جلوگیری می‌کند. دربارهٔ غلظت‌های مختلف تصویر کمتر روشن است: در کودکان و نوجوانان رابطهٔ «فلوراید بیشتر، محافظت بیشتر» دیده می‌شود، ولی در بسیاری از مقایسه‌ها نتیجه نامطمئن است و پژوهش‌های تازه ممکن است آن را عوض کنند.",
+    "برای کودکان کم‌سن باید دقت کرد: نویسندگان یادآوری می‌کنند انتخاب غلظت باید با خطر فلوروزیس سنجیده شود. اینکه چه خمیردندانی و چه مقداری برای کودک مناسب است را از دندانپزشک بپرسید."
+   ]
   },
   "en": {
    "title": "Fluoride toothpaste: which strength?",
-   "sum": "Fluoride toothpaste prevents decay in children. For many strength comparisons the evidence is uncertain, and for young children the choice must be weighed against the risk of fluorosis."
+   "sum": "Fluoride toothpaste prevents decay in children. For many strength comparisons the evidence is uncertain, and for young children the choice must be weighed against the risk of fluorosis.",
+   "key": [
+    "Fluoride toothpaste prevents decay in children compared with toothpaste without fluoride.",
+    "More fluoride often means more protection, but for many comparisons the evidence is still thin.",
+    "For young children the choice should be weighed against the risk of fluorosis (marks on enamel)."
+   ],
+   "p": [
+    "This is a Cochrane review of 96 studies published between 1955 and 2014. Children and teenagers used toothpaste with different amounts of fluoride, and the studies counted how many new teeth and tooth surfaces developed decay.",
+    "Fluoride toothpaste protects against decay better than toothpaste without it. For different strengths the picture is less clear: in children and teenagers more fluoride tended to mean more protection, but in many comparisons the result is uncertain and new studies could change it.",
+    "For small children, care is needed. The authors remind readers that the choice of strength should be balanced against the risk of fluorosis. Which toothpaste and how much to use for a child is worth asking your dentist."
+   ]
   }
  },
  {
   "id": "30968949",
+  "slug": "floss-and-interdental-brushes",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2019,
   "journal": "Cochrane Database Syst Rev",
@@ -1767,19 +3113,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Зубная нить и ёршики для промежутков",
-   "sum": "Межзубные ёршики, возможно, уменьшают воспаление дёсен лучше нити; доказательства слабые, и клинический эффект может быть небольшим."
+   "sum": "Межзубные ёршики, возможно, уменьшают воспаление дёсен лучше нити; доказательства слабые, и клинический эффект может быть небольшим.",
+   "key": [
+    "Нить или ёршики вместе с щёткой могут снижать воспаление дёсен и налёт лучше, чем одна щётка.",
+    "Межзубные ёршики, возможно, эффективнее нити.",
+    "Доказательства слабые, а эффект может быть клинически небольшим."
+   ],
+   "p": [
+    "Щётка плохо достаёт промежутки между зубами. Cochrane проверил, помогают ли нить, ёршики, ирригаторы и межзубные палочки, если использовать их дополнительно к чистке щёткой, и сравнил эти средства между собой.",
+    "Нить или ёршики в дополнение к щётке могут уменьшать воспаление дёсен и налёт сильнее, чем одна щётка. Ёршики, возможно, действуют лучше нити. По ирригаторам и палочкам данных мало и они противоречивы.",
+    "Результаты измеряли в основном за короткий срок, у людей с небольшим воспалением, а достоверность доказательств низкая. Авторы пишут, что эффект может быть клинически неважным. Какое средство подходит именно вам, подскажет врач или гигиенист."
+   ]
   },
   "fa": {
    "title": "نخ دندان و مسواک بین‌دندانی",
-   "sum": "مسواک بین‌دندانی احتمالاً التهاب لثه را بیشتر از نخ دندان کم می‌کند؛ شواهد کم‌اطمینان است و اثر بالینی ممکن است کوچک باشد."
+   "sum": "مسواک بین‌دندانی احتمالاً التهاب لثه را بیشتر از نخ دندان کم می‌کند؛ شواهد کم‌اطمینان است و اثر بالینی ممکن است کوچک باشد.",
+   "key": [
+    "نخ دندان یا مسواک بین‌دندانی در کنار مسواک ممکن است التهاب لثه و پلاک را بیشتر از مسواک تنها کم کند.",
+    "مسواک بین‌دندانی احتمالاً از نخ دندان مؤثرتر است.",
+    "شواهد کم‌اطمینان است و اثر ممکن است از نظر بالینی کوچک باشد."
+   ],
+   "p": [
+    "مسواک به فضای بین دندان‌ها خوب نمی‌رسد. کاکرین بررسی کرد که اگر نخ دندان، مسواک بین‌دندانی، دستگاه شست‌وشوی آب و خلال‌های بین‌دندانی علاوه بر مسواک استفاده شوند چه اثری دارند، و این وسایل را با هم مقایسه کرد.",
+    "نخ دندان یا مسواک بین‌دندانی در کنار مسواک ممکن است التهاب لثه و پلاک را بیشتر از مسواک تنها کم کند. مسواک بین‌دندانی احتمالاً بهتر از نخ دندان عمل می‌کند. دربارهٔ دستگاه آب و خلال‌ها شواهد کم و ناهمسوست.",
+    "نتایج بیشتر در کوتاه‌مدت و در افراد با التهاب کم سنجیده شد و اطمینان به شواهد پایین است. نویسندگان می‌نویسند ممکن است اثر از نظر بالینی مهم نباشد. اینکه کدام وسیله برای شما مناسب است را دندانپزشک یا بهداشت‌کار می‌گوید."
+   ]
   },
   "en": {
    "title": "Floss and interdental brushes",
-   "sum": "Interdental brushes may reduce gum inflammation more than floss. The evidence is low in certainty and the effect may be small."
+   "sum": "Interdental brushes may reduce gum inflammation more than floss. The evidence is low in certainty and the effect may be small.",
+   "key": [
+    "Floss or interdental brushes added to brushing may reduce gum inflammation and plaque more than brushing alone.",
+    "Interdental brushes may work better than floss.",
+    "Evidence is low in certainty and the effect may be small in clinical terms."
+   ],
+   "p": [
+    "A toothbrush does not reach well between teeth. Cochrane checked whether floss, interdental brushes, oral irrigators and cleaning sticks help when used on top of toothbrushing, and compared these tools with each other.",
+    "Floss or interdental brushes added to brushing may reduce gum inflammation and plaque more than brushing alone. Interdental brushes may do better than floss. For irrigators and cleaning sticks, evidence is limited and inconsistent.",
+    "Most results were measured over a short time in people with mild inflammation, and certainty is low. The authors write that the effect may not be clinically important. Which tool suits you is best asked of your dentist or hygienist."
+   ]
   }
  },
  {
   "id": "31149734",
+  "slug": "oral-care-for-people-with-intellectual-disabilities",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2019,
   "journal": "Cochrane Database Syst Rev",
@@ -1811,19 +3189,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Гигиена рта при особенностях развития",
-   "sum": "Для людей с интеллектуальными нарушениями данные о способах гигиены скудны; помощь должна опираться на опыт специалиста и потребности человека и его близких."
+   "sum": "Для людей с интеллектуальными нарушениями данные о способах гигиены скудны; помощь должна опираться на опыт специалиста и потребности человека и его близких.",
+   "key": [
+    "Для людей с интеллектуальными нарушениями данных о лучших способах гигиены мало.",
+    "Электрическая и обычная щётка одинаково снижали воспаление дёсен в среднем сроке (умеренная достоверность).",
+    "Помощь должна опираться на опыт врача и потребности самого человека и его близких."
+   ],
+   "p": [
+    "Налёт вызывает кариес и болезни дёсен, а чистка зубов может быть непростой для людей с интеллектуальными нарушениями. Cochrane собрал 34 исследования: 19 рандомизированных и 15 нерандомизированных, всего 1795 взрослых и детей и 354 человека, которые за ними ухаживают.",
+    "Проверяли специальные щётки, электрические щётки, обучение гигиене, плановые визиты с чисткой под присмотром, обсуждение фотографий с налётом, разную частоту чистки, красители налёта и индивидуальные планы. Исследования были небольшими, с высоким или неясным риском ошибок. Умеренная достоверность есть только в одном выводе: электрические и обычные щётки одинаково помогали против воспаления дёсен в среднем сроке.",
+    "Польза части мер есть, но её клиническое значение неясно, и данных мало. Пока авторы советуют строить уход на опыте специалиста и на потребностях и предпочтениях человека и тех, кто о нём заботится. Лучший план для близкого человека составит врач вместе с вами."
+   ]
   },
   "fa": {
    "title": "بهداشت دهان در افراد با ناتوانی ذهنی",
-   "sum": "شواهد درباره روش‌های بهداشت دهان برای افراد با ناتوانی ذهنی محدود است؛ مراقبت باید بر تخصص و نیاز فرد و مراقبانش استوار باشد."
+   "sum": "شواهد درباره روش‌های بهداشت دهان برای افراد با ناتوانی ذهنی محدود است؛ مراقبت باید بر تخصص و نیاز فرد و مراقبانش استوار باشد.",
+   "key": [
+    "برای افراد با ناتوانی ذهنی، شواهد دربارهٔ بهترین روش‌های بهداشت دهان محدود است.",
+    "مسواک برقی و معمولی در میان‌مدت به یک اندازه التهاب لثه را کم کردند (اطمینان متوسط).",
+    "مراقبت باید بر تخصص پزشک و نیاز خود فرد و مراقبانش استوار باشد."
+   ],
+   "p": [
+    "پلاک باعث پوسیدگی و بیماری لثه می‌شود و تمیز کردن دندان برای افراد با ناتوانی ذهنی ممکن است دشوار باشد. کاکرین ۳۴ مطالعه را جمع کرد: ۱۹ کارآزمایی تصادفی و ۱۵ مطالعهٔ غیرتصادفی، مجموعاً ۱۷۹۵ بزرگسال و کودک و ۳۵۴ مراقب.",
+    "مسواک‌های ویژه، مسواک برقی، آموزش بهداشت، ویزیت‌های برنامه‌ریزی‌شده همراه مسواک زدن نظارت‌شده، گفت‌وگو دربارهٔ عکس پلاک، دفعات مختلف مسواک، مواد آشکارکنندهٔ پلاک و برنامهٔ مراقبت فردی بررسی شد. مطالعه‌ها کوچک بودند و خطر خطای بالا یا نامشخص داشتند. فقط در یک نتیجه اطمینان متوسط وجود دارد: مسواک برقی و معمولی در میان‌مدت به یک اندازه التهاب لثه را کم کردند.",
+    "برخی اقدامات فایده دارند اما اهمیت بالینی‌شان روشن نیست و شواهد کم است. نویسندگان فعلاً می‌گویند مراقبت باید بر تخصص و نیازها و ترجیح‌های خود فرد و مراقبانش استوار باشد. بهترین برنامه را برای عزیزتان دندانپزشک همراه با شما تنظیم می‌کند."
+   ]
   },
   "en": {
    "title": "Oral care for people with intellectual disabilities",
-   "sum": "Evidence on oral hygiene methods for people with intellectual disabilities is limited. Care should follow professional expertise and the needs of the person and their carers."
+   "sum": "Evidence on oral hygiene methods for people with intellectual disabilities is limited. Care should follow professional expertise and the needs of the person and their carers.",
+   "key": [
+    "For people with intellectual disabilities, evidence on the best oral hygiene methods is limited.",
+    "Electric and manual brushes reduced gum inflammation equally in the medium term (moderate certainty).",
+    "Care should rest on professional expertise and the needs of the person and their carers."
+   ],
+   "p": [
+    "Plaque causes decay and gum disease, and brushing can be hard for people with intellectual disabilities. Cochrane gathered 34 studies, 19 randomised and 15 non-randomised, with 1,795 adults and children and 354 carers.",
+    "They tested special manual brushes, electric brushes, hygiene training, scheduled visits with supervised brushing, discussion of plaque photos, different brushing frequency, plaque-disclosing agents and individual care plans. Studies were small, with high or unclear risk of bias. Only one finding has moderate certainty: electric and manual brushes were equally good at reducing gum inflammation in the medium term.",
+    "Some measures show benefit, but their clinical importance is unclear and data are scarce. Until then the authors advise basing care on professional expertise and on the needs and preferences of the person and their carers. A dentist can build the best plan for your relative together with you."
+   ]
   }
  },
  {
   "id": "31375106",
+  "slug": "mother-programmes-run-by-non-dental-staff",
+  "minutes": 2,
   "cat": "children",
   "year": 2019,
   "journal": "BMC Oral Health",
@@ -1859,19 +3269,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Программы для мам от неспециалистов",
-   "sum": "Программы по гигиене полости рта для беременных и мам, которые ведут не стоматологи, могут помочь детям, но доказательства пока слабые."
+   "sum": "Программы по гигиене полости рта для беременных и мам, которые ведут не стоматологи, могут помочь детям, но доказательства пока слабые.",
+   "key": [
+    "Программы для мам, которые ведут не стоматологи (например, акушерки и медсёстры), могут улучшать здоровье зубов у малышей.",
+    "Эффект сохранялся, когда программы сочетали с напоминаниями о направлении к врачу.",
+    "Доказательства пока слабые: большинство из 9 исследований низкого качества."
+   ],
+   "p": [
+    "Беременные и мамы малышей чаще видят акушеров, медсёстер и педиатров, чем стоматологов. Авторы проверили, помогают ли им программы здоровья рта, которые проводят такие специалисты. Нашли 9 исследований: для мам младенцев до 24 месяцев и ожидающих мам, результаты оценивали у детей младше 5 лет.",
+    "Это в основном обучение гигиене (8 исследований), направления к стоматологу (3) и оценка здоровья рта (1). Шесть исследований были низкого качества. Программы во время беременности или после родов давали заметное улучшение состояния зубов у детей и привычек мам, и результат сохранялся при сочетании мер с напоминаниями о направлении.",
+    "Авторы делают вывод, что не стоматологи могут помогать здоровью рта у матерей через обучение, оценку риска и направления, но доказательства пока слабые. Нужны исследования лучшего качества, которые покажут, когда лучше проводить такие программы."
+   ]
   },
   "fa": {
    "title": "برنامه‌های دندانی مادران توسط غیردندان‌پزشکان",
-   "sum": "برنامه‌های بهداشت دهان برای مادران که کارکنان غیردندانی اجرا می‌کنند ممکن است به سلامت دندان کودکان کمک کنند، اما شواهد هنوز ضعیف است."
+   "sum": "برنامه‌های بهداشت دهان برای مادران که کارکنان غیردندانی اجرا می‌کنند ممکن است به سلامت دندان کودکان کمک کنند، اما شواهد هنوز ضعیف است.",
+   "key": [
+    "برنامه‌های مادران که غیردندانپزشکان (مثلاً ماما و پرستار) اجرا می‌کنند ممکن است سلامت دندان کودکان را بهتر کند.",
+    "اثر زمانی ماندگار بود که برنامه‌ها با یادآوری ارجاع به دندانپزشک ترکیب شدند.",
+    "شواهد هنوز ضعیف است: بیشتر ۹ مطالعه کیفیت پایین داشتند."
+   ],
+   "p": [
+    "زنان باردار و مادران نوزادان بیشتر به ماما، پرستار و پزشک کودکان مراجعه می‌کنند تا به دندانپزشک. نویسندگان بررسی کردند آیا برنامه‌های سلامت دهان که این کارکنان اجرا می‌کنند مؤثر است. ۹ مطالعه پیدا شد: برای مادران باردار و مادران نوزادان تا ۲۴ ماه، و نتیجه برای کودکان زیر ۵ سال سنجیده شد.",
+    "این برنامه‌ها بیشتر آموزش بهداشت (۸ مطالعه)، ارجاع به دندانپزشک (۳) و ارزیابی سلامت دهان (۱) بودند. شش مطالعه کیفیت پایین داشتند. برنامه‌های دوران بارداری یا پس از زایمان بهبود چشمگیری در وضعیت دندان کودکان و رفتار مادران نشان دادند و اثر وقتی ماند که اقدام‌ها با یادآوری ارجاع ترکیب شدند.",
+    "نویسندگان نتیجه می‌گیرند غیردندانپزشکان می‌توانند با آموزش، ارزیابی خطر و ارجاع به سلامت دهان مادران کمک کنند، ولی شواهد هنوز ضعیف است. به مطالعه‌های باکیفیت‌تر نیاز است تا مشخص شود چه زمانی برای اجرای این برنامه‌ها بهتر است."
+   ]
   },
   "en": {
    "title": "Mother programmes run by non-dental staff",
-   "sum": "Oral health programmes for expectant and new mothers delivered by non-dental staff may help children, though the evidence is still weak."
+   "sum": "Oral health programmes for expectant and new mothers delivered by non-dental staff may help children, though the evidence is still weak.",
+   "key": [
+    "Programmes for mothers delivered by non-dental staff (such as midwives and nurses) may improve children's dental health.",
+    "The benefit lasted when programmes were combined with referral reminders.",
+    "Evidence is still weak: most of the 9 studies were of low quality."
+   ],
+   "p": [
+    "Expectant and new mothers meet midwives, nurses and paediatric staff more often than dentists. The authors checked whether oral health programmes run by such staff help. They found 9 studies in expectant mothers or mothers of infants up to 24 months, with outcomes measured in children under 5.",
+    "The programmes were mainly oral health education (8 studies), dental referrals (3) and oral health assessments (1). Six studies were of low methodological quality. Programmes in the antenatal or postnatal periods meaningfully improved children's dental condition and mothers' oral health habits, and the improvement was sustained when a suite of interventions was used with referral reminders.",
+    "The authors conclude that non-dental professionals can support maternal oral health through education, risk assessment and referrals, though the evidence is weak. Higher-quality studies are needed to show when such programmes are best delivered."
+   ]
   }
  },
  {
   "id": "31610030",
+  "slug": "halitosis-how-common-and-how-treated",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2019,
   "journal": "Aust Dent J",
@@ -1898,19 +3340,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Галитоз: распространённость и лечение",
-   "sum": "Обзор литературы о том, как часто встречается неприятный запах, откуда он берётся, как его измеряют и лечат."
+   "sum": "Обзор литературы о том, как часто встречается неприятный запах, откуда он берётся, как его измеряют и лечат.",
+   "key": [
+    "Неприятный запах изо рта бывает по разным причинам и сказывается на качестве жизни.",
+    "Врачам нужно знать, как часто он встречается, его источники и риски.",
+    "Авторы разобрали, как запах измеряют и лечат."
+   ],
+   "p": [
+    "Галитоз это неприятный запах изо рта. У него много источников, и он влияет на общение и качество жизни. Чтобы правильно диагностировать и лечить, врачам нужно разбираться в причинах и факторах риска.",
+    "Авторы просмотрели литературу и описали шесть тем: как часто встречается галитоз, как его классифицируют, какие факторы риска, источники запаха, способы измерения и лечение.",
+    "Для обычного читателя главное: запах изо рта это распространённая и решаемая проблема, а не повод для стыда. Если он вас беспокоит, обратитесь к врачу: сначала определят источник, потом подберут лечение."
+   ]
   },
   "fa": {
    "title": "هالیتوزیس: شیوع و درمان",
-   "sum": "مروری بر ادبیات علمی درباره میزان شیوع بوی بد دهان، منشأ، روش‌های اندازه‌گیری و درمان آن."
+   "sum": "مروری بر ادبیات علمی درباره میزان شیوع بوی بد دهان، منشأ، روش‌های اندازه‌گیری و درمان آن.",
+   "key": [
+    "بوی بد دهان علت‌های مختلفی دارد و کیفیت زندگی را تحت تأثیر قرار می‌دهد.",
+    "پزشکان باید بدانند چقدر شایع است و چه منابع و عوامل خطری دارد.",
+    "نویسندگان روش‌های اندازه‌گیری و درمان را مرور کردند."
+   ],
+   "p": [
+    "هالیتوزیس بوی ناخوشایند دهان است. منابع زیادی دارد و روی ارتباط با دیگران و کیفیت زندگی اثر می‌گذارد. برای تشخیص و درمان درست، پزشکان باید علل و عوامل خطر را بشناسند.",
+    "نویسندگان ادبیات علمی را مرور کردند و شش موضوع را شرح دادند: میزان شیوع، دسته‌بندی، عوامل خطر، منبع بو، روش‌های اندازه‌گیری و درمان.",
+    "پیام اصلی برای خوانندهٔ عادی: بوی دهان مشکلی شایع و قابل‌حل است و دلیلی برای خجالت نیست. اگر نگرانتان می‌کند به پزشک مراجعه کنید؛ اول منبع بو پیدا می‌شود و بعد درمان انتخاب می‌شود."
+   ]
   },
   "en": {
    "title": "Halitosis: how common and how treated",
-   "sum": "A literature review of how common bad breath is, where it comes from, and how it is measured and treated."
+   "sum": "A literature review of how common bad breath is, where it comes from, and how it is measured and treated.",
+   "key": [
+    "Bad breath has many sources and affects quality of life.",
+    "Clinicians need to know how common it is, where it comes from and what the risk factors are.",
+    "The authors reviewed how it is measured and treated."
+   ],
+   "p": [
+    "Halitosis is an offensive breath odour. It has many sources and affects social interaction and quality of life. To diagnose and treat it properly, health professionals need to understand its causes and risk factors.",
+    "The authors reviewed the literature and covered six topics: how common halitosis is, how it is classified, risk factors, sources, measurement and treatment.",
+    "For an ordinary reader the main point is that bad breath is a common and manageable problem, not something to be ashamed of. If it worries you, see a clinician: the source is found first, then the treatment is chosen."
+   ]
   }
  },
  {
   "id": "31745970",
+  "slug": "preventing-early-childhood-decay-through-mothers",
+  "minutes": 2,
   "cat": "children",
   "year": 2019,
   "journal": "Cochrane Database Syst Rev",
@@ -1946,19 +3420,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Профилактика кариеса у малышей: работа с мамами",
-   "sum": "Cochrane (2019): 17 исследований; изучали советы по питанию и грудному вскармливанию, а также меры для здоровья зубов матери."
+   "sum": "Cochrane (2019, 17 исследований): советы по питанию и кормлению для мам и опекунов детей до года, вероятно, немного снижают риск раннего кариеса; остальные меры изучены недостаточно.",
+   "key": [
+    "Cochrane 2019: 17 исследований, около 23,7 тысяч опекунов и детей.",
+    "Советы по питанию и кормлению для мам и опекунов детей до года, вероятно, немного снижают риск раннего кариеса.",
+    "Другие меры изучены недостаточно."
+   ],
+   "p": [
+    "Это более ранняя версия того же обзора Cochrane о профилактике детского кариеса через беременных и мам. В неё вошли 17 исследований, 23 732 опекуна (в основном матери) и их дети.",
+    "Одиннадцать исследований проверяли обучение: советы по питанию ребёнка, советы по питанию и кормлению, поддержку грудного вскармливания, гигиену вместе с советами по питанию. Шесть изучали лечение зубов у матери, в том числе хлоргексидин, йод с фторидом и ксилитол.",
+    "Умеренные данные есть только в одном: советы по питанию и кормлению для беременных, мам и опекунов детей до года, вероятно, немного снижают риск раннего детского кариеса. По остальным мерам данных недостаточно, нужны крупные качественные исследования."
+   ]
   },
   "fa": {
    "title": "پیشگیری از پوسیدگی زودرس کودکی از راه مادران",
-   "sum": "کاکرین ۲۰۱۹: ۱۷ کارآزمایی؛ مشاوره تغذیه، شیردهی و اقدامات دندانی برای مادر بررسی شد."
+   "sum": "کاکرین (۲۰۱۹، ۱۷ کارآزمایی): توصیه‌های تغذیه و شیردهی به مادران و مراقبان کودکان زیر یک سال احتمالاً خطر پوسیدگی زودرس را کمی کم می‌کند؛ سایر اقدامات به‌اندازهٔ کافی بررسی نشده‌اند.",
+   "key": [
+    "کاکرین ۲۰۱۹: ۱۷ کارآزمایی، حدود ۲۳٫۷ هزار مراقب و کودک.",
+    "توصیه‌های تغذیه و شیردهی به مادران و مراقبان کودکان زیر یک سال احتمالاً خطر پوسیدگی زودرس را کمی کم می‌کند.",
+    "سایر اقدامات به‌اندازهٔ کافی بررسی نشده‌اند."
+   ],
+   "p": [
+    "این نسخهٔ قدیمی‌تر همان مرور کاکرین دربارهٔ پیشگیری از پوسیدگی کودکان از راه زنان باردار و مادران است. ۱۷ کارآزمایی با ۲۳٬۷۳۲ مراقب (بیشتر مادر) و فرزندانشان در آن وارد شد.",
+    "یازده مطالعه آموزش را بررسی کردند: توصیهٔ تغذیهٔ کودک، توصیهٔ تغذیه و شیردهی، حمایت از شیر مادر و بهداشت دهان همراه با توصیهٔ تغذیه. شش مطالعه درمان دندان مادر را بررسی کردند، از جمله کلرهگزیدین، ید با فلوراید و زایلیتول.",
+    "فقط در یک مورد شواهد متوسط است: توصیهٔ تغذیه و شیردهی به زنان باردار، مادران و مراقبان کودکان زیر یک سال احتمالاً خطر پوسیدگی زودرس را کمی کم می‌کند. برای بقیه اقدامات شواهد کافی نیست و کارآزمایی‌های بزرگ و باکیفیت لازم است."
+   ]
   },
   "en": {
    "title": "Preventing early childhood decay through mothers",
-   "sum": "Cochrane (2019): 17 trials looking at diet and breastfeeding advice and at dental care for the mother."
+   "sum": "Cochrane (2019, 17 trials): diet and feeding advice for mothers and carers of children up to one year probably slightly lowers the risk of early childhood decay. Other measures are not well enough studied.",
+   "key": [
+    "Cochrane 2019: 17 trials, about 23,700 caregivers and their children.",
+    "Diet and feeding advice for mothers and carers of children up to one year probably slightly lowers the risk of early decay.",
+    "Other measures are not well enough studied."
+   ],
+   "p": [
+    "This is the earlier version of the same Cochrane review on preventing childhood decay through pregnant women and mothers. It included 17 trials with 23,732 caregivers (mostly mothers) and their children.",
+    "Eleven trials tested education: child diet advice, diet and feeding advice, breastfeeding support, and hygiene with diet and feeding advice. Six studied dental treatment for the mother, including chlorhexidine, iodine with fluoride and xylitol.",
+    "Only one finding has moderate certainty: diet and feeding advice for pregnant women, mothers or carers of children up to one year probably slightly lowers the risk of early childhood decay. For other measures evidence is insufficient and large, high-quality trials are needed."
+   ]
   }
  },
  {
   "id": "29617037",
+  "slug": "dentures-impression-techniques",
+  "minutes": 2,
   "cat": "prosthetics",
   "year": 2018,
   "journal": "Cochrane Database Syst Rev",
@@ -1991,19 +3497,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Съёмные протезы: техники оттиска",
-   "sum": "Cochrane: ни одна из техник и материалов для оттиска полных съёмных протезов не показала явного преимущества; качество данных низкое."
+   "sum": "Cochrane: ни одна из техник и материалов для оттиска полных съёмных протезов не показала явного преимущества; качество данных низкое.",
+   "key": [
+    "Cochrane нашёл 9 исследований оттисков для полных и частичных съёмных протезов.",
+    "Явного преимущества какой-либо техники или материала не выявлено.",
+    "Качество данных низкое или очень низкое, нужны хорошие исследования."
+   ],
+   "p": [
+    "Когда зубов нет, их заменяют полными или частичными съёмными протезами. Для точного протеза врач делает окончательный оттиск разными способами и из разных материалов. Cochrane проверил, какой из них лучше. В обзор вошли 9 исследований: восемь с 485 участниками с полными протезами и одно с 72 участниками с частичными. Шесть из восьми исследований имели высокий риск ошибок.",
+    "В исследованиях сравнивали разные техники, разные материалы и их сочетания: например, силиконовый оттискной материал и альгинат, одноэтапные и двухэтапные оттиски. В отдельных работах силикон давал лучшее качество жизни, связанное со здоровьем рта, но в целом чёткой разницы между подходами не нашли.",
+    "Вывод авторов: нет явных доказательств, что какая-то техника или материал существенно лучше. Данные ограничены и имеют низкое или очень низкое качество, поэтому результаты нужно трактовать осторожно. Выбор способа остаётся за врачом."
+   ]
   },
   "fa": {
    "title": "پروتز متحرک: روش‌ها و مواد قالب‌گیری",
-   "sum": "کاکرین: هیچ روش یا ماده‌ای در قالب‌گیری نهایی پروتز کامل و پارسیل برتری آشکار نداشت؛ کیفیت شواهد پایین است."
+   "sum": "کاکرین: هیچ روش یا ماده‌ای در قالب‌گیری نهایی پروتز کامل و پارسیل برتری آشکار نداشت؛ کیفیت شواهد پایین است.",
+   "key": [
+    "کاکرین ۹ مطالعه دربارهٔ قالب‌گیری پروتز کامل و پارسیل پیدا کرد.",
+    "برتری روشن برای هیچ روش یا ماده‌ای دیده نشد.",
+    "کیفیت شواهد پایین یا بسیار پایین است و به پژوهش‌های خوب نیاز است."
+   ],
+   "p": [
+    "وقتی دندانی نمانده، پروتز کامل یا پارسیل متحرک جای آن را می‌گیرد. برای پروتزی دقیق، دندانپزشک قالب نهایی را با روش‌ها و مواد مختلف می‌گیرد. کاکرین بررسی کرد کدام بهتر است. ۹ مطالعه وارد مرور شد: هشت مطالعه با ۴۸۵ شرکت‌کننده با پروتز کامل و یکی با ۷۲ شرکت‌کننده با پروتز پارسیل. شش مطالعه از هشت‌تا خطر خطای بالا داشتند.",
+    "مطالعه‌ها روش‌ها، مواد و ترکیب آنها را مقایسه کردند، مثلاً ماده قالب‌گیری سیلیکونی با آلژینات و قالب یک‌مرحله‌ای با دومرحله‌ای. در برخی مطالعه‌ها سیلیکون کیفیت زندگی مرتبط با سلامت دهان را بهتر نشان داد، ولی در مجموع تفاوت روشنی بین روش‌ها پیدا نشد.",
+    "نتیجهٔ نویسندگان: شواهد روشنی نیست که روش یا مادهٔ خاصی برتری چشمگیر داشته باشد. شواهد محدود است و کیفیت پایین یا بسیار پایین دارد، پس نتایج را باید با احتیاط خواند. انتخاب روش با دندانپزشک است."
+   ]
   },
   "en": {
    "title": "Dentures: impression techniques",
-   "sum": "Cochrane found no clear advantage for any final-impression technique or material for complete and partial dentures. The evidence is low in quality."
+   "sum": "Cochrane found no clear advantage for any final-impression technique or material for complete and partial dentures. The evidence is low in quality.",
+   "key": [
+    "Cochrane found 9 studies on final impressions for complete and partial dentures.",
+    "No technique or material showed a clear advantage.",
+    "Evidence is low or very low quality; better trials are needed."
+   ],
+   "p": [
+    "When teeth are missing, complete or partial removable dentures replace them. To make a well-fitting denture, the dentist takes a final impression using different techniques and materials. Cochrane checked which works best. It included 9 studies: eight with 485 participants with complete dentures and one with 72 participants with partial dentures. Six of the eight were at high risk of bias.",
+    "The studies compared techniques, materials and combinations, for example silicone against alginate, and one-stage against two-stage impressions. In one study silicone gave better oral health-related quality of life, but overall no clear difference between approaches was found.",
+    "The authors conclude there is no clear evidence that any technique or material has a substantial advantage. The evidence is limited and of low or very low quality, so results should be read with caution. The choice of method stays with your dentist."
+   ]
   }
  },
  {
   "id": "29649506",
+  "slug": "glass-ionomer-or-composite-in-baby-teeth",
+  "minutes": 2,
   "cat": "restorations",
   "year": 2018,
   "journal": "J Dent",
@@ -2038,19 +3576,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Стеклоиономер или композит на молочных зубах",
-   "sum": "На молочных зубах оба материала работали похоже; стеклоиономер реже давал вторичный кариес, особенно с коффердамом."
+   "sum": "На молочных зубах оба материала работали похоже; стеклоиономер реже давал вторичный кариес, особенно с коффердамом.",
+   "key": [
+    "Стеклоиономер и композит на молочных зубах (полости между зубами) работали в целом одинаково.",
+    "Вторичного кариеса под стеклоиономером было меньше.",
+    "Особенно это заметно для стеклоиономера с полимером и при работе с коффердамом."
+   ],
+   "p": [
+    "Родителям часто интересно, из чего лучше делать пломбы на молочных зубах. Авторы сравнили два материала: стеклоиономерный цемент и композитную смолу в пломбах II класса, то есть в полостях между жевательными зубами. Взяли 10 рандомизированных исследований, в анализ вошли 9.",
+    "По общему числу неудач материалы были похожи. Результат не менялся при исключении коротких наблюдений, при разделении цементов на виды и по типу изоляции (вата или коффердам). Но вторичного кариеса, то есть кариеса под пломбой, у стеклоиономера было значимо меньше.",
+    "Преимущество стеклоиономера было сильнее у смоляного (гибридного) типа и при работе с коффердамом. Врач выбирает материал по зубу, размеру полости и условиям лечения; ваш вопрос о материале обязательно стоит ему задать."
+   ]
   },
   "fa": {
    "title": "گلاس‌آینومر یا کامپوزیت در دندان شیری",
-   "sum": "این دو ماده در دندان‌های شیری عملکرد مشابهی داشتند؛ گلاس‌آینومر پوسیدگی ثانویه‌ی کمتری ایجاد کرد، به‌ویژه با رابردم."
+   "sum": "این دو ماده در دندان‌های شیری عملکرد مشابهی داشتند؛ گلاس‌آینومر پوسیدگی ثانویه‌ی کمتری ایجاد کرد، به‌ویژه با رابردم.",
+   "key": [
+    "گلاس‌آینومر و کامپوزیت در ترمیم میان‌دندانی دندان‌های شیری عملکرد کلی مشابهی داشتند.",
+    "پوسیدگی ثانویه در گلاس‌آینومر کمتر بود.",
+    "این برتری به‌ویژه برای گلاس‌آینومر رزینی و هنگام استفاده از رابردم دیده شد."
+   ],
+   "p": [
+    "والدین اغلب می‌پرسند ترمیم دندان شیری با چه ماده‌ای بهتر است. نویسندگان دو ماده را مقایسه کردند: سیمان گلاس‌آینومر و رزین کامپوزیت در ترمیم‌های کلاس II، یعنی حفره‌های بین دندان‌های عقبی. ۱۰ کارآزمایی تصادفی پیدا شد و ۹ تا وارد تحلیل شد.",
+    "از نظر تعداد کل شکست‌ها دو ماده مشابه بودند. این نتیجه با حذف مطالعه‌های کوتاه‌مدت، با تقسیم سیمان‌ها به انواع و بر پایهٔ نوع ایزولاسیون (پنبه یا رابردم) تغییری نکرد. اما پوسیدگی ثانویه، یعنی پوسیدگی زیر ترمیم، در گلاس‌آینومر به‌طور معناداری کمتر بود.",
+    "برتری گلاس‌آینومر در نوع رزینی و هنگام کار با رابردم بیشتر بود. دندانپزشک ماده را بر اساس دندان، اندازهٔ حفره و شرایط درمان انتخاب می‌کند و حتماً دربارهٔ ماده از او بپرسید."
+   ]
   },
   "en": {
    "title": "Glass ionomer or composite in baby teeth",
-   "sum": "The two materials performed similarly in baby teeth. Glass ionomer had less secondary decay, especially with a rubber dam."
+   "sum": "The two materials performed similarly in baby teeth. Glass ionomer had less secondary decay, especially with a rubber dam.",
+   "key": [
+    "Glass ionomer and composite performed about equally in fillings between baby molars.",
+    "Glass ionomer had less secondary decay.",
+    "The advantage was clearest for resin-modified glass ionomer and when a rubber dam was used."
+   ],
+   "p": [
+    "Parents often ask what is best for fillings in baby teeth. The authors compared two materials: glass ionomer cement and composite resin, in Class II fillings, the ones between back teeth. They found 10 randomised trials, 9 of which went into the analysis.",
+    "In total failures the two materials were similar. The result did not change when short follow-ups were excluded, when cements were split by type, or by the type of isolation (cotton roll or rubber dam). But glass ionomer had significantly less secondary decay, meaning decay under the filling.",
+    "The advantage of glass ionomer was greater for the resin-modified type and with a rubber dam. Your dentist chooses the material by tooth, cavity size and treatment conditions, and it is worth asking about it."
+   ]
   }
  },
  {
   "id": "30409952",
+  "slug": "baking-soda-in-dentistry",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2018,
   "journal": "Indian J Dent Res",
@@ -2073,19 +3643,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Пищевая сода в стоматологии",
-   "sum": "Обзор: пищевая сода мало абразивна, безопасна и может быть удобным дополнением к пасте или ополаскивателю."
+   "sum": "Обзор: пищевая сода мало абразивна, безопасна и может быть удобным дополнением к пасте или ополаскивателю.",
+   "key": [
+    "Пищевая сода мало истирает ткани зуба, безопасна и доступна.",
+    "Она может быть дополнением к зубной пасте, ополаскивателю или жевательной резинке.",
+    "Авторы описывают её как средство практически без побочных эффектов при длительном использовании."
+   ],
+   "p": [
+    "Авторы рассмотрели, как обычная пищевая сода используется в стоматологии. Они искали работы о ней и о современных ополаскивателях, которые при долгом применении могут влиять на ткани и протезы.",
+    "Сода хорошо доступна, безопасна, слабо абразивна и обладает бактерицидным действием. Поэтому она подходит как удобное для пациента дополнение: в ополаскиватель, зубную пасту или жевательную резинку. Описаны применения при протезах, воспалении дёсен и вокруг имплантов.",
+    "Авторы делают вывод, что содой можно пользоваться долго как дополнением, практически без побочных эффектов. Это обзор литературы, не крупное испытание, поэтому замена обычной чистки и лечения она не является. Если хотите добавить её в уход, спросите врача."
+   ]
   },
   "fa": {
    "title": "جوش‌شیرین در دندانپزشکی",
-   "sum": "این مرور نشان می‌دهد جوش‌شیرین ساینده‌ی کمی دارد، ایمن است و می‌تواند مکمل خمیردندان یا دهان‌شویه باشد."
+   "sum": "این مرور نشان می‌دهد جوش‌شیرین ساینده‌ی کمی دارد، ایمن است و می‌تواند مکمل خمیردندان یا دهان‌شویه باشد.",
+   "key": [
+    "جوش‌شیرین ساینده‌ی کمی دارد، ایمن و در دسترس است.",
+    "می‌تواند مکمل خمیردندان، دهان‌شویه یا آدامس باشد.",
+    "نویسندگان آن را برای استفادهٔ طولانی تقریباً بدون عارضه توصیف می‌کنند."
+   ],
+   "p": [
+    "نویسندگان بررسی کردند جوش‌شیرین معمولی در دندانپزشکی چگونه استفاده می‌شود. آنها پژوهش‌هایی دربارهٔ آن و دهان‌شویه‌های امروزی را جست‌وجو کرد، دهان‌شویه‌هایی که در مصرف طولانی ممکن است روی بافت‌ها و پروتز اثر بگذارند.",
+    "جوش‌شیرین در دسترس و ایمن است، ساینده‌ی کمی دارد و اثر ضدباکتری هم دارد. برای همین مکمل مناسبی برای بیمار است: در دهان‌شویه، خمیردندان یا آدامس. کاربردهایی برای پروتز، التهاب لثه و اطراف ایمپلنت توصیف شده است.",
+    "نویسندگان نتیجه می‌گیرند که می‌توان آن را مدت طولانی و به‌عنوان مکمل، تقریباً بدون عارضه استفاده کرد. این مرور ادبیات است و کارآزمایی بزرگ نیست، پس جای مسواک معمول و درمان را نمی‌گیرد. اگر می‌خواهید آن را به مراقبت خود اضافه کنید، از دندانپزشک بپرسید."
+   ]
   },
   "en": {
    "title": "Baking soda in dentistry",
-   "sum": "This review describes baking soda as low in abrasion and safe, a patient-friendly addition to toothpaste or mouthwash."
+   "sum": "This review describes baking soda as low in abrasion and safe, a patient-friendly addition to toothpaste or mouthwash.",
+   "key": [
+    "Baking soda is low in abrasion, safe and easy to find.",
+    "It can be an add-on to toothpaste, mouthwash or chewing gum.",
+    "The authors describe it as virtually free of side effects when used long term."
+   ],
+   "p": [
+    "The authors looked at how ordinary baking soda is used in dentistry. They searched for papers on it and on current mouth rinses that, over the long term, can affect tissues and dentures.",
+    "Baking soda is easy to get, safe, minimally abrasive and kills bacteria. That makes it a patient-friendly addition to a rinse, toothpaste or chewing gum. Uses described include dentures, gum inflammation and around implants.",
+    "The authors conclude it can be used long term as an add-on with virtually no side effects. This is a literature review rather than a large trial, so it does not replace regular brushing or treatment. If you want to add it to your routine, ask your dentist."
+   ]
   }
  },
  {
   "id": "30566228",
+  "slug": "sedating-children-for-dental-work",
+  "minutes": 2,
   "cat": "comfort",
   "year": 2018,
   "journal": "Cochrane Database Syst Rev",
@@ -2117,19 +3719,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Седация детей при лечении зубов",
-   "sum": "Cochrane: в 50 исследованиях использовали 34 разных препарата; чаще всего их сравнивают с пероральным мидазоламом и закисью азота."
+   "sum": "Cochrane: в 50 исследованиях (3704 ребёнка) применяли 34 разных седативных препарата; умеренные данные есть для мидазолама внутрь: он эффективен.",
+   "key": [
+    "Cochrane нашёл 50 исследований седации у детей (3704 ребёнка) и 34 разных препарата.",
+    "Умеренные данные есть только для мидазолама внутрь: он эффективен.",
+    "Дозы и способы введения сильно различались, а риск ошибок в исследованиях высокий."
+   ],
+   "p": [
+    "Детям, которые не могут спокойно лечиться, врачи иногда дают седативные средства. Cochrane собрал 50 исследований с 3704 участниками, чтобы понять, какие из них работают. В 40 исследованиях (81%) риск ошибок был высоким, лишь в одном низким.",
+    "Использовали 34 разных препарата, в том числе вместе с вдыхаемой закисью азота. Дозы, способы и время введения сильно различались. Объединить данные по поведению ребёнка удалось только для мидазолама внутрь против плацебо.",
+    "Вывод: есть умеренные данные, что мидазолам внутрь эффективно успокаивает детей при лечении зубов. Для остальных препаратов нужны новые, хорошо спланированные исследования, лучше с сопоставлением с мидазоламом или закисью азота. Решение о седации всегда принимает врач."
+   ]
   },
   "fa": {
    "title": "آرام‌بخشی کودکان در درمان دندان",
-   "sum": "کاکرین: در ۵۰ مطالعه ۳۴ داروی مختلف استفاده شده بود؛ مطالعات آینده باید با میدازولام خوراکی و گاز نیتروس مقایسه شوند."
+   "sum": "کاکرین: در ۵۰ مطالعه (۳۷۰۴ کودک) ۳۴ داروی آرام‌بخش مختلف استفاده شده بود؛ شواهد متوسط نشان می‌دهد میدازولام خوراکی مؤثر است.",
+   "key": [
+    "کاکرین ۵۰ مطالعه دربارهٔ آرام‌بخشی کودکان (۳۷۰۴ کودک) و ۳۴ داروی مختلف پیدا کرد.",
+    "شواهد متوسط فقط برای میدازولام خوراکی است: مؤثر است.",
+    "دوزها و روش‌های تجویز بسیار متفاوت بود و خطر خطا در مطالعه‌ها بالا بود."
+   ],
+   "p": [
+    "برای کودکانی که نمی‌توانند آرام درمان شوند، دندانپزشک گاهی داروی آرام‌بخش می‌دهد. کاکرین ۵۰ مطالعه با ۳۷۰۴ شرکت‌کننده را جمع کرد تا بفهمد کدام داروها مؤثرند. در ۴۰ مطالعه (۸۱٪) خطر خطا بالا بود و فقط در یکی پایین.",
+    "۳۴ داروی مختلف استفاده شده بود، گاهی همراه با گاز نیتروس استنشاقی. دوز، روش و زمان تجویز بسیار متفاوت بود. فقط برای میدازولام خوراکی در برابر دارونما امکان ترکیب داده‌های رفتار کودک وجود داشت.",
+    "نتیجه: شواهد متوسطی هست که میدازولام خوراکی در درمان دندان کودکان آرام‌بخش مؤثری است. برای داروهای دیگر به پژوهش‌های تازه و خوب طراحی‌شده نیاز است، بهتر است در مقایسه با میدازولام یا گاز نیتروس. تصمیم دربارهٔ آرام‌بخشی همیشه با دندانپزشک است."
+   ]
   },
   "en": {
    "title": "Sedating children for dental work",
-   "sum": "Cochrane found 34 different sedatives across 50 studies. Future trials should be compared with oral midazolam or nitrous oxide."
+   "sum": "Cochrane: 50 studies (3,704 children) used 34 different sedatives. Moderate-certainty evidence shows oral midazolam is effective.",
+   "key": [
+    "Cochrane found 50 studies of sedating children (3,704 children) and 34 different drugs.",
+    "Moderate-certainty evidence exists only for oral midazolam: it is effective.",
+    "Doses and routes varied widely, and many studies had a high risk of bias."
+   ],
+   "p": [
+    "Children who cannot settle for dental work are sometimes given sedatives. Cochrane gathered 50 studies with 3,704 participants to see which ones work. In 40 studies (81%) the risk of bias was high, and in just one it was low.",
+    "Thirty-four different sedatives were used, with or without inhaled nitrous oxide. Doses, routes and timing varied widely. Data on the child's behaviour could be pooled only for oral midazolam versus placebo.",
+    "The conclusion: there is moderate-certainty evidence that oral midazolam is an effective sedative for children having dental treatment. Other drugs need new, well-designed trials, ideally compared with oral midazolam or inhaled nitrous oxide. The decision on sedation always belongs to the dentist."
+   ]
   }
  },
  {
   "id": "30590875",
+  "slug": "routine-scale-and-polish-for-adults",
+  "minutes": 2,
   "cat": "gums",
   "year": 2018,
   "journal": "Cochrane Database Syst Rev",
@@ -2162,19 +3796,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Профессиональная чистка у взрослых",
-   "sum": "Рутинная чистка и полировка мало влияет на здоровье дёсен за 2-3 года; камня становится меньше при чистке раз в полгода, чем раз в год."
+   "sum": "Рутинная чистка и полировка мало влияет на здоровье дёсен за 2-3 года; камня становится меньше при чистке раз в полгода, чем раз в год.",
+   "key": [
+    "Плановая чистка и полировка у взрослых без тяжёлого пародонтита мало влияет на воспаление дёсен за 2-3 года.",
+    "Зубного камня становится меньше, при чистке раз в полгода меньше, чем раз в год.",
+    "Клиническое значение этого небольшого снижения неясно."
+   ],
+   "p": [
+    "Многие стоматологи и гигиенисты предлагают чистку и полировку через регулярные промежутки, в том числе людям с низким риском болезней дёсен. Пользу и стоимость такого подхода обсуждают. Cochrane нашёл только два исследования с 1711 взрослыми у обычных британских стоматологов, наблюдение шло 24 и 36 месяцев.",
+    "У взрослых без тяжёлого пародонтита, которые регулярно ходят к врачу, плановая чистка мало влияет на воспаление дёсен, глубину карманов и качество жизни (высокая достоверность). Налёт, возможно, тоже почти не меняется. Зубного камня становится меньше, и при чистке каждые полгода он снижается сильнее, чем при чистке раз в год.",
+    "Авторы отмечают, что значение этих небольших изменений неясно, а о нежелательных эффектах исследования не сообщали. Как часто вам приходить, лучше решить с врачом по состоянию дёсен: чистка нужна не только ради статистики, но и для осмотра."
+   ]
   },
   "fa": {
    "title": "جرم‌گیری و پولیش منظم در بزرگسالان",
-   "sum": "جرم‌گیری و پولیش معمول تفاوت اندکی در سلامت لثه طی ۲ تا ۳ سال ایجاد کرد؛ جرم با مراجعه‌ی شش‌ماهه کمتر از مراجعه‌ی سالانه بود."
+   "sum": "جرم‌گیری و پولیش معمول تفاوت اندکی در سلامت لثه طی ۲ تا ۳ سال ایجاد کرد؛ جرم با مراجعه‌ی شش‌ماهه کمتر از مراجعه‌ی سالانه بود.",
+   "key": [
+    "جرم‌گیری و پولیش برنامه‌ریزی‌شده در بزرگسالان بدون پریودنتیت شدید، طی ۲ تا ۳ سال تأثیر اندکی بر التهاب لثه دارد.",
+    "جرم کمتر می‌شود و با مراجعه شش‌ماهه بیشتر از مراجعه سالانه.",
+    "اهمیت بالینی این کاهش کوچک روشن نیست."
+   ],
+   "p": [
+    "بسیاری از دندانپزشکان و بهداشت‌کاران جرم‌گیری و پولیش را در فاصله‌های منظم پیشنهاد می‌کنند، حتی برای افراد کم‌خطر برای بیماری لثه. دربارهٔ فایده و هزینهٔ این روش بحث هست. کاکرین فقط دو مطالعه با ۱۷۱۱ بزرگسال در مطب‌های عمومی بریتانیا پیدا کرد که ۲۴ و ۳۶ ماه پیگیری شدند.",
+    "در بزرگسالان بدون پریودنتیت شدید که منظم مراجعه می‌کنند، جرم‌گیری برنامه‌ریزی‌شده تأثیر اندکی بر التهاب لثه، عمق پاکت و کیفیت زندگی دارد (اطمینان بالا). احتمالاً پلاک هم تقریباً تغییر نمی‌کند. جرم کمتر می‌شود و جرم‌گیری هر شش ماه آن را بیشتر از جرم‌گیری سالانه کم می‌کند.",
+    "نویسندگان می‌گویند اهمیت این تغییرهای کوچک روشن نیست و مطالعه‌ها عوارض را گزارش نکردند. اینکه هر چند وقت مراجعه کنید را بهتر است دندانپزشک بر اساس وضعیت لثه‌تان تعیین کند: ویزیت فقط برای آمار نیست و معاینه هم بخشی از آن است."
+   ]
   },
   "en": {
    "title": "Routine scale and polish for adults",
-   "sum": "Routine scale and polish made little difference to gum health over 2 to 3 years. Six-monthly visits left less calculus than yearly ones."
+   "sum": "Routine scale and polish made little difference to gum health over 2 to 3 years. Six-monthly visits left less calculus than yearly ones.",
+   "key": [
+    "Planned scale and polish in adults without severe gum disease made little difference to gum inflammation over 2 to 3 years.",
+    "Less calculus built up, and six-monthly visits left less than yearly ones.",
+    "The clinical importance of this small reduction is unclear."
+   ],
+   "p": [
+    "Many dentists and hygienists offer scale and polish at regular intervals, including to people at low risk of gum disease. Its value and cost are debated. Cochrane found just two studies with 1,711 adults in UK general dental practices, followed for 24 and 36 months.",
+    "In adults without severe periodontitis who attend regularly, planned scale and polish made little or no difference to gingivitis, pocket depth or quality of life (high certainty). Plaque probably did not change much either. Calculus was lower, and six-monthly treatment reduced it more than 12-monthly treatment.",
+    "The authors say the importance of these small changes is uncertain, and the studies did not assess adverse effects. How often you should come is best decided with your dentist from the state of your gums; the visit is also a check-up, not only a cleaning."
+   ]
   }
  },
  {
   "id": "28362061",
+  "slug": "chlorhexidine-mouthrinse-for-gums",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2017,
   "journal": "Cochrane Database Syst Rev",
@@ -2211,19 +3877,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Хлоргексидин: полоскание для дёсен",
-   "sum": "Хлоргексидин как дополнение к чистке снижает налёт и воспаление дёсен, но при использовании от 4 недель окрашивает зубы."
+   "sum": "Cochrane: хлоргексидин вместе с чисткой сильно снижает налёт, а воспаление дёсен снижает слабо (клинически малозначимо); при использовании от 4 недель окрашивает зубы.",
+   "key": [
+    "Хлоргексидин вместе с чисткой сильно снижает налёт.",
+    "Воспаление дёсен снижается, но слабо: авторы считают эффект клинически малозначимым.",
+    "При использовании от 4 недель он окрашивает зубы."
+   ],
+   "p": [
+    "Хлоргексидин это ополаскиватель от налёта и воспаления дёсен. Cochrane собрал 51 исследование с 5345 участниками и проверил, что даёт ополаскиватель как дополнение к обычной гигиене.",
+    "Через 4-6 недель воспаление дёсен снижалось, но у людей с лёгким воспалением авторы не сочли эффект клинически важным. Налёта же становилось намного меньше, и через 4-6 недель, и через 6 месяцев (высокое качество доказательств). Одна концентрация не оказалась лучше другой.",
+    "Ополаскивание 4 недели и дольше окрашивает зубы. Среди нежелательных эффектов упомянуты также рост зубного камня, временное изменение вкуса и влияние на слизистую. Пользоваться ли таким ополаскивателем и сколько, решает врач."
+   ]
   },
   "fa": {
    "title": "دهان‌شویه کلرهگزیدین برای لثه",
-   "sum": "کلرهگزیدین در کنار مسواک پلاک و التهاب لثه را کم می‌کند، اما مصرف چهار هفته یا بیشتر باعث لکه روی دندان می‌شود."
+   "sum": "کاکرین: کلرهگزیدین در کنار مسواک پلاک را بسیار کم می‌کند ولی التهاب لثه را کم و از نظر بالینی ناچیز؛ مصرف چهار هفته یا بیشتر باعث لکه روی دندان می‌شود.",
+   "key": [
+    "کلرهگزیدین در کنار مسواک پلاک را بسیار کم می‌کند.",
+    "التهاب لثه هم کم می‌شود اما اندک؛ نویسندگان اثر آن را از نظر بالینی مهم نمی‌دانند.",
+    "مصرف چهار هفته یا بیشتر باعث لکه روی دندان می‌شود."
+   ],
+   "p": [
+    "کلرهگزیدین دهان‌شویه‌ای برای پلاک و التهاب لثه است. کاکرین ۵۱ مطالعه با ۵۳۴۵ شرکت‌کننده را جمع کرد تا ببیند این دهان‌شویه در کنار بهداشت معمول چه می‌کند.",
+    "پس از ۴ تا ۶ هفته التهاب لثه کم شد، ولی در افراد با التهاب خفیف نویسندگان اثر را از نظر بالینی مهم ندانستند. اما پلاک خیلی بیشتر کم شد، هم پس از ۴ تا ۶ هفته و هم پس از ۶ ماه (شواهد با کیفیت بالا). غلظتی بر غلظت دیگر برتری نداشت.",
+    "دهان‌شویه در چهار هفته یا بیشتر روی دندان لکه می‌گذارد. عوارض دیگر هم گزارش شد: تجمع جرم، تغییر موقت چشایی و اثر روی مخاط دهان. اینکه این دهان‌شویه را مصرف کنید و تا کی را دندانپزشک تعیین می‌کند."
+   ]
   },
   "en": {
    "title": "Chlorhexidine mouthrinse for gums",
-   "sum": "Used alongside brushing, chlorhexidine reduces plaque and gum inflammation, but four weeks or more of use stains the teeth."
+   "sum": "Cochrane: used alongside brushing, chlorhexidine sharply reduces plaque but eases gum inflammation only slightly (not clinically important); four weeks or more of use stains the teeth.",
+   "key": [
+    "Used with brushing, chlorhexidine sharply reduces plaque.",
+    "Gum inflammation falls too, but only slightly; the authors do not call it clinically important.",
+    "Use for four weeks or longer stains teeth."
+   ],
+   "p": [
+    "Chlorhexidine is a mouthrinse used against plaque and gum inflammation. Cochrane gathered 51 studies with 5,345 participants to see what the rinse adds to normal hygiene.",
+    "After 4 to 6 weeks gum inflammation fell, but in people with mild inflammation the authors did not consider the effect clinically relevant. Plaque, however, fell by a lot, at 4 to 6 weeks and at 6 months (high-quality evidence). No concentration was better than another.",
+    "Rinsing for four weeks or longer stains teeth. Other effects reported include more calculus, brief taste changes and effects on the mucosa. Whether and how long to use it is for your dentist to decide."
+   ]
   }
  },
  {
   "id": "28540937",
+  "slug": "tooth-decay-a-full-overview",
+  "minutes": 2,
   "cat": "caries",
   "year": 2017,
   "journal": "Nat Rev Dis Primers",
@@ -2257,19 +3955,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Кариес: обзор для всех",
-   "sum": "Кариес вызывает налёт и сахар, он предотвратим; главная причина снижения кариеса в мире за последние десятилетия: ежедневная паста с фторидом."
+   "sum": "Кариес вызывает налёт и сахар, он предотвратим; главная причина снижения кариеса в мире за последние десятилетия: ежедневная паста с фторидом.",
+   "key": [
+    "Кариес возникает из-за бактериального налёта и частого сахара, и его можно предотвратить.",
+    "Зуб то теряет минералы, то возвращает их; баланс решает, появится ли дырка.",
+    "Авторы называют ежедневную пасту с фторидом главной причиной снижения кариеса в мире."
+   ],
+   "p": [
+    "Это большой обзор о кариесе для врачей. Авторы объясняют, как болезнь возникает, как людей делят по уровню риска и какой уход сегодня считают лучшим. Они вспоминают и эпоху, когда зубы в основном «чинили» бором, и сравнивают её с уходом, который старается сохранить зуб.",
+    "Кариес развивается там, где бактериальная плёнка на зубах перерабатывает сахар в кислоту. Ткани зуба то теряют минералы, то возвращают их. Если вредных факторов больше, чем защитных, начинается разрушение. Болезнь встречается в любом возрасте: у детей на коронке, в старшем возрасте ещё и на оголившемся корне.",
+    "Риск у каждого свой, поэтому уход подбирают под человека. Авторы считают, что главную роль в снижении кариеса сыграла ежедневная чистка пастой с фторидом. Какую пасту выбрать и как часто приходить на осмотр, лучше решить с врачом, исходя из вашего риска."
+   ]
   },
   "fa": {
    "title": "پوسیدگی دندان: مروری جامع",
-   "sum": "پوسیدگی بیماری قابل پیشگیری است که با پلاک و قند ایجاد می‌شود؛ مصرف روزانه خمیردندان فلوراید دار مهم‌ترین دلیل کاهش پوسیدگی در جهان دانسته شده است."
+   "sum": "پوسیدگی بیماری قابل پیشگیری است که با پلاک و قند ایجاد می‌شود؛ مصرف روزانه خمیردندان فلوراید دار مهم‌ترین دلیل کاهش پوسیدگی در جهان دانسته شده است.",
+   "key": [
+    "پوسیدگی از پلاک باکتریایی و مصرف مکرر قند ایجاد می‌شود و قابل پیشگیری است.",
+    "دندان گاهی مواد معدنی از دست می‌دهد و گاهی دوباره به دست می‌آورد؛ تعادل این دو تعیین می‌کند حفره ایجاد شود یا نه.",
+    "نویسندگان استفاده روزانه از خمیردندان فلوراید دار را مهم‌ترین دلیل کاهش پوسیدگی در جهان می‌دانند."
+   ],
+   "p": [
+    "این یک مرور گسترده دربارهٔ پوسیدگی است که برای پزشکان نوشته شده. نویسندگان توضیح می‌دهند بیماری چگونه شروع می‌شود، افراد چگونه بر اساس خطر دسته‌بندی می‌شوند و امروز چه مراقبتی بهترین دانسته می‌شود. آنها دورانی را هم یادآوری می‌کنند که دندان‌ها بیشتر با تراش «تعمیر» می‌شدند، و آن را با مراقبتی مقایسه می‌کنند که می‌کوشد دندان را حفظ کند.",
+    "پوسیدگی جایی شروع می‌شود که لایهٔ باکتریایی روی دندان قند را به اسید تبدیل می‌کند. بافت دندان گاهی مواد معدنی از دست می‌دهد و گاهی دوباره به دست می‌آورد. اگر عوامل مضر از عوامل محافظ بیشتر شوند، تخریب شروع می‌شود. این بیماری در هر سنی ممکن است ایجاد شود: در کودکان روی تاج دندان و در سنین بالاتر روی ریشهٔ نمایان شده هم.",
+    "خطر برای هر فرد متفاوت است، برای همین مراقبت بر اساس فرد انتخاب می‌شود. نویسندگان معتقدند مسواک زدن روزانه با خمیردندان فلوراید دار بیشترین نقش را در کاهش پوسیدگی داشته است. اینکه کدام خمیردندان را انتخاب کنید و هر چند وقت یک‌بار معاینه شوید را بهتر است با دندانپزشک و بر اساس خطر خودتان تعیین کنید."
+   ]
   },
   "en": {
    "title": "Tooth decay: a full overview",
-   "sum": "Decay is a preventable, sugar-driven disease. Daily fluoride toothpaste is seen as the main reason decay has fallen worldwide."
+   "sum": "Decay is a preventable, sugar-driven disease. Daily fluoride toothpaste is seen as the main reason decay has fallen worldwide.",
+   "key": [
+    "Decay comes from bacterial plaque and frequent sugar, and it can be prevented.",
+    "A tooth loses minerals and regains them in turns; the balance decides whether a cavity starts.",
+    "The authors name daily fluoride toothpaste as the main reason decay has fallen worldwide."
+   ],
+   "p": [
+    "This is a large overview of tooth decay written for clinicians. The authors explain how the disease starts, how people are sorted by risk, and what care is now seen as best. They look back at the era when teeth were mostly \"repaired\" with a drill and contrast it with care that tries to keep the tooth.",
+    "Decay starts where the bacterial film on a tooth turns sugar into acid. The tooth loses minerals and regains them in turns. When harmful factors outweigh protective ones, the tooth begins to break down. It can happen at any age: on the crown in children, and on exposed root surfaces later in life.",
+    "Everyone's risk is different, so care is matched to the person. The authors see daily brushing with fluoride toothpaste as the main reason decay has declined. Which toothpaste to choose and how often to be checked is best decided with your dentist, based on your own risk."
+   ]
   }
  },
  {
   "id": "28759120",
+  "slug": "sealants-for-permanent-teeth",
+  "minutes": 2,
   "cat": "children",
   "year": 2017,
   "journal": "Cochrane Database Syst Rev",
@@ -2304,19 +4034,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Герметики на постоянных зубах",
-   "sum": "Cochrane: герметизация борозд на коренных зубах у детей снижает кариес по сравнению с отсутствием герметика; о побочных эффектах данных мало."
+   "sum": "Cochrane: смоляные герметики на жевательных поверхностях постоянных молярей снижали кариес на 11-51% через 24 месяца по сравнению с отсутствием герметика (умеренное качество); о стеклоиономерных данных мало.",
+   "key": [
+    "Смоляные герметики на постоянных молярах снижали кариес на 11-51% через 24 месяца по сравнению с отсутствием герметика.",
+    "Похожая польза сохранялась до 48 месяцев (умеренное качество доказательств).",
+    "О стеклоиономерных герметиках и о различиях между видами данных недостаточно."
+   ],
+   "p": [
+    "Герметизация бороздок защищает жевательные поверхности коренных зубов. Cochrane обновил свой обзор: 38 исследований с 7924 детьми и подростками от 5 до 16 лет. Пятнадцать исследований сравнивали смоляные герметики с отсутствием герметика, три стеклоиономерные, 24 разные виды между собой.",
+    "Смоляные герметики на жевательных поверхностях постоянных моляров эффективно предотвращают кариес. Через 24 месяца кариеса было меньше на 11-51% (умеренное качество доказательств). Сходная польза видна до 48 месяцев, а при более долгом наблюдении доказательств меньше.",
+    "Данных, чтобы судить об эффективности стеклоиономерных герметиков и о том, какой вид лучше, недостаточно. О побочных эффектах информации мало, но там, где о них сообщали, их не было. Нужен ли герметик вашему ребёнку, решит врач."
+   ]
   },
   "fa": {
    "title": "سیلانت برای دندان‌های دائمی",
-   "sum": "کاکرین: مهر و موم شیارهای دندان‌های آسیای دائمی کودکان نسبت به نداشتن سیلانت پوسیدگی را کم می‌کند؛ اطلاعات درباره عوارض محدود است."
+   "sum": "کاکرین: سیلانت‌های رزینی روی سطح جونده دندان‌های آسیای دائمی پس از ۲۴ ماه پوسیدگی را ۱۱ تا ۵۱٪ نسبت به نداشتن سیلانت کم کردند (کیفیت متوسط)؛ دربارهٔ سیلانت گلاس‌آینومر شواهد کافی نیست.",
+   "key": [
+    "سیلانت رزینی روی دندان‌های آسیای دائمی پس از ۲۴ ماه پوسیدگی را ۱۱ تا ۵۱٪ کمتر از نداشتن سیلانت کرد.",
+    "فایدهٔ مشابه تا ۴۸ ماه دیده شد (کیفیت متوسط).",
+    "دربارهٔ سیلانت گلاس‌آینومر و تفاوت انواع سیلانت شواهد کافی نیست."
+   ],
+   "p": [
+    "پوشاندن شیارها از سطح جونده دندان‌های آسیا محافظت می‌کند. کاکرین مرور خود را به‌روز کرد: ۳۸ کارآزمایی با ۷۹۲۴ کودک و نوجوان ۵ تا ۱۶ ساله. پانزده مطالعه سیلانت رزینی را با نبود سیلانت مقایسه کردند، سه مطالعه گلاس‌آینومر را و ۲۴ مطالعه انواع سیلانت را با هم.",
+    "سیلانت‌های رزینی روی سطح جونده آسیای دائمی به‌طور مؤثر از پوسیدگی پیشگیری می‌کنند. پس از ۲۴ ماه پوسیدگی ۱۱ تا ۵۱٪ کمتر بود (شواهد با کیفیت متوسط). فایدهٔ مشابهی تا ۴۸ ماه دیده شد و در پیگیری طولانی‌تر شواهد کمتر است.",
+    "شواهد برای قضاوت دربارهٔ اثر سیلانت گلاس‌آینومر و اینکه کدام نوع بهتر است کافی نیست. دربارهٔ عوارض اطلاعات کم است، ولی هر جا گزارش شد عارضه‌ای رخ نداده بود. اینکه فرزند شما سیلانت لازم دارد یا نه را دندانپزشک تعیین می‌کند."
+   ]
   },
   "en": {
    "title": "Sealants for permanent teeth",
-   "sum": "Cochrane: sealing the grooves of children's permanent molars reduces decay compared with no sealant. Information on side effects was limited."
+   "sum": "Cochrane: resin-based sealants on the chewing surfaces of permanent molars cut decay by 11% to 51% at 24 months compared with no sealant (moderate quality). Evidence on glass ionomer sealants is insufficient.",
+   "key": [
+    "Resin-based sealants on permanent molars cut decay by 11% to 51% at 24 months compared with no sealant.",
+    "Similar benefit was seen up to 48 months (moderate-quality evidence).",
+    "Evidence on glass ionomer sealants and on differences between types is insufficient."
+   ],
+   "p": [
+    "Sealing the grooves protects the chewing surfaces of back teeth. Cochrane updated its review: 38 trials with 7,924 children and teenagers aged 5 to 16. Fifteen trials compared resin sealants with no sealant, three glass ionomer, and 24 compared one type with another.",
+    "Resin-based sealants on the chewing surfaces of permanent molars effectively prevent decay. At 24 months decay was lower by 11% to 51% (moderate-quality evidence). Similar benefit was seen up to 48 months, and after longer follow-up the evidence is thinner.",
+    "There was insufficient evidence to judge glass ionomer sealants or which type is best. Information on adverse effects was limited, but none occurred where they were reported. Whether your child needs a sealant is for the dentist to decide."
+   ]
   }
  },
  {
   "id": "27022303",
+  "slug": "dental-phobia-and-how-it-is-managed",
+  "minutes": 2,
   "cat": "comfort",
   "year": 2016,
   "journal": "Clin Cosmet Investig Dent",
@@ -2338,19 +4100,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Дентофобия: как с ней работают",
-   "sum": "Помогают поведенческая и когнитивная терапия; при выраженном страхе применяют седацию или общий наркоз."
+   "sum": "Помогают поведенческая и когнитивная терапия; при выраженном страхе применяют седацию или общий наркоз.",
+   "key": [
+    "Страх и фобия приводят к тому, что люди избегают стоматолога.",
+    "Основной метод: психологические (поведенческие и когнитивные) подходы, особенно когнитивно-поведенческая терапия.",
+    "Если не помогает, применяют седацию или общий наркоз."
+   ],
+   "p": [
+    "Страх перед лечением и дентофобия частая проблема в кабинете, и для врача это тоже стресс. Таких пациентов нужно определить как можно раньше и обсудить их опасения. Автор описал, как их распознают и как работают с ними.",
+    "Тревогу оценивают по беседе и опросникам, а также по пульсу, давлению и другим показателям. Дальше выбирают подход по уровню тревоги: поведенческие методы (расслабление, дыхание, образы, отвлечение, поощрение, сигнал «стоп», постепенное привыкание, «скажи-покажи-сделай»), когнитивные методы (меняют негативные мысли) и их сочетание. Когнитивно-поведенческая терапия названа самым признанным и успешным психологическим лечением тревоги и фобии.",
+    "Если человек не откликается на психологические методы, не хочет их проходить или у него выраженная фобия, возможны лекарственные средства: седация или общий наркоз. Рассказывать о страхе врачу не стыдно: именно от этого зависит, как вам помогут."
+   ]
   },
   "fa": {
    "title": "ترس از دندان‌پزشکی و راه‌های کنترل آن",
-   "sum": "رفتاردرمانی و درمان شناختی مفید است؛ در ترس شدید از آرام‌بخشی یا بیهوشی عمومی استفاده می‌شود."
+   "sum": "رفتاردرمانی و درمان شناختی مفید است؛ در ترس شدید از آرام‌بخشی یا بیهوشی عمومی استفاده می‌شود.",
+   "key": [
+    "ترس و فوبیا باعث دوری افراد از دندانپزشک می‌شود.",
+    "روش اصلی: رویکردهای رفتاری و شناختی، به‌ویژه درمان شناختی رفتاری.",
+    "اگر کافی نبود، از آرام‌بخشی یا بیهوشی عمومی استفاده می‌شود."
+   ],
+   "p": [
+    "ترس از درمان و فوبیای دندانپزشکی در مطب‌ها شایع است و برای دندانپزشک هم استرس‌زاست. این بیماران باید هرچه زودتر شناسایی شوند و نگرانی‌شان بررسی شود. نویسنده توضیح داد چگونه آنها را تشخیص می‌دهند و با آنها کار می‌کنند.",
+    "اضطراب را با مصاحبه و پرسشنامه و همچنین نبض، فشار خون و شاخص‌های دیگر ارزیابی می‌کنند. بعد بر اساس میزان اضطراب روش را انتخاب می‌کنند: روش‌های رفتاری (آرام‌سازی، تنفس، تصویرسازی، حواس‌پرتی، تشویق، علامت توقف، حساسیت‌زدایی تدریجی، «بگو-نشان بده-انجام بده»)، روش‌های شناختی (تغییر افکار منفی) و ترکیب آنها. درمان شناختی رفتاری پذیرفته‌شده‌ترین و موفق‌ترین درمان روان‌شناختی اضطراب و فوبیا معرفی شده است.",
+    "اگر فرد به روش‌های روان‌شناختی پاسخ ندهد، نخواهد از آنها استفاده کند یا فوبیای شدید داشته باشد، می‌توان از دارو استفاده کرد: آرام‌بخشی یا بیهوشی عمومی. گفتن ترس به دندانپزشک جای خجالت ندارد؛ نحوهٔ کمک به شما دقیقاً به همین بستگی دارد."
+   ]
   },
   "en": {
    "title": "Dental phobia and how it is managed",
-   "sum": "Behavioural and cognitive therapy help. For severe fear, sedation or general anaesthesia may be used."
+   "sum": "Behavioural and cognitive therapy help. For severe fear, sedation or general anaesthesia may be used.",
+   "key": [
+    "Fear and phobia lead people to avoid the dentist.",
+    "The main approach is psychological: behavioural and cognitive therapy, especially CBT.",
+    "If that is not enough, sedation or general anaesthesia may be used."
+   ],
+   "p": [
+    "Fear of treatment and dental phobia are common in dental offices, and a source of stress for the dentist too. These patients should be spotted as early as possible and their concerns addressed. The author describes how they are recognised and helped.",
+    "Anxiety is assessed through interview and questionnaires, and through pulse, blood pressure and other measures. Then an approach is chosen by anxiety level: behavioural methods (relaxation, breathing, guided imagery, distraction, positive reinforcement, stop-signalling, gradual desensitisation, \"tell-show-do\"), cognitive methods (changing negative thoughts) or both. Cognitive behaviour therapy is described as the most accepted and successful psychological treatment for anxiety and phobia.",
+    "If someone does not respond, will not undergo these treatments or is considered phobic, drug options such as sedation or general anaesthesia may be used. There is nothing shameful about telling your dentist you are afraid; how they help you depends on it."
+   ]
   }
  },
  {
   "id": "27471845",
+  "slug": "oral-leukoplakia-and-cancer-prevention",
+  "minutes": 2,
   "cat": "surgery",
   "year": 2016,
   "journal": "Cochrane Database Syst Rev",
@@ -2380,19 +4174,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Лейкоплакия рта и профилактика рака",
-   "sum": "Cochrane: убедительно эффективного лечения лейкоплакии для предотвращения рака не выявлено, побочные эффекты частые."
+   "sum": "Cochrane: убедительно эффективного лечения лейкоплакии для предотвращения рака не выявлено, побочные эффекты частые.",
+   "key": [
+    "Cochrane: 14 исследований (909 участников) лечения лейкоплакии рта для профилактики рака.",
+    "Нет доказательств, что какое-то лечение эффективно предотвращает рак полости рта.",
+    "Хирургию и отказ от курения в РКИ с контролем не оценивали."
+   ],
+   "p": [
+    "Лейкоплакия это белое пятно на слизистой рта, которое у небольшой части людей предшествует раку. Обычно она не болит, поэтому лечение направлено на профилактику рака. Cochrane обновил свой обзор: 14 исследований, 909 участников. Проверяли витамин А и ретиноиды, бета-каротин, противовоспалительные препараты, растительные экстракты, блеомицин и другие средства. Качество данных низкое или очень низкое.",
+    "Рак полости рта регистрировали в пяти исследованиях, но ни одно не показало, что активное лечение снижает риск рака сильнее плацебо. Отдельные исследования говорили об исчезновении поражений при витамине А, бета-каротине и ликопине, но рецидивы и побочные эффекты были частыми. Хирургическое лечение, лазер и криотерапия никогда не изучались в рандомизированном исследовании с группой без лечения или плацебо, как и отказ от курения.",
+    "Авторы заключают, что лечения с доказанной эффективностью для профилактики рака нет. Нужны крупные длительные исследования, особенно по хирургии и отказу от факторов риска. Если на слизистой рта есть пятно, которое не проходит, покажитесь врачу: наблюдение за лейкоплакией важно."
+   ]
   },
   "fa": {
    "title": "لکوپلاکی دهان و پیشگیری از سرطان",
-   "sum": "کاکرین: درمان قطعاً مؤثری برای جلوگیری از سرطان در لکوپلاکی یافت نشد و عوارض شایع است."
+   "sum": "کاکرین: درمان قطعاً مؤثری برای جلوگیری از سرطان در لکوپلاکی یافت نشد و عوارض شایع است.",
+   "key": [
+    "کاکرین: ۱۴ مطالعه (۹۰۹ شرکت‌کننده) دربارهٔ درمان لکوپلاکیای دهان برای پیشگیری از سرطان.",
+    "شواهدی نیست که درمانی از سرطان دهان به‌طور مؤثر پیشگیری کند.",
+    "جراحی و ترک سیگار در کارآزمایی تصادفی با گروه کنترل بررسی نشده است."
+   ],
+   "p": [
+    "لکوپلاکیا لکهٔ سفیدی روی مخاط دهان است که در بخش کوچکی از افراد پیش از سرطان دیده می‌شود. معمولاً درد ندارد، برای همین هدف درمان پیشگیری از سرطان است. کاکرین مرور خود را به‌روز کرد: ۱۴ مطالعه با ۹۰۹ شرکت‌کننده. ویتامین A و رتینوئیدها، بتاکاروتن، داروهای ضدالتهاب، عصاره‌های گیاهی، بلئومایسین و مواد دیگر بررسی شده بود. کیفیت شواهد پایین یا بسیار پایین است.",
+    "سرطان دهان در پنج مطالعه ثبت شده بود، اما هیچ‌کدام نشان ندادند درمان فعال خطر سرطان را بیشتر از دارونما کم کند. مطالعه‌های جداگانه بهبود ضایعه را با ویتامین A، بتاکاروتن و لیکوپن گزارش کردند، ولی عود و عارضه زیاد بود. جراحی، لیزر و سرمادرمانی هرگز در کارآزمایی تصادفی با گروه بی‌درمان یا دارونما بررسی نشده‌اند و ترک عوامل خطر مثل سیگار هم همین‌طور.",
+    "نویسندگان نتیجه می‌گیرند درمانی با اثربخشی اثبات‌شده برای پیشگیری از سرطان وجود ندارد. کارآزمایی‌های بزرگ و بلندمدت، به‌ویژه دربارهٔ جراحی و ترک عوامل خطر، لازم است. اگر لکه‌ای روی مخاط دهان دارید که خوب نمی‌شود، آن را به دندانپزشک نشان دهید؛ پیگیری لکوپلاکیا مهم است."
+   ]
   },
   "en": {
    "title": "Oral leukoplakia and cancer prevention",
-   "sum": "Cochrane found no clearly effective treatment for preventing cancer in leukoplakia, and side effects were common."
+   "sum": "Cochrane found no clearly effective treatment for preventing cancer in leukoplakia, and side effects were common.",
+   "key": [
+    "Cochrane: 14 trials (909 participants) of treating oral leukoplakia to prevent oral cancer.",
+    "There is no evidence that any treatment effectively prevents oral cancer.",
+    "Surgery and stopping smoking have not been tested in a controlled trial."
+   ],
+   "p": [
+    "Oral leukoplakia is a white patch on the lining of the mouth that in a small share of people comes before oral cancer. It is usually painless, so the aim of treatment is to prevent cancer. Cochrane updated its review: 14 studies with 909 participants. They tested vitamin A and retinoids, beta carotene, anti-inflammatory drugs, herbal extracts, bleomycin and other agents. The overall quality of the evidence was low or very low.",
+    "Five studies recorded cancer, but none showed that active treatment reduced the risk of oral cancer more than placebo. Single studies suggested that vitamin A, beta carotene and lycopene cleared lesions more often, but relapses and side effects were common. Surgery, laser and cryotherapy have never been tested in a randomised trial with a no-treatment or placebo arm, and neither has stopping smoking.",
+    "The authors conclude that no treatment is known to be effective for preventing cancer. Larger, longer trials are needed, especially of surgery and risk factor cessation. If you have a patch in your mouth that does not go away, show it to a dentist: following up leukoplakia matters."
+   ]
   }
  },
  {
   "id": "24929591",
+  "slug": "tooth-whitening-what-we-know-now",
+  "minutes": 2,
   "cat": "whitening",
   "year": 2014,
   "journal": "J Evid Based Dent Pract",
@@ -2417,19 +4243,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Отбеливание зубов: что известно",
-   "sum": "При соблюдении инструкции отбеливание перекисью водорода и карбамида безопасно и эффективно; пациентов нужно предупредить о рисках."
+   "sum": "При соблюдении инструкции отбеливание перекисью водорода и карбамида безопасно и эффективно; пациентов нужно предупредить о рисках.",
+   "key": [
+    "Отбеливание перекисью водорода и перекисью карбамида безопасно и эффективно, если соблюдать инструкцию.",
+    "Есть риски, о которых нужно знать и врачам, и пациентам.",
+    "Пациентов нужно научить распознавать нежелательные реакции и вовремя обращаться за помощью."
+   ],
+   "p": [
+    "Автор подвёл итоги исследований об отбеливании зубов и разобрал работы по отбеливающим методам на основе перекиси: лабораторные исследования, где подбирают метод и изучают механизм, и клинические, где проверяют разные схемы.",
+    "Вывод: если следовать инструкции производителя, отбеливание перекисью водорода и перекисью карбамида безопасно и эффективно. Но у него есть риски, о которых должны знать и специалисты, и пользователи.",
+    "Поэтому пациента нужно заранее предупредить о возможных рисках и объяснить, как распознать нежелательные явления, чтобы вовремя обратиться за помощью. Метод и средство лучше выбирать вместе с врачом, а не по рекламе."
+   ]
   },
   "fa": {
    "title": "سفید کردن دندان: آنچه اکنون می‌دانیم",
-   "sum": "اگر دستور سازنده رعایت شود، سفید کردن با پراکسید هیدروژن و کارباماید ایمن و مؤثر است؛ بیماران باید از خطرات آن آگاه شوند."
+   "sum": "اگر دستور سازنده رعایت شود، سفید کردن با پراکسید هیدروژن و کارباماید ایمن و مؤثر است؛ بیماران باید از خطرات آن آگاه شوند.",
+   "key": [
+    "سفید کردن با پراکسید هیدروژن و کارباماید پراکسید، اگر دستور سازنده رعایت شود، ایمن و مؤثر است.",
+    "خطراتی وجود دارد که هم پزشکان و هم کاربران باید بدانند.",
+    "بیماران باید یاد بگیرند عوارض را تشخیص دهند و به‌موقع کمک بگیرند."
+   ],
+   "p": [
+    "نویسنده پژوهش‌های سفید کردن دندان را جمع‌بندی کرد و کارهای مربوط به روش‌های سفیدکنندهٔ پراکسیدی را بررسی کرد: مطالعه‌های آزمایشگاهی که روش را بهینه می‌کنند و سازوکار را می‌شناسند، و مطالعه‌های بالینی که برنامه‌های مختلف را می‌سنجند.",
+    "نتیجه: اگر دستور سازنده رعایت شود، سفید کردن با پراکسید هیدروژن و کارباماید پراکسید ایمن و مؤثر است. اما خطراتی هم دارد که هم متخصصان و هم کاربران باید از آنها آگاه باشند.",
+    "برای همین باید بیمار را از قبل از خطرات احتمالی آگاه کرد و نشان داد عوارض را چگونه تشخیص دهد تا به‌موقع کمک بگیرد. بهتر است روش و محصول را همراه دندانپزشک انتخاب کنید، نه از روی تبلیغ."
+   ]
   },
   "en": {
    "title": "Tooth whitening: what we know now",
-   "sum": "When the instructions are followed, peroxide-based whitening is safe and effective. Patients should be told about the risks."
+   "sum": "When the instructions are followed, peroxide-based whitening is safe and effective. Patients should be told about the risks.",
+   "key": [
+    "Whitening with hydrogen peroxide and carbamide peroxide is safe and effective when the instructions are followed.",
+    "There are risks that both professionals and users should know about.",
+    "Patients should be taught to recognise side effects and get help in good time."
+   ],
+   "p": [
+    "The author summarises the research on tooth whitening and reviewed work on peroxide-based methods: lab studies that refine the method and explain how it works, and clinical studies of different regimens.",
+    "The conclusion: when the manufacturer's instructions are followed, whitening with hydrogen peroxide and carbamide peroxide is safe and effective. But there are risks that both professionals and users should be aware of.",
+    "So patients should be told the risks beforehand and shown how to spot adverse effects, so they can seek help in time. Choose the method and the product together with your dentist, not from an advertisement."
+   ]
   }
  },
  {
   "id": "24934383",
+  "slug": "electric-or-manual-toothbrush",
+  "minutes": 2,
   "cat": "hygiene",
   "year": 2014,
   "journal": "Cochrane Database Syst Rev",
@@ -2462,19 +4320,51 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Электрическая или обычная щётка",
-   "sum": "Электрические щётки дают небольшое, но статистически значимое преимущество в уменьшении налёта и гингивита (умеренное качество данных); клиническая важность остаётся неясной."
+   "sum": "Электрические щётки дают небольшое, но статистически значимое преимущество в уменьшении налёта и гингивита (умеренное качество данных); клиническая важность остаётся неясной.",
+   "key": [
+    "Электрические щётки убирают налёт и снижают гингивит немного лучше обычных.",
+    "Налёта меньше примерно на 11% (короткий срок) и 21% (долгий), воспаления дёсен на 6% и 11%.",
+    "Клиническая значимость пока неясна; побочные эффекты были местными и временными."
+   ],
+   "p": [
+    "Cochrane сравнил электрические и обычные щётки: 56 исследований, в анализ вошли 51 с 4624 участниками. Смотрели, насколько щётки убирают налёт и снижают воспаление дёсен.",
+    "Электрические щётки давали статистически значимое преимущество по налёту и гингивиту, и в коротком, и в долгом сроке (доказательства умеренного качества). Налёта оказывалось меньше примерно на 11% в короткий срок и на 21% в долгий, воспаление дёсен снижалось на 6% и 11%.",
+    "Практический смысл неоднозначен: авторы пишут, что клиническая важность этих различий пока неясна. О стоимости, надёжности и побочных эффектах сообщали непоследовательно, а побочные эффекты были местными и временными. Хорошо чистить можно и обычной щёткой, главное техника и регулярность."
+   ]
   },
   "fa": {
    "title": "مسواک برقی یا معمولی",
-   "sum": "مسواک برقی در کاهش پلاک و التهاب لثه کمی برتری معنادار داشت (شواهد با کیفیت متوسط)؛ اهمیت بالینی آن هنوز روشن نیست."
+   "sum": "مسواک برقی در کاهش پلاک و التهاب لثه کمی برتری معنادار داشت (شواهد با کیفیت متوسط)؛ اهمیت بالینی آن هنوز روشن نیست.",
+   "key": [
+    "مسواک برقی پلاک و التهاب لثه را کمی بهتر از مسواک معمولی کم می‌کند.",
+    "پلاک حدود ۱۱ تا ۲۱٪ و التهاب لثه حدود ۶ تا ۱۱٪ کمتر شد.",
+    "اهمیت بالینی هنوز روشن نیست؛ عوارض موضعی و گذرا بودند."
+   ],
+   "p": [
+    "کاکرین مسواک برقی و معمولی را مقایسه کرد: ۵۶ مطالعه که ۵۱ تای آنها با ۴۶۲۴ شرکت‌کننده وارد تحلیل شد. بررسی شد مسواک‌ها چقدر پلاک را برمی‌دارند و التهاب لثه را کم می‌کنند.",
+    "مسواک برقی در کوتاه‌مدت و بلندمدت مزیت معنادار آماری در کاهش پلاک و التهاب لثه داشت (شواهد با کیفیت متوسط). پلاک در کوتاه‌مدت حدود ۱۱٪ و در بلندمدت حدود ۲۱٪ کمتر بود و التهاب لثه ۶٪ و ۱۱٪ کاهش یافت.",
+    "معنای عملی آن قطعی نیست: نویسندگان می‌نویسند اهمیت بالینی این تفاوت‌ها هنوز روشن نیست. هزینه، پایایی و عوارض به‌طور ناهمگون گزارش شد و عوارض موضعی و گذرا بودند. با مسواک معمولی هم می‌توان خوب تمیز کرد؛ مهم روش و منظم بودن است."
+   ]
   },
   "en": {
    "title": "Electric or manual toothbrush",
-   "sum": "Powered brushes gave a small but statistically significant benefit for plaque and gingivitis (moderate-quality evidence). The clinical importance is still unclear."
+   "sum": "Powered brushes gave a small but statistically significant benefit for plaque and gingivitis (moderate-quality evidence). The clinical importance is still unclear.",
+   "key": [
+    "Electric toothbrushes remove plaque and reduce gingivitis slightly better than manual ones.",
+    "Plaque was about 11% to 21% lower and gum inflammation 6% to 11% lower.",
+    "Clinical importance is still unclear; reported side effects were local and temporary."
+   ],
+   "p": [
+    "Cochrane compared electric and manual toothbrushes: 56 trials, 51 of them with 4,624 participants in the analysis. They looked at how well each brush removes plaque and reduces gum inflammation.",
+    "Electric brushes gave a statistically significant benefit for plaque and gingivitis, in the short and long term (moderate-quality evidence). Plaque was about 11% lower in the short term and 21% in the long term, and gum inflammation fell by 6% and 11%.",
+    "The practical meaning is not settled: the authors write that the clinical importance of these differences remains unclear. Cost, reliability and side effects were reported inconsistently, and side effects were local and temporary. You can also clean well with a manual brush; technique and regularity matter most."
+   ]
   }
  },
  {
   "id": "23846772",
+  "slug": "fluoride-varnish-for-children",
+  "minutes": 2,
   "cat": "caries",
   "year": 2013,
   "journal": "Cochrane Database Syst Rev",
@@ -2504,15 +4394,45 @@ export const library: LibEntry[] = [
   ],
   "ru": {
    "title": "Фторидный лак для детей",
-   "sum": "В 22 исследованиях фторидный лак снижал кариес примерно на 43% на постоянных зубах; качество доказательств оценено как умеренное."
+   "sum": "В 22 исследованиях фторидный лак снижал кариес примерно на 43% на постоянных зубах; качество доказательств оценено как умеренное.",
+   "key": [
+    "Фторидный лак снижал кариес на постоянных зубах примерно на 43% по сравнению с отсутствием лечения.",
+    "На молочных зубах эффект около 37%.",
+    "Качество доказательств умеренное: во многих исследованиях есть риск ошибок."
+   ],
+   "p": [
+    "Фторидный лак врач наносит на зубы кисточкой, он используется уже более тридцати лет. Cochrane обновил свой обзор: 22 исследования, 12 455 детей и подростков. Лак сравнивали с плацебо или отсутствием лечения.",
+    "На постоянных зубах лак предотвращал примерно 43% кариеса, на молочных около 37%. Результаты исследований заметно различались, а у многих был риск ошибок, поэтому авторы оценили качество доказательств как умеренное.",
+    "Вывод обзора не изменился с первой публикации: лак заметно снижает кариес у детей и подростков. Как часто его наносить и нужен ли он вашему ребёнку, определяет врач по риску кариеса."
+   ]
   },
   "fa": {
    "title": "وارنیش فلوراید برای کودکان",
-   "sum": "در ۲۲ کارآزمایی، وارنیش فلوراید پوسیدگی سطوح دندان دائمی را حدود ۴۳٪ کاهش داد؛ کیفیت شواهد متوسط ارزیابی شده است."
+   "sum": "در ۲۲ کارآزمایی، وارنیش فلوراید پوسیدگی سطوح دندان دائمی را حدود ۴۳٪ کاهش داد؛ کیفیت شواهد متوسط ارزیابی شده است.",
+   "key": [
+    "وارنیش فلوراید پوسیدگی دندان‌های دائمی را نسبت به بدون درمان حدود ۴۳٪ کاهش داد.",
+    "در دندان‌های شیری این کاهش حدود ۳۷٪ بود.",
+    "کیفیت شواهد متوسط است: بسیاری از مطالعه‌ها خطر خطا داشتند."
+   ],
+   "p": [
+    "وارنیش فلوراید را دندانپزشک با قلم‌مو روی دندان می‌زند و بیش از سی سال است استفاده می‌شود. کاکرین مرور خود را به‌روز کرد: ۲۲ مطالعه با ۱۲٬۴۵۵ کودک و نوجوان. وارنیش با دارونما یا بدون درمان مقایسه شد.",
+    "در دندان‌های دائمی وارنیش حدود ۴۳٪ و در دندان‌های شیری حدود ۳۷٪ از پوسیدگی پیشگیری کرد. نتایج مطالعه‌ها تفاوت زیادی داشتند و بسیاری از آنها خطر خطا داشتند؛ برای همین نویسندگان کیفیت شواهد را متوسط ارزیابی کردند.",
+    "نتیجهٔ مرور از اولین انتشار تغییر نکرده: وارنیش پوسیدگی کودکان و نوجوانان را به‌طور قابل‌توجه کم می‌کند. اینکه هر چند وقت یک‌بار زده شود و آیا فرزند شما به آن نیاز دارد را دندانپزشک بر اساس خطر پوسیدگی تعیین می‌کند."
+   ]
   },
   "en": {
    "title": "Fluoride varnish for children",
-   "sum": "Across 22 trials, fluoride varnish cut decay on permanent tooth surfaces by about 43%. The quality of the evidence was rated moderate."
+   "sum": "Across 22 trials, fluoride varnish cut decay on permanent tooth surfaces by about 43%. The quality of the evidence was rated moderate.",
+   "key": [
+    "Fluoride varnish cut decay on permanent teeth by about 43% compared with no treatment.",
+    "On baby teeth the reduction was about 37%.",
+    "Evidence quality is moderate: many of the studies carry some risk of error."
+   ],
+   "p": [
+    "A dentist paints fluoride varnish onto the teeth with a small brush, and it has been used for over thirty years. Cochrane updated its review: 22 trials with 12,455 children and teenagers. Varnish was compared with placebo or no treatment.",
+    "On permanent teeth varnish prevented about 43% of decay, and on baby teeth about 37%. Results varied a good deal between trials and many had a risk of bias, so the authors rated the evidence as moderate in quality.",
+    "The conclusion has not changed since the first version: varnish clearly lowers decay in children and teenagers. How often to apply it and whether your child needs it is for the dentist to decide from decay risk."
+   ]
   }
  }
 ];

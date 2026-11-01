@@ -1,11 +1,12 @@
 ---
 import ArticlePage from '../../../../components/ArticlePage.astro';
 import { articles } from '../../../../content/articles';
+import { libraryArticles } from '../../../../content/library-articles';
 import type { Locale } from '../../../../i18n';
 
 export function getStaticPaths() {
   const langs: Locale[] = ['fa', 'en'];
-  return langs.flatMap((lang) => articles.map((article) => ({ params: { lang, slug: article.slug }, props: { article } })));
+  return langs.flatMap((lang) => [...articles, ...libraryArticles].map((article) => ({ params: { lang, slug: article.slug }, props: { article } })));
 }
 const { lang } = Astro.params as { lang: Locale };
 const { article } = Astro.props;
