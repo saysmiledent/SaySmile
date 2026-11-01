@@ -7,7 +7,8 @@ import { contactLinks } from '../config/site';
 import { breadcrumb } from '../lib/seo';
 import { articles, type Article } from '../content/articles';
 import { libraryArticles, firstAuthor } from '../content/library-articles';
-import { libraryArticleUi, categories, evidenceTypes } from '../content/library-ui';
+import { libraryArticleUi, categories, evidenceNote } from '../content/library-ui';
+import EvidenceMark from './EvidenceMark.astro';
 
 interface Props { lang: Locale; article: Article }
 const { lang, article } = Astro.props;
@@ -21,7 +22,6 @@ const book = contactLinks()[0];
 const lib = article.lib;
 const lu = libraryArticleUi[lang];
 const catLabel = (id: string) => categories.find((c) => c.id === id)!.label[lang];
-const typeLabel = (id: string) => evidenceTypes.find((x) => x.id === id)!.label[lang];
 // A retelling lists neighbours from the same topic first; the doctor's own articles list each other.
 const others = lib
   ? [...libraryArticles.filter((x) => x.slug !== article.slug && x.lib!.cat === lib.cat), ...libraryArticles.filter((x) => x.slug !== article.slug && x.lib!.cat !== lib.cat)].slice(0, 3)
@@ -100,7 +100,7 @@ const schema = [
           <p class="src__note">{lu.originalNote}</p>
           <dl class="src__facts">
             <div><dt>{lu.basedOn}</dt><dd><bdi lang="en">{lib.titleEn}</bdi></dd></div>
-            <div><dt>{lu.kind}</dt><dd>{typeLabel(lib.type)}</dd></div>
+            <div><dt>{lu.kind}</dt><dd><EvidenceMark type={lib.type} lang={lang} /><br /><small>{evidenceNote[lang]}</small></dd></div>
             {lib.authors.length > 0 && <div><dt>{lu.authors}</dt><dd><bdi lang="en">{lib.authors.join(', ')}</bdi></dd></div>}
             {lib.org && <div><dt>{lu.team}</dt><dd><bdi lang="en">{lib.org}{lib.team && !lib.org.includes(lib.team) ? `, ${lib.team}` : ''}</bdi></dd></div>}
             <div><dt>{lu.journal}</dt><dd><bdi lang="en">{lib.journal}</bdi> · <time datetime={String(lib.year)}>{num(lib.year)}</time></dd></div>

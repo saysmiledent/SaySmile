@@ -28,11 +28,39 @@ export const categories: { id: CatId; label: L3; words: string }[] = [
   { id: 'surgery', label: { ru: 'Удаление, каналы, челюсть', fa: 'کشیدن، عصب‌کشی و فک', en: 'Extractions, root canals, jaw' }, words: 'удаление зуба каналы эндодонтия абсцесс антибиотик ВНЧС челюсть extraction root canal endodontic abscess antibiotic TMD jaw leukoplakia کشیدن دندان عصب‌کشی آبسه آنتی‌بیوتیک فک' },
 ];
 
-export const evidenceTypes: { id: EvidenceType; label: L3; hint: L3 }[] = [
-  { id: 'cochrane', label: { ru: 'Cochrane', fa: 'کاکرین', en: 'Cochrane' }, hint: { ru: 'Систематический обзор Cochrane', fa: 'مرور سیستماتیک کاکرین', en: 'Cochrane systematic review' } },
-  { id: 'systematic', label: { ru: 'Систематический обзор', fa: 'مرور سیستماتیک', en: 'Systematic review' }, hint: { ru: 'Сводка многих исследований по заранее заданным правилам', fa: 'جمع‌بندی مطالعات متعدد با قواعد از پیش تعیین‌شده', en: 'Many studies pooled under set rules' } },
-  { id: 'review', label: { ru: 'Обзор', fa: 'مقاله مروری', en: 'Review' }, hint: { ru: 'Обзор литературы по теме', fa: 'مرور ادبیات علمی یک موضوع', en: 'An overview of the literature on a topic' } },
+// Plain-word labels for the kind of paper. `level` (1 to 3) is how much research the paper gathers under set rules.
+// The label describes the kind of study only; it does not say a result is right for a given patient.
+export const evidenceTypes: { id: EvidenceType; level: 1 | 2 | 3; label: L3; hint: L3 }[] = [
+  { id: 'cochrane', level: 3,
+    label: { ru: 'Свод Cochrane', fa: 'جمع‌بندی کاکرین', en: 'Cochrane summary' },
+    hint: { ru: 'Много исследований собраны и проверены по строгим правилам независимой организацией Cochrane', fa: 'تحقیق‌های متعدد را سازمان مستقل کاکرین با قواعد سخت‌گیرانه جمع و بررسی کرده است', en: 'Many studies gathered and checked under strict rules by the independent Cochrane organisation' } },
+  { id: 'systematic', level: 2,
+    label: { ru: 'Свод исследований', fa: 'جمع‌بندی چند تحقیق', en: 'Summary of many studies' },
+    hint: { ru: 'Авторы собрали несколько исследований по заранее заданным правилам (систематический обзор)', fa: 'نویسندگان چند تحقیق را با قواعد از پیش تعیین‌شده جمع کرده‌اند (مرور سیستماتیک)', en: 'The authors pooled several studies under rules set in advance (a systematic review)' } },
+  { id: 'review', level: 1,
+    label: { ru: 'Общий обзор', fa: 'مرور کلی', en: 'General overview' },
+    hint: { ru: 'Авторы рассказывают, что известно по теме, без строгого отбора исследований', fa: 'نویسندگان آنچه را دربارهٔ موضوع می‌دانند شرح می‌دهند، بدون گزینش سخت‌گیرانهٔ تحقیق‌ها', en: 'The authors describe what is known on the topic, without strict selection of studies' } },
 ];
+
+export const evidenceNote: L3 = {
+  ru: 'Метка показывает только вид исследования: чем больше работ собрано по строгим правилам, тем надёжнее вывод. Она не заменяет мнение врача.',
+  fa: 'این برچسب فقط نوع مطالعه را نشان می‌دهد: هرچه تحقیق‌های بیشتری با قواعد سخت‌گیرانه جمع شده باشد، نتیجه قابل‌اعتمادتر است. این برچسب جای نظر دندانپزشک را نمی‌گیرد.',
+  en: 'The label shows only the kind of study: the more studies gathered under strict rules, the sturdier the conclusion. It does not replace your dentist\'s opinion.',
+};
+
+// "Where do I start" cards above the library: each opens a topic or a search.
+export interface StartItem { label: string; cat?: CatId; q?: string }
+export const startUi: Record<Locale, { title: string; lead: string; items: StartItem[] }> = {
+  ru: { title: 'С чего начать', lead: 'Выберите, что вас беспокоит, и мы покажем подходящие статьи.', items: [
+    { label: 'Боюсь стоматолога', cat: 'comfort' }, { label: 'Беременность', q: 'беремен' }, { label: 'Зубы ребёнка', cat: 'children' },
+    { label: 'Кровоточат дёсны', q: 'дёсн' }, { label: 'Брекеты, элайнеры, протезы', cat: 'prosthetics' }, { label: 'Удаление, каналы, челюсть', cat: 'surgery' } ] },
+  fa: { title: 'از کجا شروع کنم', lead: 'موضوعی را که نگرانتان کرده انتخاب کنید تا مقاله‌های مناسب را نشان بدهیم.', items: [
+    { label: 'از دندانپزشک می‌ترسم', cat: 'comfort' }, { label: 'بارداری', q: 'باردار' }, { label: 'دندان کودکم', cat: 'children' },
+    { label: 'خونریزی لثه', q: 'لثه' }, { label: 'بریس، الاینر و پروتز', cat: 'prosthetics' }, { label: 'کشیدن دندان، عصب‌کشی و فک', cat: 'surgery' } ] },
+  en: { title: 'Where to start', lead: 'Pick what worries you and we will show the matching articles.', items: [
+    { label: 'Afraid of the dentist', cat: 'comfort' }, { label: 'Pregnancy', q: 'pregnan' }, { label: "My child's teeth", cat: 'children' },
+    { label: 'Bleeding gums', q: 'gum' }, { label: 'Braces, aligners, dentures', cat: 'prosthetics' }, { label: 'Extractions, root canals, jaw', cat: 'surgery' } ] },
+};
 
 export interface LibraryUi {
   title: string; lead: string; searchLabel: string; placeholder: string;

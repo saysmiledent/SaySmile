@@ -1,0 +1,24 @@
+---
+// Three small steps showing how much research a paper gathers: filled steps = the level in evidenceTypes.
+import { evidenceTypes } from '../content/library-ui';
+import type { EvidenceType } from '../content/library-ui';
+import type { Locale } from '../i18n';
+
+interface Props { type: EvidenceType; lang: Locale }
+const { type, lang } = Astro.props;
+const t = evidenceTypes.find((x) => x.id === type)!;
+---
+<span class="ev" title={t.hint[lang]}>
+  <span class="ev__bars" aria-hidden="true">{[1, 2, 3].map((n) => <i class:list={{ on: n <= t.level }} />)}</span>
+  <span class="ev__label">{t.label[lang]}</span>
+</span>
+
+<style>
+  .ev { display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 650; color: var(--primary); }
+  .ev__bars { display: inline-flex; align-items: flex-end; gap: 2px; }
+  .ev__bars i { display: block; inline-size: 5px; border-radius: 2px; background: var(--line); }
+  .ev__bars i:nth-child(1) { block-size: 8px; }
+  .ev__bars i:nth-child(2) { block-size: 12px; }
+  .ev__bars i:nth-child(3) { block-size: 16px; }
+  .ev__bars i.on { background: var(--primary); }
+</style>
