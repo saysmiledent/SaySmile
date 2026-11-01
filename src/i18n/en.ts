@@ -39,5 +39,6 @@ export default {
   footer: {
     rights: 'All rights reserved',
     disclaimer: 'Contraindications exist. A consultation with a specialist is required.',
+    stats: 'This site uses Yandex Metrica to count visits and uses cookies. We do not collect personal data.',
   },
 };
