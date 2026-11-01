@@ -9,7 +9,7 @@ export const library: LibEntry[] = [
   "cat": "restorations",
   "year": 2026,
   "journal": "Cureus",
-  "type": "review",
+  "type": "systematic",
   "oa": true,
   "pmc": "PMC12831621",
   "doi": "10.7759/cureus.102221",
@@ -433,7 +433,7 @@ export const library: LibEntry[] = [
   "cat": "prosthetics",
   "year": 2025,
   "journal": "Children (Basel)",
-  "type": "review",
+  "type": "systematic",
   "oa": true,
   "pmc": "PMC11854263",
   "doi": "10.3390/children12020138",
@@ -493,6 +493,76 @@ export const library: LibEntry[] = [
     "Orthodontic treatment moves teeth, and the ligament around the root and bone remodelling take part in it. For people with gum disease it matters how the appliance affects hygiene. Following PRISMA guidelines, the authors compared clear aligners and traditional braces for periodontal health.",
     "From 1,664 records, 8 studies were included. The authors point out various biases in the literature. Aligners, in contrast to fixed appliances, improved oral hygiene and reduced inflammation, leading to better periodontal outcomes. Fixed appliances, on the other hand, may increase plaque accumulation and inflammation and make gum health worse.",
     "The authors conclude that aligners offer advantages: better gum health, better compliance and long-term benefits, particularly in severe periodontitis. At the same time, decisions should rest on each patient's own criteria. If you have gum disease, discuss the option with your orthodontist and a periodontist."
+   ]
+  }
+ },
+ {
+  "id": "40485133",
+  "slug": "whitening-at-home-or-in-the-clinic",
+  "minutes": 2,
+  "cat": "whitening",
+  "year": 2025,
+  "journal": "Oper Dent",
+  "type": "systematic",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.2341/24-078-LIT",
+  "authors": [
+   "de Geus JL",
+   "Martins A",
+   "Reis A",
+   "Rezende M"
+  ],
+  "org": "",
+  "team": "",
+  "titleEn": "At-home vs In-office Bleaching: An Updated Systematic Review and Meta-analysis",
+  "kw": [
+   "Humans",
+   "Tooth Bleaching",
+   "Dentin Sensitivity",
+   "Tooth Bleaching Agents",
+   "Home Care Services"
+  ],
+  "ru": {
+   "title": "Отбеливание дома или в клинике",
+   "sum": "Обновлённый обзор 32 исследований: при домашнем отбеливании чувствительность слабее, а риск чувствительности и результат по шкале цвета не различались (доказательства низкого качества).",
+   "key": [
+    "Систематический обзор и мета-анализ: 32 исследования.",
+    "Домашнее отбеливание вызывало менее выраженную чувствительность, чем клиническое.",
+    "Риск чувствительности и результат по шкале цвета не различались; доказательства низкого качества."
+   ],
+   "p": [
+    "Отбеливать зубы можно дома с капой или в кабинете врача. Авторы сравнили два способа по чувствительности зубов и изменению цвета. В анализ вошли 32 исследования.",
+    "Выраженность чувствительности была ниже при домашнем отбеливании (SMD -0,78). Риск самой чувствительности и результат по шкале цвета существенно не различались. Измеренное изменение цвета (ΔE) оказалось выше при домашнем отбеливании. Качество доказательств низкое.",
+    "Вывод: оба способа дают сопоставимый результат, но домашний вызывает менее сильную чувствительность. Выбор зависит от состояния ваших зубов, и сначала нужен осмотр у врача."
+   ]
+  },
+  "fa": {
+   "title": "سفید کردن در خانه یا در مطب",
+   "sum": "مرور به‌روزشدهٔ ۳۲ مطالعه: شدت حساسیت در روش خانگی کمتر بود، اما خطر حساسیت و نتیجهٔ رنگ بر اساس شاخص رنگ تفاوتی نداشت (شواهد کیفیت پایین).",
+   "key": [
+    "مرور سیستماتیک و فراتحلیل: ۳۲ مطالعه.",
+    "سفیدکردن خانگی حساسیت کمتری از سفیدکردن مطب ایجاد کرد.",
+    "خطر حساسیت و نتیجه با شاخص رنگ تفاوت نداشت؛ کیفیت شواهد پایین است."
+   ],
+   "p": [
+    "دندان را می‌شود در خانه با قالب یا در مطب سفید کرد. نویسندگان دو روش را از نظر حساسیت دندان و تغییر رنگ مقایسه کردند. ۳۲ مطالعه وارد تحلیل شد.",
+    "شدت حساسیت در سفیدکردن خانگی کمتر بود (SMD برابر -۰٫۷۸). خود خطر بروز حساسیت و نتیجه با شاخص رنگ تفاوت چشمگیری نداشت. تغییر رنگ اندازه‌گیری‌شده (ΔE) در روش خانگی بیشتر بود. کیفیت شواهد پایین است.",
+    "نتیجه: هر دو روش نتیجهٔ قابل مقایسه می‌دهند ولی روش خانگی حساسیت شدیدتری ایجاد نمی‌کند. انتخاب به وضعیت دندان‌های شما بستگی دارد و ابتدا معاینه لازم است."
+   ]
+  },
+  "en": {
+   "title": "Whitening at home or in the clinic",
+   "sum": "An updated review of 32 studies: sensitivity was milder with at-home bleaching, while the risk of sensitivity and the shade-guide result did not differ (low-quality evidence).",
+   "key": [
+    "A systematic review and meta-analysis of 32 studies.",
+    "At-home whitening caused less intense sensitivity than in-office whitening.",
+    "The risk of sensitivity and the shade-guide result did not differ; the evidence is of low quality."
+   ],
+   "p": [
+    "Teeth can be whitened at home with a tray or in the dentist's office. The authors compared the two approaches for tooth sensitivity and colour change. The analysis included 32 studies.",
+    "The intensity of sensitivity was lower with at-home whitening (SMD -0.78). The risk of having sensitivity and the result on the shade guide did not differ much. The measured colour change (ΔE) was higher with at-home whitening. The quality of the evidence is low.",
+    "The conclusion: both approaches give comparable results, but at-home whitening causes less intense sensitivity. The choice depends on the state of your teeth, and an examination comes first."
    ]
   }
  },
@@ -772,6 +842,86 @@ export const library: LibEntry[] = [
     "Food and fluids are fundamental for athletic performance but can also be a risk factor for caries, dental erosion and gum disease, which in turn can impair performance. The authors gathered what is known about athletes' oral health and how a sports diet affects it.",
     "Studies in elite athletes report caries in 20-84%, erosion in 42-59%, gingivitis in 58-77% and periodontal disease in 15-41%. These are linked to frequent sugars and carbohydrates, polyunsaturated fats, or deficient protein intake. The authors address three possible reasons: oxidative stress, sports diet and oral hygiene.",
     "The conclusion: a sports diet should be applied so that it delivers performance benefits while meeting oral hygiene requirements. The review helps athletes, dentists and nutritionists work together to reduce the risk of dental disease from nutrition."
+   ]
+  }
+ },
+ {
+  "id": "38582435",
+  "slug": "over-the-counter-whitening-products",
+  "minutes": 2,
+  "cat": "whitening",
+  "year": 2024,
+  "journal": "J Dent",
+  "type": "review",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.1016/j.jdent.2024.104989",
+  "authors": [
+   "Barbosa LMM",
+   "Amâncio Filha MBG",
+   "Leite JVC",
+   "Santos JVDN",
+   "De Medeiros JM",
+   "De Oliveira ILM",
+   "Pecho OE",
+   "Meireles SS",
+   "Lima RBW"
+  ],
+  "org": "Federal University of Paraíba (UFPB)",
+  "team": "",
+  "titleEn": "Over-the-counter products in tooth bleaching: A scoping review",
+  "kw": [
+   "Humans",
+   "Carbamide Peroxide",
+   "Dentin Sensitivity",
+   "Hydrogen Peroxide",
+   "Mouthwashes",
+   "Nonprescription Drugs",
+   "Tooth Bleaching",
+   "Tooth Bleaching Agents",
+   "Tooth Discoloration",
+   "Toothpastes"
+  ],
+  "ru": {
+   "title": "Отбеливающие средства из магазина",
+   "sum": "Обзор: клинически подтверждены в основном отбеливающие полоски; для паст, ополаскивателей и капп данные чаще лабораторные, а побочные эффекты возможны.",
+   "key": [
+    "Обзор предметной области: что известно о домашних средствах для отбеливания.",
+    "Клиническое подтверждение есть в основном у отбеливающих полосок; пасты, ополаскиватели и капы чаще проверены только в лаборатории.",
+    "Побочные эффекты: чувствительность, раздражение дёсен и изменения поверхности эмали."
+   ],
+   "p": [
+    "Отбеливающие средства свободной продажи популярны: полоски, пасты, ополаскиватели, капы. Авторы провели обзор предметной области (scoping review), чтобы выяснить, что о них известно.",
+    "Клиническое подтверждение найдено в основном у отбеливающих полосок. Пасты, ополаскиватели и капы чаще проверяли в лабораторных условиях. В качестве побочных эффектов описаны чувствительность зубов, раздражение дёсен и изменения поверхности эмали. Некоторые продукты с перекисью водорода или карбамида подтверждены, а чрезмерное самостоятельное использование опасно.",
+    "Перед использованием отбеливающих средств покажите зубы врачу и следуйте инструкции. Если появилась боль или раздражение дёсен, остановитесь и расскажите врачу."
+   ]
+  },
+  "fa": {
+   "title": "محصولات سفیدکنندهٔ بدون نسخه",
+   "sum": "مرور: بیشتر نوارهای سفیدکننده در مطالعه‌های بالینی تأیید شده‌اند؛ برای خمیردندان، دهان‌شویه و قالب‌ها شواهد بیشتر آزمایشگاهی است و عوارض ممکن است.",
+   "key": [
+    "مرور حوزه‌ای: درباره سفیدکننده‌های خانگی چه می‌دانیم.",
+    "تأیید بالینی بیشتر برای نوارهای سفیدکننده است؛ خمیردندان، دهان‌شویه و قالب‌ها بیشتر فقط در آزمایشگاه بررسی شده‌اند.",
+    "عوارض: حساسیت دندان، تحریک لثه و تغییر سطح مینا."
+   ],
+   "p": [
+    "سفیدکننده‌های بدون نسخه پرطرفدارند: نوار، خمیردندان، دهان‌شویه و قالب. نویسندگان یک مرور حوزه‌ای (scoping review) انجام دادند تا ببینند دربارهٔ آنها چه می‌دانیم.",
+    "تأیید بالینی بیشتر برای نوارهای سفیدکننده پیدا شد. خمیردندان، دهان‌شویه و قالب‌ها بیشتر در شرایط آزمایشگاهی بررسی شده بودند. عوارض گزارش‌شده حساسیت دندان، تحریک لثه و تغییر سطح مینا است. برخی فرآورده‌های دارای پراکسید هیدروژن یا کاربامید تأیید شده‌اند و استفادهٔ افراطی و خودسرانه خطرناک است.",
+    "پیش از استفاده از سفیدکننده دندان‌ها را به دندانپزشک نشان دهید و دستور مصرف را رعایت کنید. اگر درد یا تحریک لثه پیدا شد مصرف را قطع کنید و به دندانپزشک بگویید."
+   ]
+  },
+  "en": {
+   "title": "Over-the-counter whitening products",
+   "sum": "A scoping review: whitening strips have the clinical backing; for toothpastes, rinses and trays the evidence is mostly from the lab, and side effects can occur.",
+   "key": [
+    "A scoping review of what is known about over-the-counter whitening.",
+    "Clinical confirmation exists mainly for whitening strips; toothpastes, rinses and trays were mostly tested only in the lab.",
+    "Reported side effects: tooth sensitivity, gum irritation and changes to the enamel surface."
+   ],
+   "p": [
+    "Over-the-counter whitening products are popular: strips, toothpastes, rinses and trays. The authors ran a scoping review to see what is known about them.",
+    "Clinical confirmation was found mostly for whitening strips. Toothpastes, rinses and trays were mostly tested in vitro. The adverse effects described were tooth sensitivity, gum irritation and changes to the enamel surface. Some products containing hydrogen or carbamide peroxide are supported, while excessive self-use is risky.",
+    "Before using whitening products, have your teeth checked by a dentist and follow the instructions. If pain or gum irritation appears, stop and tell your dentist."
    ]
   }
  },
@@ -1144,6 +1294,88 @@ export const library: LibEntry[] = [
   }
  },
  {
+  "id": "38994711",
+  "slug": "treating-gums-with-light-photodynamic-therapy",
+  "minutes": 2,
+  "cat": "gums",
+  "year": 2024,
+  "journal": "Cochrane Database Syst Rev",
+  "type": "cochrane",
+  "oa": true,
+  "pmc": "PMC11240860",
+  "doi": "10.1002/14651858.CD011778.pub2",
+  "authors": [
+   "Jervøe-Storm PM",
+   "Bunke J",
+   "Worthington HV",
+   "Needleman I",
+   "Cosgarea R",
+   "MacDonald L",
+   "Walsh T",
+   "Lewis SR",
+   "Jepsen S"
+  ],
+  "org": "University Hospital Bonn",
+  "team": "Cochrane",
+  "titleEn": "Adjunctive antimicrobial photodynamic therapy for treating periodontal and peri-implant diseases",
+  "kw": [
+   "Humans",
+   "Photochemotherapy",
+   "Randomized Controlled Trials as Topic",
+   "Peri-Implantitis",
+   "Dental Scaling",
+   "Adult",
+   "Dental Implants",
+   "Photosensitizing Agents",
+   "Periodontitis",
+   "Periodontal Diseases",
+   "Combined Modality Therapy",
+   "Root Planing"
+  ],
+  "ru": {
+   "title": "Лечение дёсен светом (фотодинамическая терапия)",
+   "sum": "Cochrane: 50 исследований, 1407 участников; можно ли судить об эффекте света как дополнения к чистке карманов, неясно, а возможная польза, вероятно, слишком мала.",
+   "key": [
+    "Cochrane 2024: 50 исследований, 1407 участников.",
+    "Нельзя сказать, улучшает ли свет результат чистки карманов: достоверность очень низкая.",
+    "Возможная польза, вероятно, слишком мала, чтобы иметь значение; связанных с процедурой побочных эффектов не нашли."
+   ],
+   "p": [
+    "Пародонтит это хроническое воспаление, которое постепенно разрушает ткани вокруг зуба. Основное лечение: очистка карманов под дёснами. В последние годы к ней предлагают добавлять лечение светом, или антимикробную фотодинамическую терапию. Cochrane проверил, помогает ли это. Поиск шёл до 14 февраля 2024 года.",
+    "В обзор вошли 50 рандомизированных исследований и 1407 участников. Исследования были небольшими, от 10 до 88 человек, и во всех был высокий или неясный риск ошибок. При активном лечении пародонтита по глубине кармана, кровоточивости и прикреплению дёсен различия были небольшими, а достоверность очень низкой. Исследования с участием людей на этапе поддерживающей терапии тоже не дали уверенных результатов. В 24 исследованиях (639 участников) побочных эффектов, связанных со светом, не наблюдали (умеренная достоверность).",
+    "Вывод авторов: из-за очень низкой достоверности нельзя быть уверенным, что свет улучшает клинические результаты, а возможные улучшения, вероятно, слишком малы для клинического значения. Нужны крупные качественные исследования. Не соглашайтесь на дорогую добавку только ради светового лечения, а спрашивайте врача об обоснованиях."
+   ]
+  },
+  "fa": {
+   "title": "درمان لثه با نور (فتودینامیک)",
+   "sum": "کاکرین: ۵۰ کارآزمایی با ۱۴۰۷ شرکت‌کننده؛ دربارهٔ فایدهٔ نور در کنار پاک‌سازی پاکت‌ها نمی‌توان مطمئن بود و اگر فایده‌ای باشد احتمالاً بسیار کوچک است.",
+   "key": [
+    "کاکرین ۲۰۲۴: ۵۰ کارآزمایی با ۱۴۰۷ شرکت‌کننده.",
+    "نمی‌توان گفت نور نتیجهٔ پاک‌سازی پاکت‌ها را بهتر می‌کند: اطمینان بسیار پایین است.",
+    "فایدهٔ احتمالی شاید آن‌قدر کوچک باشد که مهم نباشد؛ عارضهٔ مرتبط با نور گزارش نشد."
+   ],
+   "p": [
+    "بیماری لثه التهاب مزمنی است که کم‌کم بافت اطراف دندان را از بین می‌برد. درمان اصلی پاک‌سازی پاکت‌های زیر لثه است. در سال‌های اخیر افزودن درمان با نور، یعنی فتودینامیک ضدمیکروبی، پیشنهاد شده است. کاکرین بررسی کرد آیا کمک می‌کند. جست‌وجو تا ۱۴ فوریهٔ ۲۰۲۴ انجام شد.",
+    "۵۰ کارآزمایی تصادفی و ۱۴۰۷ شرکت‌کننده وارد مرور شد. مطالعه‌ها کوچک بودند، از ۱۰ تا ۸۸ نفر، و همه خطر خطای بالا یا نامشخص داشتند. در درمان فعال بیماری لثه تفاوت‌ها در عمق پاکت، خونریزی و چسبندگی لثه کوچک بود و اطمینان بسیار پایین. مطالعه‌ها در مرحلهٔ درمان نگهدارنده هم نتیجهٔ مطمئنی ندادند. در ۲۴ مطالعه (۶۳۹ شرکت‌کننده) عارضهٔ مرتبط با نور دیده نشد (اطمینان متوسط).",
+    "نتیجهٔ نویسندگان: به‌دلیل اطمینان بسیار پایین نمی‌توان مطمئن بود نور نتایج بالینی را بهتر می‌کند و بهبودهای احتمالی شاید برای اهمیت بالینی خیلی کوچک باشند. کارآزمایی‌های بزرگ و باکیفیت لازم است. فقط به‌خاطر درمان با نور هزینهٔ اضافه نکنید و دلیلش را از دندانپزشک بپرسید."
+   ]
+  },
+  "en": {
+   "title": "Treating gums with light (photodynamic therapy)",
+   "sum": "Cochrane: 50 trials, 1,407 participants; we cannot be sure whether light added to pocket cleaning helps, and any gain may be too small to matter.",
+   "key": [
+    "Cochrane 2024: 50 trials, 1,407 participants.",
+    "We cannot say whether light improves the result of pocket cleaning: certainty is very low.",
+    "Any benefit may be too small to matter; no side effects linked to the light were found."
+   ],
+   "p": [
+    "Periodontitis is a chronic inflammation that gradually destroys the tissues around a tooth. The main treatment is cleaning the pockets under the gums. In recent years, adding light treatment, known as antimicrobial photodynamic therapy, has been suggested. Cochrane checked whether it helps. The search ran to 14 February 2024.",
+    "The review included 50 randomised trials with 1,407 participants. Studies were small, from 10 to 88 people, and all had a high or unclear risk of bias. During active treatment of periodontitis the differences in pocket depth, bleeding and attachment were small and the certainty very low. Studies in the supportive treatment phase did not give confident results either. In 24 studies (639 participants) no adverse effects related to the light were observed (moderate-certainty evidence).",
+    "The authors conclude that, because the certainty is very low, we cannot be sure light improves clinical outcomes, and any improvements may be too small to be clinically important. Large, well-conducted trials are needed. Do not pay extra just for light treatment; ask your dentist for the reasons."
+   ]
+  }
+ },
+ {
   "id": "39038528",
   "slug": "manual-toothbrushes-and-when-to-replace-them",
   "minutes": 2,
@@ -1214,6 +1446,84 @@ export const library: LibEntry[] = [
     "The authors gathered studies on manual toothbrushes, brushing methods, and how often to replace a brush. The aim was to find what best removes plaque, reduces gum inflammation and supports gum health.",
     "Among manual brushes, cross-angle bristles and indicator bristles significantly improved the plaque index and gum condition. Most soft-bristle brushes, and brushes with end-rounded tips, tended to remove plaque and ease gingivitis better. In the studies, the Bass method had a positive effect when used twice a day for at least two minutes.",
     "The ideal time to replace a brush cannot be confirmed yet: the authors say well-designed trials are needed. The overall findings can still guide daily brushing. Your dentist or hygienist can show you the technique."
+   ]
+  }
+ },
+ {
+  "id": "39078468",
+  "slug": "sensitivity-toothpaste-after-whitening",
+  "minutes": 2,
+  "cat": "sensitivity",
+  "year": 2024,
+  "journal": "Clin Oral Investig",
+  "type": "systematic",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.1007/s00784-024-05857-2",
+  "authors": [
+   "Cabral AEA",
+   "Lourenço MAG",
+   "de Medeiros Santos BS",
+   "Carvalho MG",
+   "Pazinatto RB",
+   "Leite FPP",
+   "de Melo LA"
+  ],
+  "org": "Federal University of Rio Grande do Norte - UFRN",
+  "team": "",
+  "titleEn": "Effectiveness of desensitizing toothpastes in reducing tooth sensitivity after tooth bleaching: a systematic review",
+  "kw": [
+   "Humans",
+   "Dentin Sensitivity",
+   "Tooth Bleaching",
+   "Toothpastes",
+   "Tooth Bleaching Agents",
+   "Dentin Desensitizing Agents",
+   "Carbamide Peroxide",
+   "Hydrogen Peroxide",
+   "Urea",
+   "Peroxides"
+  ],
+  "ru": {
+   "title": "Паста для чувствительных зубов после отбеливания",
+   "sum": "Систематический обзор 5 исследований (387 человек): специальные пасты помогали после одних схем отбеливания и не помогали после других.",
+   "key": [
+    "Систематический обзор: 5 исследований, 387 человек.",
+    "Десенсибилизирующая паста помогала после домашнего отбеливания карбамидом 22% и однократного отбеливания в клинике перекисью водорода 35%.",
+    "При других режимах отбеливания помощи не нашли."
+   ],
+   "p": [
+    "После отбеливания зубы нередко становятся чувствительными. Авторы проверили, помогает ли в таком случае десенсибилизирующая зубная паста. В обзор вошли 5 рандомизированных исследований и 387 человек.",
+    "Паста была эффективна после домашнего отбеливания 22% перекисью карбамида и после одной клинической процедуры с 35% перекисью водорода. Она не помогла при домашнем отбеливании 16% перекисью карбамида и при двух клинических процедурах с 35% или 38% перекисью водорода.",
+    "Вывод авторов: результат зависит от схемы отбеливания, поэтому нужны ещё исследования. Если после отбеливания зубы реагируют на холодное, расскажите врачу, который проводил процедуру."
+   ]
+  },
+  "fa": {
+   "title": "خمیردندان ضدحساسیت پس از سفید کردن",
+   "sum": "مرور سیستماتیک ۵ مطالعه (۳۸۷ نفر): خمیردندان‌های ضدحساسیت پس از برخی روش‌های سفید کردن مؤثر بودند و پس از برخی دیگر مؤثر نبودند.",
+   "key": [
+    "مرور سیستماتیک: ۵ مطالعه با ۳۸۷ نفر.",
+    "خمیردندان کاهندهٔ حساسیت بعد از سفیدکردن خانگی با کاربامید ۲۲٪ و یک جلسه سفیدکردن مطب با پراکسید هیدروژن ۳۵٪ کمک کرد.",
+    "در روش‌های دیگر سفیدکردن کمکی دیده نشد."
+   ],
+   "p": [
+    "بعد از سفیدکردن دندان‌ها اغلب حساس می‌شوند. نویسندگان بررسی کردند خمیردندان کاهندهٔ حساسیت در این حالت کمک می‌کند یا نه. ۵ کارآزمایی تصادفی با ۳۸۷ نفر وارد مرور شد.",
+    "خمیردندان بعد از سفیدکردن خانگی با پراکسید کاربامید ۲۲٪ و بعد از یک جلسه سفیدکردن در مطب با پراکسید هیدروژن ۳۵٪ مؤثر بود. در سفیدکردن خانگی با کاربامید ۱۶٪ و دو جلسه سفیدکردن در مطب با پراکسید هیدروژن ۳۵٪ یا ۳۸٪ کمکی نکرد.",
+    "نتیجهٔ نویسندگان: نتیجه به طرح سفیدکردن بستگی دارد و مطالعهٔ بیشتر لازم است. اگر بعد از سفیدکردن دندان‌تان به سرما واکنش نشان می‌دهد به دندانپزشکی که سفیدکردن را انجام داده بگویید."
+   ]
+  },
+  "en": {
+   "title": "Sensitivity toothpaste after whitening",
+   "sum": "A systematic review of 5 studies (387 people): desensitising toothpastes helped after some whitening protocols and did not help after others.",
+   "key": [
+    "A systematic review of 5 studies with 387 people.",
+    "Desensitising toothpaste helped after at-home bleaching with 22% carbamide peroxide and one in-office session with 35% hydrogen peroxide.",
+    "It did not help with the other bleaching regimens."
+   ],
+   "p": [
+    "Teeth often become sensitive after bleaching. The authors checked whether desensitising toothpaste helps in that case. The review included 5 randomised trials with 387 people.",
+    "The toothpaste worked after at-home bleaching with 22% carbamide peroxide and after a single in-office session with 35% hydrogen peroxide. It was not effective for at-home bleaching with 16% carbamide peroxide or for two in-office sessions with 35% or 38% hydrogen peroxide.",
+    "The authors conclude that the result depends on the bleaching regimen and more research is needed. If your teeth react to cold after whitening, tell the dentist who did it."
    ]
   }
  },
@@ -1447,6 +1757,81 @@ export const library: LibEntry[] = [
   }
  },
  {
+  "id": "39407177",
+  "slug": "probiotics-in-gum-treatment",
+  "minutes": 2,
+  "cat": "gums",
+  "year": 2024,
+  "journal": "BMC Oral Health",
+  "type": "systematic",
+  "oa": true,
+  "pmc": "PMC11481756",
+  "doi": "10.1186/s12903-024-05027-6",
+  "authors": [
+   "Mendonça CD",
+   "Mata ADSPD",
+   "Azevedo LFR",
+   "Marques JF",
+   "Silveira JML",
+   "Marques DNDS"
+  ],
+  "org": "University of Lisbon",
+  "team": "",
+  "titleEn": "Probiotics in the non-surgical treatment of periodontitis: a systematic review and network meta-analysis",
+  "kw": [
+   "Humans",
+   "Dental Plaque",
+   "Lactobacillus",
+   "Periodontal Index",
+   "Periodontal Pocket",
+   "Periodontitis",
+   "Probiotics",
+   "Randomized Controlled Trials as Topic"
+  ],
+  "ru": {
+   "title": "Пробиотики при лечении дёсен",
+   "sum": "Сетевой мета-анализ 33 статей (1290 пациентов): пробиотики вместе с профессиональной чисткой, возможно, улучшают состояние дёсен; лучшие результаты показал Lactobacillus.",
+   "key": [
+    "Сетевой мета-анализ 33 статей, 1290 пациентов.",
+    "Пробиотики вместе с профессиональной чисткой могут сильнее улучшать глубину карманов и прикрепление дёсен.",
+    "Лучшие результаты показал Lactobacillus."
+   ],
+   "p": [
+    "Пробиотики это полезные микроорганизмы. Авторы проверили, помогают ли они при нехирургическом лечении пародонтита, когда врач очищает налёт и камень из карманов. Сравнивали профессиональную чистку вместе с пробиотиками и профессиональную чистку с плацебо.",
+    "В анализ вошли 33 статьи и 1290 пациентов. Основные исходы глубина кармана и уровень прикрепления дёсен, дополнительные кровоточивость, налёт и число колоний бактерий. Результаты разделили по срокам наблюдения и по длительности приёма пробиотиков. Достоверное улучшение по глубине кармана нашли для девяти видов пробиотиков, по прикреплению для восемнадцати и по кровоточивости для восьми.",
+    "Вывод: чистка вместе с пробиотиками, возможно, эффективнее улучшает глубину кармана и прикрепление; самым действенным оказался Lactobacillus. Пробиотик не заменяет чистку, а решение о нём принимает врач."
+   ]
+  },
+  "fa": {
+   "title": "پروبیوتیک در درمان بیماری لثه",
+   "sum": "فراتحلیل شبکه‌ای ۳۳ مقاله (۱۲۹۰ بیمار): پروبیوتیک همراه با پاک‌سازی حرفه‌ای احتمالاً وضعیت لثه را بهتر می‌کند؛ بهترین نتیجه با لاکتوباسیلوس بود.",
+   "key": [
+    "فراتحلیل شبکه‌ای ۳۳ مقاله با ۱۲۹۰ بیمار.",
+    "پروبیوتیک همراه با پاک‌سازی حرفه‌ای ممکن است عمق پاکت و چسبندگی لثه را بیشتر بهتر کند.",
+    "بهترین نتیجه با لاکتوباسیلوس بود."
+   ],
+   "p": [
+    "پروبیوتیک‌ها میکروارگانیسم‌های مفیدند. نویسندگان بررسی کردند آیا در درمان غیرجراحی بیماری لثه، یعنی وقتی دندانپزشک پلاک و جرم پاکت‌ها را برمی‌دارد، کمک می‌کنند یا نه. پاک‌سازی حرفه‌ای همراه با پروبیوتیک با پاک‌سازی همراه با دارونما مقایسه شد.",
+    "۳۳ مقاله و ۱۲۹۰ بیمار وارد تحلیل شد. پیامدهای اصلی عمق پاکت و سطح چسبندگی لثه بود و پیامدهای دیگر خونریزی، پلاک و تعداد کلنی باکتری. نتیجه‌ها بر اساس مدت پیگیری و مدت مصرف پروبیوتیک جدا شد. برای نُه نوع پروبیوتیک تفاوت معنادار عمق پاکت، برای هجده نوع چسبندگی و برای هشت نوع خونریزی دیده شد.",
+    "نتیجه: پاک‌سازی همراه با پروبیوتیک شاید در بهتر کردن عمق پاکت و چسبندگی مؤثرتر باشد و لاکتوباسیلوس مؤثرترین بود. پروبیوتیک جای پاک‌سازی را نمی‌گیرد و تصمیم دربارهٔ آن با دندانپزشک است."
+   ]
+  },
+  "en": {
+   "title": "Probiotics in gum treatment",
+   "sum": "A network meta-analysis of 33 articles (1,290 patients): probiotics added to professional cleaning may improve gum condition, with Lactobacillus showing the strongest effects.",
+   "key": [
+    "A network meta-analysis of 33 articles with 1,290 patients.",
+    "Probiotics added to professional cleaning may improve pocket depth and gum attachment further.",
+    "Lactobacillus showed the strongest effects."
+   ],
+   "p": [
+    "Probiotics are helpful microorganisms. The authors checked whether they help in non-surgical gum treatment, when the dentist removes plaque and tartar from the pockets. Professional cleaning combined with probiotics was compared with professional cleaning plus a placebo.",
+    "The analysis covered 33 articles and 1,290 patients. The main outcomes were pocket depth and attachment level, with bleeding, plaque and bacterial colony counts as secondary outcomes. Results were split by follow-up time and by duration of probiotic use. Significant differences were found in pocket depth for nine probiotic interventions, in attachment for eighteen and in bleeding for eight.",
+    "The conclusion: cleaning together with probiotics may be more effective in improving pocket depth and attachment, with Lactobacillus the most effective. A probiotic does not replace cleaning, and the decision about it is the dentist's."
+   ]
+  }
+ },
+ {
   "id": "39508296",
   "slug": "silver-diamine-fluoride-sdf-for-decay",
   "minutes": 2,
@@ -1526,6 +1911,150 @@ export const library: LibEntry[] = [
     "SDF is a liquid applied to a decayed spot to halt the process without drilling. Cochrane pooled 29 trials with 13,036 participants, of whom 12,020 were children and 1,016 older adults. SDF was compared with placebo, no treatment and fluoride varnish.",
     "In baby teeth, evidence on preventing new decay is uncertain, but SDF may help arrest decay that has already started. On tooth roots in adults it probably helps prevent new decay. Compared with fluoride varnish in baby teeth it adds little, though certainty is low.",
     "Staining (silver darkens the treated spot) was poorly reported, and evidence on side effects is very uncertain. Whether SDF fits your case is for your dentist to decide; the authors ask for new, better-run studies."
+   ]
+  }
+ },
+ {
+  "id": "39685613",
+  "slug": "gentle-care-for-sensitivity-in-mih",
+  "minutes": 2,
+  "cat": "sensitivity",
+  "year": 2024,
+  "journal": "J Clin Med",
+  "type": "systematic",
+  "oa": true,
+  "pmc": "PMC11642552",
+  "doi": "10.3390/jcm13237154",
+  "authors": [
+   "Cavalcante BGN",
+   "Mlinkó É",
+   "Szabó B",
+   "Teutsch B",
+   "Hegyi P",
+   "Vág J",
+   "Németh O",
+   "Gerber G",
+   "Varga G"
+  ],
+  "org": "Semmelweis University",
+  "team": "",
+  "titleEn": "Non-Invasive Strategies for Remineralization and Hypersensitivity Management in Molar-Incisor Hypomineralization-A Systematic Review and Meta-Analysis",
+  "kw": [],
+  "ru": {
+   "title": "Мягкое лечение чувствительности при МИГ",
+   "sum": "Мета-анализ 15 исследований у детей: паста CPP-ACP снижала чувствительность сильнее фторидного лака, но доказательства разнородны и ограничены.",
+   "key": [
+    "Мета-анализ 15 исследований у детей с гипоминерализацией моляров и резцов (MIH).",
+    "Паста с CPP-ACP не превзошла фторид в укреплении эмали.",
+    "Чувствительность в некоторых работах снижалась сильнее, чем после фторидного лака, но результаты неоднородны."
+   ],
+   "p": [
+    "MIH это состояние, при котором эмаль первых постоянных моляров (а иногда и резцов) слабая и пятнистая. Такие зубы часто чувствительны. Авторы собрали данные о мягком лечении таких зубов у детей до 18 лет. Нашли 1566 работ, в мета-анализ вошли 15.",
+    "Средство с CPP-ACP по укреплению эмали не превзошло фторид. По снижению чувствительности оно оказалось лучше фторидного лака (разница -2,36), но результаты были очень неоднородными (I² 83%). Кальция глицерофосфат и диамин фторид серебра показали умеренную пользу.",
+    "Вывод: надёжных данных, что какое-то средство явно лучше, пока недостаточно. Ребёнку с чувствительными, слабыми зубами нужен осмотр, а метод подбирает врач."
+   ]
+  },
+  "fa": {
+   "title": "درمان ملایم حساسیت در MIH",
+   "sum": "فراتحلیل ۱۵ مطالعه در کودکان: CPP-ACP حساسیت را بیشتر از وارنیش فلوراید کم کرد، اما شواهد ناهمگن و محدود است.",
+   "key": [
+    "فراتحلیل ۱۵ مطالعه روی کودکان دارای MIH (کم‌کانی‌شدگی مولر و ثنایا).",
+    "CPP-ACP در تقویت مینا از فلوراید بهتر نبود.",
+    "حساسیت در برخی مطالعه‌ها بیشتر از لاک فلوراید کم شد ولی نتیجه‌ها یکدست نبود."
+   ],
+   "p": [
+    "MIH حالتی است که مینای دندان‌های آسیای اول دائمی (و گاهی ثنایا) ضعیف و لکه‌دار است. این دندان‌ها اغلب حساس‌اند. نویسندگان داده‌های درمان ملایم این دندان‌ها را در کودکان زیر ۱۸ سال جمع کردند. ۱۵۶۶ مقاله پیدا شد و ۱۵ مورد وارد فراتحلیل شد.",
+    "CPP-ACP در تقویت مینا از فلوراید بهتر نبود. در کم کردن حساسیت از لاک فلوراید بهتر بود (اختلاف -۲٫۳۶) ولی نتیجه‌ها بسیار ناهمگن بود (I² برابر ۸۳٪). کلسیم گلیسروفسفات و سیلور دی‌آمین فلوراید فایدهٔ ملایم نشان دادند.",
+    "نتیجه: هنوز دادهٔ محکمی نیست که یک ماده به‌وضوح بهتر باشد. کودکی که دندان‌های حساس و ضعیف دارد معاینه می‌خواهد و روش را دندانپزشک انتخاب می‌کند."
+   ]
+  },
+  "en": {
+   "title": "Gentle care for sensitivity in MIH",
+   "sum": "A meta-analysis of 15 studies in children: CPP-ACP reduced sensitivity more than fluoride varnish, but the evidence is mixed and limited.",
+   "key": [
+    "A meta-analysis of 15 studies in children with molar incisor hypomineralisation (MIH).",
+    "CPP-ACP was no better than fluoride at strengthening enamel.",
+    "It reduced sensitivity more than fluoride varnish in some studies, but the results were inconsistent."
+   ],
+   "p": [
+    "MIH is a condition where the enamel of the first permanent molars (and sometimes the incisors) is weak and patchy. These teeth are often sensitive. The authors gathered data on gentle care for such teeth in children under 18. They found 1,566 studies and 15 entered the meta-analysis.",
+    "CPP-ACP showed no significant advantage over fluoride for remineralisation. For reducing sensitivity it did better than fluoride varnish (mean difference -2.36), but the results were highly inconsistent (I² 83%). Calcium glycerophosphate and silver diamine fluoride showed mild benefits.",
+    "The conclusion: there is not yet solid evidence that any one product is clearly better. A child with sensitive, weak teeth needs an examination, and the dentist chooses the method."
+   ]
+  }
+ },
+ {
+  "id": "36631982",
+  "slug": "how-common-is-gum-disease",
+  "minutes": 2,
+  "cat": "gums",
+  "year": 2023,
+  "journal": "J Clin Periodontol",
+  "type": "systematic",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.1111/jcpe.13769",
+  "authors": [
+   "Trindade D",
+   "Carvalho R",
+   "Machado V",
+   "Chambrone L",
+   "Mendes JJ",
+   "Botelho J"
+  ],
+  "org": "Egas Moniz Center for Interdisciplinary Research",
+  "team": "",
+  "titleEn": "Prevalence of periodontitis in dentate people between 2011 and 2020: A systematic review and meta-analysis of epidemiological studies",
+  "kw": [
+   "Adult",
+   "Humans",
+   "Aged",
+   "Prevalence",
+   "Periodontitis",
+   "Epidemiologic Studies",
+   "Periodontal Index",
+   "Periodontal Pocket"
+  ],
+  "ru": {
+   "title": "Как часто встречается пародонтит",
+   "sum": "Мета-анализ 55 исследований за 2011-2020 годы: пародонтит находили примерно у 62% взрослых с собственными зубами, тяжёлый у 23,6%.",
+   "key": [
+    "Мета-анализ 55 исследований за 2011-2020 годы.",
+    "Пародонтит у взрослых с собственными зубами оценили примерно в 62%, тяжёлый примерно в 23,6%.",
+    "У людей 65 лет и старше оценка достигала 79,3%."
+   ],
+   "p": [
+    "Пародонтит это воспаление тканей вокруг зубов, которое может привести к потере зубов. Авторы выяснили, как часто он встречается у людей с собственными зубами. В анализ вошли 55 исследований за 2011-2020 годы, проведённых в 17 странах.",
+    "Результат зависел от того, как определяли заболевание. По строгим определениям пародонтит нашли у 61,6% людей, по более мягким у 38,5%. Среди определений CDC/AAP 2012 года оценка была самой высокой (68,1%), по определению 2007 года самой низкой (48,8%). Чем старше возраст, тем выше доля: у людей от 65 лет оценка составила 79,3%.",
+    "Авторы заключают, что в 2011-2020 годах пародонтит у взрослых с зубами встречался примерно у 62%, а тяжёлый у 23,6%. Это заметно выше прежних оценок за 1990-2010 годы. Если дёсны кровоточат или зубы шатаются, не откладывайте осмотр."
+   ]
+  },
+  "fa": {
+   "title": "بیماری لثه چقدر شایع است",
+   "sum": "فراتحلیل ۵۵ مطالعهٔ سال‌های ۲۰۱۱ تا ۲۰۲۰: بیماری لثه (پریودنتیت) در حدود ۶۲٪ بزرگسالان دارای دندان طبیعی و فرم شدید آن در ۲۳٫۶٪ دیده شد.",
+   "key": [
+    "فراتحلیل ۵۵ مطالعهٔ سال‌های ۲۰۱۱ تا ۲۰۲۰.",
+    "بیماری لثه در بزرگسالان دارای دندان طبیعی حدود ۶۲٪ و فرم شدید حدود ۲۳٫۶٪ برآورد شد.",
+    "در افراد ۶۵ سال و بالاتر برآورد به ۷۹٫۳٪ رسید."
+   ],
+   "p": [
+    "پریودنتیت التهاب بافت اطراف دندان است و می‌تواند به از دست رفتن دندان برسد. نویسندگان بررسی کردند در افرادی که دندان طبیعی دارند چقدر شایع است. ۵۵ مطالعهٔ سال‌های ۲۰۱۱ تا ۲۰۲۰ از ۱۷ کشور وارد تحلیل شد.",
+    "نتیجه به نحوهٔ تعریف بیماری بستگی داشت. با تعریف‌های دقیق ۶۱٫۶٪ افراد بیماری لثه داشتند و با تعریف‌های سهل‌گیرانه‌تر ۳۸٫۵٪. در میان تعریف‌های CDC/AAP برآورد ۲۰۱۲ بالاترین (۶۸٫۱٪) و ۲۰۰۷ پایین‌ترین (۴۸٫۸٪) بود. هرچه سن بالاتر، سهم بیشتر: در افراد ۶۵ ساله و بالاتر برآورد ۷۹٫۳٪ شد.",
+    "نویسندگان نتیجه می‌گیرند در ۲۰۱۱ تا ۲۰۲۰ بیماری لثه در بزرگسالان دارای دندان حدود ۶۲٪ و فرم شدید آن ۲۳٫۶٪ بود. این رقم از برآوردهای پیشین سال‌های ۱۹۹۰ تا ۲۰۱۰ به‌طور محسوس بالاتر است. اگر لثه‌تان خونریزی دارد یا دندان‌تان لق است، معاینه را عقب نیندازید."
+   ]
+  },
+  "en": {
+   "title": "How common is gum disease",
+   "sum": "A meta-analysis of 55 studies from 2011 to 2020 put periodontitis at about 62% of adults who still have their teeth, and severe periodontitis at 23.6%.",
+   "key": [
+    "A meta-analysis of 55 studies from 2011 to 2020.",
+    "Gum disease in adults who still have their teeth was estimated at about 62%, severe disease at 23.6%.",
+    "Among people aged 65 and over the estimate reached 79.3%."
+   ],
+   "p": [
+    "Periodontitis is inflammation of the tissues around the teeth and can lead to tooth loss. The authors asked how common it is in people who still have their teeth. The analysis covered 55 studies from 2011 to 2020, from 17 countries.",
+    "The result depended on how the disease was defined. With confident case definitions 61.6% had periodontitis, with less strict ones 38.5%. Among the CDC/AAP definitions the 2012 version gave the highest estimate (68.1%) and the 2007 version the lowest (48.8%). The older the group, the higher the share: for people aged 65 and over it was 79.3%.",
+    "The authors conclude that between 2011 and 2020 periodontitis in adults with teeth was around 62% and severe periodontitis 23.6%, which is high compared with earlier estimates from 1990 to 2010. If your gums bleed or a tooth feels loose, do not put off a check-up."
    ]
   }
  },
@@ -1660,6 +2189,155 @@ export const library: LibEntry[] = [
     "Oral diseases affect most people at some point in life. Decay depends on the mix of microbes in the mouth, and one of them is seen as the main culprit. So researchers test whether probiotics, which help the gut, might help in the mouth too.",
     "The authors looked at how different probiotic strains affect decay, yeast infections, gum disease and bad breath. They also discuss postbiotics: non-living compounds derived from probiotics.",
     "This is an active area, but the review gives no ready recommendations. Probiotic products do not replace brushing and treatment. If you want to try one, ask your dentist which strains have actually been studied."
+   ]
+  }
+ },
+ {
+  "id": "37023343",
+  "slug": "laser-for-tooth-sensitivity",
+  "minutes": 2,
+  "cat": "sensitivity",
+  "year": 2023,
+  "journal": "Dent Med Probl",
+  "type": "systematic",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.17219/dmp/151482",
+  "authors": [
+   "Pion LA",
+   "Matos LLM",
+   "Gimenez T",
+   "Palma-Dibb RG",
+   "Faraoni JJ"
+  ],
+  "org": "University of São Paulo",
+  "team": "",
+  "titleEn": "Treatment outcome for dentin hypersensitivity with laser therapy: Systematic review and meta-analysis",
+  "kw": [
+   "Humans",
+   "Dentin Sensitivity",
+   "Laser Therapy",
+   "Low-Level Light Therapy",
+   "Treatment Outcome",
+   "Lasers"
+  ],
+  "ru": {
+   "title": "Лазер при чувствительности зубов",
+   "sum": "Систематический обзор 34 исследований: лазер любой мощности уменьшал боль через 3 месяца; единого протокола пока нет.",
+   "key": [
+    "Систематический обзор лазерного лечения чувствительности дентина: 34 исследования.",
+    "Лазеры высокой и низкой мощности уменьшали боль через 3 месяца.",
+    "Единого протокола пока нет: методы в исследованиях сильно различаются."
+   ],
+   "p": [
+    "Лазер иногда используют, чтобы уменьшить острую боль в зубах от холодного и сладкого. Авторы проверили, насколько это работает. Включили 34 исследования, из них 11 вошли в мета-анализ.",
+    "Лазеры высокой и низкой мощности уменьшали боль через 3 месяца. Лазеры высокой мощности склонялись к большему эффекту, но разница не была значимой. Единого протокола нет, потому что исследования использовали разные методы и настройки. Около 55% работ наблюдали пациентов не дольше 6 месяцев.",
+    "Вывод: лазер может быть вариантом лечения, но нужны более длительные и однородные исследования. Подходит ли он вам, решает врач после осмотра."
+   ]
+  },
+  "fa": {
+   "title": "لیزر برای حساسیت دندان",
+   "sum": "مرور سیستماتیک ۳۴ مطالعه: لیزر با هر توانی درد را پس از ۳ ماه کم کرد؛ هنوز پروتکل واحدی وجود ندارد.",
+   "key": [
+    "مرور سیستماتیک لیزر در حساسیت عاج: ۳۴ مطالعه.",
+    "لیزر پرتوان و کم‌توان هر دو درد را پس از ۳ ماه کم کردند.",
+    "هنوز پروتکل واحدی نیست: روش‌ها در مطالعه‌ها خیلی فرق دارد."
+   ],
+   "p": [
+    "گاهی برای کم کردن درد تیز دندان با سرما و شیرینی از لیزر استفاده می‌شود. نویسندگان بررسی کردند چقدر مؤثر است. ۳۴ مطالعه وارد شد که ۱۱ تای آنها در فراتحلیل آمد.",
+    "لیزر پرتوان و کم‌توان درد را پس از ۳ ماه کم کردند. لیزر پرتوان به کاهش بیشتر تمایل داشت ولی اختلاف معنادار نبود. پروتکل واحدی نیست چون مطالعه‌ها روش‌ها و تنظیم‌های متفاوتی داشتند. حدود ۵۵٪ مطالعه‌ها بیماران را حداکثر ۶ ماه پیگیری کردند.",
+    "نتیجه: لیزر می‌تواند یک گزینهٔ درمان باشد ولی مطالعه‌های طولانی‌تر و یکدست‌تر لازم است. مناسب بودن آن برای شما را دندانپزشک پس از معاینه تعیین می‌کند."
+   ]
+  },
+  "en": {
+   "title": "Laser for tooth sensitivity",
+   "sum": "A systematic review of 34 studies: lasers of either power reduced pain after 3 months, though no single protocol has been established.",
+   "key": [
+    "A systematic review of laser treatment for dentin sensitivity: 34 studies.",
+    "Both high- and low-power lasers reduced pain at 3 months.",
+    "There is no single protocol yet: the methods differ widely between studies."
+   ],
+   "p": [
+    "A laser is sometimes used to ease the sharp tooth pain caused by cold and sweet foods. The authors checked how well it works. They included 34 studies, 11 of which entered the meta-analysis.",
+    "High- and low-power lasers both reduced pain at 3 months. High-power lasers tended to reduce it more, but the difference was not significant. There is no defined protocol because the studies used different methods and settings. About 55% followed patients for 6 months at most.",
+    "The conclusion: a laser can be a treatment option, but longer and more uniform studies are needed. Whether it suits you is decided by your dentist after an examination."
+   ]
+  }
+ },
+ {
+  "id": "37219527",
+  "slug": "retainers-after-braces",
+  "minutes": 2,
+  "cat": "prosthetics",
+  "year": 2023,
+  "journal": "Cochrane Database Syst Rev",
+  "type": "cochrane",
+  "oa": true,
+  "pmc": "PMC10202160",
+  "doi": "10.1002/14651858.CD002283.pub5",
+  "authors": [
+   "Martin C",
+   "Littlewood SJ",
+   "Millett DT",
+   "Doubleday B",
+   "Bearn D",
+   "Worthington HV",
+   "Limones A"
+  ],
+  "org": "Complutense University of Madrid",
+  "team": "Cochrane",
+  "titleEn": "Retention procedures for stabilising tooth position after treatment with orthodontic braces",
+  "kw": [
+   "Adult",
+   "Child",
+   "Humans",
+   "Orthodontic Brackets",
+   "Dental Care",
+   "Gingivitis",
+   "Periodontal Diseases",
+   "Drug-Related Side Effects and Adverse Reactions",
+   "Alloys"
+  ],
+  "ru": {
+   "title": "Ретейнеры после брекетов",
+   "sum": "Cochrane: 47 исследований, 4377 участников; данные низкой достоверности не позволяют назвать лучший вид ретейнера.",
+   "key": [
+    "Cochrane 2023: 47 исследований, 4377 участников.",
+    "Достоверность доказательств низкая или очень низкая; 28 исследований с высоким риском ошибок.",
+    "Твёрдых выводов о том, какой ретейнер лучше, нет."
+   ],
+   "p": [
+    "После снятия брекетов зубы могут сдвигаться обратно, поэтому ставят ретейнеры. Cochrane сравнил виды ретейнеров по устойчивости результата, комфорту и здоровью дёсен. Вошли 47 исследований и 4377 участников; у 28 из них высокий риск ошибок.",
+    "Съёмные прозрачные пластиковые ретейнеры на нижние зубы только в часть суток давали чуть больше возврата зубов, чем несъёмные, но разница клинически не важна; они были менее удобными по ощущениям, реже ломались, и дёсны были здоровее. Прозрачные ретейнеры, которые носят постоянно, не дали клинически значимой пользы для устойчивости, давали меньше кровоточивости дёсен и ломались чаще. Прозрачные ретейнеры и пластинки Хоули сходны по устойчивости: пластинки ломаются реже, но менее удобны.",
+    "Вывод авторов: достоверность низкая, поэтому твёрдых выводов нет. Выбор ретейнера и время ношения определяет ваш ортодонт."
+   ]
+  },
+  "fa": {
+   "title": "ریتینر پس از بریس",
+   "sum": "کاکرین: ۴۷ مطالعه با ۴۳۷۷ شرکت‌کننده؛ شواهد با اطمینان پایین اجازه نمی‌دهد بهترین نوع ریتینر را مشخص کنیم.",
+   "key": [
+    "کاکرین ۲۰۲۳: ۴۷ مطالعه با ۴۳۷۷ شرکت‌کننده.",
+    "اطمینان شواهد پایین یا بسیار پایین است؛ ۲۸ مطالعه خطر خطای بالا داشتند.",
+    "نتیجهٔ محکمی دربارهٔ اینکه کدام ریتینر بهتر است وجود ندارد."
+   ],
+   "p": [
+    "بعد از باز کردن بریس ممکن است دندان‌ها به جای اول برگردند و برای همین ریتینر می‌گذارند. کاکرین انواع ریتینر را از نظر پایداری نتیجه، راحتی و سلامت لثه مقایسه کرد. ۴۷ مطالعه با ۴۳۷۷ شرکت‌کننده وارد شد و ۲۸ مورد خطر خطای بالا داشت.",
+    "ریتینر شفاف پلاستیکی متحرک فک پایین که فقط بخشی از شبانه‌روز استفاده می‌شد کمی بیشتر از ثابت عقب‌گرد داشت ولی این اختلاف از نظر بالینی مهم نبود؛ ناراحتی بیشتر داشت، کمتر می‌شکست و لثه سالم‌تر بود. ریتینر شفافی که تمام‌وقت استفاده می‌شد سود بالینی معناداری برای پایداری نداد، خونریزی لثه کمتر و شکست بیشتر داشت. ریتینر شفاف و هاولی از نظر پایداری مشابه بودند: هاولی کمتر می‌شکند ولی راحتی کمتری دارد.",
+    "نتیجهٔ نویسندگان: اطمینان شواهد پایین است و نتیجهٔ قطعی نمی‌توان گرفت. انتخاب ریتینر و مدت استفاده با ارتودنتیست شماست."
+   ]
+  },
+  "en": {
+   "title": "Retainers after braces",
+   "sum": "Cochrane: 47 studies, 4,377 participants; low-certainty evidence does not let us name the best type of retainer.",
+   "key": [
+    "Cochrane 2023: 47 studies, 4,377 participants.",
+    "Certainty of the evidence is low or very low; 28 studies had a high risk of bias.",
+    "There are no firm conclusions about which retainer is best."
+   ],
+   "p": [
+    "After braces come off, teeth can drift back, so retainers are fitted. Cochrane compared retainer types for stability, comfort and gum health. It included 47 studies and 4,377 participants; 28 of them had a high risk of bias.",
+    "Part-time clear plastic lower retainers had slightly more relapse than fixed ones, but not by a clinically important amount; they caused more discomfort, failed less and gave healthier gums. Full-time clear plastic retainers gave no clinically significant benefit for stability, with less gum bleeding and more failures. Clear plastic and Hawley retainers had similar stability: Hawley retainers fail less but are less comfortable.",
+    "The authors conclude that the certainty is low, so no firm conclusions can be drawn. The choice of retainer and how long to wear it is up to your orthodontist."
    ]
   }
  },
@@ -2110,6 +2788,82 @@ export const library: LibEntry[] = [
   }
  },
  {
+  "id": "35762364",
+  "slug": "chlorhexidine-mouthwash-with-braces",
+  "minutes": 2,
+  "cat": "gums",
+  "year": 2022,
+  "journal": "Oral Health Prev Dent",
+  "type": "systematic",
+  "oa": true,
+  "pmc": "PMC11641051",
+  "doi": "10.3290/j.ohpd.b3170043",
+  "authors": [
+   "Karamani I",
+   "Kalimeri E",
+   "Seremidi K",
+   "Gkourtsogianni S",
+   "Kloukos D"
+  ],
+  "org": "",
+  "team": "",
+  "titleEn": "Chlorhexidine Mouthwash for Gingivitis Control in Orthodontic Patients﻿: A Systematic Review and Meta-Analysis",
+  "kw": [
+   "Adolescent",
+   "Adult",
+   "Child",
+   "Chlorhexidine",
+   "Dental Plaque",
+   "Gingivitis",
+   "Humans",
+   "Inflammation",
+   "Mouthwashes",
+   "Young Adult"
+  ],
+  "ru": {
+   "title": "Хлоргексидин при брекетах",
+   "sum": "Мета-анализ 14 исследований (602 пациента): хлоргексидин при брекетах уменьшает налёт и воспаление дёсен, но другие ополаскиватели работают не хуже.",
+   "key": [
+    "Мета-анализ 14 исследований, 602 пациента в возрасте 11-35 лет.",
+    "Хлоргексидин при брекетах уменьшал налёт и воспаление дёсен.",
+    "Некоторые другие ополаскиватели были так же эффективны."
+   ],
+   "p": [
+    "Брекеты затрудняют чистку, и дёсны часто воспаляются. Авторы собрали данные об ополаскивателях с хлоргексидином при ношении несъёмных аппаратов. Поиск в базах шёл до декабря 2021 года, брали только рандомизированные исследования.",
+    "В обзор вошли 14 исследований и 602 пациента от 11 до 35 лет. Испытывали растворы хлоргексидина 0,06%, 0,12% и 0,2% против плацебо или других ополаскивателей. Срок лечения был от одного дня до почти пяти месяцев. Хлоргексидин уменьшал налёт и воспаление дёсен во время лечения, но и некоторые ополаскиватели в группах сравнения были так же эффективны. Разницы по индексу воспаления дёсен через 3-4 недели между хлоргексидином и средствами с прополисом, пробиотиками или травами не нашли.",
+    "Вывод авторов: хлоргексидин при брекетах успешно контролирует воспаление и кровоточивость дёсен по сравнению с отсутствием лечения, но так же эффективен, как другие ополаскиватели. Какой ополаскиватель выбрать и как долго им пользоваться, лучше уточнить у врача."
+   ]
+  },
+  "fa": {
+   "title": "دهان‌شویهٔ کلرهگزیدین هنگام بریس",
+   "sum": "فراتحلیل ۱۴ مطالعه (۶۰۲ بیمار): کلرهگزیدین هنگام بریس پلاک و التهاب لثه را کم می‌کند، اما دهان‌شویه‌های دیگر هم مؤثرند.",
+   "key": [
+    "فراتحلیل ۱۴ مطالعه با ۶۰۲ بیمار ۱۱ تا ۳۵ ساله.",
+    "کلرهگزیدین هنگام بریس پلاک و التهاب لثه را کم کرد.",
+    "برخی دهان‌شویه‌های دیگر هم به همان اندازه مؤثر بودند."
+   ],
+   "p": [
+    "بریس تمیز کردن را سخت می‌کند و لثه اغلب ملتهب می‌شود. نویسندگان دادهٔ دهان‌شویهٔ کلرهگزیدین را هنگام استفاده از دستگاه ثابت جمع کردند. جست‌وجو تا دسامبر ۲۰۲۱ انجام شد و فقط کارآزمایی‌های تصادفی وارد شد.",
+    "۱۴ مطالعه با ۶۰۲ بیمار ۱۱ تا ۳۵ ساله وارد مرور شد. محلول‌های کلرهگزیدین ۰٫۰۶٪، ۰٫۱۲٪ و ۰٫۲٪ در برابر دارونما یا دهان‌شویه‌های دیگر آزمایش شده بود. مدت درمان از یک روز تا نزدیک پنج ماه بود. کلرهگزیدین پلاک و التهاب لثه را هنگام درمان کم کرد، اما برخی دهان‌شویه‌های گروه مقایسه هم به همان اندازه مؤثر بودند. در شاخص التهاب لثه پس از ۳ تا ۴ هفته بین کلرهگزیدین و دهان‌شویه‌های دارای پروپولیس، پروبیوتیک یا گیاهی تفاوت معناداری پیدا نشد.",
+    "نتیجهٔ نویسندگان: کلرهگزیدین هنگام بریس التهاب و خونریزی لثه را در مقایسه با بی‌درمانی با موفقیت کنترل می‌کند، ولی به اندازهٔ دهان‌شویه‌های دیگر مؤثر است. انتخاب دهان‌شویه و مدت مصرف را بهتر است از دندانپزشک بپرسید."
+   ]
+  },
+  "en": {
+   "title": "Chlorhexidine mouthwash with braces",
+   "sum": "A meta-analysis of 14 studies (602 patients): chlorhexidine cuts plaque and gum inflammation during braces, but other mouthwashes were about as effective.",
+   "key": [
+    "A meta-analysis of 14 studies with 602 patients aged 11 to 35.",
+    "Chlorhexidine reduced plaque and gum inflammation during braces.",
+    "Some other mouthwashes were about as effective."
+   ],
+   "p": [
+    "Braces make cleaning harder, and the gums often become inflamed. The authors gathered data on chlorhexidine mouthwash during treatment with fixed appliances. They searched up to December 2021 and included only randomised trials.",
+    "Fourteen studies and 602 patients aged 11 to 35 were included. The solutions were 0.06%, 0.12% or 0.2% chlorhexidine against a placebo or other mouthwashes. Treatment lasted from one day to almost five months. Chlorhexidine reduced plaque and gum inflammation during orthodontic treatment, yet some of the comparison rinses were deemed equally effective. At 3 to 4 weeks there was no significant difference in the gingival index between chlorhexidine and rinses with propolis, probiotics or herbs.",
+    "The authors conclude that chlorhexidine successfully controls gum inflammation and bleeding during braces compared with no treatment, but is equally effective as other mouthrinses. Which rinse to use and for how long is best asked of your dentist."
+   ]
+  }
+ },
+ {
   "id": "36156769",
   "slug": "dry-socket-after-extraction",
   "minutes": 2,
@@ -2250,6 +3004,78 @@ export const library: LibEntry[] = [
     "Adding activated charcoal to toothpaste is a fashionable \"natural\" way to whiten. The authors collected and analysed the studies: of 208 articles found, 11 qualified, with medium to high risk of bias.",
     "Whitening results varied: in some studies the products did not differ significantly, in others charcoal was not the strongest whitener. On abrasion most studies agree that charcoal toothpaste is more abrasive.",
     "The authors conclude that charcoal toothpastes whiten less than other options and, because of high abrasion, can be considered less safe. If you want whiter teeth, ask your dentist which products will not harm the enamel."
+   ]
+  }
+ },
+ {
+  "id": "36206495",
+  "slug": "how-to-treat-tooth-sensitivity-successfully",
+  "minutes": 2,
+  "cat": "sensitivity",
+  "year": 2022,
+  "journal": "Dent Med Probl",
+  "type": "review",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.17219/dmp/143354",
+  "authors": [
+   "Ramli R",
+   "Ghani N",
+   "Taib H",
+   "Mat-Baharin NH"
+  ],
+  "org": "Science University of Malaysia (Universiti Sains Malaysia – USM)",
+  "team": "",
+  "titleEn": "Successful management of dentin hypersensitivity: A narrative review",
+  "kw": [
+   "Adult",
+   "Dentin Sensitivity",
+   "Dentists",
+   "Humans",
+   "Professional Role",
+   "Quality of Life",
+   "Treatment Outcome"
+  ],
+  "ru": {
+   "title": "Как успешно лечить чувствительность зубов",
+   "sum": "Обзор: чувствительность дентина встречается минимум у каждого десятого; для успешного лечения нужны и мотивированный пациент, и врач, знающий варианты лечения.",
+   "key": [
+    "Обзор о гиперчувствительности дентина: не менее каждого десятого человека.",
+    "Боль короткая и острая, вызывается холодом, сладким, прикосновением или высушиванием.",
+    "Для успеха нужны и пациент, и врач."
+   ],
+   "p": [
+    "Это повествовательный обзор. Гиперчувствительность дентина встречается как минимум у каждого десятого человека. Это короткая острая боль в ответ на холодное или горячее, химическое воздействие, прикосновение или высушивание. Чаще она бывает у взрослых.",
+    "Авторы напоминают, что боль мешает есть, пить и чистить зубы, и это снижает качество жизни. Для успеха лечения нужно участие и пациента, и врача: врач ищет причину и подбирает метод, пациент следует рекомендациям по уходу.",
+    "Если зубы реагируют на холодное или сладкое, не терпите и не лечитесь самостоятельно. Расскажите врачу, когда именно возникает боль."
+   ]
+  },
+  "fa": {
+   "title": "چطور حساسیت دندان را موفق درمان کنیم",
+   "sum": "مرور: دست‌کم از هر ده نفر یک نفر حساسیت عاج دارد؛ برای درمان موفق هم بیمار با انگیزه لازم است و هم دندانپزشک آشنا با روش‌های درمان.",
+   "key": [
+    "مرور دربارهٔ حساسیت عاج: دست‌کم از هر ده نفر یک نفر.",
+    "درد کوتاه و تیز است و با سرما، شیرینی، لمس یا خشک شدن شروع می‌شود.",
+    "موفقیت درمان به همکاری بیمار و دندانپزشک نیاز دارد."
+   ],
+   "p": [
+    "این مرور روایی است. حساسیت عاج دست‌کم از هر ده نفر یک نفر را درگیر می‌کند. دردی کوتاه و تیز است در پاسخ به سرما یا گرما، مواد شیمیایی، لمس یا خشک شدن. در بزرگسالان شایع‌تر است.",
+    "نویسندگان یادآوری می‌کنند که درد خوردن، نوشیدن و مسواک زدن را سخت می‌کند و کیفیت زندگی را پایین می‌آورد. موفقیت درمان به همکاری بیمار و دندانپزشک نیاز دارد: دندانپزشک علت را پیدا می‌کند و روش را انتخاب می‌کند و بیمار توصیه‌های مراقبت را رعایت می‌کند.",
+    "اگر دندان‌تان به سرما یا شیرینی حساس است تحمل نکنید و خودسرانه درمان نکنید. به دندانپزشک بگویید درد دقیقاً کی شروع می‌شود."
+   ]
+  },
+  "en": {
+   "title": "How to treat tooth sensitivity successfully",
+   "sum": "A narrative review: at least one in ten people has dentin hypersensitivity, and successful treatment takes both a motivated patient and a dentist who knows the options.",
+   "key": [
+    "A review of dentin hypersensitivity: at least 1 in 10 people.",
+    "The pain is short and sharp, set off by cold, sweets, touch or drying.",
+    "Success needs both the patient and the dentist."
+   ],
+   "p": [
+    "This is a narrative review. Dentin hypersensitivity affects at least one in ten people. It is a short, sharp pain in response to thermal, chemical, tactile or evaporative triggers, and it is more common in adults.",
+    "The authors note that the pain makes eating, drinking and brushing difficult and lowers quality of life. Successful treatment needs both sides: the dentist finds the cause and chooses the method, and the patient follows the care advice.",
+    "If your teeth react to cold or sweet foods, do not simply put up with it or treat it on your own. Tell your dentist exactly when the pain starts."
    ]
   }
  },
@@ -2546,6 +3372,79 @@ export const library: LibEntry[] = [
   }
  },
  {
+  "id": "33648772",
+  "slug": "why-teeth-are-removed",
+  "minutes": 2,
+  "cat": "surgery",
+  "year": 2021,
+  "journal": "Int Dent J",
+  "type": "systematic",
+  "oa": true,
+  "pmc": "PMC9275356",
+  "doi": "10.1016/j.identj.2021.01.011",
+  "authors": [
+   "Broers DLM",
+   "Dubois L",
+   "de Lange J",
+   "Su N",
+   "de Jongh A"
+  ],
+  "org": "Academic Centre for Dentistry Amsterdam",
+  "team": "",
+  "titleEn": "Reasons for Tooth Removal in Adults: A Systematic Review",
+  "kw": [
+   "Adult",
+   "Dental Care",
+   "Dental Caries",
+   "Humans",
+   "Orthodontics",
+   "Periodontitis",
+   "Tooth Extraction"
+  ],
+  "ru": {
+   "title": "Почему удаляют зубы",
+   "sum": "Систематический обзор: чаще всего зубы удаляют из-за кариеса (36-55% случаев) и пародонтита (25-38%).",
+   "key": [
+    "Систематический обзор 3 исследований, 4396 удалений зубов.",
+    "Главная причина удаления: кариес (36,0-55,3%).",
+    "На втором месте заболевания дёсен (24,8-38,1%)."
+   ],
+   "p": [
+    "Зачем удаляют зубы? Авторы собрали данные о причинах удаления зубов у взрослых. В обзор вошли 3 исследования, в которых проанализировали 4396 удалений.",
+    "Кариес был причиной в 36,0-55,3% случаев, заболевания дёсен (пародонтит) в 24,8-38,1%. Воспаление у верхушки корня стало причиной в 7,3-19,1%, ортодонтические показания в 2,5-7,2%, травма в 0,8-4,4%, другие причины в 4,5-9,2%, желание самого пациента в 3,6-5,9%.",
+    "Вывод: большинство удалений связаны с кариесом и болезнями дёсен, а значит, их во многом можно предотвратить уходом и ранним лечением."
+   ]
+  },
+  "fa": {
+   "title": "چرا دندان کشیده می‌شود",
+   "sum": "مرور سیستماتیک: بیشتر دلیل کشیدن دندان پوسیدگی (۳۶ تا ۵۵٪ موارد) و بیماری لثه (۲۵ تا ۳۸٪) است.",
+   "key": [
+    "مرور سیستماتیک ۳ مطالعه با ۴۳۹۶ کشیدن دندان.",
+    "مهم‌ترین دلیل کشیدن دندان پوسیدگی بود (۳۶٫۰ تا ۵۵٫۳٪).",
+    "دلیل دوم بیماری لثه بود (۲۴٫۸ تا ۳۸٫۱٪)."
+   ],
+   "p": [
+    "چرا دندان کشیده می‌شود؟ نویسندگان دلیل‌های کشیدن دندان در بزرگسالان را جمع کردند. ۳ مطالعه وارد مرور شد که ۴۳۹۶ مورد کشیدن دندان را بررسی کرده بودند.",
+    "پوسیدگی در ۳۶٫۰ تا ۵۵٫۳٪ موارد دلیل بود و بیماری لثه (پریودنتیت) در ۲۴٫۸ تا ۳۸٫۱٪. بیماری نوک ریشه ۷٫۳ تا ۱۹٫۱٪، دلیل ارتودنسی ۲٫۵ تا ۷٫۲٪، ضربه ۰٫۸ تا ۴٫۴٪، دلایل دیگر ۴٫۵ تا ۹٫۲٪ و درخواست خود بیمار ۳٫۶ تا ۵٫۹٪ بود.",
+    "نتیجه: بیشتر موارد کشیدن دندان به پوسیدگی و بیماری لثه مربوط است، یعنی تا حد زیادی با مراقبت و درمان زودهنگام قابل پیشگیری است."
+   ]
+  },
+  "en": {
+   "title": "Why teeth are removed",
+   "sum": "A systematic review: teeth are most often removed because of decay (36-55% of cases) and gum disease (25-38%).",
+   "key": [
+    "A systematic review of 3 studies covering 4,396 tooth extractions.",
+    "The main reason for extraction was caries (36.0 to 55.3%).",
+    "Gum disease came second (24.8 to 38.1%)."
+   ],
+   "p": [
+    "Why are teeth removed? The authors gathered data on the reasons for tooth extraction in adults. The review included 3 studies that analysed 4,396 extractions.",
+    "Caries was the reason in 36.0 to 55.3% of cases and periodontal disease in 24.8 to 38.1%. Periapical disease accounted for 7.3 to 19.1%, orthodontic reasons for 2.5 to 7.2%, trauma for 0.8 to 4.4%, other reasons for 4.5 to 9.2% and the patient's own request for 3.6 to 5.9%.",
+    "The conclusion: most extractions are linked to decay and gum disease, so a large share could be prevented by good care and early treatment."
+   ]
+  }
+ },
+ {
   "id": "33998662",
   "slug": "rubber-dam-for-fillings",
   "minutes": 2,
@@ -2708,6 +3607,155 @@ export const library: LibEntry[] = [
   }
  },
  {
+  "id": "34302871",
+  "slug": "why-teeth-become-sensitive",
+  "minutes": 2,
+  "cat": "sensitivity",
+  "year": 2021,
+  "journal": "J Endod",
+  "type": "review",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.1016/j.joen.2021.07.011",
+  "authors": [
+   "Aminoshariae A",
+   "Kulild JC"
+  ],
+  "org": "Cleveland State University",
+  "team": "",
+  "titleEn": "Current Concepts of Dentinal Hypersensitivity",
+  "kw": [
+   "Dental Pulp",
+   "Dentin",
+   "Dentin Sensitivity",
+   "Humans",
+   "Nociceptors",
+   "Odontoblasts",
+   "Pain"
+  ],
+  "ru": {
+   "title": "Почему зубы бывают чувствительными",
+   "sum": "Обзор: предложено пять объяснений боли от чувствительности дентина; они не исключают друг друга, и понимание механизмов может привести к новым лекарствам.",
+   "key": [
+    "Обзор о том, почему обнажённый дентин болит.",
+    "Предложено пять механизмов, они не исключают друг друга.",
+    "Лучшее понимание может привести к новым лекарствам."
+   ],
+   "p": [
+    "Почему зуб болит от холодного, если в нём нет дырки? Авторы собрали теории о том, как возникает боль в обнажённом дентине. Дентин пронизан множеством тонких каналов, идущих к нерву зуба.",
+    "Предложено пять механизмов: гидродинамический (движение жидкости в канальцах), прямая иннервация канальцев, нейропластичность и сенсибилизация, одонтобласты как сенсорные рецепторы и альгонейроны. Эти механизмы не исключают друг друга и могут действовать вместе.",
+    "Авторы считают, что ясное понимание механизмов поможет создать новые лекарства. Пока лечение подбирает врач, исходя из причины и вашей ситуации."
+   ]
+  },
+  "fa": {
+   "title": "چرا دندان حساس می‌شود",
+   "sum": "مرور: برای درد حساسیت عاج پنج سازوکار پیشنهاد شده که یکدیگر را رد نمی‌کنند؛ شناخت آنها ممکن است به داروهای تازه برسد.",
+   "key": [
+    "مرور دربارهٔ اینکه چرا عاج بدون پوشش درد می‌گیرد.",
+    "پنج سازوکار پیشنهاد شده که یکدیگر را رد نمی‌کنند.",
+    "درک بهتر ممکن است به داروهای جدید برسد."
+   ],
+   "p": [
+    "چرا دندانی که سوراخ ندارد با سرما درد می‌گیرد؟ نویسندگان نظریه‌های مربوط به درد عاج بدون پوشش را جمع کردند. عاج از کانال‌های ریز فراوانی پر شده که به عصب دندان می‌رسد.",
+    "پنج سازوکار پیشنهاد شده است: هیدرودینامیک (حرکت مایع در کانال‌ها)، عصب‌دهی مستقیم کانال‌ها، نوروپلاستیسیتی و حساس‌شدگی، اودونتوبلاست‌ها به‌عنوان گیرندهٔ حسی و آلگونورون‌ها. این سازوکارها یکدیگر را رد نمی‌کنند و ممکن است با هم عمل کنند.",
+    "نویسندگان باور دارند درک روشن این سازوکارها به ساخت داروهای تازه کمک می‌کند. فعلاً دندانپزشک بر اساس علت و وضعیت شما درمان را انتخاب می‌کند."
+   ]
+  },
+  "en": {
+   "title": "Why teeth become sensitive",
+   "sum": "A review: five explanations have been proposed for the pain of dentin sensitivity. They do not exclude each other, and understanding them may lead to new treatments.",
+   "key": [
+    "A review of why exposed dentin hurts.",
+    "Five mechanisms are proposed, and they are not mutually exclusive.",
+    "A clearer understanding may lead to new drugs."
+   ],
+   "p": [
+    "Why does a tooth hurt from cold when it has no hole? The authors gathered the theories about pain from exposed dentin. Dentin is full of tiny channels leading to the nerve of the tooth.",
+    "Five mechanisms are proposed: hydrodynamic (fluid moving in the tubules), direct innervation of the tubules, neuroplasticity and sensitisation, odontoblasts acting as sensory receptors, and algoneurons. These mechanisms are not mutually exclusive and may act together.",
+    "The authors believe a clear understanding of the mechanisms may help develop new drugs. For now the dentist chooses treatment based on the cause and your situation."
+   ]
+  }
+ },
+ {
+  "id": "34387873",
+  "slug": "fillings-composite-or-amalgam",
+  "minutes": 2,
+  "cat": "restorations",
+  "year": 2021,
+  "journal": "Cochrane Database Syst Rev",
+  "type": "cochrane",
+  "oa": true,
+  "pmc": "PMC8407050",
+  "doi": "10.1002/14651858.CD005620.pub3",
+  "authors": [
+   "Worthington HV",
+   "Khangura S",
+   "Seal K",
+   "Mierzwinski-Urban M",
+   "Veitz-Keenan A",
+   "Sahrmann P",
+   "Schmidlin PR",
+   "Davis D",
+   "Iheozor-Ejiofor Z",
+   "Rasines Alcaraz MG"
+  ],
+  "org": "Cochrane Oral Health",
+  "team": "Cochrane",
+  "titleEn": "Direct composite resin fillings versus amalgam fillings for permanent posterior teeth",
+  "kw": [
+   "Bias",
+   "Child",
+   "Composite Resins",
+   "Dental Amalgam",
+   "Dental Caries",
+   "Dentition, Permanent",
+   "Humans",
+   "Randomized Controlled Trials as Topic"
+  ],
+  "ru": {
+   "title": "Пломбы: композит или амальгама",
+   "sum": "Cochrane: в 8 исследованиях композитные пломбы на задних постоянных зубах чаще выходили из строя и чаще давали вторичный кариес (низкая достоверность); значимого вреда для здоровья не нашли.",
+   "key": [
+    "Cochrane 2021: 8 исследований, в основном у детей; основной анализ 921 ребёнок.",
+    "Композитные пломбы выходили из строя почти вдвое чаще, чем амальгамные, и чаще давали вторичный кариес.",
+    "Достоверность низкая; все исследования с высоким риском ошибок."
+   ],
+   "p": [
+    "Пломбы из композита (цвета зуба) и из амальгамы (серебристые) используют для лечения кариеса. Cochrane сравнил их в основном на молочных и постоянных зубах детей. Вошли 8 рандомизированных исследований; в основном анализе было 921 ребёнок.",
+    "Композитные пломбы имели почти вдвое больший риск неудачи (RR 1,89) и больший риск вторичного кариеса (RR 2,14). Риск перелома не был выше. Достоверность низкая. Ртуть в моче была выше после амальгамы, но ниже токсичных уровней. Устойчивых клинически важных вредных эффектов не нашли (очень низкая достоверность). Все исследования имели высокий риск ошибок.",
+    "Вывод авторов: данные низкой достоверности. Выбор материала зависит от зуба, положения и состояния ребёнка, и его делает врач."
+   ]
+  },
+  "fa": {
+   "title": "پرکردگی: کامپوزیت یا آمالگام",
+   "sum": "کاکرین: در ۸ مطالعه پرکردگی کامپوزیتی دندان‌های آسیای دائمی بیشتر خراب شد و پوسیدگی ثانویه بیشتری داشت (اطمینان پایین)؛ آسیب مهمی برای سلامت پیدا نشد.",
+   "key": [
+    "کاکرین ۲۰۲۱: ۸ مطالعه، بیشتر روی کودکان؛ تحلیل اصلی ۹۲۱ کودک.",
+    "ترمیم کامپوزیتی تقریباً دو برابر آمالگام شکست خورد و پوسیدگی ثانویه بیشتری داشت.",
+    "اطمینان پایین است؛ همهٔ مطالعه‌ها خطر خطای بالا داشتند."
+   ],
+   "p": [
+    "ترمیم کامپوزیتی (همرنگ دندان) و آمالگام (نقره‌ای) برای درمان پوسیدگی به کار می‌رود. کاکرین آنها را بیشتر روی دندان‌های شیری و دائمی کودکان مقایسه کرد. ۸ کارآزمایی تصادفی وارد شد و در تحلیل اصلی ۹۲۱ کودک بود.",
+    "ترمیم کامپوزیتی تقریباً دو برابر خطر شکست (RR برابر ۱٫۸۹) و خطر بیشتر پوسیدگی ثانویه (RR برابر ۲٫۱۴) داشت. خطر شکستگی بیشتر نبود. اطمینان پایین است. جیوه ادرار بعد از آمالگام بالاتر بود ولی زیر سطح سمی. آسیب بالینی مهم و پایداری پیدا نشد (اطمینان بسیار پایین). همهٔ مطالعه‌ها خطر خطای بالا داشتند.",
+    "نتیجهٔ نویسندگان: شواهد اطمینان پایینی دارد. انتخاب ماده به دندان، جایگاه آن و وضعیت کودک بستگی دارد و دندانپزشک تصمیم می‌گیرد."
+   ]
+  },
+  "en": {
+   "title": "Fillings: composite or amalgam",
+   "sum": "Cochrane: in 8 studies composite fillings in permanent back teeth failed more often and had more secondary decay (low certainty); no important harms to health were found.",
+   "key": [
+    "Cochrane 2021: 8 trials, mostly in children; 921 children in the main analysis.",
+    "Composite fillings failed almost twice as often as amalgam and had more secondary decay.",
+    "Certainty is low; all studies had a high risk of bias."
+   ],
+   "p": [
+    "Composite (tooth-coloured) and amalgam (silver) fillings are used to treat decay. Cochrane compared them mainly in children's baby and permanent teeth. It included 8 randomised trials, with 921 children in the main analysis.",
+    "Composite restorations had almost double the risk of failure (RR 1.89) and a higher risk of secondary decay (RR 2.14). The risk of fracture was not higher. Certainty was low. Urinary mercury was higher with amalgam but below toxic levels. No consistent clinically important harms were found (very low certainty). All studies had a high risk of bias.",
+    "The authors conclude the evidence is of low certainty. The choice of material depends on the tooth, its position and the child, and the dentist makes it."
+   ]
+  }
+ },
+ {
   "id": "34784027",
   "slug": "gentle-treatment-of-decay-in-baby-teeth",
   "minutes": 2,
@@ -2857,6 +3905,152 @@ export const library: LibEntry[] = [
   }
  },
  {
+  "id": "31889320",
+  "slug": "cleaning-below-the-gum-line-for-gum-disease",
+  "minutes": 2,
+  "cat": "gums",
+  "year": 2020,
+  "journal": "J Clin Periodontol",
+  "type": "systematic",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.1111/jcpe.13245",
+  "authors": [
+   "Suvan J",
+   "Leira Y",
+   "Moreno Sancho FM",
+   "Graziani F",
+   "Derks J",
+   "Tomasi C"
+  ],
+  "org": "University College London Eastman Dental Institute",
+  "team": "",
+  "titleEn": "Subgingival instrumentation for treatment of periodontitis. A systematic review",
+  "kw": [
+   "Dental Scaling",
+   "Humans",
+   "Periodontitis",
+   "Ultrasonics"
+  ],
+  "ru": {
+   "title": "Чистка под дёснами при пародонтите",
+   "sum": "Систематический обзор: чистка карманов под дёснами уменьшает глубину кармана в среднем на 1,4 мм через 6-8 месяцев; вид инструмента и порядок визитов существенно не влияют.",
+   "key": [
+    "Систематический обзор рандомизированных исследований чистки карманов под дёснами.",
+    "Глубина кармана уменьшалась в среднем на 1,4 мм через 6-8 месяцев; около 74% карманов закрывались.",
+    "Ручные и ультразвуковые инструменты, а также способ распределения визитов, существенно не различались."
+   ],
+   "p": [
+    "Лечение пародонтита начинается с чистки корней под дёснами: врач убирает налёт и камень из карманов. Авторы проверили, насколько это эффективно, различаются ли ручные и ультразвуковые инструменты и лучше ли чистить по участкам или всю полость рта за короткое время. Поиск шёл по базам данных до марта 2019 года.",
+    "Прямых сравнений с чисткой только над дёснами почти не было, поэтому учли данные до и после из 9 исследований. Глубина кармана уменьшилась в среднем на 1,4 мм через 6-8 месяцев, и закрылось около 74% карманов. Шесть исследований сравнивали ручные и звуковые или ультразвуковые инструменты, и разницы не нашли. В 13 исследованиях сравнили чистку по четвертям и всей полости за короткий срок: разницы тоже нет. Пять работ сообщили о самочувствии пациентов, и там различий не было.",
+    "Вывод авторов: механическая чистка под дёснами эффективно подавляет инфекцию у людей с пародонтитом независимо от вида инструмента и порядка проведения. Поэтому важнее прийти на лечение вовремя, чем выбирать инструмент."
+   ]
+  },
+  "fa": {
+   "title": "جرم‌گیری زیر لثه در درمان بیماری لثه",
+   "sum": "مرور سیستماتیک: تمیز کردن پاکت‌های زیر لثه عمق پاکت را به‌طور میانگین ۱٫۴ میلی‌متر در ۶ تا ۸ ماه کم می‌کند؛ نوع ابزار و ترتیب جلسه‌ها تفاوت چشمگیری نمی‌دهد.",
+   "key": [
+    "مرور سیستماتیک کارآزمایی‌های تصادفی دربارهٔ تمیز کردن زیر لثه.",
+    "عمق پاکت به‌طور میانگین ۱٫۴ میلی‌متر در ۶ تا ۸ ماه کم شد و حدود ۷۴٪ پاکت‌ها بسته شد.",
+    "ابزار دستی و اولتراسونیک و نحوهٔ تقسیم جلسه‌ها تفاوت چشمگیری نداشتند."
+   ],
+   "p": [
+    "درمان بیماری لثه با تمیز کردن ریشه‌ها زیر لثه شروع می‌شود: دندانپزشک پلاک و جرم را از پاکت‌ها برمی‌دارد. نویسندگان بررسی کردند این کار چقدر مؤثر است، ابزار دستی و اولتراسونیک تفاوت دارند یا نه و بهتر است ناحیه‌به‌ناحیه کار شود یا کل دهان در زمان کوتاه. جست‌وجو در پایگاه‌ها تا مارس ۲۰۱۹ انجام شد.",
+    "مقایسهٔ مستقیم با جرم‌گیری فقط بالای لثه تقریباً نبود، برای همین داده‌های قبل و بعد ۹ مطالعه بررسی شد. عمق پاکت به‌طور میانگین ۱٫۴ میلی‌متر در ۶ تا ۸ ماه کم شد و حدود ۷۴٪ پاکت‌ها بسته شد. شش مطالعه ابزار دستی را با ابزار صوتی یا اولتراسونیک مقایسه کردند و تفاوتی ندیدند. ۱۳ مطالعه کار ناحیه‌به‌ناحیه را با کار کل دهان در زمان کوتاه مقایسه کردند و باز هم تفاوتی نبود. پنج مطالعه تجربهٔ بیماران را گزارش کردند و تفاوتی نداشت.",
+    "نتیجهٔ نویسندگان: تمیز کردن مکانیکی زیر لثه عفونت را در افراد دارای بیماری لثه مؤثر مهار می‌کند و به نوع ابزار یا نحوهٔ اجرا بستگی ندارد. پس آمدن به‌موقع برای درمان مهم‌تر از انتخاب ابزار است."
+   ]
+  },
+  "en": {
+   "title": "Cleaning below the gum line for gum disease",
+   "sum": "A systematic review: cleaning the pockets under the gums cut pocket depth by about 1.4 mm at 6 to 8 months, and the type of instrument or the order of visits made no major difference.",
+   "key": [
+    "A systematic review of randomised trials on cleaning below the gum line.",
+    "Pocket depth fell by about 1.4 mm at 6 to 8 months and about 74% of pockets closed.",
+    "Hand and ultrasonic instruments, and how the visits are arranged, made no major difference."
+   ],
+   "p": [
+    "Gum disease treatment starts with cleaning the roots below the gums: the dentist removes plaque and tartar from the pockets. The authors checked how well this works, whether hand and ultrasonic instruments differ, and whether it is better to work area by area or the whole mouth in a short time. They searched databases up to March 2019.",
+    "Almost no trials compared it with cleaning above the gum line only, so before-and-after data from 9 studies were used. Pocket depth fell by 1.4 mm on average at 6 to 8 months, and about 74% of pockets closed. Six trials compared hand with sonic or ultrasonic instruments and found no difference. Thirteen trials compared quadrant-by-quadrant with full-mouth cleaning and again found none. Five studies reported patient-reported outcomes, with no differences.",
+    "The authors conclude that mechanical cleaning below the gum line is an efficacious way to control infection in people with periodontitis, whatever the instrument or the mode of delivery. So coming for treatment on time matters more than the choice of instrument."
+   ]
+  }
+ },
+ {
+  "id": "31994207",
+  "slug": "antibiotic-pills-in-gum-treatment",
+  "minutes": 2,
+  "cat": "gums",
+  "year": 2020,
+  "journal": "J Clin Periodontol",
+  "type": "systematic",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.1111/jcpe.13264",
+  "authors": [
+   "Teughels W",
+   "Feres M",
+   "Oud V",
+   "Martín C",
+   "Matesanz P",
+   "Herrera D"
+  ],
+  "org": "University Hospitals Leuven",
+  "team": "",
+  "titleEn": "Adjunctive effect of systemic antimicrobials in periodontitis therapy: A systematic review and meta-analysis",
+  "kw": [
+   "Amoxicillin",
+   "Anti-Bacterial Agents",
+   "Anti-Infective Agents",
+   "Dental Scaling",
+   "Humans",
+   "Metronidazole",
+   "Periodontitis",
+   "Root Planing"
+  ],
+  "ru": {
+   "title": "Таблетки-антибиотики при лечении дёсен",
+   "sum": "Мета-анализ 28 исследований: антибиотики вместе с чисткой карманов дают небольшой дополнительный эффект, но побочные явления встречаются чаще.",
+   "key": [
+    "Мета-анализ 28 исследований (34 статьи) с наблюдением не менее 6 месяцев.",
+    "Антибиотики вместе с чисткой карманов давали небольшую дополнительную пользу.",
+    "Лучшим оказалось сочетание амоксициллина с метронидазолом; побочные эффекты встречались чаще."
+   ],
+   "p": [
+    "При пародонтите врач чистит карманы под дёснами, а иногда добавляет антибиотики в таблетках. Авторы проверили, даёт ли это дополнительную пользу по сравнению с чисткой и плацебо. В анализ вошли 28 исследований (34 статьи) с наблюдением не менее 6 месяцев.",
+    "Антибиотики дали статистически значимое улучшение по глубине кармана: примерно на 0,45 мм через короткий и длительный срок. Лучше стали также прикрепление дёсен, кровоточивость, закрытие карманов и доля оставшихся карманов. Лучший результат показало сочетание амоксициллина с метронидазолом, затем метронидазол отдельно и азитромицин.",
+    "В группах с антибиотиками чаще отмечали нежелательные явления. Авторы заключают, что польза есть, но решение принимает врач: антибиотик назначают не всем и не самостоятельно."
+   ]
+  },
+  "fa": {
+   "title": "آنتی‌بیوتیک خوراکی در درمان بیماری لثه",
+   "sum": "فراتحلیل ۲۸ مطالعه: آنتی‌بیوتیک در کنار تمیز کردن پاکت‌ها فایدهٔ کوچک اضافه دارد، اما عوارض در این گروه بیشتر گزارش شد.",
+   "key": [
+    "فراتحلیل ۲۸ مطالعه (۳۴ مقاله) با پیگیری دست‌کم ۶ ماه.",
+    "آنتی‌بیوتیک در کنار تمیز کردن پاکت‌ها فایدهٔ کوچک اضافه داشت.",
+    "بهترین نتیجه از ترکیب آموکسی‌سیلین با مترونیدازول بود؛ عوارض در این گروه بیشتر گزارش شد."
+   ],
+   "p": [
+    "در بیماری لثه دندانپزشک پاکت‌های زیر لثه را تمیز می‌کند و گاهی آنتی‌بیوتیک خوراکی هم اضافه می‌کند. نویسندگان بررسی کردند این کار در مقایسه با پاک‌سازی همراه با دارونما فایدهٔ اضافه دارد یا نه. ۲۸ مطالعه (۳۴ مقاله) با پیگیری دست‌کم ۶ ماه وارد تحلیل شد.",
+    "آنتی‌بیوتیک بهبود معنادار آماری در عمق پاکت داد: حدود ۰٫۴۵ میلی‌متر، هم کوتاه‌مدت و هم بلندمدت. چسبندگی لثه، خونریزی، بسته شدن پاکت و سهم پاکت‌های باقی‌مانده هم بهتر شد. بهترین نتیجه از ترکیب آموکسی‌سیلین با مترونیدازول بود، بعد مترونیدازول تنها و آزیترومایسین.",
+    "در گروه‌های آنتی‌بیوتیک عوارض بیشتر گزارش شد. نویسندگان نتیجه می‌گیرند فایده وجود دارد، ولی تصمیم با دندانپزشک است: آنتی‌بیوتیک برای همه تجویز نمی‌شود و خودسرانه مصرف نکنید."
+   ]
+  },
+  "en": {
+   "title": "Antibiotic pills in gum treatment",
+   "sum": "A meta-analysis of 28 studies: antibiotics taken alongside pocket cleaning add a small benefit, but side effects were reported more often.",
+   "key": [
+    "A meta-analysis of 28 studies (34 articles) with follow-up of at least 6 months.",
+    "Antibiotics added to pocket cleaning gave a small extra benefit.",
+    "Amoxicillin with metronidazole worked best; side effects were reported more often."
+   ],
+   "p": [
+    "In gum disease the dentist cleans the pockets under the gums and sometimes adds antibiotic tablets. The authors checked whether this gives extra benefit compared with cleaning plus a placebo. The analysis included 28 studies (34 articles) with follow-up of at least 6 months.",
+    "Antibiotics gave a statistically significant benefit for pocket depth, about 0.45 mm in both short and long term. Attachment level, bleeding, pocket closure and the share of residual pockets also improved. The best results came from amoxicillin plus metronidazole, followed by metronidazole alone and azithromycin.",
+    "Adverse events were reported more often in the antibiotic groups. The authors conclude there is a benefit, but the decision is the dentist's: antibiotics are not for everyone and should not be taken on your own."
+   ]
+  }
+ },
+ {
   "id": "32762733",
   "slug": "dentin-sensitivity-causes-and-care",
   "minutes": 2,
@@ -2997,6 +4191,76 @@ export const library: LibEntry[] = [
     "This paper was prepared for an expert consensus (ORCA/EFCD). The authors gathered evidence on how best to intervene in dentine decay of baby teeth and which materials to use. They looked at 2 systematic reviews and 5 randomised trials on treatment success, and 10 reviews and 1 trial on non-restorative options, all with at least 12 months of follow-up.",
     "In deep lesions, selective removal reduced pulp exposure, but its benefit over complete removal for symptoms or filling success was not confirmed. For multi-surface lesions, preformed metal crowns had higher success rates than amalgam, composite and glass ionomer. Among non-restorative options, silver diamine fluoride arrested decay significantly better than other treatments.",
     "The authors note much variation between studies, but the trends agreed: in a child whose tooth is vital and painless, less invasive approaches look better than complete decay removal. What suits a child is for the dentist to decide."
+   ]
+  }
+ },
+ {
+  "id": "30639724",
+  "slug": "how-common-is-tooth-sensitivity",
+  "minutes": 2,
+  "cat": "sensitivity",
+  "year": 2019,
+  "journal": "J Dent",
+  "type": "systematic",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.1016/j.jdent.2018.12.015",
+  "authors": [
+   "Favaro Zeola L",
+   "Soares PV",
+   "Cunha-Cruz J"
+  ],
+  "org": "Federal University of Uberlândia",
+  "team": "",
+  "titleEn": "Prevalence of dentin hypersensitivity: Systematic review and meta-analysis",
+  "kw": [
+   "Cross-Sectional Studies",
+   "Databases, Factual",
+   "Dentin Sensitivity",
+   "Humans",
+   "Prevalence",
+   "Quality of Life"
+  ],
+  "ru": {
+   "title": "Как часто бывает чувствительность зубов",
+   "sum": "Мета-анализ 65 работ: лучшая оценка распространённости чувствительности дентина 11,5%, но в разных исследованиях цифры сильно различаются: от 1,3% до 92,1%.",
+   "key": [
+    "Систематический обзор: 65 работ, 77 исследований.",
+    "Оценки распространённости гиперчувствительности дентина сильно различаются: от 1,3% до 92,1%.",
+    "Лучшая оценка около 11,5%; чаще у молодых взрослых и у пациентов специализированных клиник."
+   ],
+   "p": [
+    "Гиперчувствительность дентина это короткая острая боль в зубе от холодного, сладкого или прикосновения. Авторы выяснили, как часто она встречается в мире. Они искали работы в нескольких базах данных и включили 65 публикаций с 77 исследованиями.",
+    "Оценки разошлись очень сильно: от 1,3% до 92,1%. Причина в том, что исследования по-разному определяли состояние и по-разному отбирали людей. Лучшая оценка по общим данным составила 11,5%, среднее значение 33,5%. Она оказалась выше у пациентов специализированных клиник и у более молодых взрослых.",
+    "Вывод авторов: распространённость варьирует, но проблема встречается нередко. Если зубы остро реагируют на холодное или сладкое, расскажите врачу. Причину можно найти и подобрать лечение."
+   ]
+  },
+  "fa": {
+   "title": "حساسیت دندان چقدر شایع است",
+   "sum": "فراتحلیل ۶۵ مقاله: بهترین برآورد شیوع حساسیت عاج ۱۱٫۵٪ است، اما در مطالعه‌های مختلف آمار بسیار متفاوت است: از ۱٫۳٪ تا ۹۲٫۱٪.",
+   "key": [
+    "مرور سیستماتیک: ۶۵ مقاله و ۷۷ مطالعه.",
+    "برآورد شیوع حساسیت عاج بسیار متفاوت بود: از ۱٫۳٪ تا ۹۲٫۱٪.",
+    "بهترین برآورد حدود ۱۱٫۵٪ بود؛ در جوان‌ترها و بیماران کلینیک‌های تخصصی بیشتر."
+   ],
+   "p": [
+    "حساسیت عاج یعنی درد کوتاه و تیز دندان با سرما، شیرینی یا لمس. نویسندگان بررسی کردند در جهان چقدر شایع است. در چند پایگاه جست‌وجو کردند و ۶۵ مقاله با ۷۷ مطالعه را وارد کردند.",
+    "برآوردها خیلی با هم فرق داشت: از ۱٫۳٪ تا ۹۲٫۱٪. دلیلش این است که مطالعه‌ها حالت را متفاوت تعریف می‌کردند و افراد را متفاوت انتخاب می‌کردند. بهترین برآورد از مجموع داده‌ها ۱۱٫۵٪ و میانگین ۳۳٫۵٪ بود. در بیماران کلینیک‌های تخصصی و بزرگسالان جوان‌تر بالاتر بود.",
+    "نتیجهٔ نویسندگان: شیوع متفاوت است ولی مشکل کم‌یاب نیست. اگر دندان‌تان به سرما یا شیرینی تیز واکنش نشان می‌دهد به دندانپزشک بگویید. می‌شود علت را پیدا کرد و درمان مناسب انتخاب کرد."
+   ]
+  },
+  "en": {
+   "title": "How common is tooth sensitivity",
+   "sum": "A meta-analysis of 65 papers: the best estimate of dentin hypersensitivity is 11.5%, but figures vary widely between studies, from 1.3% to 92.1%.",
+   "key": [
+    "A systematic review of 65 papers and 77 studies.",
+    "Estimates of dentin hypersensitivity varied widely, from 1.3% to 92.1%.",
+    "The best estimate was about 11.5%; it was higher in younger adults and in specialty-practice patients."
+   ],
+   "p": [
+    "Dentin hypersensitivity is a short, sharp pain in a tooth from cold, sweet foods or touch. The authors asked how common it is worldwide. They searched several databases and included 65 publications covering 77 studies.",
+    "Estimates varied a lot, from 1.3% to 92.1%, because the studies defined the problem differently and chose people differently. The best estimate from pooled data was 11.5%, with an average of 33.5%. It was higher among patients of specialty practices and among younger adults.",
+    "The authors conclude that prevalence varies, but the problem is far from rare. If your teeth react sharply to cold or sweet foods, tell your dentist. The cause can be found and a suitable treatment chosen."
    ]
   }
  },
@@ -4212,6 +5476,97 @@ export const library: LibEntry[] = [
     "Oral leukoplakia is a white patch on the lining of the mouth that in a small share of people comes before oral cancer. It is usually painless, so the aim of treatment is to prevent cancer. Cochrane updated its review: 14 studies with 909 participants. They tested vitamin A and retinoids, beta carotene, anti-inflammatory drugs, herbal extracts, bleomycin and other agents. The overall quality of the evidence was low or very low.",
     "Five studies recorded cancer, but none showed that active treatment reduced the risk of oral cancer more than placebo. Single studies suggested that vitamin A, beta carotene and lycopene cleared lesions more often, but relapses and side effects were common. Surgery, laser and cryotherapy have never been tested in a randomised trial with a no-treatment or placebo arm, and neither has stopping smoking.",
     "The authors conclude that no treatment is known to be effective for preventing cancer. Larger, longer trials are needed, especially of surgery and risk factor cessation. If you have a patch in your mouth that does not go away, show it to a dentist: following up leukoplakia matters."
+   ]
+  }
+ },
+ {
+  "id": "25639826",
+  "slug": "keeping-gum-inflammation-from-turning-into-gum-disease",
+  "minutes": 2,
+  "cat": "gums",
+  "year": 2015,
+  "journal": "J Clin Periodontol",
+  "type": "systematic",
+  "oa": false,
+  "pmc": "",
+  "doi": "10.1111/jcpe.12366",
+  "authors": [
+   "Chapple IL",
+   "Van der Weijden F",
+   "Doerfer C",
+   "Herrera D",
+   "Shapira L",
+   "Polak D",
+   "Madianos P",
+   "Louropoulou A",
+   "Machtei E",
+   "Donos N",
+   "Greenwell H",
+   "Van Winkelhoff AJ",
+   "Eren Kuru B",
+   "Arweiler N",
+   "Teughels W",
+   "Aimetti M",
+   "Molina A",
+   "Montero E",
+   "Graziani F"
+  ],
+  "org": "Periodontal Research Group & MRC Centre for Immune Regulation Birmingham Dental School",
+  "team": "",
+  "titleEn": "Primary prevention of periodontitis: managing gingivitis",
+  "kw": [
+   "Anti-Inflammatory Agents",
+   "Dental Devices, Home Care",
+   "Dental Plaque",
+   "Dentifrices",
+   "Gingivitis",
+   "Humans",
+   "Oral Hygiene",
+   "Periodontitis",
+   "Primary Prevention",
+   "Self Care",
+   "Toothbrushing"
+  ],
+  "ru": {
+   "title": "Как не дать воспалению дёсен перейти в пародонтит",
+   "sum": "Эксперты по итогам обзоров: профессиональная чистка снижает воспаление дёсен, электрические щётки дают небольшую дополнительную пользу, а межзубные ёршики предпочтительнее нити.",
+   "key": [
+    "Тяжёлый пародонтит есть более чем у 11% взрослых и часто ведёт к потере зубов.",
+    "Профессиональная чистка снижает воспаление дёсен; электрические щётки дают небольшую дополнительную пользу.",
+    "Для промежутков эксперты рекомендуют межзубные ёршики, а нить только там, где ёршик не проходит без травмы."
+   ],
+   "p": [
+    "Пародонтит это необратимое воспаление тканей вокруг зубов, одна из главных причин потери зубов. Группа экспертов изучила, можно ли предотвратить его, остановив воспаление дёсен (гингивит) на раннем этапе. Выводы опираются на два обзора обзоров по механической чистке и два систематических обзора по химическим средствам и противовоспалительным препаратам.",
+    "Профессионально проводимое удаление налёта заметно уменьшает воспаление дёсен и количество налёта. Заряжаемые электрические щётки дают небольшое, но статистически значимое дополнительное снижение. Для промежутков между зубами эксперты считают средством выбора межзубные ёршики, а нить рекомендуют только там, где ёршик не проходит без травмы. Для противовоспалительных средств при гингивите надёжных данных нет.",
+    "Эксперты поддерживают общую рекомендацию: чистить зубы два раза в день не меньше двух минут пастой с фторидом. При пародонтите двух минут, скорее всего, мало. При гингивите советуют очищать межзубные промежутки раз в день, а средства химического контроля налёта дают преимущество. Покажите дёсны врачу, если они кровоточат."
+   ]
+  },
+  "fa": {
+   "title": "جلوگیری از تبدیل التهاب لثه به بیماری لثه",
+   "sum": "متخصصان بر پایهٔ مرورها می‌گویند: جرم‌گیری حرفه‌ای التهاب لثه را کم می‌کند، مسواک برقی سود کوچک اضافه دارد و مسواک بین‌دندانی بر نخ دندان ارجحیت دارد.",
+   "key": [
+    "بیماری شدید لثه بیش از ۱۱٪ بزرگسالان را درگیر می‌کند و اغلب به از دست رفتن دندان می‌رسد.",
+    "جرم‌گیری حرفه‌ای التهاب لثه را کم می‌کند؛ مسواک برقی سود کوچک اضافه دارد.",
+    "برای فاصلهٔ بین دندان‌ها متخصصان مسواک بین‌دندانی را توصیه می‌کنند و نخ دندان را فقط جایی که مسواک بدون آسیب رد نمی‌شود."
+   ],
+   "p": [
+    "پریودنتیت التهاب برگشت‌ناپذیر بافت اطراف دندان و یکی از دلایل اصلی از دست رفتن دندان است. گروهی از متخصصان بررسی کردند آیا می‌شود با مهار زودهنگام التهاب لثه (ژنژیویت) از آن پیشگیری کرد. نتیجه‌گیری آنها بر پایهٔ دو مرور از مرورها دربارهٔ پاک‌سازی مکانیکی و دو مرور سیستماتیک دربارهٔ مواد شیمیایی و داروهای ضدالتهاب است.",
+    "برداشتن حرفه‌ای پلاک التهاب لثه و مقدار پلاک را به‌طور محسوس کم می‌کند. مسواک برقی شارژی کاهش کوچک ولی از نظر آماری معنادار اضافه می‌دهد. برای فاصلهٔ بین دندان‌ها متخصصان مسواک بین‌دندانی را وسیلهٔ انتخابی می‌دانند و نخ دندان را فقط جایی توصیه می‌کنند که مسواک بین‌دندانی بدون آسیب رد نمی‌شود. برای داروهای ضدالتهاب در درمان ژنژیویت شواهد محکمی نیست.",
+    "متخصصان همان توصیهٔ عمومی را تأیید می‌کنند: روزی دو بار دست‌کم دو دقیقه با خمیردندان فلوراید دار مسواک بزنید. در بیماری لثه احتمالاً دو دقیقه کافی نیست. برای ژنژیویت تمیز کردن فاصلهٔ بین دندان‌ها روزی یک بار توصیه می‌شود و مواد شیمیایی کنترل پلاک مزیت دارند. اگر لثه‌تان خونریزی دارد آن را به دندانپزشک نشان دهید."
+   ]
+  },
+  "en": {
+   "title": "Keeping gum inflammation from turning into gum disease",
+   "sum": "Experts working from reviews: professional cleaning lowers gum inflammation, power brushes add a small benefit, and interdental brushes are preferred over floss.",
+   "key": [
+    "Severe periodontitis affects over 11% of adults and is a major cause of tooth loss.",
+    "Professional cleaning lowers gum inflammation; power toothbrushes add a small benefit.",
+    "Between teeth the experts prefer interdental brushes, and floss only where a brush cannot pass without trauma."
+   ],
+   "p": [
+    "Periodontitis is an irreversible inflammation of the tissues around the teeth and a leading cause of tooth loss. A group of experts asked whether it can be prevented by stopping gum inflammation (gingivitis) early. Their conclusions rest on two meta-reviews of mechanical plaque removal and two systematic reviews of chemical agents and anti-inflammatory drugs.",
+    "Professionally delivered plaque control clearly lowers gum inflammation and plaque scores. Re-chargeable power toothbrushes give small but statistically significant additional reductions. For the spaces between teeth, the experts see interdental brushes as the device of choice and recommend floss only where a brush will not pass without trauma. There is no robust evidence for anti-inflammatory agents in managing gingivitis.",
+    "The experts support the near-universal advice to brush twice a day for at least two minutes with fluoride toothpaste, and think two minutes is probably too little for people with periodontitis. For gingivitis they recommend cleaning between the teeth once a day, and chemical plaque-control agents add an advantage. If your gums bleed, have a dentist look at them."
    ]
   }
  },

@@ -2,9 +2,11 @@
 import json, re, sys
 sys.path.insert(0, '.')
 from entries import E, MANUAL
+from entries2 import E2
+E.update(E2)
 import importlib
 ST = {}
-for _i in range(1, 7):
+for _i in range(1, 9):
     ST.update(importlib.import_module(f'stories{_i}').ST)
 assert set(ST) == set(E), (set(E) ^ set(ST))
 
@@ -34,9 +36,9 @@ def org_of(aff):
         if not bad.match(p) and re.search(r'Institut|College|Hospital|Centre|Center|Academy', p, re.I): return p
     return parts[0]
 
-def kind(types, journal):
+def kind(types, journal, title=''):
     if 'Cochrane' in journal: return 'cochrane'
-    t = ' '.join(types).lower()
+    t = ' '.join(types).lower() + ' ' + title.lower()
     if 'meta-analysis' in t or 'systematic' in t: return 'systematic'
     return 'review'
 
@@ -57,7 +59,7 @@ for pmid, (cat, ru, fa, en) in E.items():
     team = 'Cochrane' if 'Cochrane' in rec['journal'] else ''
     st = ST[pmid]
     slug = slugify(en[0])
-    out.append(dict(id=pmid, slug=slug, minutes=max(minutes_of(st['ru'][1]), minutes_of(st['en'][1])), cat=cat, year=rec['year'], journal=rec['journal'], type=kind(rec['types'], rec['journal']),
+    out.append(dict(id=pmid, slug=slug, minutes=max(minutes_of(st['ru'][1]), minutes_of(st['en'][1])), cat=cat, year=rec['year'], journal=rec['journal'], type=kind(rec['types'], rec['journal'], rec['title']),
         oa=bool(rec['pmc']), pmc=rec['pmc'], doi=rec['doi'], authors=rec['authors'], org=rec['org'], team=team,
         titleEn=rec['title'], kw=rec['kw'],
         ru=dict(title=ru[0], sum=ru[1], key=st['ru'][0], p=st['ru'][1]),
