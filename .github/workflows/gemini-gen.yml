@@ -1,0 +1,53 @@
+name: gemini-gen
+# Push fetch/gemini/<name>.json  {"prompt": "...", "model": "gemini-2.5-flash-image", "n": 1}
+# -> images in fetch/out/gemini/<name>/. Needs repo secret GEMINI_API_KEY.
+on:
+  push:
+    branches: [media]
+    paths: ['fetch/gemini/*.json']
+permissions:
+  contents: write
+concurrency:
+  group: gemini-gen
+  cancel-in-progress: false
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python3 - <<'PY'
+          import json, os, glob, base64, urllib.request, subprocess
+          key = os.environ.get("GEMINI_API_KEY", "")
+          for f in glob.glob("fetch/gemini/*.json"):
+              name = os.path.basename(f)[:-5]; out = f"fetch/out/gemini/{name}"; os.makedirs(out, exist_ok=True)
+              req = json.load(open(f)); model = req.get("model", "gemini-2.5-flash-image")
+              for i in range(int(req.get("n", 1))):
+                  body = {"contents": [{"parts": [{"text": req["prompt"]}]}],
+                          "generationConfig": {"responseModalities": ["IMAGE", "TEXT"],
+                                               **({"imageConfig": {"aspectRatio": req["aspect"]}} if req.get("aspect") else {})}}
+                  r = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                      data=json.dumps(body).encode(), headers={"Content-Type": "application/json", "x-goog-api-key": key})
+                  try:
+                      d = json.load(urllib.request.urlopen(r, timeout=180))
+                      k = 0
+                      for p in d["candidates"][0]["content"]["parts"]:
+                          if "inlineData" in p:
+                              open(f"{out}/{i+1}_{k}.png", "wb").write(base64.b64decode(p["inlineData"]["data"])); k += 1
+                      if not k: open(f"{out}/{i+1}.log", "w").write(json.dumps(d)[:3000])
+                  except urllib.error.HTTPError as e:
+                      open(f"{out}/{i+1}.log", "w").write(f"HTTP {e.code}\n" + e.read().decode()[:3000])
+                  except Exception as e:
+                      open(f"{out}/{i+1}.log", "w").write(repr(e))
+              subprocess.run(["git", "rm", "-q", f])
+          PY
+      - name: Commit
+        run: |
+          git config user.name "SaySmile Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A fetch
+          git commit -m "Gemini generated [skip ci]" || exit 0
+          git push
