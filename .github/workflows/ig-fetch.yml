@@ -1,0 +1,46 @@
+name: ig-fetch
+# Push fetch/ig/<name>.txt (one Instagram URL per line) -> downloads to fetch/out/ig/<name>/
+on:
+  push:
+    branches: [media]
+    paths: ['fetch/ig/*.txt']
+permissions:
+  contents: write
+concurrency:
+  group: ig-fetch
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tools
+        run: pip install -q -U yt-dlp gallery-dl instaloader
+      - name: Download
+        run: |
+          set +e
+          shopt -s nullglob
+          for f in fetch/ig/*.txt; do
+            name="$(basename "$f" .txt)"; out="fetch/out/ig/$name"; mkdir -p "$out"
+            while read -r url; do
+              [ -z "$url" ] && continue
+              sc="$(echo "$url" | sed -E 's#.*/(p|reel|reels|tv)/([^/?]+).*#\2#')"
+              echo "== $sc"
+              yt-dlp -q --no-warnings --write-info-json --write-thumbnail -o "$out/${sc}.%(ext)s" "$url" >"$out/${sc}.ytdlp.log" 2>&1
+              if ! ls "$out/$sc".* 2>/dev/null | grep -qvE '\.log$'; then
+                gallery-dl -q -D "$out/$sc" "$url" >"$out/${sc}.gdl.log" 2>&1
+              fi
+              if [ -z "$(ls -A "$out/$sc" 2>/dev/null)" ] && ! ls "$out/$sc".mp4 >/dev/null 2>&1; then
+                (cd "$out" && instaloader --no-compress-json --dirname-pattern="$sc" -- "-$sc" >"${sc}.il.log" 2>&1)
+              fi
+            done < "$f"
+            git rm -q "$f"
+          done
+          ls -laR fetch/out/ig || true
+      - name: Commit
+        run: |
+          git config user.name "SaySmile Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A fetch
+          git commit -m "IG fetched [skip ci]" || exit 0
+          git push
