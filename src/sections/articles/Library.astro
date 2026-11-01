@@ -2,11 +2,13 @@
 // Searchable library of plain-language summaries of real, published reviews (data: PubMed).
 // Every card is rendered in the HTML (so search engines see all of it); the script only hides and reorders.
 import { library } from '../../content/library-data';
-import { categories, evidenceTypes, libraryUi } from '../../content/library-ui';
-import type { Locale } from '../../i18n';
+import { categories, evidenceTypes, libraryUi, libraryArticleUi } from '../../content/library-ui';
+import { firstAuthor } from '../../content/library-articles';
+import { localeUrl, type Locale } from '../../i18n';
 
 const { lang } = Astro.props as { lang: Locale };
 const ui = libraryUi[lang];
+const au = libraryArticleUi[lang];
 const fa = lang === 'fa';
 const num = (n: number) => (fa ? n.toLocaleString('fa-IR', { useGrouping: false }) : String(n));
 const catLabel = (id: string) => categories.find((c) => c.id === id)!.label[lang];
@@ -14,7 +16,6 @@ const catWords = (id: string) => categories.find((c) => c.id === id)!.words;
 const typeLabel = (id: string) => evidenceTypes.find((t) => t.id === id)!.label[lang];
 const catCount = (id: string) => library.filter((e) => e.cat === id).length;
 const usedCats = categories.filter((c) => catCount(c.id) > 0);
-const shownAuthors = 3;
 ---
 
 <section class="sheet sheet--b lib" id="library" aria-labelledby="lib-title" data-library>
@@ -91,8 +92,6 @@ const shownAuthors = 3;
     {library.map((e) => {
       const t = e[lang];
       const names = e.authors.length ? e.authors : [];
-      const first = names.slice(0, shownAuthors);
-      const rest = names.slice(shownAuthors);
       const hayTitle = [e.ru.title, e.fa.title, e.en.title, e.titleEn].join(' ');
       const hayAuthors = names.join(' ');
       const hayTeam = [e.org, e.team, e.journal].join(' ');
@@ -109,20 +108,18 @@ const shownAuthors = 3;
             <span class="entry__type">{typeLabel(e.type)}</span>
             {e.oa && <span class="entry__oa">{ui.openAccess}</span>}
           </div>
-          <h3 class="entry__title">{t.title}</h3>
+          <h3 class="entry__title"><a href={localeUrl(lang, `articles/${e.slug}/`)}>{t.title}</a></h3>
           <p class="entry__sum">{t.sum}</p>
-          <dl class="entry__facts">
-            <div><dt>{ui.original}</dt><dd><bdi lang="en">{e.titleEn}</bdi></dd></div>
-            <div><dt>{ui.authors}</dt><dd>
-              <bdi lang="en">{first.join(', ')}</bdi>{rest.length > 0 && <> <details class="entry__more"><summary>{ui.etAl} <bdi dir="ltr">+{num(rest.length)}</bdi></summary><bdi lang="en">{rest.join(', ')}</bdi></details></>}
-            </dd></div>
-            {e.org && <div><dt>{ui.team}</dt><dd><bdi lang="en">{e.org}{e.team && e.team !== e.org && !e.org.includes(e.team) ? `, ${e.team}` : ''}</bdi></dd></div>}
-            <div><dt>{ui.journal}</dt><dd><bdi lang="en">{e.journal}</bdi> · <time datetime={String(e.year)}>{num(e.year)}</time></dd></div>
-          </dl>
-          <p class="entry__links">
-            <a href={`https://pubmed.ncbi.nlm.nih.gov/${e.id}/`} rel="noopener" target="_blank">{ui.pubmed}<span class="sr-only"> {e.id}</span></a>
-            <a href={`https://doi.org/${e.doi}`} rel="noopener" target="_blank">{ui.doi}</a>
-            {e.pmc && <a href={`https://pmc.ncbi.nlm.nih.gov/articles/${e.pmc}/`} rel="noopener" target="_blank">{ui.fullText}</a>}
+          <p class="entry__src">
+            <span class="entry__who"><bdi lang="en">{firstAuthor(e)}</bdi> · <bdi lang="en">{e.journal}</bdi> · <time datetime={String(e.year)}>{num(e.year)}</time></span>
+          </p>
+          <p class="entry__foot">
+            <a class="entry__read" href={localeUrl(lang, `articles/${e.slug}/`)}>{au.read}<span aria-hidden="true">→</span><span class="sr-only"> {t.title}</span></a>
+            <span class="entry__min">{num(e.minutes)} {au.minutes}</span>
+            <span class="entry__links">
+              <a href={`https://pubmed.ncbi.nlm.nih.gov/${e.id}/`} rel="noopener" target="_blank">{ui.pubmed}<span class="sr-only"> {e.id}</span></a>
+              <a href={`https://doi.org/${e.doi}`} rel="noopener" target="_blank">{ui.doi}</a>
+            </span>
           </p>
         </li>
       );
@@ -186,7 +183,7 @@ const shownAuthors = 3;
   .entry {
     display: flex; flex-direction: column; gap: 0.65rem; min-inline-size: 0; padding: clamp(1.1rem, 2.5vw, 1.5rem);
     background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-    content-visibility: auto; contain-intrinsic-size: auto 26rem;
+    content-visibility: auto; contain-intrinsic-size: auto 18rem;
     scroll-margin-block-start: 6rem;
   }
   .entry[hidden] { display: none; }
@@ -196,16 +193,18 @@ const shownAuthors = 3;
   .entry__oa { color: var(--accent-ink); font-weight: 650; }
   .entry__title { margin: 0; font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.25; letter-spacing: -0.01em; text-wrap: balance; }
   .entry__sum { margin: 0; color: var(--text); max-inline-size: 65ch; }
-  .entry__facts { margin: 0; display: grid; gap: 0.4rem; font-size: 0.88rem; color: var(--text-muted); }
-  .entry__facts > div { display: grid; gap: 0.1rem; }
-  .entry__facts dt { font-weight: 650; color: var(--text); }
-  .entry__facts dd { margin: 0; overflow-wrap: anywhere; }
-  .entry__more { display: inline; }
-  .entry__more summary { display: inline; cursor: pointer; color: var(--primary); font-weight: 650; }
-  .entry__more[open] summary { display: block; }
-  .entry__links { margin: auto 0 0; padding-block-start: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-weight: 650; }
-  .entry__links a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; min-block-size: 2.75rem; display: inline-flex; align-items: center; }
-  .entry__links a:hover { color: var(--primary-hover); }
+  .entry__title a { color: inherit; text-decoration: none; }
+  .entry__title a:hover { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+  .entry__title a:focus-visible, .entry__read:focus-visible, .entry__links a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+  .entry__src { margin: 0; font-size: 0.85rem; color: var(--text-muted); overflow-wrap: anywhere; }
+  .entry__foot { margin: auto 0 0; padding-block-start: 0.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1rem; }
+  .entry__read { min-block-size: 2.75rem; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 700; color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+  .entry__read:hover { color: var(--primary-hover); }
+  .entry__min { font-size: 0.85rem; color: var(--text-muted); }
+  .entry__links { margin-inline-start: auto; display: flex; flex-wrap: wrap; gap: 0 1rem; font-size: 0.88rem; }
+  .entry__links a { color: var(--text-muted); text-decoration: underline; text-underline-offset: 3px; min-block-size: 2.75rem; display: inline-flex; align-items: center; }
+  .entry__links a:hover { color: var(--primary); }
+  :global([dir='rtl']) .entry__read span[aria-hidden] { display: inline-block; transform: scaleX(-1); }
   .sr-only { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .lib__note { margin: 1.5rem 0 0; font-size: 0.88rem; max-inline-size: 60rem; }
   .lib__note + .lib__note { margin-block-start: 0.4rem; }

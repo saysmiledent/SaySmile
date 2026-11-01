@@ -6,6 +6,8 @@ import { getDictionary, localeUrl, sectionUrl, type Locale } from '../i18n';
 import { contactLinks } from '../config/site';
 import { breadcrumb } from '../lib/seo';
 import { articles, type Article } from '../content/articles';
+import { libraryArticles, firstAuthor } from '../content/library-articles';
+import { libraryArticleUi, categories, evidenceTypes } from '../content/library-ui';
 
 interface Props { lang: Locale; article: Article }
 const { lang, article } = Astro.props;
@@ -16,11 +18,23 @@ const path = `articles/${article.slug}/`;
 const origin = Astro.site!;
 const url = new URL(localeUrl(lang, path), origin).href;
 const book = contactLinks()[0];
-const others = articles.filter((x) => x.slug !== article.slug).slice(0, 3);
+const lib = article.lib;
+const lu = libraryArticleUi[lang];
+const catLabel = (id: string) => categories.find((c) => c.id === id)!.label[lang];
+const typeLabel = (id: string) => evidenceTypes.find((x) => x.id === id)!.label[lang];
+// A retelling lists neighbours from the same topic first; the doctor's own articles list each other.
+const others = lib
+  ? [...libraryArticles.filter((x) => x.slug !== article.slug && x.lib!.cat === lib.cat), ...libraryArticles.filter((x) => x.slug !== article.slug && x.lib!.cat !== lib.cat)].slice(0, 3)
+  : articles.filter((x) => x.slug !== article.slug).slice(0, 3);
+const num = (n: number) => (lang === 'fa' ? n.toLocaleString('fa-IR', { useGrouping: false }) : String(n));
+const backHref = lib ? `${sectionUrl(lang, 'articles')}#library` : sectionUrl(lang, 'articles');
+const backLabel = lib ? lu.allLibrary : p.back;
 const date = new Date(article.iso).toLocaleDateString(lang === 'fa' ? 'fa-IR' : lang === 'ru' ? 'ru-RU' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 const root = new URL(localeUrl('ru'), origin).href;
 const nf = lang === 'fa' ? article.minutes.toLocaleString('fa-IR') : article.minutes;
-const meta = `${date} · ${nf} ${p.minutes} · ${p.author}: ${t.hero.doctor}`;
+const meta = lib
+  ? `${nf} ${lu.minutes} · ${lu.retelling(`\u2068${firstAuthor(lib)}\u2069`, `\u2068${lib.journal}\u2069`, num(lib.year))}`
+  : `${date} · ${nf} ${p.minutes} · ${p.author}: ${t.hero.doctor}`;
 
 const schema = [
   breadcrumb([
@@ -39,17 +53,30 @@ const schema = [
     mainEntityOfPage: url,
     url,
     keywords: a.keywords.join(', '),
-    author: { '@id': `${root}#doctor` },
+    author: { '@id': lib ? `${root}#clinic` : `${root}#doctor` },
     publisher: { '@id': `${root}#clinic` },
     image: new URL(`${import.meta.env.BASE_URL}og-image.jpg`, origin).href,
     citation: article.refs.map((r) => ({ '@type': 'ScholarlyArticle', name: r.text, sameAs: `https://doi.org/${r.doi}` })),
     isAccessibleForFree: true,
+    ...(lib ? {
+      inLanguage: lang,
+      about: catLabel(lib.cat),
+      isBasedOn: {
+        '@type': 'ScholarlyArticle',
+        name: lib.titleEn,
+        url: `https://doi.org/${lib.doi}`,
+        sameAs: [`https://pubmed.ncbi.nlm.nih.gov/${lib.id}/`],
+        datePublished: String(lib.year),
+        isPartOf: { '@type': 'Periodical', name: lib.journal },
+        author: lib.authors.slice(0, 6).map((n) => ({ '@type': 'Person', name: n })),
+      },
+    } : {}),
   },
 ];
 ---
 
 <Base lang={lang} path={path} current="articles" title={a.title} description={a.description} ogType="article" published={article.iso} schema={schema}>
-  <PageHero lang={lang} small title={a.title} lead={meta} back={{ href: sectionUrl(lang, 'articles'), label: p.back }} />
+  <PageHero lang={lang} small title={a.title} lead={meta} back={{ href: backHref, label: backLabel }} />
 
   <article class="sheet">
     <div class="container prose">
@@ -67,18 +94,37 @@ const schema = [
         </section>
       ))}
 
-      <section class="refs">
-        <h2>{p.refsTitle}</h2>
-        <ol>
-          {article.refs.map((r) => (
-            <li>
-              <span class="ltr">{r.text}</span>
-              {' '}<a class="ltr" href={`https://doi.org/${r.doi}`} rel="noopener" target="_blank">doi:{r.doi}</a>
-              {' · '}<a class="ltr" href={`https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/`} rel="noopener" target="_blank">PubMed {r.pmid}</a>
-            </li>
-          ))}
-        </ol>
-      </section>
+      {lib ? (
+        <section class="refs src">
+          <h2>{lu.sourceTitle}</h2>
+          <p class="src__note">{lu.originalNote}</p>
+          <dl class="src__facts">
+            <div><dt>{lu.basedOn}</dt><dd><bdi lang="en">{lib.titleEn}</bdi></dd></div>
+            <div><dt>{lu.kind}</dt><dd>{typeLabel(lib.type)}</dd></div>
+            {lib.authors.length > 0 && <div><dt>{lu.authors}</dt><dd><bdi lang="en">{lib.authors.join(', ')}</bdi></dd></div>}
+            {lib.org && <div><dt>{lu.team}</dt><dd><bdi lang="en">{lib.org}{lib.team && !lib.org.includes(lib.team) ? `, ${lib.team}` : ''}</bdi></dd></div>}
+            <div><dt>{lu.journal}</dt><dd><bdi lang="en">{lib.journal}</bdi> · <time datetime={String(lib.year)}>{num(lib.year)}</time></dd></div>
+          </dl>
+          <p class="src__links">
+            <a href={`https://pubmed.ncbi.nlm.nih.gov/${lib.id}/`} rel="noopener" target="_blank">{lu.pubmed}</a>
+            <a href={`https://doi.org/${lib.doi}`} rel="noopener" target="_blank">{lu.doi}</a>
+            {lib.pmc && <a href={`https://pmc.ncbi.nlm.nih.gov/articles/${lib.pmc}/`} rel="noopener" target="_blank">{lu.fullText}</a>}
+          </p>
+        </section>
+      ) : (
+        <section class="refs">
+          <h2>{p.refsTitle}</h2>
+          <ol>
+            {article.refs.map((r) => (
+              <li>
+                <span class="ltr">{r.text}</span>
+                {' '}<a class="ltr" href={`https://doi.org/${r.doi}`} rel="noopener" target="_blank">doi:{r.doi}</a>
+                {' · '}<a class="ltr" href={`https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/`} rel="noopener" target="_blank">PubMed {r.pmid}</a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
 
       <p class="disc">{p.disclaimer}</p>
       {book && <p><a class="btn" href={book.href} target="_blank" rel="noopener">{t.hero.cta}</a></p>}
@@ -86,12 +132,13 @@ const schema = [
 
   </article>
 
-  <section class="sheet sheet--c grain more" aria-label={p.back}>
+  <section class="sheet sheet--c grain more" aria-label={lib ? lu.moreTitle : p.back}>
     <div class="container">
-      <h2 class="sec-title" data-split>{p.back}</h2>
+      <h2 class="sec-title" data-split>{lib ? lu.moreTitle : p.back}</h2>
       <ul>
         {others.map((o) => <li data-reveal><a href={localeUrl(lang, `articles/${o.slug}/`)}>{o.text[lang].title}<span aria-hidden="true">→</span></a></li>)}
       </ul>
+      {lib && <p class="more__all"><a href={backHref}>{lu.allLibrary}<span aria-hidden="true">→</span></a></p>}
     </div>
   </section>
 </Base>
@@ -106,6 +153,15 @@ const schema = [
   .prose p { font-size: 1.08rem; }
   .refs ol { padding-inline-start: 1.3rem; display: grid; gap: 0.6rem; font-size: 0.92rem; }
   .refs a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; word-break: break-word; }
+  .src__note { font-size: 0.95rem; color: var(--text-muted); max-inline-size: 60ch; }
+  .src__facts { margin: 1rem 0; display: grid; gap: 0.7rem; font-size: 0.95rem; }
+  .src__facts > div { display: grid; gap: 0.1rem; }
+  .src__facts dt { font-weight: 650; }
+  .src__facts dd { margin: 0; color: var(--text-muted); overflow-wrap: anywhere; }
+  .src__links { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; font-weight: 650; }
+  .src__links a { min-block-size: 2.75rem; display: inline-flex; align-items: center; }
+  .more__all { margin: 1.25rem 0 0; font-weight: 650; }
+  .more__all a { display: inline-flex; gap: 0.5rem; text-decoration: underline; text-underline-offset: 3px; }
   .disc { margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid var(--line); }
   .more h2.sec-title { margin: 0 0 1.5rem; font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
   .more ul { list-style: none; padding: 0; margin: 0; display: grid; border-top: 1px solid rgb(39 39 42 / 0.25); }

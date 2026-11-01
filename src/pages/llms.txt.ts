@@ -34,7 +34,7 @@ export const GET: APIRoute = ({ site: origin }) => {
   lines.push('');
   lines.push(`## Research library (${library.length} reviews, plain-language summaries with PubMed and DOI links)`);
   lines.push(`- [Library page](${u(sectionUrl('ru', 'articles'))}#library)`);
-  for (const e of library) lines.push(`- ${e.ru.title}: ${e.ru.sum} (${e.journal}, ${e.year}) https://doi.org/${e.doi}`);
+  for (const e of library) lines.push(`- [${e.ru.title}](${u(localeUrl('ru', `articles/${e.slug}/`))}): ${e.ru.sum} (${e.journal}, ${e.year}) https://doi.org/${e.doi}`);
   lines.push('');
   lines.push('## Documents');
   for (const d of docs) lines.push(`- ${d.text.ru.date}: ${d.text.ru.title} (${d.text.ru.issuer})`);

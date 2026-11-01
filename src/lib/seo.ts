@@ -127,6 +127,7 @@ export function libraryList(lang: Locale, name: string, path: string, origin: UR
       itemListElement: library.map((e, i) => ({
         '@type': 'ListItem',
         position: i + 1,
+        url: abs(localeUrl(lang, `articles/${e.slug}/`), origin),
         item: {
           '@type': 'ScholarlyArticle',
           '@id': `${abs(path, origin)}#pmid-${e.id}`,
