@@ -2,13 +2,15 @@
 // Searchable library of plain-language summaries of real, published reviews (data: PubMed).
 // Every card is rendered in the HTML (so search engines see all of it); the script only hides and reorders.
 import { library } from '../../content/library-data';
-import { categories, evidenceTypes, libraryUi, libraryArticleUi } from '../../content/library-ui';
+import { categories, evidenceTypes, evidenceNote, startUi, libraryUi, libraryArticleUi } from '../../content/library-ui';
+import EvidenceMark from '../../components/EvidenceMark.astro';
 import { firstAuthor } from '../../content/library-articles';
 import { localeUrl, type Locale } from '../../i18n';
 
 const { lang } = Astro.props as { lang: Locale };
 const ui = libraryUi[lang];
 const au = libraryArticleUi[lang];
+const start = startUi[lang];
 const fa = lang === 'fa';
 const num = (n: number) => (fa ? n.toLocaleString('fa-IR', { useGrouping: false }) : String(n));
 const catLabel = (id: string) => categories.find((c) => c.id === id)!.label[lang];
@@ -24,6 +26,16 @@ const usedCats = categories.filter((c) => catCount(c.id) > 0);
     <h2 id="lib-title">{ui.title}</h2>
     <p class="muted">{ui.lead}</p>
   </header>
+
+  <nav class="lib__start" aria-labelledby="lib-start">
+    <h3 id="lib-start">{start.title}</h3>
+    <p class="muted">{start.lead}</p>
+    <ul>
+      {start.items.map((it) => (
+        <li><a class="start" href={`?${it.cat ? 'topic=' + it.cat : 'q=' + encodeURIComponent(it.q!)}#library`} data-start data-start-cat={it.cat} data-start-q={it.q}>{it.label}<span aria-hidden="true">→</span></a></li>
+      ))}
+    </ul>
+  </nav>
 
   <form class="lib__tools" role="search" aria-label={ui.searchLabel} onsubmit="return false">
     <div class="lib__row">
@@ -95,7 +107,7 @@ const usedCats = categories.filter((c) => catCount(c.id) > 0);
       const hayTitle = [e.ru.title, e.fa.title, e.en.title, e.titleEn].join(' ');
       const hayAuthors = names.join(' ');
       const hayTeam = [e.org, e.team, e.journal].join(' ');
-      const hayKw = [e.kw.join(' '), catLabel(e.cat), catWords(e.cat), typeLabel(e.type)].join(' ');
+      const hayKw = [e.kw.join(' '), catLabel(e.cat), catWords(e.cat), typeLabel(e.type), evidenceTypes.find((t) => t.id === e.type)!.hint[lang]].join(' ');
       const hayAll = [hayTitle, hayAuthors, hayTeam, hayKw, e.ru.sum, e.fa.sum, e.en.sum, e.year, e.id, e.doi].join(' ');
       return (
         <li
@@ -105,7 +117,7 @@ const usedCats = categories.filter((c) => catCount(c.id) > 0);
         >
           <div class="entry__meta">
             <span class="tag">{catLabel(e.cat)}</span>
-            <span class="entry__type">{typeLabel(e.type)}</span>
+            <EvidenceMark type={e.type} lang={lang} />
             {e.oa && <span class="entry__oa">{ui.openAccess}</span>}
           </div>
           <h3 class="entry__title"><a href={localeUrl(lang, `articles/${e.slug}/`)}>{t.title}</a></h3>
@@ -126,6 +138,7 @@ const usedCats = categories.filter((c) => catCount(c.id) > 0);
     })}
   </ol>
 
+  <p class="lib__note muted">{evidenceNote[lang]}</p>
   <p class="lib__note muted">{ui.note}</p>
   <p class="lib__note muted">{ui.attribution}</p>
 </div>
@@ -136,6 +149,14 @@ const usedCats = categories.filter((c) => catCount(c.id) > 0);
   .lib__head h2 { font-size: clamp(1.7rem, 3.4vw, 2.6rem); margin: 0 0 0.5rem; letter-spacing: -0.02em; line-height: 1.15; }
   .lib__head p { margin: 0; }
 
+  .lib__start { margin-block-end: 1.25rem; }
+  .lib__start h3 { margin: 0 0 0.25rem; font-size: 1.15rem; }
+  .lib__start p { margin: 0 0 0.75rem; }
+  .lib__start ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
+  .start { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; min-block-size: 3.25rem; padding: 0.6rem 1rem; font-weight: 650; color: var(--text); background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .start:hover { border-color: var(--primary); transform: translateY(-2px); }
+  .start:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+  :global([dir='rtl']) .start span { display: inline-block; transform: scaleX(-1); }
   .lib__tools { display: grid; gap: 1rem; padding: clamp(1rem, 2.5vw, 1.5rem); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
   .lib__row { display: flex; gap: 1rem 1.5rem; align-items: end; }
   .lib__row--wrap { flex-wrap: wrap; }
@@ -189,7 +210,6 @@ const usedCats = categories.filter((c) => catCount(c.id) > 0);
   .entry[hidden] { display: none; }
   .entry:target { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary); }
   .entry__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem; font-size: 0.85rem; }
-  .entry__type { font-weight: 650; color: var(--primary); }
   .entry__oa { color: var(--accent-ink); font-weight: 650; }
   .entry__title { margin: 0; font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.25; letter-spacing: -0.01em; text-wrap: balance; }
   .entry__sum { margin: 0; color: var(--text); max-inline-size: 65ch; }
@@ -322,6 +342,15 @@ const usedCats = categories.filter((c) => catCount(c.id) > 0);
     setBtn('button[data-cat]', 'data-cat', 'cat', p.get('topic'));
     setBtn('button[data-type]', 'data-type', 'type', p.get('type'));
     apply();
+    // "where do I start" cards apply a topic or a search without reloading the page
+    $$<HTMLAnchorElement>('[data-start]').forEach((a) => a.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      reset();
+      if (a.dataset.startCat) setBtn('button[data-cat]', 'data-cat', 'cat', a.dataset.startCat);
+      if (a.dataset.startQ) q.value = a.dataset.startQ;
+      apply();
+      $<HTMLElement>('[data-count]').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
     // a direct link to one paper (#pmid-123) must stay visible even when a filter would hide it
     if (location.hash.startsWith('#pmid-')) document.getElementById(location.hash.slice(1))?.scrollIntoView();
   }
