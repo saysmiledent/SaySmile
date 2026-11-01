@@ -128,7 +128,7 @@ const en: PagesContent = {
     "allDocs": "View documents"
   },
   articles: {
-    "lead": "Short articles on hygiene, cavities, the rubber dam and whitening, with links to scientific reviews.",
+    "lead": "Short articles on hygiene, cavities, the rubber dam and whitening, and below them a searchable library of scientific reviews.",
     "read": "Read",
     "minutes": "min read",
     "keyTitle": "In short",
@@ -193,8 +193,8 @@ const en: PagesContent = {
       "description": "From nursing-staff admission to accreditation in general practice dentistry: dates, documents and seminars."
     },
     "articles": {
-      "title": "Articles on dental health",
-      "description": "Professional hygiene, cavity treatment, the rubber dam and whitening: plain-language articles by a dentist with Cochrane and PubMed references."
+      "title": "Articles and research library on dental health",
+      "description": "Plain-language articles by a dentist plus a searchable library of scientific reviews: decay, fluoride, gums, hygiene, whitening, children. Links to PubMed, Cochrane and DOI."
     },
     "tutorials": {
       "title": "Dental health video tutorials",

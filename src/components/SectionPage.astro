@@ -10,8 +10,9 @@ import Tutorials from '../sections/tutorials/Tutorials.astro';
 import Contact from '../sections/contact/Contact.astro';
 import Articles from '../sections/articles/Articles.astro';
 import { getDictionary, localeUrl, sectionUrl, type Locale, type SectionId } from '../i18n';
-import { breadcrumb, faqPage } from '../lib/seo';
+import { breadcrumb, faqPage, libraryList } from '../lib/seo';
 import { getPages } from '../content';
+import { libraryUi } from '../content/library-ui';
 
 // One menu page: animated title + the section's own colour sheets.
 interface Props { lang: Locale; section: SectionId }
@@ -24,6 +25,7 @@ const schema: Record<string, unknown>[] = [
   breadcrumb([{ name: 'SaySmile', path: localeUrl(lang) }, { name: t.nav[section], path: sectionUrl(lang, section) }], Astro.site!),
 ];
 if (section === 'services') schema.push(faqPage(pages.faq.items));
+if (section === 'articles') schema.push(libraryList(lang, libraryUi[lang].title, sectionUrl(lang, 'articles'), Astro.site!));
 ---
 
 <Base lang={lang} path={`${section}/`} current={section} title={seo.title} description={seo.description} schema={schema}>
