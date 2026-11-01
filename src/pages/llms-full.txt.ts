@@ -5,7 +5,7 @@ import { localeUrl, locales } from '../i18n';
 
 export const GET: APIRoute = ({ site: origin }) => {
   const u = (p: string) => new URL(p, origin).href;
-  const out: string[] = ['# SaySmile — articles (full text)', '', '> Author: Dr. Seivan (доктор Сейван), dentist, GAM Clinic, St. Petersburg. Informational only; contraindications exist; consult a specialist.', ''];
+  const out: string[] = ['# SaySmile: articles (full text)', '', '> Author: Dr. Seivan (доктор Сейван), dentist, GAM Clinic, St. Petersburg. Informational only; contraindications exist; consult a specialist.', ''];
   for (const lang of locales) {
     out.push(`# Language: ${lang}`, '');
     for (const a of articles) {

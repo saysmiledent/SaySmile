@@ -112,3 +112,9 @@ html[lang='fa'] .eyebrow { letter-spacing: 0; text-transform: none; }
 [dir='rtl'] .btn--arrow::after { content: '←'; }
 .btn--arrow:hover::after { transform: translateX(4px); }
 [dir='rtl'] .btn--arrow:hover::after { transform: translateX(-4px); }
+
+/* Mobile energy 1 (DESIGN.md): no looping decoration, calmer intro */
+@media (max-width: 768px) {
+  .orb, .tooth { animation: none !important; }
+  .header { animation-duration: 0.45s; }
+}

@@ -42,7 +42,7 @@ const nf = (v: number) => v.toLocaleString(lang === 'fa' ? 'fa-IR' : 'en-US');
     <div class="statement__row">
       <p class="hours" aria-label="09:00–21:00">
         <span class="hours__n"><span data-counter="9">{nf(9)}</span>:{nf(0)}{nf(0)}</span>
-        <span class="hours__dash" aria-hidden="true">—</span>
+        <span class="hours__dash" aria-hidden="true">–</span>
         <span class="hours__n"><span data-counter="21">{nf(21)}</span>:{nf(0)}{nf(0)}</span>
       </p>
       {book && <a class="btn btn--light btn--arrow" href={book.href} target="_blank" rel="noopener" data-magnetic="0.3">{t.hero.cta}</a>}
