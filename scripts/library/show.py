@@ -1,5 +1,6 @@
 import json,sys,re
-S='/tmp/claude-0/-home-claude/bbd28d26-13fb-5ce6-bd5a-562c8f9e28ca/scratchpad'
+import os
+S = os.path.dirname(os.path.abspath(__file__))
 pool=json.load(open(f'{S}/pool.json'))
 for p in sys.argv[1:]:
     x=pool[p]; a=x['abstract'] or ''
