@@ -64,25 +64,41 @@ const schema = [
   <section class="sheet sheet--b grain" aria-labelledby="slides-h">
     <div class="container">
       <h2 class="sec-title" id="slides-h">قدم‌به‌قدم، {fa(t.slides.length)} اسلاید</h2>
-      <p class="sub">همان اسلایدهای اینستاگرام، با متن کامل زیر هر کدام. مرحله‌های ۴ تا ۷ هنگام رسیدن به آن‌ها خودکار و بی‌صدا پخش می‌شوند.</p>
-      <ol class="slides">
-        {t.slides.map((s, i) => (
-          <li class="slide" id={`slide-${i + 1}`} data-reveal>
-            {s.motion ? (
-              <video muted loop playsinline preload="none" data-loop width="720" height="900" poster={`${base}/videos/${t.id}/s${nn(i)}.webp`} aria-label={s.alt}>
-                <source src={`${base}/videos/${t.id}/s${nn(i)}.mp4`} type="video/mp4" />
-              </video>
-            ) : (
-              <img src={`${base}/videos/${t.id}/s${nn(i)}.webp`} alt={s.alt} width="1080" height="1350" loading="lazy" decoding="async" />
-            )}
-            <div class="slide__body">
-              <p class="slide__n">اسلاید {fa(i + 1)} از {fa(t.slides.length)}</p>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <p class="sub">همان اسلایدهای اینستاگرام، با متن کامل زیر هر کدام. با انگشت به چپ و راست بکشید یا از فلش‌ها استفاده کنید. مرحله‌های ۴ تا ۷ خودکار و بی‌صدا پخش می‌شوند.</p>
+
+      <div class="slider" data-slider>
+        <div class="slider__stage">
+          <button class="slider__arrow slider__arrow--prev" type="button" data-prev aria-label="اسلاید قبلی">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+          </button>
+          <div class="slider__track" data-track tabindex="0" role="region" aria-roledescription="کاروسل" aria-label={`اسلایدهای ${t.short}`}>
+            {t.slides.map((s, i) => (
+              <article class="slide" id={`slide-${i + 1}`} data-slide aria-roledescription="اسلاید" aria-label={`${fa(i + 1)} از ${fa(t.slides.length)}`}>
+                {s.motion ? (
+                  <video muted loop playsinline preload={i < 2 ? 'auto' : 'none'} data-loop width="720" height="900" poster={`${base}/videos/${t.id}/s${nn(i)}.webp`} aria-label={s.alt}>
+                    <source src={`${base}/videos/${t.id}/s${nn(i)}.mp4`} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img src={`${base}/videos/${t.id}/s${nn(i)}.webp`} alt={s.alt} width="1080" height="1350" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" draggable="false" />
+                )}
+                <div class="slide__body">
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <button class="slider__arrow slider__arrow--next" type="button" data-next aria-label="اسلاید بعدی">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+          </button>
+        </div>
+        <div class="slider__nav">
+          <p class="slider__count" aria-live="polite"><span data-cur>{fa(1)}</span> از {fa(t.slides.length)}</p>
+          <div class="slider__dots">
+            {t.slides.map((s, i) => <button type="button" data-dot={i} aria-label={`اسلاید ${fa(i + 1)}: ${s.title}`}></button>)}
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -134,20 +150,86 @@ const schema = [
 </Base>
 
 <script>
-  // The short step clips play only while on screen, and not at all for people who asked for less motion.
-  const clips = document.querySelectorAll<HTMLVideoElement>('video[data-loop]');
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-    clips.forEach((v) => { v.controls = true; });
-  } else {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        const v = e.target as HTMLVideoElement;
-        if (e.isIntersecting) v.play().catch(() => { v.controls = true; });
+  // Slide carousel: swipe (native scroll-snap) or arrows/keys; step clips play only for the slide in view.
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLElement>('[data-slider]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-track]')!;
+    const slides = [...root.querySelectorAll<HTMLElement>('[data-slide]')];
+    const dots = [...root.querySelectorAll<HTMLButtonElement>('[data-dot]')];
+    const prev = root.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = root.querySelector<HTMLButtonElement>('[data-next]')!;
+    const cur = root.querySelector<HTMLElement>('[data-cur]')!;
+    const fa = (n: number) => n.toLocaleString('fa-IR', { useGrouping: false });
+    let active = 0;
+    let visible = true;
+
+    const sync = () => {
+      slides.forEach((sl, i) => {
+        const v = sl.querySelector<HTMLVideoElement>('video');
+        if (!v) return;
+        if (reduce) { v.controls = true; return; }
+        if (i === active && visible) v.play().catch(() => { v.controls = true; });
         else v.pause();
       });
-    }, { threshold: 0.6 });
-    clips.forEach((v) => io.observe(v));
-  }
+    };
+    const setActive = (i: number) => {
+      if (i === active) return;
+      active = i;
+      dots.forEach((d, k) => d.toggleAttribute('aria-current', k === i));
+      cur.textContent = fa(i + 1);
+      prev.disabled = i === 0;
+      next.disabled = i === slides.length - 1;
+      // wake the neighbours' pictures and clips so the next swipe is instant
+      [i + 1].forEach((k) => slides[k]?.querySelectorAll('img').forEach((im) => { im.loading = 'eager'; }));
+      sync();
+    };
+    // direction-safe: move by the measured distance, whatever the writing direction
+    const go = (i: number, smooth = true) => {
+      const n = Math.max(0, Math.min(slides.length - 1, i));
+      const t = track.getBoundingClientRect();
+      const s = slides[n].getBoundingClientRect();
+      const far = Math.abs(n - active) > 1;
+      // snap-stop would make a long jump halt at every slide: pause snapping for it, then restore
+      if (far) track.style.scrollSnapType = 'none';
+      track.scrollBy({ left: s.left - t.left - (t.width - s.width) / 2, behavior: smooth && !reduce ? 'smooth' : 'auto' });
+      if (far) setTimeout(() => { track.style.scrollSnapType = ''; }, smooth && !reduce ? 900 : 60);
+    };
+    let raf = 0;
+    track.addEventListener('scroll', () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const t = track.getBoundingClientRect();
+        const mid = t.left + t.width / 2;
+        let best = 0, dist = Infinity;
+        slides.forEach((sl, i) => {
+          const r = sl.getBoundingClientRect();
+          const d = Math.abs(r.left + r.width / 2 - mid);
+          if (d < dist) { dist = d; best = i; }
+        });
+        setActive(best);
+      });
+    }, { passive: true });
+    prev.addEventListener('click', () => go(active - 1));
+    next.addEventListener('click', () => go(active + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+    track.addEventListener('keydown', (e) => {
+      // arrows follow the screen: right/left swap in right-to-left pages
+      const rtl = getComputedStyle(track).direction === 'rtl';
+      const fwd = rtl ? 'ArrowLeft' : 'ArrowRight';
+      const back = rtl ? 'ArrowRight' : 'ArrowLeft';
+      if (e.key === fwd) { e.preventDefault(); go(active + 1); }
+      else if (e.key === back) { e.preventDefault(); go(active - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); go(0); }
+      else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => { visible = e.isIntersecting; sync(); }, { threshold: 0.35 }).observe(root);
+    }
+    // a link like #slide-5 opens that slide
+    const fromHash = () => { const m = /^#slide-(\d+)$/.exec(location.hash); if (m) go(Number(m[1]) - 1, false); };
+    addEventListener('hashchange', fromHash);
+    active = -1; setActive(0); fromHash();
+  });
 </script>
 
 <style>
@@ -167,13 +249,34 @@ const schema = [
   .sub { color: var(--text-muted); max-inline-size: 62ch; margin: 0 0 2rem; }
   .sheet--c .sub { color: inherit; opacity: 0.85; }
 
-  .slides { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(1.25rem, 3vw, 2rem); grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }
-  .slide { display: grid; align-content: start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); scroll-margin-top: calc(var(--header-h) + 1rem); }
-  .slide img, .slide video { inline-size: 100%; block-size: auto; aspect-ratio: 4 / 5; object-fit: cover; background: var(--bg-soft); }
-  .slide__body { padding: 1rem 1.25rem 1.4rem; display: grid; gap: 0.35rem; }
-  .slide__n { margin: 0; font-size: 0.85rem; font-weight: 650; color: var(--primary); }
+  .slider { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; justify-items: center; }
+  .slider__stage { position: relative; min-inline-size: 0; inline-size: min(100%, 27rem); }
+  .slider__track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; border-radius: var(--radius-lg); box-shadow: var(--shadow); background: var(--surface); border: 1px solid var(--line); }
+  .slider__track::-webkit-scrollbar { display: none; }
+  .slider__track:focus-visible { outline-offset: 4px; }
+  .slide { flex: 0 0 100%; min-inline-size: 0; scroll-snap-align: center; scroll-snap-stop: always; display: grid; align-content: start; }
+  .slide img, .slide video { inline-size: 100%; block-size: auto; aspect-ratio: 4 / 5; object-fit: cover; background: var(--bg-soft); -webkit-user-drag: none; user-select: none; }
+  .slide__body { padding: 1rem 1.25rem 1.4rem; display: grid; gap: 0.3rem; }
   .slide h3 { margin: 0; font-size: 1.15rem; line-height: 1.5; }
-  .slide__body p:last-child { margin: 0; color: var(--text-muted); font-size: 0.97rem; }
+  .slide__body p { margin: 0; color: var(--text-muted); font-size: 0.97rem; }
+
+  .slider__arrow { display: none; position: absolute; top: 40%; translate: 0 -50%; inline-size: 3rem; block-size: 3rem; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--text); box-shadow: var(--shadow); cursor: pointer; place-items: center; transition: background-color 0.2s, opacity 0.2s; z-index: 2; }
+  .slider__arrow:hover:not(:disabled) { background: var(--accent); color: #27272a; }
+  .slider__arrow:disabled { opacity: 0.35; cursor: default; }
+  .slider__arrow--prev { inset-inline-start: -4rem; }
+  .slider__arrow--next { inset-inline-end: -4rem; }
+  /* chevrons point the way the page reads: prev toward the start side, next toward the end side */
+  :global([dir='rtl']) .slider__arrow--next svg { transform: scaleX(-1); }
+  :global([dir='ltr']) .slider__arrow--prev svg { transform: scaleX(-1); }
+  @media (hover: hover) and (pointer: fine) { .slider__arrow { display: grid; } }
+  @media (hover: hover) and (pointer: fine) and (max-width: 560px) { .slider__arrow--prev { inset-inline-start: 0.5rem; } .slider__arrow--next { inset-inline-end: 0.5rem; } }
+
+  .slider__nav { display: grid; gap: 0.25rem; justify-items: center; }
+  .slider__count { margin: 0; font-weight: 650; color: var(--text-muted); font-size: 0.95rem; }
+  .slider__dots { display: flex; flex-wrap: wrap; justify-content: center; }
+  .slider__dots button { inline-size: 1.75rem; block-size: 2.75rem; border: 0; background: none; cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .slider__dots button::before { content: ''; inline-size: 0.6rem; block-size: 0.6rem; border-radius: 50%; background: var(--line); border: 1px solid var(--text-muted); transition: background-color 0.2s, scale 0.2s; }
+  .slider__dots button[aria-current]::before { background: var(--primary); border-color: var(--primary); scale: 1.3; }
 
   .narrow { max-inline-size: 46rem; }
   .faq { display: grid; border-block-start: 1px solid var(--line); }
