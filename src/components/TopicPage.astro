@@ -76,7 +76,7 @@ const schema = [
               <article class="slide" id={`slide-${i + 1}`} data-slide aria-roledescription="اسلاید" aria-label={`${fa(i + 1)} از ${fa(t.slides.length)}`}>
                 {s.motion ? (
                   <div class="slide__media">
-                    <video muted loop playsinline preload="auto" data-loop width="720" height="900" poster={`${base}/videos/${t.id}/s${nn(i)}.webp`} aria-label={s.alt}>
+                    <video autoplay muted loop playsinline disablepictureinpicture preload="auto" data-loop width="720" height="900" poster={`${base}/videos/${t.id}/s${nn(i)}.webp`} aria-label={s.alt}>
                       <source src={`${base}/videos/${t.id}/s${nn(i)}.mp4`} type="video/mp4" />
                     </video>
                     <button class="slide__play" type="button" data-play hidden aria-label="پخش ویدیوی این مرحله">
@@ -184,13 +184,15 @@ const schema = [
     const sync = () => {
       clips.forEach((v, i) => {
         if (!v) return;
-        if (reduce) { v.controls = true; return; }
+        // people who asked for less motion get no autoplay, only a clear play button on the slide in view
+        if (reduce) { v.pause(); showPlay(v, i === active && v.paused); return; }
         if (i === active && visible && !document.hidden) { if (v.paused) tryPlay(v); }
         else { v.pause(); showPlay(v, false); }
       });
     };
     clips.forEach((v) => {
       if (!v) return;
+      if (reduce) { v.removeAttribute('autoplay'); v.pause(); }
       v.addEventListener('canplay', () => sync());
       v.addEventListener('playing', () => showPlay(v, false));
       v.parentElement?.querySelector('[data-play]')?.addEventListener('click', () => { v.play().then(() => showPlay(v, false)).catch(() => { v.controls = true; }); });
