@@ -3,6 +3,7 @@
 import { site } from '../config/site';
 import { docs } from '../content/docs';
 import { library } from '../content/library-data';
+import { topics, topicLibrary, type Topic } from '../content/topics';
 import { getDictionary, localeUrl, type Locale } from '../i18n';
 
 type Json = Record<string, unknown>;
@@ -144,4 +145,78 @@ export function libraryList(lang: Locale, name: string, path: string, origin: UR
       })),
     },
   };
+}
+
+const vid = (path: string, origin: URL) => abs(`${import.meta.env.BASE_URL}${path}`, origin);
+const iso = (sec: number) => `PT${Math.floor(sec / 60) ? `${Math.floor(sec / 60)}M` : ''}${sec % 60}S`;
+
+/** The tutorials hub: a list of topic pages (Farsi). */
+export function topicsList(name: string, path: string, origin: URL): Json {
+  return {
+    '@type': 'CollectionPage',
+    name,
+    url: abs(path, origin),
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: topics.length,
+      itemListElement: topics.map((t, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(localeUrl('fa', `tutorials/${t.id}/`), origin), name: t.title })),
+    },
+  };
+}
+
+/** One topic page: the article, its video, the how-to steps from the slides, a FAQ and the research it rests on. */
+export function topicSchema(t: Topic, origin: URL): Json[] {
+  const url = abs(localeUrl('fa', `tutorials/${t.id}/`), origin);
+  const root = abs(localeUrl('ru'), origin);
+  const thumb = vid(`videos/${t.id}.jpg`, origin);
+  const cover = vid(`videos/${t.id}/s01.webp`, origin);
+  const lib = topicLibrary(t);
+  const video: Json = {
+    '@type': 'VideoObject',
+    '@id': `${url}#video`,
+    name: t.title,
+    description: `${t.reel.summary} ${t.reel.stages.map((x) => `${x.when}: ${x.what}`).join('؛ ')}.`,
+    thumbnailUrl: [thumb],
+    uploadDate: t.iso,
+    duration: iso(t.reel.seconds),
+    contentUrl: vid(`videos/${t.id}.mp4`, origin),
+    isFamilyFriendly: true,
+    sameAs: t.reel.instagram,
+    author: { '@id': `${root}#doctor` },
+    publisher: { '@id': `${root}#clinic` },
+  };
+  const article: Json = {
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: t.title,
+    description: t.description,
+    datePublished: t.iso,
+    dateModified: t.iso,
+    mainEntityOfPage: url,
+    url,
+    image: [vid(`og/${t.id}.jpg`, origin), cover],
+    keywords: t.tags.join('، '),
+    articleSection: t.short,
+    author: { '@id': `${root}#doctor` },
+    publisher: { '@id': `${root}#clinic` },
+    video: { '@id': `${url}#video` },
+    isAccessibleForFree: true,
+    mentions: lib.map((e) => ({ '@type': 'Article', name: e.fa.title, url: abs(localeUrl('fa', `articles/${e.slug}/`), origin) })),
+    citation: lib.map((e) => ({ '@type': 'ScholarlyArticle', name: e.titleEn, sameAs: `https://doi.org/${e.doi}` })),
+  };
+  const steps = t.slides.map((x, i) => ({ x, i })).filter(({ x }) => x.step);
+  const howTo: Json = {
+    '@type': 'HowTo',
+    '@id': `${url}#howto`,
+    name: t.title,
+    description: t.description,
+    totalTime: 'PT2M',
+    video: { '@id': `${url}#video` },
+    step: steps.map(({ x, i }, n) => ({
+      '@type': 'HowToStep', position: n + 1, name: x.title, text: x.text,
+      image: vid(`videos/${t.id}/s${String(i + 1).padStart(2, '0')}.webp`, origin),
+      url: `${url}#slide-${i + 1}`,
+    })),
+  };
+  return [article, video, howTo, faqPage(t.faq)];
 }

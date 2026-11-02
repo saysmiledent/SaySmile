@@ -2,15 +2,54 @@
 import Soon from '../../components/ui/Soon.astro';
 import { getPages } from '../../content';
 import { tutorialVideos, tutorialUi } from '../../content/tutorials';
-import type { Locale } from '../../i18n';
+import { topicsByCat } from '../../content/topics';
+import { categories } from '../../content/library-ui';
+import { localeUrl, type Locale } from '../../i18n';
+import { site } from '../../config/site';
 const { lang } = Astro.props as { lang: Locale };
+// Topics (reel + slides + articles) exist in Farsi only
+const groups = lang === 'fa' ? topicsByCat() : [];
+const fa = (n: number) => n.toLocaleString('fa-IR', { useGrouping: false });
 const p = getPages(lang).tutorials;
 const videos = tutorialVideos[lang];
 const ui = tutorialUi[lang];
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-{videos.length === 0 ? <Soon text={p.soon} /> : (
+{groups.length > 0 && (
+  <section class="sheet" aria-label={p.lead}>
+    <div class="container">
+      <p class="intro">هر موضوع به سه شکل آمده و سه شکل به هم لینک شده‌اند: ریل کوتاه، اسلایدهای قدم‌به‌قدم و مقاله‌های پژوهشی. همین موضوع‌ها را در اینستاگرام هم می‌بینید.
+        {site.instagram && <a href={site.instagram} target="_blank" rel="noopener">صفحهٔ اینستاگرام <bdi>@saywan_h</bdi></a>}
+      </p>
+      {groups.map(([cat, list]) => (
+        <section class="group" aria-labelledby={`cat-${cat}`}>
+          <h2 id={`cat-${cat}`}>{categories.find((c) => c.id === cat)!.label.fa}</h2>
+          <ul class="topics">
+            {list.map((t) => (
+              <li class="topic" data-reveal>
+                <a href={localeUrl('fa', `tutorials/${t.id}/`)}>
+                  <img src={`${base}/videos/${t.id}.jpg`} alt="" width="720" height="1280" loading="lazy" decoding="async" />
+                  <span class="topic__body">
+                    <strong>{t.title}</strong>
+                    <span class="topic__d">{t.blurb}</span>
+                    <span class="topic__f">
+                      <span class="tag">ریل</span>
+                      <span class="tag">{fa(t.slides.length)} اسلاید</span>
+                      <span class="tag">{fa(t.articles.length)} مقاله</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </section>
+)}
+
+{groups.length === 0 && (videos.length === 0 ? <Soon text={p.soon} /> : (
   <section class="sheet" aria-label={p.lead}>
     <div class="container grid">
       {videos.map((v) => (
@@ -30,9 +69,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       ))}
     </div>
   </section>
-)}
+))}
 
 <style>
+  .intro { max-inline-size: 62ch; color: var(--text-muted); margin: 0 0 2.5rem; }
+  .intro a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; display: inline-block; margin-inline-start: 0.5rem; min-block-size: 2.75rem; line-height: 2.75rem; }
+  .group h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin: 0 0 1.25rem; }
+  .topics { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(1.25rem, 3vw, 2rem); grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); }
+  .topic a { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); block-size: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); transition: translate 0.25s; }
+  .topic a:hover { translate: 0 -3px; }
+  .topic img { inline-size: 100%; block-size: 100%; min-block-size: 11rem; object-fit: cover; aspect-ratio: 3 / 4; }
+  .topic__body { display: grid; gap: 0.5rem; align-content: start; padding: 1.1rem 1.2rem; min-inline-size: 0; }
+  .topic strong { font-size: 1.2rem; line-height: 1.45; }
+  .topic__d { color: var(--text-muted); font-size: 0.93rem; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .topic__f { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .grid { display: grid; gap: clamp(1.25rem, 3vw, 2rem); grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
   .vid { display: grid; gap: 0.9rem; align-content: start; background: var(--surface, #fff); border: 1px solid var(--line); border-radius: 1.4rem; overflow: hidden; box-shadow: var(--shadow); }
   .vid video { width: 100%; aspect-ratio: 9 / 16; max-height: 32rem; object-fit: cover; background: #141815; display: block; }

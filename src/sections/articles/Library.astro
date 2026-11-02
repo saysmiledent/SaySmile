@@ -5,7 +5,8 @@ import { library } from '../../content/library-data';
 import { categories, evidenceTypes, evidenceNote, startUi, libraryUi, libraryArticleUi } from '../../content/library-ui';
 import EvidenceMark from '../../components/EvidenceMark.astro';
 import { firstAuthor } from '../../content/library-articles';
-import { localeUrl, type Locale } from '../../i18n';
+import { localeUrl, sectionUrl, type Locale } from '../../i18n';
+import { topics, topicPath } from '../../content/topics';
 
 const { lang } = Astro.props as { lang: Locale };
 const ui = libraryUi[lang];
@@ -26,6 +27,13 @@ const usedCats = categories.filter((c) => catCount(c.id) > 0);
     <h2 id="lib-title">{ui.title}</h2>
     <p class="muted">{ui.lead}</p>
   </header>
+
+  {fa && topics.length > 0 && (
+    <p class="lib__vid">
+      <a class="lib__vidall" href={sectionUrl(lang, 'tutorials')}>ویدیوهای آموزشی</a> دربارهٔ همین موضوع‌ها:
+      {topics.map((x) => <a href={localeUrl(lang, topicPath(x))}>{x.short}</a>)}
+    </p>
+  )}
 
   <nav class="lib__start" aria-labelledby="lib-start">
     <h3 id="lib-start">{start.title}</h3>
@@ -233,6 +241,8 @@ const usedCats = categories.filter((c) => catCount(c.id) > 0);
     .lib__sort { margin-inline-start: 0; }
     .lib__list { grid-template-columns: 1fr; }
   }
+  .lib__vid { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1rem; margin: 0 0 1.5rem; font-weight: 600; }
+  .lib__vid a { display: inline-flex; align-items: center; min-block-size: 2.75rem; color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
 </style>
 
 <script>

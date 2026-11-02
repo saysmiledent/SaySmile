@@ -69,4 +69,4 @@ Telegram first (t.me/saySmaile), WhatsApp second (+79522222459), email third (dr
 
 ## Not now
 
-The rigged 3D character waits for logo-free images from the doctor. The tutorials page stays a labelled "coming soon" until the videos are ready.
+The rigged 3D character waits for logo-free images from the doctor. Tutorials: Farsi only. The hub groups topics by library category; each topic page holds the reel, the carousel slides (with their text), a FAQ and the related research articles, and those article pages link back. A language without topics falls back to the "coming soon" stage.
