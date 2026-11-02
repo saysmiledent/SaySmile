@@ -1,0 +1,202 @@
+---
+// One tutorial topic (Farsi): reel, slides, FAQ and the research articles behind it, all linked.
+import Base from '../layouts/Base.astro';
+import PageHero from './PageHero.astro';
+import EvidenceMark from './EvidenceMark.astro';
+import { getPages } from '../content';
+import { getDictionary, localeUrl, sectionUrl } from '../i18n';
+import { contactLinks } from '../config/site';
+import { breadcrumb, topicSchema } from '../lib/seo';
+import { topicLibrary, topics, type Topic } from '../content/topics';
+import { categories } from '../content/library-ui';
+
+interface Props { topic: Topic }
+const { topic: t } = Astro.props;
+const lang = 'fa' as const;
+const dict = getDictionary(lang);
+const p = getPages(lang);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const origin = Astro.site!;
+const fa = (n: number) => n.toLocaleString('fa-IR', { useGrouping: false });
+const book = contactLinks()[0];
+const related = topicLibrary(t);
+const cat = categories.find((c) => c.id === t.cat)!.label[lang];
+const others = topics.filter((x) => x.id !== t.id);
+const path = `tutorials/${t.id}/`;
+const nn = (i: number) => String(i + 1).padStart(2, '0');
+const schema = [
+  breadcrumb([
+    { name: 'SaySmile', path: localeUrl(lang) },
+    { name: dict.nav.tutorials, path: sectionUrl(lang, 'tutorials') },
+    { name: t.short, path: localeUrl(lang, path) },
+  ], origin),
+  ...topicSchema(t, origin),
+];
+---
+
+<Base
+  lang={lang} path={path} current="tutorials" title={t.title} description={t.description}
+  ogType="article" published={t.iso} schema={schema}
+  image={`og/${t.id}.jpg`} imageAlt={t.title} video={{ path: `videos/${t.id}.mp4`, width: 720, height: 1280 }}
+>
+  <PageHero lang={lang} small title={t.title} lead={t.lead} back={{ href: sectionUrl(lang, 'tutorials'), label: dict.nav.tutorials }} />
+
+  <section class="sheet" aria-labelledby="reel-h">
+    <div class="container reel">
+      <video controls preload="none" playsinline width="720" height="1280" poster={`${base}/videos/${t.id}.jpg`} aria-label={t.reel.alt}>
+        <source src={`${base}/videos/${t.id}.mp4`} type="video/mp4" />
+      </video>
+      <div class="reel__text">
+        <h2 id="reel-h">ویدیوی کوتاه ({fa(t.reel.seconds)} ثانیه)</h2>
+        <p>{t.reel.summary}</p>
+        <ol class="stages" aria-label="مراحل نشان‌داده‌شده در ویدیو">
+          {t.reel.stages.map((s) => <li><b>{s.when}</b><span>{s.what}</span></li>)}
+        </ol>
+        <p class="links">
+          <a class="btn" href={t.reel.instagram} target="_blank" rel="noopener">دیدن ریل در اینستاگرام</a>
+          {t.carouselInstagram && <a class="btn btn--light" href={t.carouselInstagram} target="_blank" rel="noopener">دیدن پست اسلایدی در اینستاگرام</a>}
+        </p>
+        <p class="tags"><span class="tag">{cat}</span>{t.tags.map((x) => <span class="tag tag--q">{x}</span>)}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet sheet--b grain" aria-labelledby="slides-h">
+    <div class="container">
+      <h2 class="sec-title" id="slides-h">قدم‌به‌قدم، {fa(t.slides.length)} اسلاید</h2>
+      <p class="sub">همان اسلایدهای اینستاگرام، با متن کامل زیر هر کدام. مرحله‌های ۴ تا ۷ هنگام رسیدن به آن‌ها خودکار و بی‌صدا پخش می‌شوند.</p>
+      <ol class="slides">
+        {t.slides.map((s, i) => (
+          <li class="slide" id={`slide-${i + 1}`} data-reveal>
+            {s.motion ? (
+              <video muted loop playsinline preload="none" data-loop width="720" height="900" poster={`${base}/videos/${t.id}/s${nn(i)}.webp`} aria-label={s.alt}>
+                <source src={`${base}/videos/${t.id}/s${nn(i)}.mp4`} type="video/mp4" />
+              </video>
+            ) : (
+              <img src={`${base}/videos/${t.id}/s${nn(i)}.webp`} alt={s.alt} width="1080" height="1350" loading="lazy" decoding="async" />
+            )}
+            <div class="slide__body">
+              <p class="slide__n">اسلاید {fa(i + 1)} از {fa(t.slides.length)}</p>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="sheet" aria-labelledby="faq-h">
+    <div class="container narrow">
+      <h2 class="sec-title" id="faq-h">پرسش‌های رایج</h2>
+      <div class="faq">
+        {t.faq.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet sheet--c grain" aria-labelledby="rel-h">
+    <div class="container">
+      <h2 class="sec-title" id="rel-h">مقاله‌های پژوهشی مرتبط</h2>
+      <p class="sub">هر مقاله بازگویی ساده‌ای از یک پژوهش منتشرشده است، با لینک به متن اصلی در PubMed.</p>
+      <ul class="rel">
+        {related.map((e) => (
+          <li data-reveal>
+            <a href={localeUrl(lang, `articles/${e.slug}/`)}>
+              <span class="rel__ev"><EvidenceMark type={e.type} lang={lang} /></span>
+              <strong>{e.fa.title}</strong>
+              <span class="rel__sum">{e.fa.sum}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="rel__all"><a href={`${sectionUrl(lang, 'articles')}#library`}>همهٔ مقاله‌های کتابخانه</a></p>
+    </div>
+  </section>
+
+  <section class="sheet" aria-label="رزرو نوبت">
+    <div class="container narrow end">
+      <p>اگر لثه‌تان خون می‌آید یا نخ کشیدن برایتان سخت است، برای معاینه و راهنمایی شخصی بنویسید.</p>
+      {book && <p><a class="btn" href={book.href} target="_blank" rel="noopener">{dict.hero.cta}</a></p>}
+      {others.length > 0 && (
+        <p class="more">ویدیوهای دیگر:
+          {others.map((o) => <a href={localeUrl(lang, `tutorials/${o.id}/`)}>{o.title}</a>)}
+        </p>
+      )}
+      <p class="disc">این مطلب آموزشی است و جایگزین مشاورهٔ پزشکی نیست. درمان‌ها موارد منع مصرف دارند و مشاوره با دندانپزشک لازم است.</p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // The short step clips play only while on screen, and not at all for people who asked for less motion.
+  const clips = document.querySelectorAll<HTMLVideoElement>('video[data-loop]');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    clips.forEach((v) => { v.controls = true; });
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const v = e.target as HTMLVideoElement;
+        if (e.isIntersecting) v.play().catch(() => { v.controls = true; });
+        else v.pause();
+      });
+    }, { threshold: 0.6 });
+    clips.forEach((v) => io.observe(v));
+  }
+</script>
+
+<style>
+  .reel { display: grid; gap: clamp(1.5rem, 4vw, 3rem); grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); align-items: start; }
+  .reel video { inline-size: 100%; aspect-ratio: 9 / 16; max-block-size: 36rem; object-fit: cover; background: #141815; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+  .reel__text { display: grid; gap: 1rem; align-content: start; min-inline-size: 0; }
+  .reel__text h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin: 0; }
+  .reel__text p { margin: 0; color: var(--text-muted); max-inline-size: 60ch; }
+  .stages { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-inline-start: 3px solid var(--accent); }
+  .stages li { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: baseline; padding: 0.55rem 1.1rem; }
+  .stages b { color: var(--primary); min-inline-size: 7.5rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag--q { background: transparent; border: 1px solid var(--line); color: var(--text-muted); font-weight: 500; }
+
+  .sec-title { font-size: clamp(1.7rem, 3.2vw, 2.4rem); margin: 0 0 0.75rem; }
+  .sub { color: var(--text-muted); max-inline-size: 62ch; margin: 0 0 2rem; }
+  .sheet--c .sub { color: inherit; opacity: 0.85; }
+
+  .slides { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(1.25rem, 3vw, 2rem); grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }
+  .slide { display: grid; align-content: start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); scroll-margin-top: calc(var(--header-h) + 1rem); }
+  .slide img, .slide video { inline-size: 100%; block-size: auto; aspect-ratio: 4 / 5; object-fit: cover; background: var(--bg-soft); }
+  .slide__body { padding: 1rem 1.25rem 1.4rem; display: grid; gap: 0.35rem; }
+  .slide__n { margin: 0; font-size: 0.85rem; font-weight: 650; color: var(--primary); }
+  .slide h3 { margin: 0; font-size: 1.15rem; line-height: 1.5; }
+  .slide__body p:last-child { margin: 0; color: var(--text-muted); font-size: 0.97rem; }
+
+  .narrow { max-inline-size: 46rem; }
+  .faq { display: grid; border-block-start: 1px solid var(--line); }
+  .faq details { border-block-end: 1px solid var(--line); }
+  .faq summary { cursor: pointer; padding: 1rem 0.25rem; min-block-size: 2.75rem; font-weight: 700; font-size: 1.08rem; list-style-position: inside; }
+  .faq p { margin: 0 0 1.1rem; padding-inline: 0.25rem; color: var(--text-muted); }
+
+  .rel { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+  .rel a { display: grid; gap: 0.45rem; align-content: start; block-size: 100%; padding: 1.2rem 1.35rem; background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-lg); transition: translate 0.25s, box-shadow 0.25s; }
+  .rel a:hover { translate: 0 -3px; box-shadow: var(--shadow); }
+  .rel strong { font-size: 1.1rem; line-height: 1.5; }
+  .rel__sum { font-size: 0.93rem; color: var(--text-muted); }
+  .rel__all { margin: 1.5rem 0 0; font-weight: 650; }
+  .rel__all a { display: inline-flex; align-items: center; min-block-size: 2.75rem; text-decoration: underline; text-underline-offset: 3px; }
+
+  .end { display: grid; gap: 1.25rem; justify-items: start; }
+  .end p { margin: 0; }
+  .more { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; align-items: center; font-weight: 650; }
+  .more a { display: inline-flex; align-items: center; min-block-size: 2.75rem; text-decoration: underline; text-underline-offset: 3px; color: var(--primary); }
+  .disc { font-size: 0.9rem; color: var(--text-muted); padding-block-start: 1rem; border-block-start: 1px solid var(--line); }
+
+  @media (max-width: 760px) {
+    .reel { grid-template-columns: minmax(0, 1fr); }
+    .reel video { max-inline-size: 20rem; margin-inline: auto; }
+  }
+</style>

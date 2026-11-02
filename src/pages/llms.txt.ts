@@ -6,6 +6,7 @@ import { getPages } from '../content';
 import { docs } from '../content/docs';
 import { getDictionary, localeUrl, visibleSections, sectionUrl, locales } from '../i18n';
 import { site } from '../config/site';
+import { topics, topicLibrary } from '../content/topics';
 
 export const GET: APIRoute = ({ site: origin }) => {
   const u = (p: string) => new URL(p, origin).href;
@@ -35,6 +36,13 @@ export const GET: APIRoute = ({ site: origin }) => {
   lines.push(`## Research library (${library.length} reviews, plain-language summaries with PubMed and DOI links)`);
   lines.push(`- [Library page](${u(sectionUrl('ru', 'articles'))}#library)`);
   for (const e of library) lines.push(`- [${e.ru.title}](${u(localeUrl('ru', `articles/${e.slug}/`))}): ${e.ru.sum} (${e.journal}, ${e.year}) https://doi.org/${e.doi}`);
+  lines.push('');
+  lines.push('## Видео и слайды на персидском / Farsi video lessons (reel + slides + linked research)');
+  lines.push(`- [ویدیوهای آموزشی](${u(sectionUrl('fa', 'tutorials'))}): hub of all topics`);
+  for (const t of topics) {
+    lines.push(`- [${t.title}](${u(localeUrl('fa', `tutorials/${t.id}/`))}): ${t.description} Reel: ${t.reel.instagram}`);
+    for (const e of topicLibrary(t)) lines.push(`  - related research: [${e.fa.title}](${u(localeUrl('fa', `articles/${e.slug}/`))}) https://doi.org/${e.doi}`);
+  }
   lines.push('');
   lines.push('## Documents');
   for (const d of docs) lines.push(`- ${d.text.ru.date}: ${d.text.ru.title} (${d.text.ru.issuer})`);

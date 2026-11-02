@@ -9,6 +9,7 @@ import { articles, type Article } from '../content/articles';
 import { libraryArticles, firstAuthor } from '../content/library-articles';
 import { libraryArticleUi, categories, evidenceNote } from '../content/library-ui';
 import EvidenceMark from './EvidenceMark.astro';
+import { topicsForArticle, topicPath } from '../content/topics';
 
 interface Props { lang: Locale; article: Article }
 const { lang, article } = Astro.props;
@@ -26,6 +27,8 @@ const catLabel = (id: string) => categories.find((c) => c.id === id)!.label[lang
 const others = lib
   ? [...libraryArticles.filter((x) => x.slug !== article.slug && x.lib!.cat === lib.cat), ...libraryArticles.filter((x) => x.slug !== article.slug && x.lib!.cat !== lib.cat)].slice(0, 3)
   : articles.filter((x) => x.slug !== article.slug).slice(0, 3);
+// Farsi only: the tutorial topics that list this paper (reel + slides about the same subject)
+const linkedTopics = lang === 'fa' && lib ? topicsForArticle(article.slug) : [];
 const num = (n: number) => (lang === 'fa' ? n.toLocaleString('fa-IR', { useGrouping: false }) : String(n));
 const backHref = lib ? `${sectionUrl(lang, 'articles')}#library` : sectionUrl(lang, 'articles');
 const backLabel = lib ? lu.allLibrary : p.back;
@@ -126,6 +129,17 @@ const schema = [
         </section>
       )}
 
+      {linkedTopics.length > 0 && (
+        <aside class="vtopic" aria-labelledby="vt-h">
+          <h2 id="vt-h">ویدیو و اسلاید دربارهٔ همین موضوع</h2>
+          <ul>
+            {linkedTopics.map((x) => (
+              <li><a href={localeUrl(lang, topicPath(x))}><strong>{x.title}</strong><span>ریل کوتاه، {x.slides.length.toLocaleString('fa-IR', { useGrouping: false })} اسلاید قدم‌به‌قدم و مقاله‌های مرتبط</span></a></li>
+            ))}
+          </ul>
+        </aside>
+      )}
+
       <p class="disc">{p.disclaimer}</p>
       {book && <p><a class="btn" href={book.href} target="_blank" rel="noopener">{t.hero.cta}</a></p>}
     </div>
@@ -162,6 +176,12 @@ const schema = [
   .src__links a { min-block-size: 2.75rem; display: inline-flex; align-items: center; }
   .more__all { margin: 1.25rem 0 0; font-weight: 650; }
   .more__all a { display: inline-flex; gap: 0.5rem; text-decoration: underline; text-underline-offset: 3px; }
+  .vtopic { margin: 2.25rem 0 0; padding: 1.2rem 1.4rem; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); }
+  .vtopic h2 { font-size: 1.2rem; margin: 0 0 0.6rem; }
+  .vtopic ul { list-style: none; margin: 0; padding: 0; }
+  .vtopic a { display: grid; gap: 0.2rem; padding: 0.6rem 0; min-block-size: 2.75rem; }
+  .vtopic strong { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+  .vtopic span { color: var(--text-muted); font-size: 0.93rem; }
   .disc { margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid var(--line); }
   .more h2.sec-title { margin: 0 0 1.5rem; font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
   .more ul { list-style: none; padding: 0; margin: 0; display: grid; border-top: 1px solid rgb(39 39 42 / 0.25); }
