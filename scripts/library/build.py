@@ -17,7 +17,8 @@ def slugify(t):
 
 def minutes_of(paras):
     return max(2, round(len(' '.join(paras).split()) / 130))
-S = '/tmp/claude-0/-home-claude/bbd28d26-13fb-5ce6-bd5a-562c8f9e28ca/scratchpad'
+import os
+S = os.path.dirname(os.path.abspath(__file__))
 pool = json.load(open(f'{S}/pool.json'))
 
 def initials(a):
