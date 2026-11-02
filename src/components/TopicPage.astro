@@ -75,9 +75,14 @@ const schema = [
             {t.slides.map((s, i) => (
               <article class="slide" id={`slide-${i + 1}`} data-slide aria-roledescription="اسلاید" aria-label={`${fa(i + 1)} از ${fa(t.slides.length)}`}>
                 {s.motion ? (
-                  <video muted loop playsinline preload={i < 2 ? 'auto' : 'none'} data-loop width="720" height="900" poster={`${base}/videos/${t.id}/s${nn(i)}.webp`} aria-label={s.alt}>
-                    <source src={`${base}/videos/${t.id}/s${nn(i)}.mp4`} type="video/mp4" />
-                  </video>
+                  <div class="slide__media">
+                    <video muted loop playsinline preload="auto" data-loop width="720" height="900" poster={`${base}/videos/${t.id}/s${nn(i)}.webp`} aria-label={s.alt}>
+                      <source src={`${base}/videos/${t.id}/s${nn(i)}.mp4`} type="video/mp4" />
+                    </video>
+                    <button class="slide__play" type="button" data-play hidden aria-label="پخش ویدیوی این مرحله">
+                      <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+                    </button>
+                  </div>
                 ) : (
                   <img src={`${base}/videos/${t.id}/s${nn(i)}.webp`} alt={s.alt} width="1080" height="1350" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" draggable="false" />
                 )}
@@ -163,15 +168,37 @@ const schema = [
     let active = 0;
     let visible = true;
 
-    const sync = () => {
-      slides.forEach((sl, i) => {
-        const v = sl.querySelector<HTMLVideoElement>('video');
-        if (!v) return;
-        if (reduce) { v.controls = true; return; }
-        if (i === active && visible) v.play().catch(() => { v.controls = true; });
-        else v.pause();
+    const clips = slides.map((sl) => sl.querySelector<HTMLVideoElement>('video'));
+    // Some phones (battery saver, in-app browsers) refuse autoplay: then a clear play button appears on that clip.
+    const showPlay = (v: HTMLVideoElement, on: boolean) => {
+      const btn = v.parentElement?.querySelector<HTMLButtonElement>('[data-play]');
+      if (btn) btn.hidden = !on;
+    };
+    const tryPlay = (v: HTMLVideoElement) => {
+      v.muted = true; v.defaultMuted = true;
+      v.play().then(() => showPlay(v, false)).catch((err: DOMException) => {
+        // AbortError = we paused it a moment later on purpose; only a refusal needs the button
+        if (err && err.name === 'NotAllowedError') showPlay(v, true);
       });
     };
+    const sync = () => {
+      clips.forEach((v, i) => {
+        if (!v) return;
+        if (reduce) { v.controls = true; return; }
+        if (i === active && visible && !document.hidden) { if (v.paused) tryPlay(v); }
+        else { v.pause(); showPlay(v, false); }
+      });
+    };
+    clips.forEach((v) => {
+      if (!v) return;
+      v.addEventListener('canplay', () => sync());
+      v.addEventListener('playing', () => showPlay(v, false));
+      v.parentElement?.querySelector('[data-play]')?.addEventListener('click', () => { v.play().then(() => showPlay(v, false)).catch(() => { v.controls = true; }); });
+    });
+    // a touch or click anywhere in the slider counts as a gesture: retry a refused clip
+    root.addEventListener('pointerup', () => sync());
+    document.addEventListener('visibilitychange', sync);
+    let idle = 0;
     const setActive = (i: number) => {
       if (i === active) return;
       active = i;
@@ -208,6 +235,9 @@ const schema = [
         });
         setActive(best);
       });
+      // when the swipe has settled, make sure the slide now in view is the one playing
+      clearTimeout(idle);
+      idle = window.setTimeout(sync, 160);
     }, { passive: true });
     prev.addEventListener('click', () => go(active - 1));
     next.addEventListener('click', () => go(active + 1));
@@ -260,6 +290,9 @@ const schema = [
   .slide h3 { margin: 0; font-size: 1.15rem; line-height: 1.5; }
   .slide__body p { margin: 0; color: var(--text-muted); font-size: 0.97rem; }
 
+  .slide__media { position: relative; }
+  .slide__play { position: absolute; inset-block-end: 1rem; inset-inline-end: 1rem; inline-size: 3.5rem; block-size: 3.5rem; border: 0; border-radius: 50%; background: var(--primary); color: var(--on-primary); display: grid; place-items: center; cursor: pointer; box-shadow: var(--shadow); }
+  .slide__play[hidden] { display: none; }
   .slider__arrow { display: none; position: absolute; top: 40%; translate: 0 -50%; inline-size: 3rem; block-size: 3rem; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--text); box-shadow: var(--shadow); cursor: pointer; place-items: center; transition: background-color 0.2s, opacity 0.2s; z-index: 2; }
   .slider__arrow:hover:not(:disabled) { background: var(--accent); color: #27272a; }
   .slider__arrow:disabled { opacity: 0.35; cursor: default; }
