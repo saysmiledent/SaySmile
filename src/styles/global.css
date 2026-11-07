@@ -48,7 +48,7 @@ bdi, .ltr { unicode-bidi: isolate; }
 .btn--ghost { background: transparent; color: inherit; border: 1.5px solid currentColor; padding-block: calc(0.85rem - 1.5px); }
 .btn--ghost:hover { background: rgb(255 255 255 / 0.12); }
 
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;

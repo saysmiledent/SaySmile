@@ -3,6 +3,7 @@
 // - Whole stage tilts in 3D toward the cursor; background shapes drift by depth
 // - Idle: gentle auto-sway. Touch: drag/touch moves the gaze.
 // - Scroll: stage shrinks and rises, title letters spread, copy fades.
+// - Click on the scene: a short ring ripple at the pointer.
 // - Reduced motion: static centre frame, no listeners.
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -33,7 +34,7 @@ export function initHero() {
     .sort((a, b) => Number(a.dataset.yaw) - Number(b.dataset.yaw));
   const down = root.querySelector<HTMLImageElement>('[data-pitch="down"]')!;
   const chars = root.querySelectorAll<HTMLElement>('.hero__ch');
-  const blobs = root.querySelectorAll<HTMLElement>('.blob');
+  const blobs = root.querySelectorAll<HTMLElement>('.aurora');
   const copy = root.querySelector<HTMLElement>('[data-hero-copy]');
 
   const surface = root.querySelector<HTMLElement>('[data-relief]')!;
@@ -78,6 +79,7 @@ export function initHero() {
     glState.rotX = gaze.y * 0.16;
     glState.lightX = gaze.x;
     glState.lightY = gaze.y;
+    root!.style.setProperty('--gx', gaze.x.toFixed(3)); // moves the sheen band on the arch
     if (relief) relief.setFrames(i, i + 1);
 
     // The photos already turn the head; keep the 3D tilt subtle and in the same direction
@@ -127,6 +129,20 @@ export function initHero() {
       });
     }, { passive: true });
   }
+
+  // --- click ripple: feedback for a press anywhere on the scene (not on links) ---
+  const ripples = root.querySelector<HTMLElement>('.hero__ripples');
+  addEventListener('pointerdown', (e) => {
+    if (!ripples || (e.target as HTMLElement).closest('a, button')) return;
+    const r = root.getBoundingClientRect();
+    if (e.clientY < r.top || e.clientY > r.bottom) return;
+    const dot = document.createElement('span');
+    dot.className = 'ripple';
+    dot.style.left = `${e.clientX - r.left}px`;
+    dot.style.top = `${e.clientY - r.top}px`;
+    ripples.appendChild(dot);
+    gsap.fromTo(dot, { scale: 0.4, opacity: 0.95 }, { scale: 11, opacity: 0, duration: 0.9, ease: 'power2.out', onComplete: () => dot.remove() });
+  }, { passive: true });
 
   // --- live 3D relief (WebGL). Falls back to the photo stack above when unavailable ---
   const colorUrls = yawFrames.map((f) => f.currentSrc || f.src);

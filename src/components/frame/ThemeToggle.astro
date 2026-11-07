@@ -16,11 +16,11 @@ const { label } = Astro.props;
 <style>
   .theme-toggle {
     width: 44px; height: 44px; display: grid; place-items: center;
-    border: 1px solid rgb(255 255 255 / 0.3); border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--on-bar) 28%, transparent); border-radius: 50%;
     background: transparent; color: inherit; cursor: pointer;
     transition: background-color 0.2s;
   }
-  .theme-toggle:hover { background: rgb(255 255 255 / 0.12); }
+  .theme-toggle:hover { background: color-mix(in srgb, var(--accent) 45%, transparent); }
   .moon { display: none; }
   :global(:root[data-theme='dark']) .sun { display: none; }
   :global(:root[data-theme='dark']) .moon { display: block; }
