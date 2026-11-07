@@ -139,5 +139,5 @@ const bubbles = [[8, 12, 0], [14, 22, -3], [6, 38, -6], [18, 55, -2], [10, 70, -
     .foam { display: none; }
   }
   :global([data-hero].is-paused) .dental *, :global([data-hero].is-paused) .dental *::before { animation-play-state: paused !important; }
-  @media (prefers-reduced-motion: reduce) { .dental *, .dental *::before { animation: none !important; } .foam { display: none; } }
+  @media (prefers-reduced-motion: reduce) { :global([data-hero]:not(.is-animated)) .dental *, :global([data-hero]:not(.is-animated)) .dental *::before { animation: none !important; } :global([data-hero]:not(.is-animated)) .foam { display: none; } }
 </style>

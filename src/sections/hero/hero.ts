@@ -11,12 +11,13 @@ import { createRelief, type Relief } from './hero3d';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function initHero() {
+// `force` runs the full animation even when the system asks for reduced motion (the visitor pressed Play).
+export function initHero(force = false) {
   const root = document.querySelector<HTMLElement>('[data-hero]');
   if (!root) return;
 
   // Scroll cue: its own handler (not the generic anchor one) so it works in every environment
-  root.querySelector<HTMLAnchorElement>('.hero__cue')?.addEventListener('click', (e) => {
+  if (!force) root.querySelector<HTMLAnchorElement>('.hero__cue')?.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
     const target = document.getElementById('portal');
@@ -26,10 +27,10 @@ export function initHero() {
     if (l) l.scrollTo(y); else window.scrollTo({ top: y, behavior: 'smooth' });
   });
 
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduced = !force && matchMedia('(prefers-reduced-motion: reduce)').matches;
   let paused = false;
   const pauseBtn = root.querySelector<HTMLButtonElement>('[data-pause]');
-  pauseBtn?.addEventListener('click', () => {
+  if (!reduced) pauseBtn?.addEventListener('click', () => {
     paused = !paused;
     root.classList.toggle('is-paused', paused);
     pauseBtn.setAttribute('aria-pressed', String(paused));
@@ -52,7 +53,22 @@ export function initHero() {
   const glState = { mix: 0, down: 0, rotX: 0, rotY: 0, lightX: 0, lightY: 0, time: 0 };
 
   const mid = (yawFrames.length - 1) / 2;
-  if (reduced) { yawFrames.forEach((f, i) => (f.style.opacity = i === mid ? '1' : '0')); return; }
+  if (reduced) {
+    yawFrames.forEach((f, i) => (f.style.opacity = i === mid ? '1' : '0'));
+    // The system asks for less motion, so the scene starts still. The same button becomes Play:
+    // one press turns the full animation on for this visit.
+    if (pauseBtn) {
+      pauseBtn.setAttribute('aria-pressed', 'true');
+      pauseBtn.setAttribute('aria-label', pauseBtn.dataset.labelPlay || '');
+      pauseBtn.addEventListener('click', () => {
+        pauseBtn.setAttribute('aria-pressed', 'false');
+        pauseBtn.setAttribute('aria-label', pauseBtn.dataset.labelPause || '');
+        root.classList.add('is-animated');
+        initHero(true);
+      }, { once: true });
+    }
+    return;
+  }
 
   // Gaze state, -1..1 (x: left..right, y: up..down). Smoothed with GSAP.
   const gaze = { x: 0, y: 0 };

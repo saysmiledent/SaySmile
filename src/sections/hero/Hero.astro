@@ -276,7 +276,8 @@ const relief = JSON.stringify({
   }
   /* mobile energy 1 (DESIGN.md): still background, no looping motion */
   @media (max-width: 768px) { .aurora, .ring, .hero__gloss::after { animation: none !important; } }
-  @media (prefers-reduced-motion: reduce) { .hero__ch { transform: none !important; } .glass, .hero__cue span, .aurora, .ring, .hero__gloss::after { animation: none !important; } }
+  /* reduced motion: still until the visitor presses Play (hero.ts adds .is-animated) */
+  @media (prefers-reduced-motion: reduce) { .hero:not(.is-animated) .hero__ch { transform: none !important; } .hero:not(.is-animated) .glass, .hero:not(.is-animated) .hero__cue span, .hero:not(.is-animated) .aurora, .hero:not(.is-animated) .ring, .hero:not(.is-animated) .hero__gloss::after { animation: none !important; } }
 </style>
 
 <script>
