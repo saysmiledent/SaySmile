@@ -5,6 +5,7 @@
 import { contactLinks } from '../../config/site';
 import { getDictionary, type Locale } from '../../i18n';
 import { getPages } from '../../content';
+import DentalScene from './DentalScene.astro';
 
 interface Props { lang: Locale }
 const { lang } = Astro.props;
@@ -45,13 +46,11 @@ const relief = JSON.stringify({
     <span class="aurora aurora--c" data-depth="1.3"></span>
     <span class="ring ring--a" data-depth="0.6"></span>
     <span class="ring ring--b" data-depth="1.1"></span>
-    {[['t1', 1.3], ['t2', 2.1], ['t3', 0.8]].map(([c, d]) => (
-      <span class={`tooth ${c}`} data-mdepth={d}>
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d={tooth} /></svg>
-      </span>
-    ))}
   </div>
+  <DentalScene />
   <div class="hero__ripples" aria-hidden="true"></div>
+
+  <button class="hero__pause" type="button" aria-pressed="false" data-pause data-label-pause={t.ui.pause} data-label-play={t.ui.play} aria-label={t.ui.pause}><i></i><i></i></button>
 
   <div class="container hero__grid">
     <h1 class="hero__title" data-hero-title aria-label={t.hero.title}>
@@ -131,20 +130,23 @@ const relief = JSON.stringify({
   .ring--b { width: 8vmax; height: 8vmax; inset-block-end: 18%; inset-inline-end: 12%; animation: pulse 5s ease-in-out infinite -2s; }
   :global(:root[data-theme='dark']) .ring { border-color: rgb(178 201 171 / 0.4); }
   @keyframes pulse { 50% { scale: 1.08; opacity: 0.55; } }
-  /* tooth outlines: the identity motif, drifting at three depths */
-  .tooth { position: absolute; display: block; color: rgb(255 255 255 / 0.9); }
-  .tooth svg { width: 100%; height: auto; animation: bob 7s ease-in-out infinite; filter: drop-shadow(0 6px 10px rgb(44 70 40 / 0.18)); }
-  :global(:root[data-theme='dark']) .tooth { color: rgb(178 201 171 / 0.5); }
-  .t1 { width: 6.5rem; inset-block-start: 20%; inset-inline-end: 6%; }
-  .t2 { width: 3.4rem; inset-block-start: 38%; inset-inline-start: 5%; }
-  .t2 svg { animation-delay: -2s; }
-  .t3 { width: 4.6rem; inset-block-end: 12%; inset-inline-start: 52%; }
-  .t3 svg { animation-delay: -4s; rotate: -14deg; }
-  @keyframes bob { 50% { translate: 0 -14px; rotate: 6deg; } }
 
   /* click ripple (hero.ts): confirms the touch of a pointer with a short expanding ring */
   .hero__ripples { position: absolute; inset: 0; pointer-events: none; z-index: 3; overflow: hidden; }
+  .hero__ripples :global(.pop) { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; border: 1px solid rgb(255 255 255 / 0.9); background: radial-gradient(circle at 32% 28%, #fff 0 18%, rgb(255 255 255 / 0.5) 40%, rgb(255 255 255 / 0.1) 70%); }
   .hero__ripples :global(.ripple) { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px rgb(92 122 84 / 0.35); }
+
+  /* pause control: the scene loops longer than 5 seconds, so it can be stopped */
+  .hero__pause { position: absolute; z-index: 5; inset-inline-end: 1rem; bottom: calc(var(--sheet-r) + 1rem); width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line-ink); background: rgb(255 255 255 / 0.7); color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: background-color 0.2s, border-color 0.2s; }
+  .hero__pause:hover { background: #fff; border-color: #3f5a38; }
+  .hero__pause i { grid-area: 1 / 1; width: 4px; height: 14px; border-radius: 2px; background: currentColor; }
+  .hero__pause i:first-child { translate: -4px 0; }
+  .hero__pause i:last-child { translate: 4px 0; }
+  .hero__pause[aria-pressed='true'] i:first-child { translate: 0; width: 0; height: 0; border-radius: 0; background: none; border-block: 8px solid transparent; border-inline-start: 13px solid currentColor; }
+  .hero__pause[aria-pressed='true'] i:last-child { display: none; }
+  :global(:root[data-theme='dark']) .hero__pause { background: rgb(255 255 255 / 0.06); }
+  :global(:root[data-theme='dark']) .hero__pause:hover { background: rgb(178 201 171 / 0.2); border-color: var(--accent); }
+  .hero.is-paused .aurora, .hero.is-paused .ring, .hero.is-paused .glass, .hero.is-paused .hero__gloss::after, .hero.is-paused .hero__cue span { animation-play-state: paused; }
 
   .hero__grid {
     position: relative; display: grid; align-items: center; gap: 2rem;
@@ -270,11 +272,11 @@ const relief = JSON.stringify({
     .hero__title { position: static; order: 0; text-align: center; font-size: clamp(3.6rem, 21vw, 7rem); }
     :global([dir='rtl']) .hero__title { text-align: center; }
     .hero__arch { height: min(52svh, 480px); }
-    .ring--b, .t2, .t3 { display: none; }
+    .ring--b { display: none; }
   }
   /* mobile energy 1 (DESIGN.md): still background, no looping motion */
-  @media (max-width: 768px) { .aurora, .ring, .tooth svg, .hero__gloss::after { animation: none !important; } }
-  @media (prefers-reduced-motion: reduce) { .hero__ch { transform: none !important; } .glass, .hero__cue span, .aurora, .ring, .tooth svg, .hero__gloss::after { animation: none !important; } }
+  @media (max-width: 768px) { .aurora, .ring, .hero__gloss::after { animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .hero__ch { transform: none !important; } .glass, .hero__cue span, .aurora, .ring, .hero__gloss::after { animation: none !important; } }
 </style>
 
 <script>

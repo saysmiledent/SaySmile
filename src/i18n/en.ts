@@ -34,6 +34,8 @@ export default {
     theme: 'Toggle theme',
     language: 'Language',
     menu: 'Menu',
+    pause: 'Pause animation',
+    play: 'Play animation',
     skip: 'Skip to content',
     soon: 'This section is coming soon',
   },

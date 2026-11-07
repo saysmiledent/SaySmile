@@ -1,0 +1,143 @@
+---
+// The hero backdrop, drawn as a dental scene. Every object is something from a dentist's table, so the
+// background says "dentistry" without a stock photo: glossy teeth, a toothbrush, a dental mirror, foam bubbles
+// and two glints on a clean tooth. A tooth-outline wallpaper sits under everything.
+const tooth = 'M10 22c0-8 5-12 10-12 2 0 3 1 4 1s2-1 4-1c5 0 10 4 10 12 0 6-2 8-3 14-.5 3-1.5 4-3 4s-2-3-3-8c-.5-2-1.5-3-5-3s-4.5 1-5 3c-1 5-1.5 8-3 8s-2.5-1-3-4c-1-6-3-8-3-14z';
+const glint = 'M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z';
+// [class, depth for pointer parallax, scroll speed]
+const teeth: [string, number, number][] = [['big', 0.7, 0.12], ['a', 1.6, 0.3], ['b', 2.2, 0.45], ['c', 1.1, 0.2], ['d', 2.6, 0.55]];
+const bubbles = [[8, 12, 0], [14, 22, -3], [6, 38, -6], [18, 55, -2], [10, 70, -8], [12, 84, -4], [7, 92, -10]];
+---
+
+<div class="dental" aria-hidden="true">
+  <svg width="0" height="0" focusable="false" style="position:absolute">
+    <defs>
+      <linearGradient id="d-enamel" x1="0" y1="0" x2="0.6" y2="1">
+        <stop offset="0" stop-color="#ffffff" />
+        <stop offset="0.55" stop-color="#f2f7f0" />
+        <stop offset="1" stop-color="#cfe0c9" />
+      </linearGradient>
+      <linearGradient id="d-steel" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#ffffff" />
+        <stop offset="1" stop-color="#cfe0c9" />
+      </linearGradient>
+      <radialGradient id="d-lens" cx="0.35" cy="0.3" r="0.8">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.95" />
+        <stop offset="0.6" stop-color="#e3ecdf" stop-opacity="0.55" />
+        <stop offset="1" stop-color="#b2c9ab" stop-opacity="0.5" />
+      </radialGradient>
+    </defs>
+  </svg>
+
+  <span class="dental__wall"></span>
+
+  {teeth.map(([c, d, sp]) => (
+    <span class={`obj tooth tooth--${c}`} data-mdepth={d} data-scroll={sp}>
+      <svg viewBox="0 0 48 48">
+        <path d={tooth} fill="url(#d-enamel)" stroke="#ffffff" stroke-width="1.4" stroke-linejoin="round" />
+        <path d="M13 20c.8-4 3.6-6.4 7-6.6" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" opacity="0.95" />
+      </svg>
+    </span>
+  ))}
+
+  <span class="obj brush" data-mdepth="1.5" data-scroll="0.35">
+    <svg viewBox="0 0 150 44">
+      <g class="brush__swing">
+        <rect x="4" y="17" width="88" height="11" rx="5.5" fill="url(#d-steel)" stroke="#fff" stroke-width="1.4" />
+        <rect x="14" y="20" width="44" height="3" rx="1.5" fill="#b2c9ab" />
+        <rect x="90" y="19" width="14" height="7" rx="3.5" fill="#b2c9ab" />
+        <rect x="102" y="14" width="42" height="17" rx="6" fill="url(#d-steel)" stroke="#fff" stroke-width="1.4" />
+        {[108, 116, 124, 132, 140].map((x) => <path d={`M${x} 14V5`} stroke="#fff" stroke-width="3.4" stroke-linecap="round" />)}
+      </g>
+    </svg>
+  </span>
+
+  <span class="obj mirror" data-mdepth="1.9" data-scroll="0.4">
+    <svg viewBox="0 0 64 130">
+      <g class="mirror__tilt">
+        <rect x="27" y="54" width="10" height="72" rx="5" fill="url(#d-steel)" stroke="#fff" stroke-width="1.4" />
+        <circle cx="32" cy="30" r="25" fill="url(#d-lens)" stroke="#fff" stroke-width="3" />
+        <path d="M17 24c2-6 7-10 13-11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+      </g>
+    </svg>
+  </span>
+
+  <!-- two glints on the clean teeth: they show "polished", they are not a decorative star -->
+  <span class="obj glint glint--a" data-mdepth="1.2"><svg viewBox="0 0 24 24"><path d={glint} fill="#fff" /></svg></span>
+  <span class="obj glint glint--b" data-mdepth="2"><svg viewBox="0 0 24 24"><path d={glint} fill="#fff" /></svg></span>
+
+  <span class="foam">
+    {bubbles.map(([s, x, dl]) => <i style={`--s:${s}vmin;--x:${x}%;--dl:${dl}s`}></i>)}
+  </span>
+</div>
+
+<style>
+  .dental { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+
+  /* wallpaper: tiny tooth outlines in a tilted repeat, fading out toward the middle so the portrait stays the focus */
+  .dental__wall {
+    position: absolute; inset: -20%; opacity: 0.55;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260' fill='none' stroke='white' stroke-width='1.6' stroke-linejoin='round'%3E%3Cg transform='translate(30 34) scale(.9) rotate(-12 24 24)'%3E%3Cpath d='M10 22c0-8 5-12 10-12 2 0 3 1 4 1s2-1 4-1c5 0 10 4 10 12 0 6-2 8-3 14-.5 3-1.5 4-3 4s-2-3-3-8c-.5-2-1.5-3-5-3s-4.5 1-5 3c-1 5-1.5 8-3 8s-2.5-1-3-4c-1-6-3-8-3-14z'/%3E%3C/g%3E%3Cg transform='translate(160 120) scale(.62) rotate(14 24 24)'%3E%3Cpath d='M10 22c0-8 5-12 10-12 2 0 3 1 4 1s2-1 4-1c5 0 10 4 10 12 0 6-2 8-3 14-.5 3-1.5 4-3 4s-2-3-3-8c-.5-2-1.5-3-5-3s-4.5 1-5 3c-1 5-1.5 8-3 8s-2.5-1-3-4c-1-6-3-8-3-14z'/%3E%3C/g%3E%3Cg transform='translate(70 170) scale(.5) rotate(-30 24 24)'%3E%3Cpath d='M10 22c0-8 5-12 10-12 2 0 3 1 4 1s2-1 4-1c5 0 10 4 10 12 0 6-2 8-3 14-.5 3-1.5 4-3 4s-2-3-3-8c-.5-2-1.5-3-5-3s-4.5 1-5 3c-1 5-1.5 8-3 8s-2.5-1-3-4c-1-6-3-8-3-14z'/%3E%3C/g%3E%3Ccircle cx='214' cy='40' r='5'/%3E%3Ccircle cx='110' cy='96' r='3'/%3E%3Ccircle cx='28' cy='132' r='4'/%3E%3C/svg%3E");
+    background-size: 260px 260px; transform: rotate(-8deg);
+    -webkit-mask-image: radial-gradient(ellipse 55% 60% at 62% 50%, transparent 20%, #000 85%);
+    mask-image: radial-gradient(ellipse 55% 60% at 62% 50%, transparent 20%, #000 85%);
+    animation: wall 48s linear infinite;
+  }
+  @keyframes wall { to { background-position: 260px 260px; } }
+  :global(:root[data-theme='dark']) .dental__wall { opacity: 0.22; filter: brightness(0.8) sepia(0.2) hue-rotate(60deg); }
+
+  .obj { position: absolute; display: block; will-change: transform; }
+  .obj svg { display: block; width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 18px 20px rgb(44 70 40 / 0.28)); }
+
+  /* teeth: glossy enamel, each bobs and turns on its own clock */
+  .tooth svg { animation: bob 7s ease-in-out infinite; transform-origin: 50% 60%; }
+  .tooth--big { width: min(46vmin, 30rem); inset-block-start: 12%; inset-inline-end: 2%; opacity: 0.5; }
+  .tooth--big svg { animation-duration: 11s; filter: none; }
+  .tooth--a { width: 6.5rem; inset-block-start: 15%; inset-inline-start: 47%; }
+  .tooth--b { width: 4.2rem; inset-block-end: 20%; inset-inline-start: 41%; }
+  .tooth--b svg { animation-delay: -2s; }
+  .tooth--c { width: 5.2rem; inset-block-start: 56%; inset-inline-start: 3%; }
+  .tooth--c svg { animation-delay: -4s; rotate: -16deg; }
+  .tooth--d { width: 3.4rem; inset-block-start: 11%; inset-inline-end: 3%; }
+  .tooth--d svg { animation-delay: -5s; rotate: 14deg; }
+  @keyframes bob { 50% { translate: 0 -16px; rotate: 7deg; } }
+
+  /* toothbrush brushes back and forth, like it is cleaning the edge of the frame */
+  .brush { width: min(20rem, 28vmin); inset-block-end: 4%; inset-inline-start: 6%; rotate: -14deg; }
+  .brush__swing { transform-box: fill-box; transform-origin: 20% 50%; animation: brushing 3.2s ease-in-out infinite; }
+  @keyframes brushing { 0%, 100% { transform: translateX(0) rotate(0); } 50% { transform: translateX(14px) rotate(3deg); } }
+
+  /* dental mirror sways on its handle */
+  .mirror { width: 5.4rem; inset-block-start: 38%; inset-inline-end: 3%; rotate: 18deg; }
+  .mirror__tilt { transform-box: fill-box; transform-origin: 50% 90%; animation: sway 6s ease-in-out infinite; }
+  @keyframes sway { 50% { transform: rotate(9deg); } }
+
+  .glint { width: 1.8rem; }
+  .glint svg { filter: drop-shadow(0 0 6px rgb(255 255 255 / 0.9)); animation: twinkle 3.4s ease-in-out infinite; }
+  .glint--a { inset-block-start: 17%; inset-inline-start: calc(47% + 5.2rem); }
+  .glint--b { width: 1.2rem; inset-block-start: 8%; inset-inline-end: 13%; }
+  .glint--b svg { animation-delay: -1.6s; }
+  @keyframes twinkle { 0%, 100% { scale: 0.4; opacity: 0.2; rotate: 0deg; } 50% { scale: 1; opacity: 1; rotate: 45deg; } }
+
+  /* foam bubbles rise from the bottom edge and fade, a small cue for "fresh and clean" */
+  .foam i { position: absolute; bottom: -10%; inset-inline-start: var(--x); width: var(--s); height: var(--s); border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #fff 0 14%, rgb(255 255 255 / 0.55) 30%, rgb(255 255 255 / 0.12) 62%, transparent 70%);
+    border: 1px solid rgb(255 255 255 / 0.7);
+    animation: rise 14s linear infinite var(--dl); }
+  @keyframes rise { 0% { translate: 0 0; opacity: 0; } 12% { opacity: 1; } 100% { translate: 18px -118vh; opacity: 0; } }
+
+  :global(:root[data-theme='dark']) .obj svg { filter: drop-shadow(0 18px 20px rgb(0 0 0 / 0.5)); opacity: 0.85; }
+  :global(:root[data-theme='dark']) .tooth--big { opacity: 0.18; }
+
+  @media (max-width: 1100px) { .mirror, .tooth--d { display: none; } .brush { inset-inline-start: 2%; } }
+  /* mobile energy 1 (DESIGN.md): keep the objects, stop the loops; fewer objects so the phone layout stays clean */
+  @media (max-width: 860px) {
+    .tooth--a, .tooth--b, .glint--a, .brush { display: none; }
+    .tooth--big { width: 70vw; inset-block-start: 22%; inset-inline-end: -12%; }
+    .tooth--c { inset-block-start: 62%; width: 3.6rem; }
+    .dental__wall, .tooth svg, .brush__swing, .glint svg, .foam i { animation: none !important; }
+    .foam { display: none; }
+  }
+  :global([data-hero].is-paused) .dental *, :global([data-hero].is-paused) .dental *::before { animation-play-state: paused !important; }
+  @media (prefers-reduced-motion: reduce) { .dental *, .dental *::before { animation: none !important; } .foam { display: none; } }
+</style>

@@ -27,6 +27,14 @@ export function initHero() {
   });
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let paused = false;
+  const pauseBtn = root.querySelector<HTMLButtonElement>('[data-pause]');
+  pauseBtn?.addEventListener('click', () => {
+    paused = !paused;
+    root.classList.toggle('is-paused', paused);
+    pauseBtn.setAttribute('aria-pressed', String(paused));
+    pauseBtn.setAttribute('aria-label', (paused ? pauseBtn.dataset.labelPlay : pauseBtn.dataset.labelPause) || '');
+  });
   const mobile = matchMedia('(max-width: 768px)').matches;
   const stage = root.querySelector<HTMLElement>('[data-hero-stage]')!;
   const tilt = root.querySelector<HTMLElement>('[data-hero-tilt]')!;
@@ -142,6 +150,17 @@ export function initHero() {
     dot.style.top = `${e.clientY - r.top}px`;
     ripples.appendChild(dot);
     gsap.fromTo(dot, { scale: 0.4, opacity: 0.95 }, { scale: 11, opacity: 0, duration: 0.9, ease: 'power2.out', onComplete: () => dot.remove() });
+    // a few foam bubbles float up from the press point
+    for (let i = 0; i < 6; i++) {
+      const b = document.createElement('span');
+      b.className = 'pop';
+      b.style.left = dot.style.left; b.style.top = dot.style.top;
+      ripples.appendChild(b);
+      gsap.fromTo(b, { scale: 0.3 + Math.random() * 0.6, opacity: 1 }, {
+        x: (Math.random() - 0.5) * 120, y: -70 - Math.random() * 130, scale: 0.9 + Math.random() * 1.4,
+        opacity: 0, duration: 1.1 + Math.random() * 0.9, ease: 'power1.out', onComplete: () => b.remove(),
+      });
+    }
   }, { passive: true });
 
   // --- live 3D relief (WebGL). Falls back to the photo stack above when unavailable ---
@@ -165,7 +184,7 @@ export function initHero() {
 
   // --- idle sway when nobody is moving the pointer (also what phones see) ---
   gsap.ticker.add((time) => {
-    if (performance.now() - lastInput < 2500) return;
+    if (paused || performance.now() - lastInput < 2500) return;
     setX(Math.sin(time * 0.6) * 0.55);
     setY(Math.sin(time * 0.4 + 1) * 0.15);
   });
@@ -176,11 +195,19 @@ export function initHero() {
   gsap.from(root.querySelectorAll('.glass'), { opacity: 0, scale: 0.8, y: 24, duration: 0.9, delay: 1, stagger: 0.18, ease: 'back.out(1.6)' });
   if (copy) gsap.from(copy.children, { y: 24, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.12, delay: 0.5 });
 
+  // --- dental objects: pop in, then drift at their own speed while scrolling ---
+  const objs = root.querySelectorAll<HTMLElement>('.dental .obj');
+  gsap.from(objs, { scale: 0.2, opacity: 0, duration: 1.1, ease: 'back.out(1.8)', stagger: 0.09, delay: 0.25 });
+
   // --- scroll: the scene recedes ---
   const st = { trigger: root, start: 'top top', end: 'bottom top', scrub: 0.6 };
   gsap.to(stage, { scale: 0.82, yPercent: -6, ease: 'none', scrollTrigger: st });
   gsap.to(chars, {
     yPercent: (i) => -20 - i * 6, ease: 'none', scrollTrigger: st,
+  });
+  if (!mobile) objs.forEach((el) => {
+    const sp = Number(el.dataset.scroll || 0);
+    if (sp) gsap.to(el, { yPercent: -sp * 160, ease: 'none', scrollTrigger: st });
   });
   if (copy) gsap.to(copy, { opacity: 0, y: -40, ease: 'none', scrollTrigger: { ...st, end: 'bottom 60%' } });
 
