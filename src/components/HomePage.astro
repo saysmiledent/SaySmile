@@ -4,7 +4,7 @@ import Hero from '../sections/hero/Hero.astro';
 import { getDictionary, sectionUrl, visibleSections, type Locale } from '../i18n';
 import { getPages } from '../content';
 
-// The home page is only the hero: brand, first facts, 3D effect. Everything else lives in the menu pages.
+// The home page is only the hero: the brand word with the bead sculpture, name, role and booking. Everything else lives in the menu pages.
 interface Props { lang: Locale }
 const { lang } = Astro.props;
 const t = getDictionary(lang);

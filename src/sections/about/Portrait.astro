@@ -1,0 +1,55 @@
+---
+// The doctor's live portrait. His head and shoulders follow the cursor: 9 yaw frames and 1 look-down
+// frame cut from his own video, blended by pointer position and drawn as a 3D relief when WebGL is there.
+// Fills its parent (the arch on the About page). See portrait.ts.
+interface Props { alt: string }
+const { alt } = Astro.props;
+
+const frames = import.meta.glob('./assets/doctor-*.webp', {
+  eager: true, query: '?url', import: 'default',
+}) as Record<string, string>;
+const url = (name: string) => frames[`./assets/doctor-${name}.webp`];
+// Order matters: left -> right (yaw 0..8, centre = 4), then the look-down frame.
+const yaw = Array.from({ length: 9 }, (_, i) => url(`yaw-${i}`));
+const pitchDown = url('pitch-down');
+
+const depthFiles = import.meta.glob('./assets/depth-*.webp', {
+  eager: true, query: '?url', import: 'default',
+}) as Record<string, string>;
+const depth = (name: string) => depthFiles[`./assets/depth-${name}.webp`];
+const relief = JSON.stringify({
+  depth: Array.from({ length: 9 }, (_, i) => depth(`yaw-${i}`)),
+  down: depth('pitch-down'),
+});
+---
+
+<div class="portrait" data-portrait data-relief={relief}>
+  <div class="portrait__tilt" data-portrait-tilt>
+    {yaw.map((src, i) => (
+      <img class="portrait__frame" data-yaw={i} src={src} alt={i === 4 ? alt : ''} width="600" height="720" decoding="async" loading={i === 4 ? 'eager' : 'lazy'} />
+    ))}
+    <img class="portrait__frame" data-pitch="down" src={pitchDown} alt="" width="600" height="720" decoding="async" loading="lazy" />
+  </div>
+</div>
+
+<style>
+  .portrait { position: absolute; inset: 0; perspective: 1100px; }
+  .portrait__tilt { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+  .portrait__frame {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: bottom;
+    opacity: 0; pointer-events: none; user-select: none;
+  }
+  .portrait__frame[data-yaw='4'] { opacity: 1; } /* centre frame visible before the script runs */
+  /* the look-down frame only blends the head and shoulders, so the body never ghosts */
+  .portrait__frame[data-pitch] {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 28%, transparent 44%);
+    mask-image: linear-gradient(to bottom, #000 0, #000 28%, transparent 44%);
+  }
+  .portrait :global(.portrait__gl) { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .portrait.is-gl .portrait__frame { visibility: hidden; }
+</style>
+
+<script>
+  import { initPortrait } from './portrait';
+  initPortrait();
+</script>

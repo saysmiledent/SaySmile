@@ -1,4 +1,4 @@
-// Live 3D relief of the doctor (raw WebGL, no library).
+// Live 3D relief of the doctor's portrait on the About page (raw WebGL, no library).
 // Every photo frame is drawn on a finely subdivided grid whose height comes from a small depth map,
 // so the head and shoulders are real geometry: they rotate in perspective, catch a light that follows
 // the cursor, and blend between photo angles. Returns null when WebGL (or vertex texture fetch) is missing,
@@ -89,7 +89,7 @@ export async function createRelief(
   aspect: number,
 ): Promise<Relief | null> {
   const canvas = document.createElement('canvas');
-  canvas.className = 'hero__gl';
+  canvas.className = 'portrait__gl';
   const gl = canvas.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: true }) as WebGLRenderingContext | null;
   if (!gl || gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS) < 3) return null;
 
@@ -108,7 +108,7 @@ export async function createRelief(
     gl.linkProgram(prog);
     if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog) || 'link');
   } catch (e) {
-    console.warn('[hero3d] shader', e);
+    console.warn('[portrait3d] shader', e);
     return null;
   }
   gl.useProgram(prog);
@@ -156,7 +156,7 @@ export async function createRelief(
     colD = mk(cd, true);
     depD = mk(dd, false);
   } catch (e) {
-    console.warn('[hero3d] textures', e);
+    console.warn('[portrait3d] textures', e);
     return null;
   }
 

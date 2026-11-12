@@ -2,20 +2,19 @@
 import { getPages } from '../../content';
 import { getDictionary, type Locale } from '../../i18n';
 import { contactLinks } from '../../config/site';
+import Portrait from './Portrait.astro';
 const { lang } = Astro.props as { lang: Locale };
 const t = getDictionary(lang);
 const p = getPages(lang).about;
 const book = contactLinks()[0];
-const frames = import.meta.glob('../hero/assets/doctor-yaw-4.webp', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
-const portrait = Object.values(frames)[0];
 const nf = (v: number) => v.toLocaleString(lang === 'fa' ? 'fa-IR' : 'en-US');
 ---
 
 <section class="sheet" aria-label={t.nav.about}>
   <div class="container wrap">
     <aside class="who" data-reveal="clip">
-      <div class="arch" data-tilt="flat">
-        <img src={portrait} alt={t.hero.alt} width="600" height="720" loading="lazy" decoding="async" data-parallax="0.04" />
+      <div class="arch">
+        <Portrait alt={t.hero.alt} />
       </div>
       <span class="who__chip" data-mdepth="1.2">{t.hero.doctor}</span>
       <span class="who__chip who__chip--b" data-mdepth="2">{t.hero.subtitle}</span>
@@ -59,7 +58,6 @@ const nf = (v: number) => v.toLocaleString(lang === 'fa' ? 'fa-IR' : 'en-US');
     border: 1.5px solid var(--line); box-shadow: var(--shadow);
   }
   :global(:root[data-theme='dark']) .arch { background: radial-gradient(90% 60% at 50% 18%, rgb(178 201 171 / 0.22), transparent 70%), linear-gradient(180deg, #2a322c, #1e2420); }
-  .arch img { width: 100%; height: 108%; object-fit: cover; object-position: top; }
   .who__chip { position: absolute; inset-block-start: 12%; inset-inline-start: 0.6rem; padding: 0.5rem 1rem; border-radius: 999px; background: var(--primary); color: var(--on-primary); font-weight: 700; font-size: 0.92rem; box-shadow: var(--shadow); }
   .who__chip--b { inset-block-start: auto; inset-block-end: 14%; inset-inline-start: auto; inset-inline-end: 0.6rem; background: var(--accent); color: #27272a; }
   .facts { display: block; }

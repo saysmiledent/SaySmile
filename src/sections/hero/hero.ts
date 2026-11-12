@@ -1,60 +1,65 @@
-// Hero behaviour (GSAP).
-// - Cursor x -> yaw (9 photo angles cut from the doctor's video), cursor y -> looks down
-// - Whole stage tilts in 3D toward the cursor; background shapes drift by depth
-// - Idle: gentle auto-sway. Touch: drag/touch moves the gaze.
-// - Scroll: stage shrinks and rises, title letters spread, copy fades.
-// - Click on the scene: a short ring ripple at the pointer.
-// - Reduced motion: static centre frame, no listeners.
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { createRelief, type Relief } from './hero3d';
-
-gsap.registerPlugin(ScrollTrigger);
+// Home hero behaviour (no library, see field.ts for the bead simulation).
+// - The brand word opens ("Say" | "Smile") and beads gather between the words into a tooth.
+// - Pointer: beads move aside and spring back; the letters lift a little under the pointer.
+// - Click or tap on the sculpture, or the Tooth / Smile switch: the beads rebuild the other shape.
+// - Idle on desktop: the shape changes by itself every few seconds (the pause button stops it).
+// - Scroll: beads spread out and fade while the hero leaves.
+// - Phones: beads gather once and then rest; they move only when touched.
+// - Reduced motion: a still picture; the switch still works, the Play button turns motion on.
+import { createField, type FieldColors } from './field';
 
 // `force` runs the full animation even when the system asks for reduced motion (the visitor pressed Play).
 export function initHero(force = false) {
   const root = document.querySelector<HTMLElement>('[data-hero]');
-  if (!root) return;
-
-  // Scroll cue: its own handler (not the generic anchor one) so it works in every environment
-  if (!force) root.querySelector<HTMLAnchorElement>('.hero__cue')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const target = document.getElementById('portal');
-    if (!target) return;
-    const y = target.getBoundingClientRect().top + scrollY - 70;
-    const l = (window as unknown as { __lenis?: { scrollTo: (v: number) => void } }).__lenis;
-    if (l) l.scrollTo(y); else window.scrollTo({ top: y, behavior: 'smooth' });
-  });
+  const canvas = root?.querySelector<HTMLCanvasElement>('[data-hero-canvas]');
+  const slot = root?.querySelector<HTMLElement>('[data-hero-slot]');
+  if (!root || !canvas || !slot) return;
 
   const reduced = !force && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let paused = false;
-  const pauseBtn = root.querySelector<HTMLButtonElement>('[data-pause]');
-  if (!reduced) pauseBtn?.addEventListener('click', () => {
-    paused = !paused;
-    root.classList.toggle('is-paused', paused);
-    pauseBtn.setAttribute('aria-pressed', String(paused));
-    pauseBtn.setAttribute('aria-label', (paused ? pauseBtn.dataset.labelPlay : pauseBtn.dataset.labelPause) || '');
-  });
   const mobile = matchMedia('(max-width: 768px)').matches;
-  const stage = root.querySelector<HTMLElement>('[data-hero-stage]')!;
-  const tilt = root.querySelector<HTMLElement>('[data-hero-tilt]')!;
-  const yawFrames = [...root.querySelectorAll<HTMLImageElement>('[data-yaw]')]
-    .sort((a, b) => Number(a.dataset.yaw) - Number(b.dataset.yaw));
-  const down = root.querySelector<HTMLImageElement>('[data-pitch="down"]')!;
-  const chars = root.querySelectorAll<HTMLElement>('.hero__ch');
-  const blobs = root.querySelectorAll<HTMLElement>('.aurora');
-  const copy = root.querySelector<HTMLElement>('[data-hero-copy]');
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  const surface = root.querySelector<HTMLElement>('[data-relief]')!;
-  const reliefCfg = JSON.parse(surface.dataset.relief || '{}') as { depth: string[]; down: string };
-  let relief: Relief | null = null;
-  let visible = true;
-  const glState = { mix: 0, down: 0, rotX: 0, rotY: 0, lightX: 0, lightY: 0, time: 0 };
+  const colors = (): FieldColors => {
+    const s = getComputedStyle(root);
+    return {
+      a: s.getPropertyValue('--bead-a').trim() || '#3f5a38',
+      b: s.getPropertyValue('--bead-b').trim() || '#846652',
+      c: s.getPropertyValue('--bead-c').trim() || '#ffffff',
+    };
+  };
 
-  const mid = (yawFrames.length - 1) / 2;
+  const field = createField(canvas, mobile ? 1800 : 4400, colors());
+  if (!field) return;
+
+  // The sculpture sits in the slot between the two words, so the page layout decides its place.
+  const place = () => {
+    const r = root.getBoundingClientRect();
+    const s = slot.getBoundingClientRect();
+    field.resize(r.width, r.height);
+    field.place(s.left - r.left + s.width / 2, s.top - r.top + s.height * 0.5, s.width * 0.98);
+  };
+  place();
+
+  const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-shape]')];
+  const mark = () => buttons.forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.shape) === field.shape)));
+  let lastInput = performance.now();
+  const show = (i: number) => {
+    field.setShape(i);
+    if (reduced) field.still();
+    mark();
+    lastInput = performance.now();
+  };
+  buttons.forEach((b) => b.addEventListener('click', () => show(Number(b.dataset.shape))));
+  mark();
+
+  new MutationObserver(() => field.setColors(colors()))
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  const pauseBtn = root.querySelector<HTMLButtonElement>('[data-pause]');
+
   if (reduced) {
-    yawFrames.forEach((f, i) => (f.style.opacity = i === mid ? '1' : '0'));
+    field.still();
+    addEventListener('resize', () => { if (root.classList.contains('is-animated')) return; place(); field.still(); });
     // The system asks for less motion, so the scene starts still. The same button becomes Play:
     // one press turns the full animation on for this visit.
     if (pauseBtn) {
@@ -70,162 +75,81 @@ export function initHero(force = false) {
     return;
   }
 
-  // Gaze state, -1..1 (x: left..right, y: up..down). Smoothed with GSAP.
-  const gaze = { x: 0, y: 0 };
-  const setX = gsap.quickTo(gaze, 'x', { duration: 0.55, ease: 'power3.out', onUpdate: render });
-  const setY = gsap.quickTo(gaze, 'y', { duration: 0.55, ease: 'power3.out', onUpdate: render });
+  let paused = false;
+  let visible = true;
+  const run = () => { if (!paused && visible) field.start(!mobile); };
 
-  const tiltY = gsap.quickSetter(tilt, 'rotationY', 'deg');
-  const tiltX = gsap.quickSetter(tilt, 'rotationX', 'deg');
-  const shiftX = gsap.quickSetter(tilt, 'x', 'px');
-  const maxTilt = mobile ? 4 : 9;
-  const maxShift = mobile ? 6 : 16;
+  pauseBtn?.addEventListener('click', () => {
+    paused = !paused;
+    root.classList.toggle('is-paused', paused);
+    pauseBtn.setAttribute('aria-pressed', String(paused));
+    pauseBtn.setAttribute('aria-label', (paused ? pauseBtn.dataset.labelPlay : pauseBtn.dataset.labelPause) || '');
+    if (paused) field.stop(); else run();
+  });
 
-  function render() {
-    // yaw position 0..N-1 across the photos (centre = middle one)
-    const n = yawFrames.length;
-    const p = ((gaze.x + 1) / 2) * (n - 1);
-    const i = Math.min(n - 2, Math.floor(p));
-    // Snap towards the nearest photo: short cross-fades keep the head from ghosting
-    const raw = p - i;
-    const f = Math.min(1, Math.max(0, (raw - 0.42) / 0.16));
-    yawFrames.forEach((img, k) => {
-      img.style.opacity = k === i ? '1' : k === i + 1 ? String(f) : '0';
-    });
-    glState.mix = f * f * (3 - 2 * f);
-    // look-down frame fades in on top near the centre yaw, with a dead zone so a cursor at eye level shows no ghosting
-    const centre = Math.max(0, 1 - Math.abs(gaze.x) * 2.2);
-    const dz = (v: number) => { const k = Math.min(1, Math.max(0, (Math.abs(v) - 0.5) / 0.35)); return k * k * (3 - 2 * k); };
-    const downAmt = gaze.y > 0 ? dz(gaze.y) * centre : 0;
-    down.style.opacity = String(downAmt);
-    glState.down = downAmt;
-    glState.rotY = gaze.x * 0.3;
-    glState.rotX = gaze.y * 0.16;
-    glState.lightX = gaze.x;
-    glState.lightY = gaze.y;
-    root!.style.setProperty('--gx', gaze.x.toFixed(3)); // moves the sheen band on the arch
-    if (relief) relief.setFrames(i, i + 1);
+  // --- intro: the word opens (CSS) while the beads fly in and gather between the two halves ---
+  field.gather();
+  run();
+  addEventListener('resize', place);
 
-    // The photos already turn the head; keep the 3D tilt subtle and in the same direction
-    if (!relief) {
-      tiltY(gaze.x * maxTilt);
-      tiltX(-gaze.y * maxTilt * 0.6);
-      shiftX(gaze.x * maxShift);
-    }
-    blobs.forEach((b, k) => {
-      const d = Number(b.dataset.depth || 1) * (k % 2 ? -1 : 1);
-      b.style.transform = `translate3d(${-gaze.x * 26 * d}px, ${-gaze.y * 18 * d}px, 0)`;
-    });
-  }
-
-  // --- input: pointer position relative to the stage centre ---
-  let lastInput = performance.now();
-  const aim = (cx: number, cy: number) => {
-    const r = stage.getBoundingClientRect();
-    const x = (cx - (r.left + r.width / 2)) / (innerWidth * 0.5);
-    const y = (cy - (r.top + r.height * 0.3)) / (innerHeight * 0.5);
-    setX(Math.max(-1, Math.min(1, x)));
-    setY(Math.max(-1, Math.min(1, y)));
+  // --- pointer ---
+  const rel = (e: PointerEvent) => { const r = root.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top, in: e.clientY < r.bottom }; };
+  const letters = [...root.querySelectorAll<HTMLElement>('.hero__ch')];
+  let lift = 0;
+  addEventListener('pointermove', (e) => {
+    const p = rel(e);
+    field.pointer(p.x, p.y, p.in && !paused);
     lastInput = performance.now();
-  };
-  addEventListener('pointermove', (e) => aim(e.clientX, e.clientY), { passive: true });
-  addEventListener('pointerdown', (e) => aim(e.clientX, e.clientY), { passive: true });
-
-  // --- spotlight follows the pointer; the big brand letters bulge up toward it ---
-  const letters = [...chars].map((el) => ({
-    el,
-    y: gsap.quickTo(el, 'y', { duration: 0.45, ease: 'power3.out' }),
-    s: gsap.quickTo(el, 'scaleY', { duration: 0.45, ease: 'power3.out' }),
-  }));
-  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    addEventListener('pointermove', (e) => {
-      const r = root.getBoundingClientRect();
-      root.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      root.style.setProperty('--my', `${e.clientY - r.top}px`);
-      if (r.bottom < 0) return;
-      letters.forEach((l) => {
-        const b = l.el.getBoundingClientRect();
+    if (!fine || paused || lift) return;
+    lift = requestAnimationFrame(() => {
+      lift = 0;
+      letters.forEach((el) => {
+        const b = el.getBoundingClientRect();
         const dx = e.clientX - (b.left + b.width / 2);
         const dy = e.clientY - (b.top + b.height / 2);
-        const k = Math.exp(-(dx * dx + dy * dy) / (2 * 150 * 150));
-        l.y(-k * 34);
-        l.s(1 + k * 0.16);
+        const k = Math.exp(-(dx * dx + dy * dy) / (2 * 140 * 140));
+        el.style.transform = k > 0.02 ? `translateY(${(-k * 22).toFixed(1)}px)` : '';
       });
-    }, { passive: true });
-  }
+    });
+  }, { passive: true });
+  addEventListener('pointerleave', () => field.pointer(0, 0, false));
+  document.documentElement.addEventListener('pointerleave', () => field.pointer(0, 0, false));
+  addEventListener('pointerup', (e) => { if (e.pointerType !== 'mouse') field.pointer(0, 0, false); }, { passive: true });
 
-  // --- click ripple: feedback for a press anywhere on the scene (not on links) ---
-  const ripples = root.querySelector<HTMLElement>('.hero__ripples');
+  // press on the sculpture: the beads jump apart and rebuild the other shape
   addEventListener('pointerdown', (e) => {
-    if (!ripples || (e.target as HTMLElement).closest('a, button')) return;
-    const r = root.getBoundingClientRect();
-    if (e.clientY < r.top || e.clientY > r.bottom) return;
-    const dot = document.createElement('span');
-    dot.className = 'ripple';
-    dot.style.left = `${e.clientX - r.left}px`;
-    dot.style.top = `${e.clientY - r.top}px`;
-    ripples.appendChild(dot);
-    gsap.fromTo(dot, { scale: 0.4, opacity: 0.95 }, { scale: 11, opacity: 0, duration: 0.9, ease: 'power2.out', onComplete: () => dot.remove() });
-    // a few foam bubbles float up from the press point
-    for (let i = 0; i < 6; i++) {
-      const b = document.createElement('span');
-      b.className = 'pop';
-      b.style.left = dot.style.left; b.style.top = dot.style.top;
-      ripples.appendChild(b);
-      gsap.fromTo(b, { scale: 0.3 + Math.random() * 0.6, opacity: 1 }, {
-        x: (Math.random() - 0.5) * 120, y: -70 - Math.random() * 130, scale: 0.9 + Math.random() * 1.4,
-        opacity: 0, duration: 1.1 + Math.random() * 0.9, ease: 'power1.out', onComplete: () => b.remove(),
-      });
-    }
+    if (paused || (e.target as HTMLElement).closest('a, button, header, footer')) return;
+    const p = rel(e);
+    if (!p.in) return;
+    field.burst(p.x, p.y);
+    if (field.hit(p.x, p.y)) show(field.shape + 1);
+    lastInput = performance.now();
   }, { passive: true });
 
-  // --- live 3D relief (WebGL). Falls back to the photo stack above when unavailable ---
-  const colorUrls = yawFrames.map((f) => f.currentSrc || f.src);
-  createRelief(surface, colorUrls, reliefCfg.depth, down.currentSrc || down.src, reliefCfg.down, 600 / 720)
-    .then((r) => {
-      if (!r) return;
-      relief = r;
-      root.classList.add('is-gl');
-      tiltY(0); tiltX(0); shiftX(0);
-      render();
-      addEventListener('resize', () => r.resize());
-    })
-    .catch(() => {});
-  new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(root);
-  gsap.ticker.add((time) => {
-    if (!relief || !visible) return;
-    glState.time = time;
-    relief.render(glState);
-  });
+  // --- idle: on desktop the shape changes by itself when nobody is touching it ---
+  if (!mobile) setInterval(() => {
+    if (paused || !visible || document.hidden || performance.now() - lastInput < 6000) return;
+    field.setShape(field.shape + 1);
+    mark();
+  }, 7000);
 
-  // --- idle sway when nobody is moving the pointer (also what phones see) ---
-  gsap.ticker.add((time) => {
-    if (paused || performance.now() - lastInput < 2500) return;
-    setX(Math.sin(time * 0.6) * 0.55);
-    setY(Math.sin(time * 0.4 + 1) * 0.15);
-  });
+  // --- scroll: beads spread and fade, the copy under the word lets go ---
+  const under = root.querySelector<HTMLElement>('[data-hero-under]');
+  let ticking = 0;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = requestAnimationFrame(() => {
+      ticking = 0;
+      const p = Math.max(0, Math.min(1, scrollY / (root.offsetHeight * 0.75)));
+      field.setScatter(p);
+      root.style.setProperty('--away', p.toFixed(3));
+      if (under) under.style.opacity = String(Math.max(0, 1 - p * 1.6));
+    });
+  };
+  addEventListener('scroll', onScroll, { passive: true });
 
-  // --- intro ---
-  gsap.from(chars, { yPercent: 40, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.07 });
-  gsap.from(stage, { y: 60, opacity: 0, duration: 1.1, ease: 'power3.out', delay: 0.15 });
-  gsap.from(root.querySelectorAll('.glass'), { opacity: 0, scale: 0.8, y: 24, duration: 0.9, delay: 1, stagger: 0.18, ease: 'back.out(1.6)' });
-  if (copy) gsap.from(copy.children, { y: 24, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.12, delay: 0.5 });
-
-  // --- dental objects: pop in, then drift at their own speed while scrolling ---
-  const objs = root.querySelectorAll<HTMLElement>('.dental .obj');
-  gsap.from(objs, { scale: 0.2, opacity: 0, duration: 1.1, ease: 'back.out(1.8)', stagger: 0.09, delay: 0.25 });
-
-  // --- scroll: the scene recedes ---
-  const st = { trigger: root, start: 'top top', end: 'bottom top', scrub: 0.6 };
-  gsap.to(stage, { scale: 0.82, yPercent: -6, ease: 'none', scrollTrigger: st });
-  gsap.to(chars, {
-    yPercent: (i) => -20 - i * 6, ease: 'none', scrollTrigger: st,
-  });
-  if (!mobile) objs.forEach((el) => {
-    const sp = Number(el.dataset.scroll || 0);
-    if (sp) gsap.to(el, { yPercent: -sp * 160, ease: 'none', scrollTrigger: st });
-  });
-  if (copy) gsap.to(copy, { opacity: 0, y: -40, ease: 'none', scrollTrigger: { ...st, end: 'bottom 60%' } });
-
-  render();
+  new IntersectionObserver((e) => {
+    visible = e[0].isIntersecting;
+    if (visible) run(); else field.stop();
+  }).observe(root);
 }

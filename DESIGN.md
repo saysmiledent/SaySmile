@@ -11,7 +11,7 @@ Dial: ENERGY 3 on the home page, ENERGY 2 on inner pages / RHYTHM 3 / MOTION 3 h
 - Audience: Russian-speaking patients in St. Petersburg (main). Persian speakers, migrants and people in Iran (secondary).
 - Languages: Russian (default), Farsi, English. Same structure in all three.
 - Feeling: calm, warm, trustworthy, with a modern and alive look. A patient should relax on the first screen and feel that something is moving gently, not shouting.
-- Identity motif: a soft arch (the portrait window) and tooth outlines, in cappuccino and pistachio. Rounded colour "sheets" that stack over each other as you scroll.
+- Identity motif: a soft arch (the sculpture's niche on the home page, the portrait window on the About page) and the tooth shape, in cappuccino and pistachio. Rounded colour "sheets" that stack over each other as you scroll.
 - One accent: cappuccino for actions. Pistachio is the supporting colour for tags and calm surfaces.
 
 ## Palette (60-30-10)
@@ -25,7 +25,7 @@ Light:
 - Text and headings: Graphite Charcoal `#27272A`
 - Secondary text: Cool Slate Grey `#64748B`
 
-Dark mode (boutique, lets the 3D hero glow):
+Dark mode (boutique, lets the bead sculpture glow):
 - Background `#141815`, cards `#1E2420`, lines `#2E3630`
 - Lighter cappuccino `#B5927B`, pistachio `#B2C9AB`, text `#F8FAFC`
 
@@ -43,16 +43,16 @@ Rules: both themes must work everywhere. Text must pass WCAG AA contrast (4.5:1 
   - Farsi (RTL): logo on the right, menu, language buttons and theme toggle on the left.
   - Russian and English (LTR): logo on the left, menu and buttons on the right.
 - Menu items are only real pages: About, Services, Before/after, Diplomas, Education, Articles, Tutorials (marked as coming soon until filled), Contact.
-- Home page: only the interactive 3D hero and the footer. Do NOT repeat the menu as a list or cards below the hero. Each section lives on its own page.
+- Home page: only the interactive hero and the footer. The hero is the brand word read as a sentence, "Say [sculpture] Smile": between the two words stands an arch with a tooth built from small beads (canvas, `src/sections/hero/field.ts`). Under it: the Tooth / Smile switch, the doctor's name and role, the booking button and two messenger chips. No photo of the doctor on the home page: his live portrait (head follows the cursor) is on the About page. Do NOT repeat the menu as a list or cards below the hero. Each section lives on its own page.
 - Inner pages: a short animated page header, then colour sheets that change from section to section. Never plain brown top, white middle, brown bottom.
 - Sections must differ from each other (RHYTHM 3), and each exists because the content needs it.
 - Mobile: full-screen menu, single column, tap targets at least 44px, no horizontal scroll.
 
 ## Motion
 
-- Home: high energy. Pointer and scroll reactions on the portrait, letter wave on the brand word, glass fact cards, parallax.
+- Home: high energy, spent on one thing, the bead sculpture. On load the word opens and the beads gather into a tooth. The pointer pushes beads aside and they spring back; a press on the sculpture or the Tooth / Smile switch rebuilds them into a smile; left alone on desktop the shape changes every few seconds (pause button stops it); on scroll the beads spread and fade. The brand letters lift slightly under the pointer. No other decoration in the hero.
 - Inner pages: medium. Reveals on scroll, sticky stacked cards, timeline that draws itself, counters, tilt on cards for fine pointers.
-- Mobile: light. Short fades only, no parallax, no tilt, no custom cursor, native scroll.
+- Mobile: light. Short fades only, no parallax, no tilt, no custom cursor, native scroll. On the home page the beads gather once and then rest; they move only when touched.
 - Every motion has a purpose (guide the eye, show order, give feedback). `prefers-reduced-motion` turns it off.
 
 ## Copy rules (ru, fa, en)
@@ -69,4 +69,4 @@ Telegram first (t.me/saySmaile), WhatsApp second (+79522222459), email third (dr
 
 ## Not now
 
-The rigged 3D character waits for logo-free images from the doctor. Tutorials: Farsi only. The hub groups topics by library category; each topic page holds the reel, the carousel slides (with their text), a FAQ and the related research articles, and those article pages link back. A language without topics falls back to the "coming soon" stage.
+The rigged 3D character waits for logo-free images from the doctor. Until then the About page uses the photo-frame portrait (`src/sections/about/Portrait.astro`). Tutorials: Farsi only. The hub groups topics by library category; each topic page holds the reel, the carousel slides (with their text), a FAQ and the related research articles, and those article pages link back. A language without topics falls back to the "coming soon" stage.
