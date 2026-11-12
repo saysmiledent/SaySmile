@@ -50,7 +50,7 @@ Rules: both themes must work everywhere. Text must pass WCAG AA contrast (4.5:1 
 
 ## Motion
 
-- Home: high energy, spent on one thing, the bead sculpture. On load the word opens and the beads gather into a tooth. The pointer pushes beads aside and they spring back; a press on the sculpture or the Tooth / Smile switch rebuilds them into a smile; left alone on desktop the shape changes every few seconds (pause button stops it); on scroll the beads spread and fade. The brand letters lift slightly under the pointer. No other decoration in the hero.
+- Home: high energy, spent on one thing, the bead sculpture. On load the word opens and the beads gather into a tooth. The pointer pushes beads aside and they spring back; a press on the sculpture or the Tooth / Smile switch rebuilds them into a smile; left alone on desktop the shape changes every few seconds (no pause control: the doctor asked for it to run by itself; reduced motion still shows a still picture); on scroll the word parts (Say slides left, Smile right, letters spread, grow and fade) while the beads spread and fade. The brand letters lift slightly under the pointer. No other decoration in the hero.
 - Inner pages: medium. Reveals on scroll, sticky stacked cards, timeline that draws itself, counters, tilt on cards for fine pointers.
 - Mobile: light. Short fades only, no parallax, no tilt, no custom cursor, native scroll. On the home page the beads gather once and then rest; they move only when touched.
 - Every motion has a purpose (guide the eye, show order, give feedback). `prefers-reduced-motion` turns it off.

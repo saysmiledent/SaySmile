@@ -148,19 +148,29 @@ const groups = navGroups
     :global(html.menu-open) { overflow: hidden; }
     .header__burger { position: relative; z-index: 2; }
     .header__logo { position: relative; z-index: 2; }
-    :global(html.menu-open) .header__logo, :global(html.menu-open) .header__burger { color: var(--on-deep); }
-    :global(html.menu-open) .header__burger i { background: var(--on-deep); }
-    :global(html.menu-open) .header__logo span { color: var(--accent); }
-    :global(html.menu-open) .header__bar { background: transparent; border-color: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    /* .menu-closing (set by the script for the length of the close animation) keeps the bar clear until the
+       panel has shrunk back into the button. The bar's blur would otherwise return at once, and a blurred
+       parent becomes the box a fixed child is sized by, so the closing panel collapsed into a strip. */
+    :global(html.menu-open) .header__logo, :global(html.menu-open) .header__burger,
+    :global(html.menu-closing) .header__logo, :global(html.menu-closing) .header__burger { color: var(--on-deep); }
+    :global(html.menu-open) .header__burger i, :global(html.menu-closing) .header__burger i { background: var(--on-deep); }
+    :global(html.menu-open) .header__logo span, :global(html.menu-closing) .header__logo span { color: var(--accent); }
+    :global(html.menu-open) .header__bar, :global(html.menu-closing) .header__bar { background: transparent; border-color: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
   }
 </style>
 
 <script>
   const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
   const root = document.documentElement;
+  let closing = 0;
   const set = (open: boolean) => {
+    const was = root.classList.contains('menu-open');
     root.classList.toggle('menu-open', open);
     toggle?.setAttribute('aria-expanded', String(open));
+    clearTimeout(closing);
+    // hold the open look of the bar while the panel closes (0.7s clip-path transition, see the CSS note)
+    root.classList.toggle('menu-closing', was && !open);
+    if (was && !open) closing = window.setTimeout(() => root.classList.remove('menu-closing'), 720);
   };
   toggle?.addEventListener('click', () => set(!root.classList.contains('menu-open')));
   document.getElementById('site-nav')?.addEventListener('click', (e) => {

@@ -20,13 +20,14 @@ const shapes = [t.ui.shapeTooth, t.ui.shapeSmile];
 ---
 
 <section class="hero" data-hero>
+  <div class="hero__pin" data-hero-pin>
   <canvas class="hero__canvas" data-hero-canvas aria-hidden="true"></canvas>
 
   <div class="container hero__inner">
     <h1 class="hero__title" aria-label={t.hero.title}>
-      <span class="hero__word hero__word--a" aria-hidden="true">{[...words[0]].map((ch) => <span class="hero__ch">{ch}</span>)}</span>
+      <span class="hero__word hero__word--a" aria-hidden="true">{[...words[0]].map((ch, i) => <span class="hero__ch" style={`--k:${i - words[0].length}`}>{ch}</span>)}</span>
       <span class="hero__slot" data-hero-slot aria-hidden="true"></span>
-      <span class="hero__word hero__word--b" aria-hidden="true">{[...words[1]].map((ch) => <span class="hero__ch">{ch}</span>)}</span>
+      <span class="hero__word hero__word--b" aria-hidden="true">{[...words[1]].map((ch, i) => <span class="hero__ch" style={`--k:${i + 1}`}>{ch}</span>)}</span>
     </h1>
 
     <div class="hero__switch" role="group" aria-label={t.ui.shape}>
@@ -48,8 +49,7 @@ const shapes = [t.ui.shapeTooth, t.ui.shapeSmile];
       </div>
     </div>
   </div>
-
-  <button class="hero__pause" type="button" aria-pressed="false" data-pause data-label-pause={t.ui.pause} data-label-play={t.ui.play} aria-label={t.ui.pause}><i></i><i></i></button>
+  </div>
 </section>
 
 <style>
@@ -73,6 +73,10 @@ const shapes = [t.ui.shapeTooth, t.ui.shapeSmile];
     --bead-a: #b2c9ab; --bead-b: #c9a690; --bead-c: #f8fafc;
   }
 
+  /* While the page scrolls, the scene follows at 60% of the scroll (hero.ts sets --sy), so it stays in view
+     and the footer sheet slides over it. That is what makes the parting word and the spreading beads visible. */
+  .hero__pin { position: relative; display: grid; min-height: 100svh; translate: 0 calc(var(--sy, 0) * 1px); will-change: translate; }
+
   /* the beads are drawn over the whole section, so a pushed bead can fly anywhere; text stays above them */
   .hero__canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 
@@ -92,7 +96,16 @@ const shapes = [t.ui.shapeTooth, t.ui.shapeSmile];
   .hero__word { display: inline-flex; }
   .hero__word--a { justify-self: end; color: var(--ink); }
   .hero__word--b { justify-self: start; color: var(--word-b); }
-  .hero__ch { display: inline-block; transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: transform; }
+  .hero__ch { display: inline-block; transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: transform, translate; }
+  /* Scroll (hero.ts sets --away 0..1): "Say" leaves to the left and "Smile" to the right, each letter a little
+     further than the one before it (--k), growing and fading, so the word opens like a curtain over the footer.
+     `translate` and `scale` are used so this never fights the intro animation or the pointer lift (both `transform`). */
+  .hero__word { opacity: calc(1.35 - var(--away, 0) * 1.6); scale: calc(1 + var(--away, 0) * 0.35); }
+  .hero__word--a { translate: calc(var(--away, 0) * -13vw) 0; transform-origin: 100% 50%; }
+  .hero__word--b { translate: calc(var(--away, 0) * 13vw) 0; transform-origin: 0% 50%; }
+  .hero__ch { translate: calc(var(--away, 0) * var(--k, 0) * 1.6vw) 0; }
+  .hero__slot::before { opacity: calc(1 - var(--away, 0) * 1.4); }
+  .hero__switch { opacity: calc(1 - var(--away, 0) * 2.2); }
 
   /* the place of the sculpture: a soft arch (the site's identity motif) that the word opens around.
      The slot keeps its full size from the first frame, so the beads know where to gather; only the arch
@@ -151,18 +164,6 @@ const shapes = [t.ui.shapeTooth, t.ui.shapeSmile];
   :global(:root[data-theme='dark']) .chip:hover { background: rgb(178 201 171 / 0.18); border-color: var(--accent); }
   :global(:root[data-theme='dark']) .chip:active { background: rgb(178 201 171 / 0.28); }
 
-  /* pause control: the sculpture keeps moving longer than 5 seconds, so it can be stopped */
-  .hero__pause { position: absolute; z-index: 5; inset-inline-end: 1rem; bottom: calc(var(--sheet-r) + 1rem); width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line-ink); background: rgb(255 255 255 / 0.7); color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: background-color 0.2s, border-color 0.2s; }
-  .hero__pause:hover { background: #fff; border-color: #3f5a38; }
-  .hero__pause:active { background: #e3ecdf; }
-  .hero__pause i { grid-area: 1 / 1; width: 4px; height: 14px; border-radius: 2px; background: currentColor; }
-  .hero__pause i:first-child { translate: -4px 0; }
-  .hero__pause i:last-child { translate: 4px 0; }
-  .hero__pause[aria-pressed='true'] i:first-child { translate: 0; width: 0; height: 0; border-radius: 0; background: none; border-block: 8px solid transparent; border-inline-start: 13px solid currentColor; }
-  .hero__pause[aria-pressed='true'] i:last-child { display: none; }
-  :global(:root[data-theme='dark']) .hero__pause { background: rgb(255 255 255 / 0.06); }
-  :global(:root[data-theme='dark']) .hero__pause:hover { background: rgb(178 201 171 / 0.2); border-color: var(--accent); }
-
   @media (max-width: 860px) {
     .hero { --slot: min(70vw, 38svh, 330px); }
     /* the word stays whole on one line and the sculpture stands under it */
@@ -170,17 +171,15 @@ const shapes = [t.ui.shapeTooth, t.ui.shapeSmile];
     .hero__word--a, .hero__word--b { justify-self: auto; }
     .hero__slot { grid-column: 1 / -1; grid-row: 2; justify-self: center; margin-inline: 0; }
     .hero__word--a, .hero__word--b { animation: none; }
-    /* the bottom corner belongs to the contact buttons on a phone, so the control moves under the header */
-    .hero__pause { bottom: auto; top: calc(var(--header-h) + 0.9rem); }
   }
   @media (max-width: 480px) {
     /* the booking button takes its own row, the two messengers share the next one */
     .hero__cta { flex: 0 0 100%; max-width: 19rem; justify-content: center; }
   }
-  /* reduced motion: still until the visitor presses Play (hero.ts adds .is-animated) */
+  /* reduced motion: a still picture (hero.ts draws the shape once and stops) */
   @media (prefers-reduced-motion: reduce) {
-    .hero:not(.is-animated) .hero__slot::before, .hero:not(.is-animated) .hero__word { animation: none; }
-    .hero:not(.is-animated) .hero__ch { transition: none; }
+    .hero__slot::before, .hero__word { animation: none; }
+    .hero__ch { transition: none; }
   }
 </style>
 
