@@ -1,0 +1,46 @@
+---
+// A large photo that opens to full width while it scrolls in, then the doctor in figures (all counted
+// from the site's own data) and a paragraph that darkens word by word as it is read.
+import { homeCopy } from './copy';
+import { contactLinks } from '../../config/site';
+import { cases } from '../../content/cases';
+import { library } from '../../content/library-data';
+import { sectionUrl, type Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const c = homeCopy[lang];
+const base = import.meta.env.BASE_URL;
+const book = contactLinks()[0];
+const num = (n: number) => n.toLocaleString(lang === 'fa' ? 'fa-IR' : lang === 'ru' ? 'ru-RU' : 'en-US', { useGrouping: false });
+const stats = [
+  { v: num(library.length), count: library.length, label: c.about.stats.library },
+  { v: num(cases.length), count: cases.length, label: c.about.stats.cases },
+  { v: lang === 'fa' ? '۹–۲۱' : '9–21', label: c.about.stats.hours },
+  { v: num(2025), label: c.about.stats.diploma },
+];
+---
+<section class="h-feat">
+  <div class="h-feat__photo" data-h-grow>
+    <img src={`${base}img/gallery/caries-dam-3.webp`} alt={c.photoAlt} width="1400" height="933" loading="lazy" decoding="async" />
+  </div>
+  <div class="h-wrap h-feat__about">
+    <div class="h-feat__left">
+      <p class="h-label" data-h-rise>{c.about.label}</p>
+      <dl class="h-stats">
+        {stats.map((s) => (
+          <div class="h-stat" data-h-rise>
+            <dt class="h-stat__v" data-count={s.count}>{s.v}</dt>
+            <dd>{s.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    <div class="h-feat__right">
+      <p class="h-feat__text" data-h-read>{c.about.text}</p>
+      <div class="h-actions" data-h-rise>
+        {book && <a class="h-btn" href={book.href} target="_blank" rel="noopener">{c.about.book}</a>}
+        <a class="h-btn h-btn--soft" href={sectionUrl(lang, 'services')}>{c.about.prices}</a>
+      </div>
+    </div>
+  </div>
+</section>

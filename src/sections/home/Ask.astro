@@ -1,0 +1,31 @@
+---
+// Closing block: the question on one side, a short message form on the other, the molar cloud behind.
+// The site has no server, so the form opens the doctor's Telegram or WhatsApp with the message filled in.
+import { homeCopy } from './copy';
+import { site } from '../../config/site';
+import type { Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const c = homeCopy[lang];
+---
+<section class="h-ask">
+  <canvas class="h-ask__canvas" data-molar="ask" data-src={`${import.meta.env.BASE_URL}models/molar.bin`} aria-hidden="true"></canvas>
+  <div class="h-wrap h-ask__row">
+    <div class="h-ask__copy">
+      <p class="h-label" data-h-rise>{c.ask.label}</p>
+      <h2 class="h-ask__title" data-h-lines>{c.ask.title}</h2>
+      <p data-h-rise>{c.ask.text}</p>
+    </div>
+    <form class="h-form" data-h-form data-tg={site.contacts.telegram} data-wa={site.contacts.whatsapp} data-msg={c.ask.message} data-h-rise>
+      <p class="h-form__title">{c.ask.form}</p>
+      <label><span>{c.ask.name}</span><input name="name" autocomplete="name" placeholder={c.ask.namePh} required /></label>
+      <label><span>{c.ask.phone}</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder={c.ask.phonePh} /></label>
+      <label><span>{c.ask.question}</span><textarea name="question" rows="3" placeholder={c.ask.questionPh} required></textarea></label>
+      <div class="h-form__send">
+        <button class="h-btn" type="submit" value="telegram">{c.ask.viaTelegram}</button>
+        <button class="h-btn h-btn--soft" type="submit" value="whatsapp">{c.ask.viaWhatsapp}</button>
+      </div>
+      <p class="h-form__hint">{c.ask.hint}</p>
+    </form>
+  </div>
+</section>

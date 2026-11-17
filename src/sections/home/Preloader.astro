@@ -1,0 +1,20 @@
+---
+// First-visit loader (as in the reference): a ring that fills with the real loading progress of the
+// tooth model and fonts, the percentage under it, then the page opens. Once per browser session; never
+// with reduced motion. home.ts drives it; the inline script hides it at once on repeat visits.
+import { homeCopy } from './copy';
+import type { Locale } from '../../i18n';
+interface Props { lang: Locale }
+const c = homeCopy[Astro.props.lang];
+---
+<div class="loader" data-loader role="status" aria-label={c.loading}>
+  <script is:inline>
+    document.documentElement.classList.add('h-js');
+    try { if (sessionStorage.getItem('ss-loaded') || matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('no-loader'); } catch (e) { document.documentElement.classList.add('no-loader'); }
+  </script>
+  <div class="loader__ring">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" pathLength="100" /><circle class="loader__fill" cx="50" cy="50" r="46" pathLength="100" data-loader-fill /></svg>
+    <svg class="loader__mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 22c0-8 5-12 10-12 2 0 3 1 4 1s2-1 4-1c5 0 10 4 10 12 0 6-2 8-3 14-.5 3-1.5 4-3 4s-2-3-3-8c-.5-2-1.5-3-5-3s-4.5 1-5 3c-1 5-1.5 8-3 8s-2.5-1-3-4c-1-6-3-8-3-14z" /></svg>
+  </div>
+  <span class="loader__pct" data-loader-pct>0%</span>
+</div>

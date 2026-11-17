@@ -24,7 +24,7 @@ const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 const mobile = matchMedia('(max-width: 768px)').matches;
 const rtl = doc.dir === 'rtl';
 // Motion energy (DESIGN.md): home page high, inner pages medium, mobile light.
-const home = !!document.querySelector('[data-hero]');
+const home = !!document.querySelector('[data-h-hero]');
 const energy = mobile ? 1 : home ? 3 : 2;
 const lang = doc.lang;
 

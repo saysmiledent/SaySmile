@@ -1,26 +1,33 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hero from '../sections/hero/Hero.astro';
-import { getDictionary, sectionUrl, visibleSections, type Locale } from '../i18n';
-import { getPages } from '../content';
+import Preloader from '../sections/home/Preloader.astro';
+import Hero from '../sections/home/Hero.astro';
+import Why from '../sections/home/Why.astro';
+import Services from '../sections/home/Services.astro';
+import Feature from '../sections/home/Feature.astro';
+import Doctor from '../sections/home/Doctor.astro';
+import Ask from '../sections/home/Ask.astro';
+import '../sections/home/home.css';
+import type { Locale } from '../i18n';
 
-// The home page is only the hero: the brand word with the bead sculpture, name, role and booking. Everything else lives in the menu pages.
+// Home page, built on the Dantora reference (see DESIGN.md): particle molar hero, statement, services
+// rail, opening photo with the doctor in figures, the doctor, and a message form. Each part lives in
+// src/sections/home/.
 interface Props { lang: Locale }
 const { lang } = Astro.props;
-const t = getDictionary(lang);
-const pages = getPages(lang);
 ---
 
 <Base lang={lang}>
+  <Preloader lang={lang} />
   <Hero lang={lang} />
-  <!-- Plain-text summary for search engines, AI assistants and screen readers -->
-  <div class="sr-only">
-    <h2>{t.hero.doctor}, {t.hero.subtitle}</h2>
-    <p>{t.meta.description}</p>
-    <p>{pages.contact.address}. {pages.contact.hours}</p>
-    <ul>
-      {visibleSections(lang).map((id) => <li><a href={sectionUrl(lang, id)}>{t.nav[id]}: {pages.seo[id].description}</a></li>)}
-    </ul>
-  </div>
+  <Why lang={lang} />
+  <Services lang={lang} />
+  <Feature lang={lang} />
+  <Doctor lang={lang} />
+  <Ask lang={lang} />
 </Base>
 
+<script>
+  import { initHome } from '../sections/home/home';
+  initHome();
+</script>

@@ -1,0 +1,46 @@
+---
+// Services: heading, then tall numbered cards that travel sideways while the page scrolls down
+// (pinned rail on desktop, swipe row on phones). Services and prices come from the services page data.
+import { homeCopy } from './copy';
+import { getPages } from '../../content';
+import { sectionUrl, type Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const c = homeCopy[lang];
+const p = getPages(lang).services;
+const base = import.meta.env.BASE_URL;
+const href = sectionUrl(lang, 'services');
+// one real photo per service where a matching case exists; the others are plain colour cards
+const photos = [null, 'caries-dam-2', null, null, 'restore-steps-4', null];
+const cards = [
+  ...p.items.map((s) => ({ title: s.title, text: s.text, price: s.price, soon: false })),
+  ...p.soon.map((s) => ({ title: s.title, text: s.text, price: '', soon: true })),
+].map((s, i) => ({ ...s, n: String(i + 1).padStart(2, '0'), photo: photos[i] ? `${base}img/gallery/${photos[i]}.webp` : null, tone: i === 0 ? 'light' : photos[i] ? 'photo' : i % 2 ? 'deep' : 'green' }));
+---
+<section class="h-svc" data-h-rail>
+  <div class="h-svc__pin" data-h-rail-pin>
+    <div class="h-wrap h-svc__head">
+      <h2 class="h-svc__title" data-h-lines>{c.services.title}</h2>
+      <div class="h-svc__side" data-h-rise>
+        <p class="h-label">{c.services.label}</p>
+        <p>{c.services.text}</p>
+      </div>
+    </div>
+    <div class="h-svc__view">
+      <ul class="h-svc__track" data-h-rail-track>
+        {cards.map((s) => (
+          <li class={`h-card h-card--${s.tone}`}>
+            {s.photo && <img class="h-card__img" src={s.photo} alt="" loading="lazy" decoding="async" />}
+            <span class="h-card__n">{s.n}</span>
+            <h3 class="h-card__title">{s.title}</h3>
+            <p class="h-card__text">{s.text}</p>
+            <div class="h-card__foot">
+              <span>{s.soon ? c.services.soon : s.price}</span>
+              <a class="h-card__go" href={href} aria-label={`${c.services.more}: ${s.title}`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg></a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

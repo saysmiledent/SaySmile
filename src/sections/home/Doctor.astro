@@ -1,0 +1,34 @@
+---
+// "The doctor you see at every visit": a deep green card, then the doctor's portrait and his two main
+// documents as cards of the same height (reference: the team row).
+import { homeCopy } from './copy';
+import { sectionUrl, type Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const c = homeCopy[lang];
+const base = import.meta.env.BASE_URL;
+const portrait = Object.values(import.meta.glob('../about/assets/doctor-yaw-4.webp', { eager: true, query: '?url', import: 'default' }))[0] as string;
+const docs = [
+  { src: `${base}img/docs/diploma-2025-thumb.webp`, label: c.team.diploma },
+  { src: `${base}img/docs/accreditation-2025-thumb.webp`, label: c.team.accreditation },
+];
+---
+<section class="h-doc">
+  <div class="h-wrap h-doc__row">
+    <div class="h-doc__card" data-h-rise>
+      <p class="h-label">{c.team.label}</p>
+      <h2 class="h-doc__title">{c.team.title}</h2>
+      <p class="h-doc__text">{c.team.text}</p>
+      <a class="h-doc__link" href={sectionUrl(lang, 'diplomas')}>{c.team.all}</a>
+    </div>
+    <figure class="h-doc__face" data-h-rise>
+      <img src={portrait} alt={c.team.portraitAlt} width="600" height="720" loading="lazy" decoding="async" />
+    </figure>
+    {docs.map((d) => (
+      <figure class="h-doc__paper" data-h-rise>
+        <img src={d.src} alt={d.label} loading="lazy" decoding="async" />
+        <figcaption>{d.label}</figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

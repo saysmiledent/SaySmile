@@ -1,0 +1,35 @@
+---
+// Home hero (reference: Dantora). Text on the reading side, the particle molar on the other, overflowing
+// the top edge; site sections listed in the lower corner. See molar.ts and home.ts.
+import { homeCopy } from './copy';
+import { contactLinks } from '../../config/site';
+import { getDictionary, sectionUrl, type Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const c = homeCopy[lang];
+const t = getDictionary(lang);
+const book = contactLinks()[0];
+const links = (['services', 'gallery', 'diplomas', 'articles', 'contact'] as const).map((id) => ({ href: sectionUrl(lang, id), label: t.nav[id] }));
+---
+<section class="h-hero" data-h-hero>
+  <canvas class="h-hero__canvas" data-molar="hero" data-src={`${import.meta.env.BASE_URL}models/molar.bin`} aria-hidden="true"></canvas>
+  <div class="h-wrap h-hero__inner">
+    <div class="h-hero__copy">
+      <p class="h-label h-in" style="--d:0">{c.hero.label}</p>
+      <h1 class="h-hero__title h-in" style="--d:1">{c.hero.title}</h1>
+      <p class="h-hero__text h-in" style="--d:2">{c.hero.text}</p>
+    </div>
+    <div class="h-hero__foot">
+      <div class="h-hero__start h-in" style="--d:3">
+        <p class="h-hero__note"><span>{c.hero.note}</span><i aria-hidden="true"></i></p>
+        <div class="h-actions">
+          {book && <a class="h-btn" href={book.href} target="_blank" rel="noopener">{c.hero.book}</a>}
+          <a class="h-btn h-btn--soft" href={sectionUrl(lang, 'services')}>{c.hero.more}</a>
+        </div>
+      </div>
+      <nav class="h-hero__links h-in" style="--d:4" aria-label={c.hero.linksLabel}>
+        {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      </nav>
+    </div>
+  </div>
+</section>
