@@ -11,7 +11,7 @@ Dial: ENERGY 3 on the home page, ENERGY 2 on inner pages / RHYTHM 3 / MOTION 3 h
 - Audience: Russian-speaking patients in St. Petersburg (main). Persian speakers, migrants and people in Iran (secondary).
 - Languages: Russian (default), Farsi, English. Same structure in all three.
 - Feeling: calm, warm, trustworthy, with a modern and alive look. A patient should relax on the first screen and feel that something is moving gently, not shouting.
-- Identity motif: a soft arch (the sculpture's niche on the home page, the portrait window on the About page) and the tooth shape, in cappuccino and pistachio. Rounded colour "sheets" that stack over each other as you scroll.
+- Identity motif: the anatomical molar drawn in particles (crown, two roots, pulp and canals) with ink drifting off it, as on the home page; a soft arch for the portrait window on the About page. Pistachio and green for enamel, cappuccino for roots. Realistic only: no cartoon teeth or icons in the motif.
 - One accent: cappuccino for actions. Pistachio is the supporting colour for tags and calm surfaces.
 
 ## Palette (60-30-10)
@@ -25,7 +25,7 @@ Light:
 - Text and headings: Graphite Charcoal `#27272A`
 - Secondary text: Cool Slate Grey `#64748B`
 
-Dark mode (boutique, lets the bead sculpture glow):
+Dark mode (boutique, lets the particle molar glow):
 - Background `#141815`, cards `#1E2420`, lines `#2E3630`
 - Lighter cappuccino `#B5927B`, pistachio `#B2C9AB`, text `#F8FAFC`
 
@@ -43,14 +43,14 @@ Rules: both themes must work everywhere. Text must pass WCAG AA contrast (4.5:1 
   - Farsi (RTL): logo on the right, menu, language buttons and theme toggle on the left.
   - Russian and English (LTR): logo on the left, menu and buttons on the right.
 - Menu items are only real pages: About, Services, Before/after, Diplomas, Education, Articles, Tutorials (marked as coming soon until filled), Contact.
-- Home page: only the interactive hero and the footer. The hero is the brand word read as a sentence, "Say [sculpture] Smile": between the two words stands an arch with a tooth built from small beads (canvas, `src/sections/hero/field.ts`). Under it: the Tooth / Smile switch, the doctor's name and role, the booking button and two messenger chips. No photo of the doctor on the home page: his live portrait (head follows the cursor) is on the About page. Do NOT repeat the menu as a list or cards below the hero. Each section lives on its own page.
+- Home page (reference: Dantora on GetLayers, chosen by the doctor on 2026-11-18; the whole site moves to this style, home page first): loader with a progress ring once per session; hero with a light large headline, short text, booking + services buttons and site links, and the particle molar overflowing the opposite side; a centred statement that slides over the hero, with result photos trailing the pointer; services as tall numbered cards on a rail that travels sideways while scrolling (swipe row on phones); a large photo that opens to full width, the doctor in figures (counted from site data) and a paragraph that darkens word by word; the doctor row (deep green card, portrait, diploma, accreditation); a message form that opens Telegram or WhatsApp, with the molar behind. Code: `src/sections/home/`.
 - Inner pages: a short animated page header, then colour sheets that change from section to section. Never plain brown top, white middle, brown bottom.
 - Sections must differ from each other (RHYTHM 3), and each exists because the content needs it.
-- Mobile: full-screen menu, single column, tap targets at least 44px, no horizontal scroll.
+- Mobile: light. Short fades only, no parallax, no tilt, no custom cursor, native scroll. Home: fewer particles, the tooth under the buttons, services as a swipe row, no photo trail.
 
 ## Motion
 
-- Home: high energy, spent on one thing, the bead sculpture. On load the word opens and the beads gather into a tooth. The pointer pushes beads aside and they spring back; a press on the sculpture or the Tooth / Smile switch rebuilds them into a smile; left alone on desktop the shape changes every few seconds (no pause control: the doctor asked for it to run by itself; reduced motion still shows a still picture); on scroll the word parts (Say slides left, Smile right, letters spread, grow and fade) while the beads spread and fade. The brand letters lift slightly under the pointer. No other decoration in the hero.
+- Home: high energy. The molar sways around its cheek-side view and sheds ink from moving vents; the pointer parts tooth and ink; headings rise word by word; sections slide over each other. Small uppercase labels, light (350) large headings and pill buttons follow the reference.
 - Inner pages: medium. Reveals on scroll, sticky stacked cards, timeline that draws itself, counters, tilt on cards for fine pointers.
 - Mobile: light. Short fades only, no parallax, no tilt, no custom cursor, native scroll. On the home page the beads gather once and then rest; they move only when touched.
 - Every motion has a purpose (guide the eye, show order, give feedback). `prefers-reduced-motion` turns it off.
