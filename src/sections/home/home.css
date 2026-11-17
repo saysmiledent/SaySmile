@@ -3,42 +3,6 @@
    Light: white flowing into pistachio mist and soft mint-pistachio; deep green cards; cappuccino action.
    Sections slide over each other: hero and statement stick, the next one covers them. */
 
-:root {
-  --h-bg0: #ffffff;
-  --h-bg1: #f2f7f0;
-  --h-bg2: #e3ecdf;
-  --h-bg3: #d3e3cd;
-  --h-ink: #27272a;
-  --h-muted: #55606f;
-  --h-green: #3f5a38;
-  --h-green-2: #2c4127;
-  --h-soft: #b2c9ab;
-  --h-act: #846652;          /* Deep Mocha: white text stays above 4.5:1 */
-  --h-act-hover: #6f5848;
-  --h-panel: rgb(255 255 255 / 0.82);
-  --h-line: rgb(39 39 42 / 0.16);
-  --h-r: 22px;
-  --h-gut: clamp(16px, 3.4vw, 40px);
-  /* molar points: enamel, root, pulp, then three ink tones */
-  --m0: #44633d; --m1: #86684f; --m2: #6f5848; --m3: #5c7a54; --m4: #8fae87; --m5: #9a7b66;
-}
-:root[data-theme='dark'] {
-  --h-bg0: #141815;
-  --h-bg1: #161b17;
-  --h-bg2: #1a201c;
-  --h-bg3: #1e2620;
-  --h-ink: #f8fafc;
-  --h-muted: #a4b0be;
-  --h-green: #2b3d2c;
-  --h-green-2: #1e2a1f;
-  --h-soft: #b2c9ab;
-  --h-act: #b5927b;
-  --h-act-hover: #c9a690;
-  --h-panel: rgb(30 36 32 / 0.86);
-  --h-line: rgb(248 250 252 / 0.16);
-  --m0: #b2c9ab; --m1: #c9a690; --m2: #e7d6c8; --m3: #8fae87; --m4: #cfe3c8; --m5: #b5927b;
-}
-
 .h-wrap { width: min(1320px, 100% - var(--h-gut) * 2); margin-inline: auto; }
 
 /* ---------- shared pieces ---------- */
@@ -130,14 +94,15 @@
 }
 
 /* ---------- services rail ---------- */
-.h-svc { position: relative; z-index: 2; background: linear-gradient(180deg, var(--h-bg1), var(--h-bg2)); border-radius: var(--h-r) var(--h-r) 0 0; box-shadow: 0 -30px 60px -40px rgb(39 39 42 / 0.35); color: var(--h-ink); }
-.h-svc__pin { position: sticky; top: 0; min-height: 100svh; display: grid; grid-template-rows: auto 1fr; overflow: clip; padding-block: calc(var(--header-h) + 1.5rem) 2rem; }
+.h-svc { position: relative; z-index: 2; overflow-x: clip; background: linear-gradient(180deg, var(--h-bg1), var(--h-bg2)); border-radius: var(--h-r) var(--h-r) 0 0; box-shadow: 0 -30px 60px -40px rgb(39 39 42 / 0.35); color: var(--h-ink); }
+/* minmax(0, 1fr): the wide card track must not stretch the grid column, or the heading slides off-screen */
+.h-svc__pin { position: sticky; top: 0; min-height: 100svh; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; overflow: clip; padding-block: calc(var(--header-h) + 1.5rem) 2rem; }
 .h-svc__head { display: flex; justify-content: space-between; align-items: start; gap: 2rem; }
 .h-svc__title { margin: 0; max-width: 18ch; font-size: clamp(2rem, 3.8vw, 3.2rem); font-weight: 350; line-height: 1.1; letter-spacing: -0.02em; }
 :lang(fa) .h-svc__title { letter-spacing: 0; line-height: 1.35; font-weight: 500; }
 .h-svc__side { max-width: 17rem; display: grid; gap: 0.6rem; font-size: 0.9rem; color: var(--h-muted); }
 .h-svc__side p { margin: 0; }
-.h-svc__view { align-self: end; margin-top: 2rem; }
+.h-svc__view { align-self: end; margin-top: 2rem; min-width: 0; }
 .h-svc__track { list-style: none; margin: 0; display: flex; gap: 1rem; padding-inline: max(var(--h-gut), (100vw - 1320px) / 2); width: max-content; will-change: transform; }
 .h-card {
   position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; gap: 0.6rem;

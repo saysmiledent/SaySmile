@@ -6,8 +6,8 @@
   --bg-soft: #e3ecdf;       /* deeper pistachio tint: alternate bands */
   --surface: #fafcf9;       /* cards (the only near-white) */
   --line: #cfdbca;          /* borders on pistachio */
-  --primary: #9a7b66;       /* Cappuccino */
-  --primary-hover: #846652; /* Deep Mocha */
+  --primary: #846652;       /* Deep Mocha: buttons, white text stays above 4.5:1 */
+  --primary-hover: #6f5848;
   --on-primary: #ffffff;
   --bar: #fafcf9;           /* header: clear glass over the pistachio hero */
   --on-bar: #27272a;
@@ -24,13 +24,13 @@
   --hero-ink: #27272a;
 
   /* colour bands (stacked sheets) */
-  --sheet-c: #b2c9ab;       /* pistachio band */
+  --sheet-c: #e3ecdf;       /* mint band */
   --on-sheet-c: #27272a;
-  --sheet-d: #9a7b66;       /* cappuccino band */
-  --on-sheet-d: #ffffff;
+  --sheet-d: #3f5a38;       /* deep green band (the reference's dark cards) */
+  --on-sheet-d: #f2f7f0;
   --deep: #1f2420;          /* graphite-green band: footer, CTA */
   --on-deep: #f2f7f0;
-  --sheet-r: clamp(28px, 5vw, 64px);
+  --sheet-r: clamp(20px, 2.4vw, 28px);
 
   --radius: 16px;
   --radius-lg: 28px;
@@ -62,9 +62,9 @@
   --text: #f8fafc;
   --text-muted: #a4b0be;
 
-  --sheet-c: #243028;
+  --sheet-c: #1e2620;
   --on-sheet-c: #f8fafc;
-  --sheet-d: #6f5848;
+  --sheet-d: #2b3d2c;
   --on-sheet-d: #f8fafc;
   --deep: #0d100e;
   --on-deep: #f8fafc;
@@ -77,3 +77,42 @@
 
   color-scheme: dark;
 }
+
+/* Dantora-style layer (home page first, now site-wide): light fields from white into pistachio mist and mint,
+   deep green cards, cappuccino actions, and the colours of the particle molar (--m0..--m5). */
+:root {
+  --h-bg0: #ffffff;
+  --h-bg1: #f2f7f0;
+  --h-bg2: #e3ecdf;
+  --h-bg3: #d3e3cd;
+  --h-ink: #27272a;
+  --h-muted: #55606f;
+  --h-green: #3f5a38;
+  --h-green-2: #2c4127;
+  --h-soft: #b2c9ab;
+  --h-act: #846652;          /* Deep Mocha: white text stays above 4.5:1 */
+  --h-act-hover: #6f5848;
+  --h-panel: rgb(255 255 255 / 0.82);
+  --h-line: rgb(39 39 42 / 0.16);
+  --h-r: 22px;
+  --h-gut: clamp(16px, 3.4vw, 40px);
+  /* molar points: enamel, root, pulp, then three ink tones */
+  --m0: #44633d; --m1: #86684f; --m2: #6f5848; --m3: #5c7a54; --m4: #8fae87; --m5: #9a7b66;
+}
+:root[data-theme='dark'] {
+  --h-bg0: #141815;
+  --h-bg1: #161b17;
+  --h-bg2: #1a201c;
+  --h-bg3: #1e2620;
+  --h-ink: #f8fafc;
+  --h-muted: #a4b0be;
+  --h-green: #2b3d2c;
+  --h-green-2: #1e2a1f;
+  --h-soft: #b2c9ab;
+  --h-act: #b5927b;
+  --h-act-hover: #c9a690;
+  --h-panel: rgb(30 36 32 / 0.86);
+  --h-line: rgb(248 250 252 / 0.16);
+  --m0: #b2c9ab; --m1: #c9a690; --m2: #e7d6c8; --m3: #8fae87; --m4: #cfe3c8; --m5: #b5927b;
+}
+

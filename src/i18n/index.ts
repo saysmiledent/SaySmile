@@ -40,8 +40,8 @@ export const navGroups = [
 ] as const satisfies readonly { id: string; items: readonly SectionId[] }[];
 export type NavGroupId = (typeof navGroups)[number]['id'];
 
-/** Tutorial videos exist only in Farsi for now; ru/en keep the page but out of menu, footer, sitemap and search. */
-export const isHidden = (lang: Locale, id: SectionId): boolean => id === 'tutorials' && lang !== 'fa';
+/** Tutorial videos exist in Farsi (topics) and Russian (reels from @dr.say1); en keeps the page but out of menu, footer, sitemap and search. */
+export const isHidden = (lang: Locale, id: SectionId): boolean => id === 'tutorials' && lang === 'en';
 export const visibleSections = (lang: Locale): SectionId[] => sectionIds.filter((id) => !isHidden(lang, id));
 
 /** URL of a section page in the given language. */

@@ -53,7 +53,7 @@ const seminars = docs.filter((d) => d.kind === 'seminar');
   .step { position: relative; display: grid; grid-template-columns: minmax(8rem, 0.45fr) 1fr; gap: clamp(1rem, 4vw, 3rem); align-items: center; padding-inline-start: 2.6rem; }
   .step__dot { position: absolute; inset-inline-start: 0; top: 1.2rem; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--bg); border: 3px solid var(--line); transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s; }
   .step.is-on .step__dot { background: var(--primary); border-color: var(--accent); box-shadow: 0 0 0 8px rgb(178 201 171 / 0.35); }
-  .step__when { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--primary); transition: color 0.5s; font-variant-numeric: tabular-nums; }
+  .step__when { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--primary); transition: color 0.5s; font-variant-numeric: tabular-nums; }
   html[lang='fa'] .step__when { letter-spacing: 0; }
   .step.is-on .step__when { color: var(--primary); }
   .step__body { padding: clamp(1.2rem, 3vw, 1.8rem) clamp(1.3rem, 3vw, 2rem); border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
@@ -63,7 +63,7 @@ const seminars = docs.filter((d) => d.kind === 'seminar');
   .sem { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); position: relative; z-index: 1; }
   .sem__item { padding: 1.4rem 1.6rem; border-radius: var(--radius-lg); background: rgb(255 255 255 / 0.5); border: 1px solid rgb(39 39 42 / 0.12); }
   :global(:root[data-theme='dark']) .sem__item { background: rgb(255 255 255 / 0.06); border-color: rgb(178 201 171 / 0.25); }
-  .sem__item time { font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; }
+  .sem__item time { font-weight: 400; font-size: 0.95rem; letter-spacing: 0.02em; }
   .sem__item h3 { font-size: 1.12rem; margin: 0.25rem 0 0.4rem; line-height: 1.35; }
   .sem__item p { margin: 0; font-size: 0.92rem; opacity: 0.8; }
   .more { margin: 2.5rem 0 0; position: relative; z-index: 1; }

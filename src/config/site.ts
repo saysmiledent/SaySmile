@@ -11,6 +11,8 @@ export const site = {
     phone: '+79939813183',
   },
   instagram: 'https://www.instagram.com/saywan_h/',
+  /** Russian patient page (reels on the Russian tutorials page) */
+  instagramRu: 'https://www.instagram.com/dr.say1/',
 } as const;
 
 export const contactLinks = () => {

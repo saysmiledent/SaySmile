@@ -51,6 +51,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 {groups.length === 0 && (videos.length === 0 ? <Soon text={p.soon} /> : (
   <section class="sheet" aria-label={p.lead}>
+    {lang === 'ru' && <div class="container"><p class="intro">{ui.intro} <a href={site.instagramRu} target="_blank" rel="noopener">{ui.page}</a></p></div>}
     <div class="container grid">
       {videos.map((v) => (
         <article class="vid" data-reveal>

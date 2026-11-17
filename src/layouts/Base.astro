@@ -26,9 +26,9 @@ interface Props {
 }
 
 const { lang, path = '', current = '', title, description, ogType = 'website', schema = [], published, noindex = false, image, imageAlt, video } = Astro.props;
-// Tutorial videos exist in Farsi only: its alternates list just Farsi
-const onlyFa = path.startsWith('tutorials/');
-const altLocales = onlyFa ? locales.filter((l) => l === 'fa') : locales;
+// Tutorial topic pages exist in Farsi only; the tutorials hub exists in Farsi and Russian
+const onlyFa = path.startsWith('tutorials/') && path !== 'tutorials/';
+const altLocales = onlyFa ? locales.filter((l) => l === 'fa') : path === 'tutorials/' ? locales.filter((l) => l !== 'en') : locales;
 const t = getDictionary(lang);
 const origin = Astro.site!;
 const canonical = new URL(localeUrl(lang, path), origin).href;
