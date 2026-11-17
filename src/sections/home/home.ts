@@ -23,8 +23,8 @@ const molarColors = () => {
 
 // where each tooth stands inside its canvas
 const layouts: Record<string, (w: number, h: number) => [number, number, number]> = {
-  hero: (w, h) => (w < 860 ? [w * 0.5, h * 0.76, h * 0.5] : [w * (rtl ? 0.3 : 0.69), h * 0.47, h * 1.02]),
-  ask: (w, h) => (w < 860 ? [w * 0.5, h * 0.3, h * 0.42] : [w * (rtl ? 0.62 : 0.38), h * 0.58, h * 0.95]),
+  hero: (w, h) => (w < 860 ? [w * 0.52, h * 0.8, h * 0.46] : [w * (rtl ? 0.3 : 0.69), h * 0.47, h * 1.02]),
+  ask: (w, h) => (w < 860 ? [w * 0.5, h * 0.22, h * 0.4] : [w * (rtl ? 0.44 : 0.56), h * 0.55, h * 0.95]),
 };
 
 async function molars() {

@@ -194,7 +194,8 @@
 
 /* ---------- ask ---------- */
 .h-ask { position: relative; z-index: 3; overflow: clip; background: linear-gradient(180deg, var(--h-bg0), var(--h-bg1)); border-radius: var(--h-r) var(--h-r) 0 0; color: var(--h-ink); padding-block: clamp(5rem, 10vw, 8rem) calc(clamp(5rem, 10vw, 8rem) + var(--sheet-r)); }
-.h-ask__canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* behind text, so it stays light: the copy must read first */
+.h-ask__canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.55; }
 .h-ask__row { position: relative; display: grid; grid-template-columns: 1fr minmax(300px, 420px); gap: clamp(2rem, 6vw, 6rem); align-items: center; pointer-events: none; }
 .h-ask__row input, .h-ask__row textarea, .h-ask__row button, .h-ask__row a, .h-ask__row form { pointer-events: auto; }
 .h-ask__copy { display: grid; gap: 1rem; max-width: 30rem; }
@@ -220,8 +221,12 @@
   .h-doc__row > * { scroll-snap-align: start; }
 }
 @media (max-width: 860px) {
+  /* phones and tablets: text and buttons on top, the tooth fills the lower half (as in the reference) */
+  .h-hero__inner { grid-template-rows: auto auto 1fr; gap: 1.6rem; }
   .h-hero__copy { align-self: start; margin-top: 1rem; }
   .h-hero__foot { flex-direction: column; align-items: start; }
+  .h-hero__start { gap: 0.8rem; }
+  .h-ask__canvas { opacity: 0.3; }
   .h-hero__links { display: none; }
   .h-svc__head { flex-direction: column; gap: 1rem; }
   .h-feat__about { grid-template-columns: 1fr; }
