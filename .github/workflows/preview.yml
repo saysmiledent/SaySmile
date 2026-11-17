@@ -1,0 +1,24 @@
+name: Preview build (no deploy)
+
+# Builds the site from work branches and keeps the result as a downloadable artifact for review.
+# Nothing is published: only deploy.yml (live branch) changes the public site.
+on:
+  push:
+    branches: [home-dantora]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npx astro build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          retention-days: 3
