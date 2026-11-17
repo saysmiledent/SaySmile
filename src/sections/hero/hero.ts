@@ -5,7 +5,10 @@
 // - Idle on desktop: the shape changes by itself every few seconds.
 // - Scroll: the two words slide apart, their letters spread and fade (CSS reads --away), the beads spread out.
 // - Phones: beads gather once and then rest; they move only when touched.
-// - Reduced motion: a still picture; the switch still works.
+// - Reduced motion (an OS setting, often on by default on Windows laptops): nothing moves by itself (no fly-in,
+//   no breathing, no automatic shape change), but everything the visitor does still answers: the pointer moves
+//   beads, a press or the switch rebuilds the shape, scrolling parts the word. The doctor wants the effects on
+//   every computer, and motion that follows the visitor's own hand is the part reduced motion keeps.
 import { createField, type FieldColors } from './field';
 
 export function initHero() {
@@ -46,7 +49,6 @@ export function initHero() {
   let lastInput = performance.now();
   const show = (i: number) => {
     field.setShape(i);
-    if (reduced) field.still();
     mark();
     lastInput = performance.now();
   };
@@ -56,17 +58,12 @@ export function initHero() {
   new MutationObserver(() => field.setColors(colors()))
     .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-  if (reduced) {
-    field.still();
-    addEventListener('resize', () => { place(); field.still(); });
-    return;
-  }
-
   let visible = true;
-  const run = () => { if (visible) field.start(!mobile); };
+  // breathing only on desktop without reduced motion; otherwise the loop sleeps once the beads settle
+  const run = () => { if (visible) field.start(!mobile && !reduced); };
 
   // --- intro: the word opens (CSS) while the beads fly in and gather between the two halves ---
-  field.gather();
+  if (reduced) field.still(); else field.gather();
   run();
   addEventListener('resize', place);
 
@@ -78,7 +75,7 @@ export function initHero() {
     const p = rel(e);
     field.pointer(p.x, p.y, p.in);
     lastInput = performance.now();
-    if (!fine || lift) return;
+    if (!fine || reduced || lift) return;
     lift = requestAnimationFrame(() => {
       lift = 0;
       letters.forEach((el) => {
@@ -105,7 +102,7 @@ export function initHero() {
   }, { passive: true });
 
   // --- idle: on desktop the shape changes by itself when nobody is touching it ---
-  if (!mobile) setInterval(() => {
+  if (!mobile && !reduced) setInterval(() => {
     if (!visible || document.hidden || performance.now() - lastInput < 6000) return;
     field.setShape(field.shape + 1);
     mark();

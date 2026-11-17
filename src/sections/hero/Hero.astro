@@ -176,7 +176,7 @@ const shapes = [t.ui.shapeTooth, t.ui.shapeSmile];
     /* the booking button takes its own row, the two messengers share the next one */
     .hero__cta { flex: 0 0 100%; max-width: 19rem; justify-content: center; }
   }
-  /* reduced motion: a still picture (hero.ts draws the shape once and stops) */
+  /* reduced motion: no intro and no letter lift; the beads and the scroll parting still follow the visitor (hero.ts) */
   @media (prefers-reduced-motion: reduce) {
     .hero__slot::before, .hero__word { animation: none; }
     .hero__ch { transition: none; }
