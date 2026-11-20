@@ -30,7 +30,7 @@ if (section === 'tutorials' && lang === 'fa') schema.push(topicsList(seo.title, 
 ---
 
 <Base lang={lang} path={`${section}/`} current={section} title={seo.title} description={seo.description} schema={schema} noindex={isHidden(lang, section)}>
-  <PageHero lang={lang} title={t.nav[section]} lead={lead} />
+  <PageHero lang={lang} title={section === 'about' ? t.hero.doctor : t.nav[section]} lead={lead} />
   {section === 'about' && <About lang={lang} />}
   {section === 'services' && <Services lang={lang} />}
   {section === 'gallery' && <Gallery lang={lang} />}

@@ -37,13 +37,13 @@ export function entityGraph(lang: Locale, origin: URL): Json[] {
   const home = abs(localeUrl(lang), origin);
   const a = address[lang];
   const c = site.contacts;
-  const sameAs = [c.telegram, site.instagram, 'https://gamclinic.pro/'];
+  const sameAs = [c.telegram, site.instagram, site.instagramRu, 'https://gamclinic.pro/'];
   const image = abs(`${import.meta.env.BASE_URL}og-image.jpg`, origin);
 
   const clinic: Json = {
     '@type': ['Dentist', 'LocalBusiness'],
     '@id': `${abs(localeUrl('ru'), origin)}#clinic`,
-    name: lang === 'ru' ? 'SaySmile: стоматолог Сейван (GAM Clinic)' : lang === 'fa' ? 'SaySmile: دندانپزشک دکتر سیوان (کلینیک GAM)' : 'SaySmile: Dr. Seivan, dentist (GAM Clinic)',
+    name: lang === 'ru' ? 'SaySmile: стоматолог Сейван Хагдуст (GAM Clinic)' : lang === 'fa' ? 'SaySmile: دندانپزشک دکتر سیوان (کلینیک GAM)' : 'SaySmile: Dr. Seivan, dentist (GAM Clinic)',
     url: home,
     image,
     telephone: c.phone,
@@ -76,8 +76,11 @@ export function entityGraph(lang: Locale, origin: URL): Json[] {
   const doctor: Json = {
     '@type': 'Person',
     '@id': `${abs(localeUrl('ru'), origin)}#doctor`,
-    name: t.hero.doctor,
-    alternateName: ['Хаг Дуст Сейван', 'Dr. Seivan'],
+    name: lang === 'ru' ? 'Сейван Хагдуст' : t.hero.doctor,
+    givenName: lang === 'ru' ? 'Сейван' : undefined,
+    familyName: lang === 'ru' ? 'Хагдуст' : undefined,
+    // every spelling the doctor confirmed (2026-11-20), so a search for any of them meets the same person
+    alternateName: ['Сейван Хагдуст', 'Сейван ХагДуст', 'Сейван Хаг Дуст', 'Хаг Дуст Сейван', 'Хагдуст Сейван', 'Доктор Сейван', 'Saywan Haghdoost', 'Dr. Seivan', 'سیوان حق‌دوست'],
     jobTitle: t.hero.subtitle,
     url: home,
     image,
